@@ -1,37 +1,24 @@
 @import "tailwindcss";
-@config "../../tailwind.config.ts";
 
-:root {
-  /* Brand Accents */
-  --color-brand-primary: #FFC83D;
-  --color-brand-secondary: #1463FF;
-
-  /* Backgrounds & Surfaces */
+@theme {
   --color-bg-main: #091741;
-  --color-bg-surface: #0C1F56;
-  --color-bg-surface-light: #112F82;
-  --color-bg-sidebar: #0E1B3D;
-  --color-bg-purple: #2A0B3E;
+  --color-bg-card: #0C1F56;
+  --color-bg-hover: #112F82;
 
-  /* Text Colors */
+  --color-brand-primary: #1463FF;
+  --color-brand-accent: #FFC83D;
+
   --color-text-primary: #FFFFFF;
   --color-text-secondary: #D2DCF7;
-  --color-text-dark: #1A1404;
-  --color-success: #00DD29;
+  --color-text-muted: #E8EDFB;
 
-  /* Border Radii */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
-  --radius-2xl: 20px;
-  --radius-full: 150px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
 }
 
 body {
-  color: var(--color-text-primary);
   background-color: var(--color-bg-main);
-  font-family: var(--font-manrope), sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  color: var(--color-text-primary);
 }
