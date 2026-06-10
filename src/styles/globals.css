@@ -19,6 +19,22 @@
 }
 
 body {
-  background-color: var(--color-bg-main);
+  margin: 0;
+  padding: 0;
+  background-color: #091741;
   color: var(--color-text-primary);
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Hide scrollbar for category nav */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

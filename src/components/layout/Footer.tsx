@@ -2,11 +2,6 @@ import Link from "next/link";
 
 const footerLinks = [
   {
-    title: "MENU NAME", // Wait, the screenshot has no titles for columns! Ah, the screenshot shows blank column headers or they are just empty? Actually, looking at the dump, the headers say "MENU NAME". Let's use the actual names from the previous file but styled correctly. Wait, the screenshot doesn't show titles! "Slots, Skill Games..." is at the very top of the column! 
-    // Ah, wait! The dump says "MENU NAME" display: flex, width 120px height 17px. But in the screenshot, the top item is just "Slots". But let's check the dump again.
-    // Dump: "MENU NAME" text, height 17px. Then links underneath. The screenshot has "Slots" as a regular link.
-    // Actually, in the screenshot, the columns *don't* have headers! They just start with the links. 
-    // Let's look at the dump: it literally has a text block "MENU NAME" with Jost 12px 700 uppercase. I will keep the titles but if they want to hide them later they can. Let's use the titles from the old component.
     title: "CASINO",
     links: ["Slots", "Skill Games", "Jackpot", "Bonus Buy", "Crash Games"],
   },
@@ -39,7 +34,7 @@ const columns = [
 
 export default function Footer() {
   return (
-    <footer className="mt-20 flex w-full flex-col items-center pb-[48px]">
+    <footer className="mt-[100px] flex w-full flex-col items-center pb-[48px]">
       <div className="flex w-full flex-col gap-[48px]">
         
         {/* Top Section */}

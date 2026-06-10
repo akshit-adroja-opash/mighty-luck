@@ -22,7 +22,7 @@ export default function TableGamesSection() {
   };
 
   return (
-    <section className="flex w-full flex-col gap-[20px]">
+    <section className="flex w-[1136px] flex-none flex-col gap-[20px] overflow-hidden">
       <SectionHeader 
         title="TABLE GAMES (51)" 
         icon={<span className="text-xl">♠️</span>} 
@@ -32,7 +32,7 @@ export default function TableGamesSection() {
 
       <div 
         ref={scrollRef}
-        className="flex gap-[12px] overflow-x-auto pb-4 snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+        className="flex w-[1300px] gap-[12px] overflow-x-auto snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
       >
         {tableGames.map((image, index) => (
           <div key={index} className="flex-none snap-start">

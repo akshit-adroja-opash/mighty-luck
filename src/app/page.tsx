@@ -19,13 +19,14 @@ import CryptoBanner from "@/components/sections/CryptoBanner";
 export default function HomePage() {
   return (
     <Container>
-      <div className="flex gap-6 py-6 w-full">
-        <div className="w-[15%]">
+      <div className="flex w-full flex-row">
+        <div className="w-[232px] flex-none">
           <Sidebar />
         </div>
 
-        <main className="w-[calc(85%-24px)] flex flex-col gap-[60px]">
-          <HeroBanner />
+        <div className="flex w-[1184px] flex-none flex-col px-[24px]">
+          <main className="flex w-[1136px] flex-none flex-col gap-[40px]">
+            <HeroBanner />
 
           <DepositBanner />
 
@@ -53,6 +54,7 @@ export default function HomePage() {
 
           <Footer />
         </main>
+        </div>
       </div>
     </Container>
   );

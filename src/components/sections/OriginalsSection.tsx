@@ -56,7 +56,7 @@ export default function OriginalsSection() {
   };
 
   return (
-    <section className="flex w-full flex-col gap-[20px]">
+    <section className="flex w-[1136px] flex-none flex-col gap-[20px] overflow-hidden">
       <SectionHeader 
         title="ORIGINALS (14)" 
         icon={<span className="text-xl">👑</span>} 
@@ -66,7 +66,7 @@ export default function OriginalsSection() {
 
       <div 
         ref={scrollRef}
-        className="flex gap-[12px] overflow-x-auto pb-4 snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+        className="flex w-[1300px] gap-[12px] overflow-x-auto snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
       >
         {originals.map((game) => (
           <div key={game.id} className="flex-none snap-start">

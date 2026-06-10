@@ -1,68 +1,90 @@
 export default function TopPromoCards() {
   return (
-    <div className="flex w-full flex-col gap-4">
-
-      {/* Container */}
-      <div className="flex w-full flex-col rounded-[16px] bg-[#0C1F56] p-4">
-
-        {/* Top Two Cards */}
-        <div className="flex w-full flex-col gap-[8px]">
+    <div className="flex h-[134px] w-[232px] flex-none flex-col items-start gap-[10px] rounded-[16px] bg-[#0C1F56] p-[16px]">
+      
+      <div className="flex w-[200px] flex-none flex-col items-start gap-[8px]">
+        
+        {/* Top Two Cards Row */}
+        <div className="flex h-[44px] w-[200px] flex-none flex-row items-center gap-[4px]">
           
-          <div className="flex gap-[4px] h-[44px]">
-            {/* Refer Friend */}
-            <div className="relative flex flex-1 items-center gap-1 overflow-hidden rounded-lg bg-[#3B005F] px-2 py-1">
-              {/* Blur Effect */}
-              <div className="absolute -left-5 -top-3 h-16 w-16 rounded-full bg-[#A92BF5] opacity-80 blur-[25px]" />
-              
-              <div className="relative z-10 flex items-center justify-center h-6 w-6">
-                <span className="text-lg">📢</span>
-              </div>
-              
-              <p className="relative z-10 text-[11px] font-bold leading-tight text-white uppercase font-sans">
-                REFER <br />
-                A FRIEND
-              </p>
+          {/* Refer Friend */}
+          <div className="relative isolate flex h-[44px] w-[98px] flex-none items-center gap-[2px] rounded-[8px] bg-[#3B005F] px-[8px] py-[6px]">
+            {/* Blur Effect (Contained) */}
+            <div className="absolute inset-0 z-[-1] overflow-hidden rounded-[8px]">
+              <div className="absolute -left-[43px] -top-[15px] h-[97px] w-[97px] rounded-full bg-[#A92BF5] blur-[25px]" />
             </div>
-
-            {/* VIP Transfer */}
-            <div className="relative flex flex-1 items-center gap-1 overflow-hidden rounded-lg bg-[#500039] px-2 py-1">
-              {/* Blur Effect */}
-              <div className="absolute -left-5 -top-3 h-16 w-16 rounded-full bg-[#FF3981] opacity-80 blur-[25px]" />
-              
-              <div className="relative z-10 flex items-center justify-center h-6 w-6">
-                <span className="text-lg">👑</span>
-              </div>
-              
-              <p className="relative z-10 text-[11px] font-bold leading-tight text-white uppercase font-sans">
-                VIP <br />
-                TRANSFER
+            
+            <div className="relative z-[1] flex h-[24px] w-[24px] flex-none items-center justify-center">
+              <div 
+                className="absolute -left-[26px] -top-[5px] h-[39.33px] w-[59px] bg-contain bg-center bg-no-repeat"
+                style={{ backgroundImage: "url('/Роскошный мегафон казино с золотыми монетами.png')" }}
+              />
+            </div>
+            
+            <div className="relative z-[2] flex h-[22px] w-[52px] flex-none flex-col justify-center">
+              <p className="font-['Jost'] text-[11px] font-bold leading-[100%] text-white">
+                REFER <br /> A FRIEND
               </p>
             </div>
           </div>
 
-          {/* Winter Rush */}
-          <div className="relative flex h-[50px] w-full items-center gap-2 overflow-hidden rounded-lg bg-[#091741] px-2">
-            {/* Blur Effect */}
-            <div className="absolute -left-6 -top-4 h-24 w-24 rounded-full bg-[#1463FF] opacity-70 blur-[25px]" />
-            
-            <div className="relative z-10 flex items-center justify-center h-6 w-6 ml-1">
-              <span className="text-xl">❄️</span>
+          {/* VIP Transfer */}
+          <div className="relative isolate flex h-[44px] w-[98px] flex-none items-center gap-[2px] rounded-[8px] bg-[#500039] px-[8px] py-[6px]">
+            {/* Blur Effect (Contained) */}
+            <div className="absolute inset-0 z-[-1] overflow-hidden rounded-[8px]">
+              <div className="absolute -left-[40px] -top-[5px] h-[97px] w-[97px] rounded-full bg-[#FF3981] blur-[25px]" />
             </div>
             
-            <div className="relative z-10 flex flex-col justify-center gap-0">
-              <h3 className="text-[18px] font-black italic leading-[14px] text-white font-sans uppercase">
-                WINTER RUSH
-              </h3>
-              <p className="text-[12px] font-bold italic leading-[14px] text-white font-sans uppercase mt-1">
-                $2,000,000 IN PRIZES
+            <div className="relative z-[1] flex h-[24px] w-[24px] flex-none items-center justify-center">
+              <div 
+                className="absolute -left-[32.36px] -top-[13.7px] h-[33.01px] w-[64px] bg-contain bg-center bg-no-repeat"
+                style={{ transform: "rotate(11.84deg)", backgroundImage: "url('/Роскошная корона с молнией.png')" }}
+              />
+            </div>
+            
+            <div className="relative z-[2] flex h-[22px] w-[57px] flex-none flex-col justify-center">
+              <p className="font-['Jost'] text-[11px] font-bold leading-[100%] text-white">
+                VIP <br /> TRANSFER
               </p>
             </div>
           </div>
-          
+
         </div>
 
-      </div>
+        {/* Winter Rush */}
+        <div className="relative isolate flex h-[50px] w-[200px] flex-none items-center gap-[10px] rounded-[8px] bg-[#091741] px-[10px] py-[6px]">
+          {/* Blur Effect (Contained) */}
+          <div className="absolute inset-0 z-[-1] overflow-hidden rounded-[8px]">
+            <div className="absolute -left-[53px] -top-[22px] h-[110px] w-[110px] rounded-full bg-[#1463FF] blur-[25px]" />
+          </div>
+          
+          {/* Spacer Frame */}
+          <div className="relative z-[1] flex h-[20px] w-[20px] flex-none items-center justify-center"></div>
 
+          {/* Rectangle (Gold Snowflake) */}
+          <div 
+            className="absolute -left-[53px] -top-[18px] z-[2] h-[68px] w-[102px] bg-contain bg-center bg-no-repeat"
+            style={{ transform: "matrix(-1, 0, 0, 1, 0, 0)", backgroundImage: "url('/Золотая снежинка на прозрачном фоне.png')" }}
+          />
+          
+          {/* Text Container */}
+          <div className="relative z-[3] flex h-[30px] w-[138px] flex-none flex-col items-start gap-[2px]">
+            <h3 className="h-[14px] w-full whitespace-nowrap font-['Jost'] text-[18px] font-black italic leading-[14px] text-white">
+              WINTER RUSH
+            </h3>
+            <p className="h-[14px] w-full whitespace-nowrap font-['Jost'] text-[12px] font-bold italic leading-[14px] text-white">
+              $2,000,000 IN PRIZES
+            </p>
+          </div>
+
+          {/* image 26 */}
+          <div 
+            className="absolute -left-[60px] -top-[53px] z-[4] h-[165px] w-[165px] bg-contain bg-center bg-no-repeat"
+            style={{ backgroundImage: "url('/image26.png')" }}
+          />
+        </div>
+        
+      </div>
     </div>
   );
 }

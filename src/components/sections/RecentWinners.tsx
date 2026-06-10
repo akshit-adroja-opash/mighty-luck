@@ -48,23 +48,20 @@ export default function RecentWinners() {
         showPagination={false}
       />
 
-      <div className="flex flex-col gap-[8px]">
+      <div className="flex flex-col gap-[12px] w-[1136px]">
         {/* Header Row */}
-        <div className="flex w-full items-center justify-between px-[24px] py-[8px]">
-          <div className="font-jost text-[14px] font-bold tracking-[0.02em] text-white uppercase">
+        <div className="flex h-[52px] w-[1136px] items-center gap-[20px] rounded-[12px] bg-[#091741] px-[24px]">
+          <div className="w-[356px] font-manrope text-[14px] font-semibold text-white">
             Game
           </div>
-          
-          <div className="flex w-[624px] items-center gap-[12px]">
-            <div className="w-[300px] font-jost text-[14px] font-bold tracking-[0.02em] text-white uppercase">
-              Username
-            </div>
-            <div className="w-[150px] font-jost text-[14px] font-bold tracking-[0.02em] text-white uppercase">
-              Time
-            </div>
-            <div className="w-[150px] text-right font-jost text-[14px] font-bold tracking-[0.02em] text-white uppercase">
-              Payout
-            </div>
+          <div className="w-[356px] font-manrope text-[14px] font-semibold text-white">
+            User
+          </div>
+          <div className="w-[156px] font-manrope text-[14px] font-semibold text-white">
+            Time
+          </div>
+          <div className="w-[156px] text-right font-manrope text-[14px] font-semibold text-white">
+            Payout
           </div>
         </div>
 
@@ -72,27 +69,29 @@ export default function RecentWinners() {
         {winners.map((winner, index) => (
           <div
             key={index}
-            className="flex h-[60px] w-full items-center justify-between rounded-[8px] bg-[#0C1F56] px-[24px] transition-colors hover:bg-[#112F82]"
+            className="flex h-[58px] w-[1136px] items-center gap-[20px] rounded-[12px] bg-[#0C1F56] px-[24px] transition-colors hover:bg-[#112F82]"
           >
-            {/* Left: Game Info */}
-            <div className="flex items-center gap-[12px]">
-              <div className="h-[30px] w-[22px] rounded-[1.8px] bg-slate-400 bg-cover bg-center" style={{ backgroundImage: "url('/games/1.png')" }} />
-              <div className="w-[200px] truncate font-manrope text-[14px] font-semibold tracking-[0.02em] text-white">
+            {/* Game Info */}
+            <div className="flex w-[356px] items-center gap-[12px]">
+              <div className="h-[26px] w-[20px] flex-none rounded-[1.8px] bg-slate-400 bg-cover bg-center" style={{ backgroundImage: "url('/games/1.png')" }} />
+              <div className="truncate font-manrope text-[14px] font-semibold text-white">
                 {winner.game}
               </div>
             </div>
 
-            {/* Right: User Info */}
-            <div className="flex w-[624px] items-center gap-[12px]">
-              <div className="w-[300px] truncate font-manrope text-[14px] font-semibold tracking-[0.02em] text-white">
-                {winner.username}
-              </div>
-              <div className="w-[150px] font-manrope text-[14px] font-semibold tracking-[0.02em] text-white">
-                {winner.time}
-              </div>
-              <div className={`w-[150px] text-right font-manrope text-[14px] font-semibold tracking-[0.02em] ${winner.payoutColor}`}>
-                {winner.payout}
-              </div>
+            {/* User Info */}
+            <div className="w-[356px] truncate font-manrope text-[14px] font-semibold text-white">
+              {winner.username}
+            </div>
+
+            {/* Time */}
+            <div className="w-[156px] font-manrope text-[14px] font-semibold text-white">
+              {winner.time}
+            </div>
+
+            {/* Payout */}
+            <div className={`w-[156px] text-right font-manrope text-[14px] font-semibold ${winner.payoutColor}`}>
+              {winner.payout}
             </div>
           </div>
         ))}

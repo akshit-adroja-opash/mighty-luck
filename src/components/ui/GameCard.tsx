@@ -24,7 +24,7 @@ export default function GameCard({
         />
 
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/40" />
+        <div className="absolute inset-0 rounded-[12px] bg-black/0 transition-all duration-300 group-hover:bg-black/50 group-hover:backdrop-blur-[5px]" />
 
         {/* Favorite */}
         <button className="absolute right-3 top-3 z-10 rounded-full bg-black/30 p-2 opacity-0 transition group-hover:opacity-100">
@@ -47,6 +47,11 @@ export default function GameCard({
 
           </button>
 
+        </div>
+
+        {/* Title Text (appears on hover) */}
+        <div className="absolute bottom-4 left-0 right-0 flex flex-col items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-10 px-2 text-center">
+          <span className="font-sans text-[14px] font-extrabold text-white uppercase tracking-wider">{title}</span>
         </div>
 
       </div>

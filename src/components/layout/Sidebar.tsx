@@ -22,20 +22,32 @@ const menuItems = [
   {
     name: "Promotions",
     icon: Gift,
+    fontSize: "text-[16px]",
+    lineHeight: "leading-[22px]",
+    fontWeight: "font-semibold",
   },
   {
     name: "VIP Program",
     icon: Crown,
+    fontSize: "text-[14px]",
+    lineHeight: "leading-[19px]",
+    fontWeight: "font-semibold",
   },
   {
     name: "Tournaments",
     icon: Trophy,
+    fontSize: "text-[14px]",
+    lineHeight: "leading-[19px]",
+    fontWeight: "font-semibold",
   },
   {
     name: "Casino",
     icon: Dice5,
     isPrimary: true, // blue bg
     iconColor: "text-[#FFB800]", // yellow icon
+    fontSize: "text-[14px]",
+    lineHeight: "leading-[19px]",
+    fontWeight: "font-bold",
     subItems: [
       { name: "All Games", icon: Gamepad2 },
       { name: "New Games", icon: Sparkles },
@@ -49,10 +61,16 @@ const menuItems = [
     icon: Club,
     isPrimary: true, // blue bg
     iconColor: "text-[#FFB800]", // yellow icon
+    fontSize: "text-[14px]",
+    lineHeight: "leading-[19px]",
+    fontWeight: "font-bold",
   },
   {
     name: "Live Support",
     icon: Headphones,
+    fontSize: "text-[14px]",
+    lineHeight: "leading-[19px]",
+    fontWeight: "font-semibold",
   },
 ];
 
@@ -66,14 +84,14 @@ export default function Sidebar() {
   };
 
   return (
-    <aside className="w-full flex-shrink-0">
+    <aside className="flex h-[740px] w-[232px] flex-shrink-0 flex-col gap-[10px]">
       {/* Promo Cards */}
       <TopPromoCards />
 
       {/* Menu Container */}
-      <div className="mt-4 flex w-full flex-col rounded-[16px] bg-[#0C1F56] p-4">
+      <div className="flex h-[596px] w-[232px] flex-none flex-col rounded-[16px] bg-[#0C1F56] p-[16px]">
         
-        <div className="flex w-full flex-col gap-[16px]">
+        <div className="flex h-[564px] w-[200px] flex-none flex-col gap-[16px]">
           {menuItems.map((item) => {
             const Icon = item.icon;
             const isOpen = openMenus[item.name];
@@ -84,16 +102,14 @@ export default function Sidebar() {
             const iconColor = item.iconColor || "text-[#D2DCF7]";
 
             return (
-              <div key={item.name} className="flex flex-col">
+              <div key={item.name} className={`flex w-[200px] flex-col ${isOpen && item.subItems ? 'rounded-[8px] bg-[#112F82]' : ''}`}>
                 <button
                   onClick={() => item.subItems ? toggleMenu(item.name) : null}
-                  className={`flex h-[44px] w-full items-center justify-between rounded-lg px-3 text-sm font-semibold transition-all ${bgClass} ${textClass} ${hoverClass} ${
-                    item.subItems && isOpen ? "rounded-b-none" : ""
-                  }`}
+                  className={`flex h-[44px] w-[200px] items-center justify-between rounded-[8px] px-[10px] py-0 transition-all ${bgClass} ${textClass} ${hoverClass}`}
                 >
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-[8px]">
                     <Icon size={20} className={iconColor} />
-                    <span className="font-sans font-semibold tracking-wide">{item.name}</span>
+                    <span className={`font-['Manrope'] ${item.fontSize} ${item.fontWeight} ${item.lineHeight} tracking-[0.02em]`}>{item.name}</span>
                   </div>
 
                   {item.subItems && (
@@ -112,16 +128,18 @@ export default function Sidebar() {
 
                 {/* Sub Menu */}
                 {item.subItems && isOpen && (
-                  <div className="flex flex-col gap-[20px] rounded-b-lg bg-[#112F82] px-[16px] pb-[20px] pt-[20px]">
+                  <div className="flex h-[220px] w-[200px] flex-none flex-col items-start justify-center gap-[20px] rounded-b-[8px] px-[16px] py-[20px]">
                     {item.subItems.map((subItem) => {
                       const SubIcon = subItem.icon;
                       return (
                         <button
                           key={subItem.name}
-                          className="flex items-center gap-3 text-sm font-semibold text-[#D2DCF7] transition-colors hover:text-white"
+                          className="flex h-[20px] items-center gap-[12px] text-[#D2DCF7] transition-colors hover:text-white"
                         >
-                          <SubIcon size={18} />
-                          <span className="font-sans font-semibold tracking-wide">{subItem.name}</span>
+                          <div className="flex h-[20px] w-[20px] items-center justify-center">
+                            <SubIcon size={18} />
+                          </div>
+                          <span className="font-['Manrope'] text-[14px] font-semibold leading-[19px] tracking-[0.02em]">{subItem.name}</span>
                         </button>
                       );
                     })}
