@@ -6,16 +6,14 @@ import SectionHeader from "@/components/ui/SectionHeader";
 interface ProviderCardProps {
   name: string;
   games: number;
-  bg?: string;
   logo?: string;
 }
 
-function ProviderCard({ name, games, bg = "#0C1F56", logo }: ProviderCardProps) {
+function ProviderCard({ name, games, logo }: ProviderCardProps) {
   return (
     /* Card: w-[152px] h-[100px] flex-col justify-center items-center px-[24px] py-[12px] gap-[8px] rounded-[12px] */
     <div
-      className="group flex h-[100px] w-[152px] flex-none cursor-pointer flex-col items-center justify-center gap-[8px] rounded-[12px] px-[24px] py-[12px] transition-opacity hover:opacity-90"
-      style={{ background: bg }}
+      className="group flex h-[100px] w-[152px] flex-none cursor-pointer flex-col items-center justify-center gap-[8px] rounded-[12px] bg-[#0C1F56] px-[24px] py-[12px] transition-colors hover:bg-[#173EAD]"
     >
       {/* Logo area: w-[80px] h-[40px] */}
       <div className="flex h-[40px] w-[80px] flex-none items-center justify-center">
@@ -39,18 +37,18 @@ function ProviderCard({ name, games, bg = "#0C1F56", logo }: ProviderCardProps) 
   );
 }
 
-/* Providers list — matches Figma order; BGaming (index 1) uses #173EAD highlight */
+/* Providers list — matches Figma order */
 const providers = [
-  { name: "Belatra",        games: 226, bg: "#0C1F56" },
-  { name: "BGaming",        games: 226, bg: "#173EAD" }, // active / highlighted card
-  { name: "TaDa Gaming",    games: 226, bg: "#0C1F56" },
-  { name: "Endorphina",     games: 226, bg: "#0C1F56" },
-  { name: "Nolimit City",   games: 226, bg: "#0C1F56" },
-  { name: "Hacksaw Gaming", games: 226, bg: "#0C1F56" },
-  { name: "Booming Games",  games: 226, bg: "#0C1F56" },
-  { name: "Relax Gaming",   games: 226, bg: "#0C1F56" },
-  { name: "Push Gaming",    games: 226, bg: "#0C1F56" },
-  { name: "Pragmatic Play", games: 226, bg: "#0C1F56" },
+  { name: "Belatra",        games: 226 },
+  { name: "BGaming",        games: 226 },
+  { name: "TaDa Gaming",    games: 226 },
+  { name: "Endorphina",     games: 226 },
+  { name: "Nolimit City",   games: 226 },
+  { name: "Hacksaw Gaming", games: 226 },
+  { name: "Booming Games",  games: 226 },
+  { name: "Relax Gaming",   games: 226 },
+  { name: "Push Gaming",    games: 226 },
+  { name: "Pragmatic Play", games: 226 },
 ];
 
 /* Extend to 20 items for the scroll row */
@@ -100,7 +98,6 @@ export default function ProvidersSection() {
             <ProviderCard
               name={provider.name}
               games={provider.games}
-              bg={provider.bg}
             />
           </div>
         ))}
