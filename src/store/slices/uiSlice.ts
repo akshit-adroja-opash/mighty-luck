@@ -8,6 +8,7 @@ interface UiState {
   };
   authModalView: 'login' | 'register';
   activeCategory: string;
+  selectedGame: { title: string; image: string } | null;
 }
 
 const initialState: UiState = {
@@ -16,6 +17,7 @@ const initialState: UiState = {
   modals: {},
   authModalView: 'register',
   activeCategory: 'Lobby',
+  selectedGame: null,
 };
 
 const uiSlice = createSlice({
@@ -46,8 +48,11 @@ const uiSlice = createSlice({
     setActiveCategory: (state, action: PayloadAction<string>) => {
       state.activeCategory = action.payload;
     },
+    setSelectedGame: (state, action: PayloadAction<{ title: string; image: string } | null>) => {
+      state.selectedGame = action.payload;
+    },
   },
 });
 
-export const { toggleTheme, setTheme, toggleSidebar, setSidebarOpen, openModal, closeModal, setAuthModalView, setActiveCategory } = uiSlice.actions;
+export const { toggleTheme, setTheme, toggleSidebar, setSidebarOpen, openModal, closeModal, setAuthModalView, setActiveCategory, setSelectedGame } = uiSlice.actions;
 export default uiSlice.reducer;

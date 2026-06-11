@@ -15,6 +15,8 @@ import {
   Rocket,
 } from "lucide-react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { openModal } from "@/store/slices/uiSlice";
 
 import TopPromoCards from "@/components/sections/TopPromoCards";
 
@@ -75,6 +77,7 @@ const menuItems = [
 ];
 
 export default function Sidebar() {
+  const dispatch = useDispatch();
   const [openMenus, setOpenMenus] = useState<Record<string, boolean>>({
     Casino: true, // Keep Casino open by default
   });
@@ -134,7 +137,12 @@ export default function Sidebar() {
                       return (
                         <button
                           key={subItem.name}
-                          className="flex h-[20px] items-center gap-[12px] text-[#D2DCF7] transition-colors hover:text-white"
+                          onClick={() => {
+                            if (subItem.name === "Popular Games") {
+                              dispatch(openModal("lobby"));
+                            }
+                          }}
+                          className="flex h-[20px] items-center gap-[12px] text-[#D2DCF7] transition-colors hover:text-white cursor-pointer"
                         >
                           <div className="flex h-[20px] w-[20px] items-center justify-center">
                             <SubIcon size={18} />

@@ -6,6 +6,8 @@ import Header from "@/components/layout/Header";
 import StoreProvider from "@/store/StoreProvider";
 import AuthModal from "@/components/auth/AuthModal";
 import WalletModal from "@/components/wallet/WalletModal";
+import LobbyModal from "@/components/lobby/LobbyModal";
+import GamePlayModal from "@/components/game/GamePlayModal";
 import { Toaster } from "sonner";
 
 const jostFont = Jost({
@@ -38,6 +40,8 @@ export default function RootLayout({
           {children}
           <AuthModal />
           <WalletModal />
+          <LobbyModal />
+          <GamePlayModal />
           <Toaster richColors position="top-right" />
         </StoreProvider>
       </body>
