@@ -15,103 +15,65 @@ import { Heart, ChevronLeft, ChevronRight } from "lucide-react";
    Mock game database (replace with real API)
 ───────────────────────────────────────────── */
 const allGames = [
-  { id: "pandarific",        title: "Pandarific",           image: "/games/originals/pandarific.png", provider: "BGaming" },
-  { id: "zeus-goes-bananas", title: "Zeus Goes Bananas",    image: "/games/originals/zeus.png",       provider: "BGaming" },
-  { id: "patrick",           title: "Patrick vs Nefertiti", image: "/games/originals/patrick.png",    provider: "BGaming" },
-  { id: "scroll-of-gods",    title: "Scroll Of Gods",       image: "/games/originals/gods.png",       provider: "BGaming" },
-  { id: "xo-paradise",       title: "XO Paradise",          image: "/games/originals/xo.png",         provider: "BGaming" },
-  { id: "cash-o-matic",      title: "Cash-O-Matic",         image: "/games/originals/cash.png",       provider: "BGaming" },
-  { id: "elven-fortune",     title: "Elven Fortune",        image: "/games/originals/elven.png",      provider: "BGaming" },
-  { id: "ally-aliens",       title: "Ally Aliens",          image: "/games/slots/ally-aliens.png",    provider: "BGaming" },
-  { id: "cactus-goes-nuts",  title: "Cactus Goes Nuts",     image: "/games/slots/cactus.png",         provider: "BGaming" },
-  { id: "panthers-riches",   title: "Panther's Riches",     image: "/games/slots/panthers.png",       provider: "BGaming" },
+  { id: "original-1", title: "Alien Aliens",    image: "/games/original/original-1.png", provider: "BGaming" },
+  { id: "original-2", title: "Neon Shapes",     image: "/games/original/original-2.png", provider: "BGaming" },
+  { id: "original-3", title: "Cosmic Quest",    image: "/games/original/original-3.png", provider: "BGaming" },
+  { id: "original-4", title: "Cyber Spin",      image: "/games/original/original-4.png", provider: "BGaming" },
+  { id: "original-5", title: "Fruit Galaxy",    image: "/games/original/original-5.png", provider: "BGaming" },
+  { id: "original-6", title: "Lucky Stars",     image: "/games/original/original-6.png", provider: "BGaming" },
+  { id: "original-7", title: "Planet Fortune",  image: "/games/original/original-7.png", provider: "BGaming" },
+  { id: "original-8", title: "Meteor Dash",     image: "/games/original/original-8.png", provider: "BGaming" },
+  { id: "slot-1",            title: "Zeus Goes Bananas",    image: "/games/slots/slot-1.png",         provider: "BGaming" },
+  { id: "slot-2",            title: "Ninja Crash Slot",     image: "/games/slots/slot-2.png",         provider: "BGaming" },
+  { id: "slot-3",            title: "Space Fortune",        image: "/games/slots/slot-3.png",         provider: "BGaming" },
+  { id: "slot-4",            title: "Treasure Island",      image: "/games/slots/slot-4.png",         provider: "BGaming" },
+  { id: "slot-5",            title: "Lucky Leprechaun",     image: "/games/slots/slot-5.png",         provider: "BGaming" },
+  { id: "slot-6",            title: "Wild Safari",          image: "/games/slots/slot-6.png",         provider: "BGaming" },
+  { id: "slot-7",            title: "Mystic Dragon",        image: "/games/slots/slot-7.png",         provider: "BGaming" },
 ];
 
 /* ─────────────────────────────────────────────────────
-   BGaming white logo — built from Figma percentage specs
-   Container: 80 × 40px
-   bgaming_white box: 77.87 × 11.87px, centered
-   
-   Percentages are relative to the 77.87 × 11.87px box:
-   Fill-1  (B body):   left 1.25%→right 84.25%   top 35%→bottom 35.39%
-   Fill-4  (B middle): left 28.96%→right 12.36%   top 35.07%→bottom 35.32%  opacity 0.2
-   Fill-6  (GAMING):   left 18.17%→right 1.41%    top 39.54%→bottom 39.8%
+   BGaming Logo (Exact visual replica)
 ───────────────────────────────────────────────────── */
 function BGamingLogo() {
-  // The inner wordmark box dimensions (Figma: bgaming_white)
-  const W = 77.87;
-  const H = 11.87;
-
-  // Fill-1: the "B" letter block
-  const f1L = W * 0.0125;
-  const f1R = W * 0.8425;
-  const f1T = H * 0.35;
-  const f1B = H * 0.3539;
-  const f1W = W - f1L - f1R;
-  const f1H = H - f1T - f1B;
-
-  // Fill-4: semi-transparent middle stripe of the "B"
-  const f4L = W * 0.2896;
-  const f4R = W * 0.1236;
-  const f4T = H * 0.3507;
-  const f4B = H * 0.3532;
-  const f4W = W - f4L - f4R;
-  const f4H = H - f4T - f4B;
-
-  // Fill-6: "GAMING" text bar
-  const f6L = W * 0.1817;
-  const f6R = W * 0.0141;
-  const f6T = H * 0.3954;
-  const f6B = H * 0.398;
-  const f6W = W - f6L - f6R;
-  const f6H = H - f6T - f6B;
-
   return (
-    <div
-      className="relative flex-none"
-      style={{ width: "80px", height: "40px" }}
-    >
-      {/* bgaming_white: 77.87 × 11.87px centered in 80 × 40 */}
-      <div
-        className="absolute"
-        style={{
-          width: `${W}px`,
-          height: `${H}px`,
-          left: `calc(50% - ${W / 2 + 0.06}px)`,
-          top:  `calc(50% - ${H / 2 + 0.06}px)`,
-        }}
-      >
-        {/* "B" letter — Fill-1 */}
-        <div
-          className="absolute bg-white"
-          style={{ left: f1L, top: f1T, width: f1W, height: f1H }}
-        />
-        {/* Semi-transparent mid-bar of "B" — Fill-4 */}
-        <div
-          className="absolute bg-white"
-          style={{ left: f4L, top: f4T, width: f4W, height: f4H, opacity: 0.2 }}
-        />
-        {/* "GAMING" word bar — Fill-6 */}
-        <div
-          className="absolute bg-white"
-          style={{ left: f6L, top: f6T, width: f6W, height: f6H }}
-        />
+    <div className="flex h-[40px] w-[80px] flex-none items-center justify-center">
+      <div className="flex w-[78px] flex-row items-center justify-between">
+        <div className="flex h-[13px] w-[13px] flex-none items-center justify-center bg-white">
+          <span className="font-sans text-[11px] font-black leading-none text-black">
+            B
+          </span>
+        </div>
+        <div className="h-[9px] w-px flex-none bg-white/30" />
+        <span className="flex-none font-sans text-[10px] font-bold leading-none text-white">
+          G
+        </span>
+        <div className="h-[9px] w-px flex-none bg-white/30" />
+        <span className="flex-none font-sans text-[10px] font-bold leading-none text-white">
+          A
+        </span>
+        <div className="h-[9px] w-px flex-none bg-white/30" />
+        <span className="flex-none font-sans text-[10px] font-bold leading-none text-white">
+          M
+        </span>
+        <div className="h-[9px] w-px flex-none bg-white/30" />
+        <span className="flex-none font-sans text-[10px] font-bold leading-none text-white">
+          I
+        </span>
+        <div className="h-[9px] w-px flex-none bg-white/30" />
+        <span className="flex-none font-sans text-[10px] font-bold leading-none text-white">
+          N
+        </span>
+        <div className="h-[9px] w-px flex-none bg-white/30" />
+        <span className="flex-none font-sans text-[10px] font-bold leading-none text-white">
+          G
+        </span>
       </div>
     </div>
   );
 }
 
-/* Fullscreen / Expand icon — matches Figma Vector (5%, 14.17%, 5.83%) */
-function ExpandIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M3 7V3H7"   stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M17 7V3H13" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M3 13V17H7" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M17 13V17H13" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  );
-}
+
 
 
 export default function GamePage() {
@@ -138,16 +100,14 @@ export default function GamePage() {
         </div>
 
         {/* ── Main column ──
-            Figma: width 1184px, padding 0px 24px, gap 100px
-        ── */}
-        <div
-          className="flex flex-none flex-col items-start"
-          style={{ width: "1184px", padding: "24px 24px 0", gap: "100px" }}
-        >
+            Matches Figma: width 1184px, px 24px (inner content 1136px), gap 100px
+        */}
+        <div className="flex w-[1184px] flex-none flex-col items-start gap-[100px] px-[24px]">
 
           {/* ══════════════════════════════
-              SECTION 1: Game + Other Games
-              Figma: 1136px, gap: 40px
+              SECTION 1: Game Block (1067px)
+              Contains: Game Window (777px) + Other Games (250px)
+              Gap: 40px
           ══════════════════════════════ */}
           <div className="flex w-[1136px] flex-none flex-col items-start gap-[40px]">
 
@@ -167,10 +127,7 @@ export default function GamePage() {
               </div>
 
               {/* Info Bar — 1136 × 100px */}
-              <div
-                className="flex h-[100px] w-[1136px] flex-none flex-row items-center justify-between rounded-[16px] bg-[#0C1F56]"
-                style={{ padding: "12px 30px", gap: "12px" }}
-              >
+              <div className="flex h-[100px] w-[1136px] flex-none flex-row items-center justify-between rounded-[16px] bg-[#0C1F56] px-[30px] py-[12px]">
                 {/* LEFT: provider + divider + title — 295px, gap 32px */}
                 <div className="flex h-[40px] w-[295px] flex-none flex-row items-center gap-[32px]">
                   {/* Provider logo — 80 × 40px, built from Figma */}
@@ -180,21 +137,30 @@ export default function GamePage() {
                   {/* Divider — 1px × 33px */}
                   <div className="h-[33px] w-px flex-none bg-white/60" />
 
-                  {/* Game title — Jost 700 20px, 151 × 29px */}
-                  <div className="flex h-[29px] w-[151px] flex-none items-center justify-center">
-                    <span className="w-[151px] text-center font-jost text-[20px] font-bold leading-[29px] text-white">
+                  {/* Game title — Jost 700 20px */}
+                  <div className="flex w-[151px] flex-none flex-row items-center justify-center gap-[10px]">
+                    <span className="w-full text-center font-jost text-[20px] font-bold leading-[29px] text-white">
                       {game.title}
                     </span>
                   </div>
                 </div>
 
-                {/* RIGHT: icons + toggle — 265px, gap 40px, justify-end */}
-                <div className="flex h-[24px] w-[265px] flex-none flex-row items-center justify-end gap-[40px]">
+                {/* RIGHT: icons + toggle */}
+                <div className="flex h-[24px] w-auto flex-none flex-row items-center justify-end gap-[40px]">
 
                   {/* Icons — 64×20, gap 24 */}
                   <div className="flex h-[20px] w-[64px] flex-none flex-row items-center gap-[24px]">
-                    <button className="flex h-[20px] w-[20px] flex-none items-center justify-center cursor-pointer hover:opacity-70 transition-opacity" aria-label="Fullscreen">
-                      <ExpandIcon />
+                    <button className="relative flex h-[20px] w-[20px] flex-none items-center justify-center cursor-pointer hover:opacity-70 transition-opacity" aria-label="Fullscreen">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="9 5 5 5 5 9" />
+                        <line x1="5" y1="5" x2="10" y2="10" />
+                        <polyline points="15 5 19 5 19 9" />
+                        <line x1="19" y1="5" x2="14" y2="10" />
+                        <polyline points="9 19 5 19 5 15" />
+                        <line x1="5" y1="19" x2="10" y2="14" />
+                        <polyline points="15 19 19 19 19 15" />
+                        <line x1="19" y1="19" x2="14" y2="14" />
+                      </svg>
                     </button>
                     <button
                       onClick={() => setIsFavorite(!isFavorite)}
@@ -212,34 +178,24 @@ export default function GamePage() {
                     </button>
                   </div>
 
-                  {/* Fun Play / Toggle / Real Play — 161×24, gap 8 */}
-                  <div className="flex h-[24px] w-[161px] flex-none flex-row items-center gap-[8px]">
-                    <span className="h-[16px] w-[49px] flex-none font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#A5B8EF]">
+                  {/* Fun Play / Toggle / Real Play */}
+                  <div className="flex h-[24px] w-auto flex-none flex-row items-center gap-[8px]">
+                    <span className="whitespace-nowrap font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#A5B8EF]">
                       Fun Play
                     </span>
 
-                    {/* Toggle — 42×24, radius 30, padding 3px 3px 3px 20px (Real=on) */}
+                    {/* Toggle — 42×24, radius 30 */}
                     <button
                       onClick={() => setIsRealPlay(!isRealPlay)}
-                      className="flex-none cursor-pointer transition-colors duration-200"
-                      style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "flex-end",
-                        alignItems: "flex-start",
-                        padding: isRealPlay ? "3px 3px 3px 20px" : "3px 20px 3px 3px",
-                        gap: "10px",
-                        width: "42px",
-                        height: "24px",
-                        background: isRealPlay ? "#1463FF" : "#112F82",
-                        borderRadius: "30px",
-                      }}
+                      className={`flex h-[24px] w-[42px] flex-none cursor-pointer flex-row items-start gap-[10px] rounded-[30px] transition-colors duration-200 ${
+                        isRealPlay ? "justify-end bg-[#1463FF] py-[3px] pl-[20px] pr-[3px]" : "justify-start bg-[#112F82] py-[3px] pl-[3px] pr-[20px]"
+                      }`}
                       aria-label="Toggle play mode"
                     >
-                      <span style={{ display: "block", width: "18px", height: "18px", background: "#FFFFFF", borderRadius: "30px", flexShrink: 0 }} />
+                      <span className="block h-[18px] w-[18px] shrink-0 rounded-[30px] bg-white" />
                     </button>
 
-                    <span className="h-[16px] w-[54px] flex-none font-manrope text-[12px] font-bold leading-[16px] tracking-[0.02em] text-white">
+                    <span className="whitespace-nowrap font-manrope text-[12px] font-bold leading-[16px] tracking-[0.02em] text-white">
                       Real Play
                     </span>
                   </div>
@@ -259,14 +215,14 @@ export default function GamePage() {
                       <path d="M15 1L6 11V19C6 25.5 10.5 29 15 30C19.5 29 24 25.5 24 19V11L15 1Z" fill="#FFBF1F"/>
                     </svg>
                   </div>
-                  <span className="h-[29px] w-[332px] flex-none font-jost text-[20px] font-extrabold leading-[29px] tracking-[0.01em] uppercase text-white">
+                  <span className="whitespace-nowrap flex-none font-jost text-[20px] font-extrabold leading-[29px] tracking-[0.01em] uppercase text-white">
                     OTHER GAMES YOU MIGHT LIKE
                   </span>
                 </div>
 
                 {/* Right: View all + arrows */}
                 <div className="flex h-[30px] flex-none flex-row items-center gap-[20px]">
-                  <span className="h-[16px] w-[45px] cursor-pointer font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#D6BBE7] transition-colors hover:text-white">
+                  <span className="whitespace-nowrap cursor-pointer font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#D6BBE7] transition-colors hover:text-white">
                     View all
                   </span>
                   <div className="flex flex-row items-center gap-[8px]">

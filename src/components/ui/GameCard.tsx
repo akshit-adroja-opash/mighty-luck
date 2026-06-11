@@ -45,25 +45,20 @@ export default function GameCard({
           />
         </button>
 
-        {/* Play Button */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 transition group-hover:opacity-100">
-
-          <button className="flex h-[48px] w-[48px] items-center justify-center rounded-full bg-[#FFC83D] shadow-lg hover:scale-105 transition-transform">
-
-            <Play
-              size={24}
-              fill="#0C1F56"
-              className="ml-1 text-[#0C1F56]"
-            />
-
+        {/* Play Button Container (Appears on Hover) */}
+        <div className="absolute inset-0 z-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+          {/* Ellipse 5 */}
+          <button 
+            className="absolute left-[calc(50%-24px)] top-[calc(50%-24px)] flex h-[48px] w-[48px] items-center justify-center rounded-[50%] bg-[#FFC83D] transition-transform hover:scale-105"
+            aria-label="Play Game"
+          >
+            <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="ml-1">
+              <path d="M1.38576 0.817296C0.575043 0.334114 0 0.803706 0 1.7451V18.2549C0 19.199 0.570659 19.6644 1.38576 19.1827L17.1517 9.85191C17.962 9.37346 17.9546 8.62002 17.1517 8.14809L1.38576 0.817296Z" fill="#0C1F56"/>
+            </svg>
           </button>
-
         </div>
 
-        {/* Title Text (appears on hover) */}
-        <div className="absolute bottom-4 left-0 right-0 flex flex-col items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-10 px-2 text-center">
-          <span className="font-sans text-[14px] font-extrabold text-white uppercase tracking-wider">{title}</span>
-        </div>
+
 
       </div>
 

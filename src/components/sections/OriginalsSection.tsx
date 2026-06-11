@@ -6,13 +6,14 @@ import GameCard from "@/components/ui/GameCard";
 import SectionHeader from "@/components/ui/SectionHeader";
 
 const baseOriginals = [
-  { id: "pandarific",         title: "Pandarific",           image: "/games/originals/pandarific.png" },
-  { id: "zeus-goes-bananas",  title: "Zeus Goes Bananas",    image: "/games/originals/zeus.png" },
-  { id: "patrick",            title: "Patrick vs Nefertiti", image: "/games/originals/patrick.png" },
-  { id: "scroll-of-gods",     title: "Scroll Of Gods",       image: "/games/originals/gods.png" },
-  { id: "xo-paradise",        title: "XO Paradise",          image: "/games/originals/xo.png" },
-  { id: "cash-o-matic",       title: "Cash-O-Matic",         image: "/games/originals/cash.png" },
-  { id: "elven-fortune",      title: "Elven Fortune",        image: "/games/originals/elven.png" },
+  { id: "original-1", title: "Alien Aliens",    image: "/games/original/original-1.png" },
+  { id: "original-2", title: "Neon Shapes",     image: "/games/original/original-2.png" },
+  { id: "original-3", title: "Cosmic Quest",    image: "/games/original/original-3.png" },
+  { id: "original-4", title: "Cyber Spin",      image: "/games/original/original-4.png" },
+  { id: "original-5", title: "Fruit Galaxy",    image: "/games/original/original-5.png" },
+  { id: "original-6", title: "Lucky Stars",     image: "/games/original/original-6.png" },
+  { id: "original-7", title: "Planet Fortune",  image: "/games/original/original-7.png" },
+  { id: "original-8", title: "Meteor Dash",     image: "/games/original/original-8.png" },
 ];
 
 const originals = Array.from({ length: 14 }, (_, i) => ({

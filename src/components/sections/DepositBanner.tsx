@@ -81,7 +81,7 @@ export default function DepositBanner() {
       <div className="absolute left-1/2 top-[60px] z-0 h-[534px] w-[534px] -translate-x-1/2 rounded-full bg-[#1463FF] blur-[50px]" />
 
       {/* Text */}
-      <h2 className="z-[1] flex h-[29px] w-[263px] flex-none items-center text-center font-['Jost'] text-[20px] font-extrabold leading-[29px] text-white">
+      <h2 className="z-[1] flex h-[29px] w-[263px] flex-none items-center text-center font-jost text-[20px] font-extrabold leading-[29px] text-white">
         Want to play? Deposit Now
       </h2>
 
@@ -102,7 +102,7 @@ export default function DepositBanner() {
 
       {/* Button */}
       <button className="z-[3] flex h-[40px] w-[148px] flex-none flex-row items-center justify-center gap-[10px] rounded-[8px] bg-[#FFC83D] px-[30px] py-[10px] transition-colors hover:bg-yellow-400">
-        <span className="h-[19px] w-[88px] flex-none whitespace-nowrap text-center font-['Manrope'] text-[14px] font-bold leading-[19px] tracking-[0.02em] text-[#1A1404]">
+        <span className="h-[19px] w-[88px] flex-none whitespace-nowrap text-center font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-[#1A1404]">
           Deposit Now
         </span>
       </button>

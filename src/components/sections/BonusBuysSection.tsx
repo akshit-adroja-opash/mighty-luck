@@ -4,7 +4,7 @@ import { useRef } from "react";
 import GameCard from "@/components/ui/GameCard";
 import SectionHeader from "@/components/ui/SectionHeader";
 
-const bonusBuys = Array.from({ length: 20 }, (_, i) => `/games/bonus/${(i % 8) + 1}.png`);
+const bonusBuys = Array.from({ length: 20 }, (_, i) => `/games/bonus/bonus-${(i % 8) + 1}.png`);
 
 export default function BonusBuysSection() {
   const scrollRef = useRef<HTMLDivElement>(null);

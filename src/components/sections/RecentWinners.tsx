@@ -77,20 +77,20 @@ export default function RecentWinners() {
         <div className="flex h-[20px] w-[1136px] flex-none flex-row justify-between items-center px-[24px]">
           {/* Game Title Header */}
           <div className="flex w-[239px] items-center">
-            <span className="font-['Jost'] text-[14px] font-bold uppercase tracking-[0.02em] text-white">
+            <span className="font-jost text-[14px] font-bold uppercase tracking-[0.02em] text-white">
               Game
             </span>
           </div>
           
           {/* Metadata Headers */}
           <div className="flex w-[624px] flex-none flex-row items-center gap-[12px] h-[20px]">
-            <span className="w-[300px] font-['Jost'] text-[14px] font-bold uppercase tracking-[0.02em] text-white">
+            <span className="w-[300px] font-jost text-[14px] font-bold uppercase tracking-[0.02em] text-white">
               Username
             </span>
-            <span className="w-[150px] font-['Jost'] text-[14px] font-bold uppercase tracking-[0.02em] text-white">
+            <span className="w-[150px] font-jost text-[14px] font-bold uppercase tracking-[0.02em] text-white">
               Time
             </span>
-            <span className="w-[150px] text-right font-['Jost'] text-[14px] font-bold uppercase tracking-[0.02em] text-white">
+            <span className="w-[150px] text-right font-jost text-[14px] font-bold uppercase tracking-[0.02em] text-white">
               Payout
             </span>
           </div>
@@ -108,20 +108,20 @@ export default function RecentWinners() {
                 className="h-[30px] w-[22px] flex-none rounded-[1.8px] bg-cover bg-center bg-[#CDCDCD]" 
                 style={{ backgroundImage: `url('${winner.image}')` }} 
               />
-              <span className="truncate font-['Manrope'] text-[14px] font-semibold tracking-[0.02em] text-white">
+              <span className="truncate font-manrope text-[14px] font-semibold tracking-[0.02em] text-white">
                 {winner.game}
               </span>
             </div>
 
             {/* Metadata Info Column */}
             <div className="flex w-[624px] flex-none flex-row items-center gap-[12px]">
-              <span className="w-[300px] truncate font-['Manrope'] text-[14px] font-semibold tracking-[0.02em] text-white">
+              <span className="w-[300px] truncate font-manrope text-[14px] font-semibold tracking-[0.02em] text-white">
                 {winner.username}
               </span>
-              <span className="w-[150px] font-['Manrope'] text-[14px] font-semibold tracking-[0.02em] text-white">
+              <span className="w-[150px] font-manrope text-[14px] font-semibold tracking-[0.02em] text-white">
                 {winner.time}
               </span>
-              <span className={`w-[150px] text-right font-['Manrope'] text-[14px] font-semibold tracking-[0.02em] ${winner.payoutColor}`}>
+              <span className={`w-[150px] text-right font-manrope text-[14px] font-semibold tracking-[0.02em] ${winner.payoutColor}`}>
                 {winner.payout}
               </span>
             </div>

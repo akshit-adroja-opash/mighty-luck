@@ -1,9 +1,9 @@
 import Card from "@/components/ui/Card";
 
-const games = Array(8).fill({
-  image: "/games/game1.png",
-  title: "Game",
-});
+const games = Array.from({ length: 8 }, (_, i) => ({
+  image: `/games/slots/slot-${(i % 7) + 1}.png`,
+  title: "Slot Game",
+}));
 
 export default function GamesSection() {
   return (

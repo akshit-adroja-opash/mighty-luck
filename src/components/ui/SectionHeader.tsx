@@ -37,7 +37,7 @@ export default function SectionHeader({
 
         {/* Title: Jost 800 20px #FFFFFF letter-spacing 0.01em — width driven by titleWidth prop */}
         <h2
-          className="h-[29px] flex-none whitespace-nowrap font-['Jost'] text-[20px] font-extrabold leading-[29px] tracking-[0.01em] text-white"
+          className="h-[29px] flex-none whitespace-nowrap font-jost text-[20px] font-extrabold leading-[29px] tracking-[0.01em] text-white"
           style={{ width: titleWidth }}
         >
           {title}
@@ -51,7 +51,7 @@ export default function SectionHeader({
         {showViewAll && (
           <Link
             href={viewAllLink}
-            className="h-[16px] w-[45px] flex-none font-['Manrope'] text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#D2DCF7] hover:text-white transition-colors"
+            className="h-[16px] w-[45px] flex-none font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#D2DCF7] hover:text-white transition-colors"
           >
             View all
           </Link>

@@ -10,4 +10,4 @@ export default function Container({ children }: ContainerProps) {
       {children}
     </div>
   );
-}
+}

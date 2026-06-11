@@ -4,7 +4,7 @@ import { useRef } from "react";
 import GameCard from "@/components/ui/GameCard";
 import SectionHeader from "@/components/ui/SectionHeader";
 
-const crashGames = Array.from({ length: 20 }, (_, i) => `/games/crash/${(i % 8) + 1}.png`);
+const crashGames = Array.from({ length: 20 }, (_, i) => `/games/crash/crash-${(i % 8) + 1}.png`);
 
 export default function CrashGamesSection() {
   const scrollRef = useRef<HTMLDivElement>(null);

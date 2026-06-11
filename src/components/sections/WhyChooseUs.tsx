@@ -15,12 +15,12 @@ const features = [
   {
     title: "BIG WINNERS WELCOME",
     description: "Win big on 4000+ casino games,high betting limits & the best sports action.",
-    image: "/images/promo-trophy.png",
+    image: "/images/trophy.png",
     descClass: "h-[66px] font-medium leading-[140%]",
     // Ellipse 9: right-[-66px] top-[20px]
     ellipse9: { right: "-66px", top: "20px" },
-    // Image: 312.37×208.08 at left:126.74 top:3 rotate:12deg
-    imgStyle: { width: "312.37px", height: "208.08px", left: "126.74px", top: "3px", transform: "rotate(12deg)" },
+    // Image: 245×163.2 at left:184 top:18
+    imgStyle: { width: "245px", height: "163.2px", left: "184px", top: "18px" },
   },
   {
     title: "WEEKLY 10% CASHBACK",
@@ -66,7 +66,7 @@ export default function WhyChooseUs() {
 
               {/* Title: w-[200px] Jost 800 24px line-height:26px tracking:0.01em #FFF z-1 */}
               <h3
-                className="relative w-[200px] flex-none font-['Jost'] text-[24px] font-extrabold leading-[26px] tracking-[0.01em] text-white"
+                className="relative w-[200px] flex-none font-jost text-[24px] font-extrabold leading-[26px] tracking-[0.01em] text-white"
                 style={{ zIndex: 1 }}
               >
                 {item.title}
@@ -74,7 +74,7 @@ export default function WhyChooseUs() {
 
               {/* Description: w-[200px] Manrope 16px tracking:0.02em #E8EDFB z-2 */}
               <p
-                className={`relative w-[200px] flex-none font-['Manrope'] text-[16px] tracking-[0.02em] text-[#E8EDFB] ${item.descClass}`}
+                className={`relative w-[200px] flex-none font-manrope text-[16px] tracking-[0.02em] text-[#E8EDFB] ${item.descClass}`}
                 style={{ zIndex: 2 }}
               >
                 {item.description}

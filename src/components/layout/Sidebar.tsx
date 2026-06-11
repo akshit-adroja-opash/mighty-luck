@@ -112,7 +112,7 @@ export default function Sidebar() {
                 >
                   <div className="flex items-center gap-[8px]">
                     <Icon size={20} className={iconColor} />
-                    <span className={`font-['Manrope'] ${item.fontSize} ${item.fontWeight} ${item.lineHeight} tracking-[0.02em]`}>{item.name}</span>
+                    <span className={`font-manrope ${item.fontSize} ${item.fontWeight} ${item.lineHeight} tracking-[0.02em]`}>{item.name}</span>
                   </div>
 
                   {item.subItems && (
@@ -147,7 +147,7 @@ export default function Sidebar() {
                           <div className="flex h-[20px] w-[20px] items-center justify-center">
                             <SubIcon size={18} />
                           </div>
-                          <span className="font-['Manrope'] text-[14px] font-semibold leading-[19px] tracking-[0.02em]">{subItem.name}</span>
+                          <span className="font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em]">{subItem.name}</span>
                         </button>
                       );
                     })}

@@ -141,7 +141,7 @@ export default function CollectionsSection() {
             </div>
 
             {/* Collection Title */}
-            <h3 className="flex-1 text-center font-['Jost'] text-[22px] font-extrabold tracking-[0.01em] text-white select-none">
+            <h3 className="flex-1 text-center font-jost text-[22px] font-extrabold tracking-[0.01em] text-white select-none">
               {item.name}
             </h3>
           </div>

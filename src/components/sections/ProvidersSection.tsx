@@ -31,7 +31,7 @@ function ProviderCard({ name, games, bg = "#0C1F56", logo }: ProviderCardProps) 
 
       {/* Games label: w-[104px] h-[14px] container → text w-[53px] Manrope 600 10px center #FFC83D */}
       <div className="flex h-[14px] w-[104px] flex-none items-center justify-center">
-        <span className="w-[53px] text-center font-['Manrope'] text-[10px] font-semibold leading-[14px] text-[#FFC83D]">
+        <span className="w-[53px] text-center font-manrope text-[10px] font-semibold leading-[14px] text-[#FFC83D]">
           {games} Games
         </span>
       </div>

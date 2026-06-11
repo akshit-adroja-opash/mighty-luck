@@ -12,13 +12,13 @@ import { Toaster } from "sonner";
 
 const jostFont = Jost({
   subsets: ["latin"],
-  variable: "--font-jost",
+  variable: "--font-family-jost",
   display: "swap",
 });
 
 const manropeFont = Manrope({
   subsets: ["latin"],
-  variable: "--font-manrope",
+  variable: "--font-family-manrope",
   display: "swap",
 });
 

@@ -46,11 +46,11 @@ export default function Footer() {
               <circle cx="6" cy="3.5" r="0.75" fill="url(#logo-gold)" />
               <circle cx="18" cy="3.5" r="0.75" fill="url(#logo-gold)" />
             </svg>
-            <h2 className="font-['Jost'] text-[15px] font-black uppercase tracking-[0.05em] text-white leading-none">
+            <h2 className="font-jost text-[15px] font-black uppercase tracking-[0.05em] text-white leading-none">
               MIGHTY <span className="text-[#FFC83D]">LUCK</span>
             </h2>
           </div>
-          <p className="w-[213px] font-['Manrope'] text-[11px] font-semibold leading-[15px] tracking-[0.01em] text-[#D2DCF7]">
+          <p className="w-[213px] font-manrope text-[11px] font-semibold leading-[15px] tracking-[0.01em] text-[#D2DCF7]">
             @ 2026 Mighty Luck. All rights reserved.
           </p>
         </div>
@@ -60,7 +60,7 @@ export default function Footer() {
           {columns.map((col, idx) => (
             <div key={idx} className="flex w-[120px] flex-col items-start gap-[12px]">
               {/* MENU NAME */}
-              <span className="font-['Jost'] text-[12px] font-bold uppercase tracking-[0.02em] text-white">
+              <span className="font-jost text-[12px] font-bold uppercase tracking-[0.02em] text-white">
                 {col.title}
               </span>
               
@@ -70,7 +70,7 @@ export default function Footer() {
                   <Link 
                     href="/" 
                     key={link} 
-                    className="flex h-[15px] w-[120px] items-center font-['Manrope'] text-[11px] font-semibold leading-[15px] tracking-[0.01em] text-[#D2DCF7] transition-colors hover:text-white"
+                    className="flex h-[15px] w-[120px] items-center font-manrope text-[11px] font-semibold leading-[15px] tracking-[0.01em] text-[#D2DCF7] transition-colors hover:text-white"
                   >
                     {link}
                   </Link>
@@ -85,7 +85,7 @@ export default function Footer() {
       <div className="flex h-[104px] w-[1136px] flex-none flex-row justify-between items-start border-t border-[#112F82] pt-[48px] gap-[10px]">
         
         {/* Legal Text */}
-        <p className="w-[445px] h-[56px] text-justify font-['Manrope'] text-[10px] font-semibold leading-[14px] tracking-[0.01em] text-[#D2DCF7]">
+        <p className="w-[445px] h-[56px] text-justify font-manrope text-[10px] font-semibold leading-[14px] tracking-[0.01em] text-[#D2DCF7]">
           MightyLuck.com is owned and operated by Company Name B.V. a company that is incorporated under the laws of Curacao with company registration number XXXXXX, having its registered address at Street 3XX9, City, Curaçao. MightyLuck.com is licensed and holds a valid Certificate of Operation (ABC/XXXX/XXX/XXXX).
         </p>
 
