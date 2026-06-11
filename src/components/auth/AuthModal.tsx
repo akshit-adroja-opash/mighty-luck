@@ -1,117 +1,160 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { X } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
-import { closeModal } from "@/store/slices/uiSlice";
+import { closeModal, setAuthModalView } from "@/store/slices/uiSlice";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 
 export default function AuthModal() {
   const dispatch = useDispatch();
   const isOpen = useSelector((state: RootState) => state.ui.modals["auth"]);
+  const modalView = useSelector((state: RootState) => state.ui.authModalView);
   
   const [view, setView] = useState<"login" | "register">("register");
+
+  useEffect(() => {
+    setView(modalView);
+  }, [modalView, isOpen]);
 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-[#0C1733]/70 backdrop-blur-[8px]">
       
       {/* Modal Container */}
-      <div className="relative flex w-[730px] h-[546px] rounded-[16px] shadow-2xl bg-[#091741]">
+      <div className="relative flex w-[730px] h-[546px] rounded-[16px] shadow-2xl bg-[#091741] overflow-hidden">
         
         {/* Close Button */}
         <button
           onClick={() => dispatch(closeModal("auth"))}
-          className="absolute -right-4 -top-4 z-50 flex h-8 w-8 items-center justify-center rounded-full bg-[#112F82] text-white transition-colors hover:bg-red-500 shadow-lg"
+          className="absolute right-4 top-4 z-50 flex h-8 w-8 items-center justify-center rounded-full bg-[#112F82]/80 text-white/80 transition-all hover:bg-red-500 hover:text-white shadow-lg cursor-pointer"
         >
-          <X size={18} />
+          <X size={16} />
         </button>
 
         {/* Left Column - Promo */}
-        <div className="relative flex h-[546px] w-[340px] flex-col items-center overflow-hidden rounded-l-[16px] bg-[#000C24]">
-          {/* Background Image */}
+        <div className="relative flex h-[546px] w-[340px] flex-col items-center overflow-hidden rounded-l-[16px] bg-[#000C24] flex-none">
+          {/* Background Image - exact position */}
           <div 
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: "url('/lion_promo.png')" }}
+            className="absolute bg-cover bg-center"
+            style={{ 
+              backgroundImage: "url('/games/lion.png')",
+              width: "343px",
+              height: "483px",
+              left: "-3px",
+              top: "-29px"
+            }}
           />
 
           {/* Bottom Gradient Overlay */}
-          <div className="absolute bottom-0 left-0 h-[219px] w-full bg-gradient-to-t from-[#000C24] to-transparent" />
+          <div 
+            className="absolute"
+            style={{
+              width: "340px",
+              height: "219px",
+              left: "0px",
+              top: "327px",
+              background: "linear-gradient(180deg, rgba(0, 12, 36, 0) 6.85%, #000C24 45.66%)"
+            }}
+          />
 
           {/* Glowing Blue Blur */}
-          <div className="absolute -bottom-[129px] h-[173px] w-[173px] rounded-full bg-[#1463FF] opacity-60 blur-[40px]" />
+          <div 
+            className="absolute rounded-full bg-[#1463FF]"
+            style={{
+              width: "173px",
+              height: "173px",
+              left: "calc(50% - 173px/2 - 0.5px)",
+              bottom: "-129px",
+              filter: "blur(40px)"
+            }}
+          />
 
           {/* Content Area */}
-          <div className="absolute top-[359px] flex w-[300px] flex-col items-center gap-[20px]">
-            {/* 350% text */}
-            <div className="font-jost text-[52px] font-extrabold leading-[75px] tracking-[0.01em] text-white">
-              350%
-            </div>
-            
-            {/* Welcome Package Pill */}
-            <div className="flex h-[37px] items-center justify-center rounded-full bg-[#FFC83D] px-[20px] py-[10px]">
-              <span className="font-jost text-[12px] font-extrabold leading-[17px] text-[#1A1404]">
-                WELCOME PACKAGE
-              </span>
+          <div 
+            className="absolute flex flex-col items-center gap-[20px]"
+            style={{
+              width: "300px",
+              height: "160px",
+              left: "calc(50% - 300px/2)",
+              top: "359px"
+            }}
+          >
+            {/* 350% and Welcome Package Pill */}
+            <div className="flex flex-col items-center w-[167px] h-[112px]">
+              <div 
+                className="font-jost font-extrabold text-[#FFFFFF] text-center"
+                style={{
+                  width: "156px",
+                  height: "75px",
+                  fontSize: "52px",
+                  lineHeight: "75px",
+                  letterSpacing: "0.01em"
+                }}
+              >
+                350%
+              </div>
+              
+              <div 
+                className="flex items-center justify-center bg-[#FFC83D] rounded-[100px]"
+                style={{
+                  width: "167px",
+                  height: "37px",
+                  padding: "10px 20px"
+                }}
+              >
+                <span 
+                  className="font-jost font-extrabold text-[#1A1404] text-center"
+                  style={{
+                    fontSize: "12px",
+                    lineHeight: "17px"
+                  }}
+                >
+                  WELCOME PACKAGE
+                </span>
+              </div>
             </div>
 
             {/* Subtitle */}
-            <p className="w-[200px] text-center font-manrope text-[10px] font-bold leading-[14px] tracking-[0.01em] text-white">
+            <p 
+              className="font-manrope font-bold text-[#FFFFFF] text-center"
+              style={{
+                width: "200px",
+                height: "28px",
+                fontSize: "10px",
+                lineHeight: "14px",
+                letterSpacing: "0.01em"
+              }}
+            >
               Boost your deposits with 350% in Bonus and 200 Free Spins
             </p>
           </div>
         </div>
 
         {/* Right Column - Forms */}
-        <div className="relative flex h-[546px] w-[390px] flex-col items-start gap-[32px] overflow-hidden rounded-r-[16px] bg-[#091741] p-[24px_20px]">
+        <div className="relative flex h-[546px] w-[390px] flex-col items-start overflow-hidden rounded-r-[16px] bg-[#091741] flex-none">
           
           {/* Top Blue Glow */}
-          <div className="absolute -top-[145px] left-1/2 h-[173px] w-[173px] -translate-x-1/2 rounded-full bg-[#1463FF] opacity-30 blur-[40px]" />
+          <div 
+            className="absolute rounded-full bg-[#1463FF]"
+            style={{
+              width: "173px",
+              height: "173px",
+              left: "calc(50% - 173px/2 - 0.5px)",
+              top: "-145px",
+              filter: "blur(40px)",
+              opacity: 0.8
+            }}
+          />
 
-          <div className="relative z-10 flex w-full flex-col gap-[16px]">
-            {/* Header with Logo and Close (Logo handled via tabs below) */}
-            <div className="flex w-full items-center justify-center pb-2">
-               <div className="flex items-center gap-1">
-                 <span className="text-xl text-[#FFC83D]">👑</span>
-                 <span className="text-lg font-black uppercase tracking-wide text-white">
-                   MIGHTY <span className="text-[#FFC83D]">LUCK</span>
-                 </span>
-               </div>
-            </div>
-
-            {/* Tab Switcher */}
-            <div className="flex w-full h-[40px] items-center gap-[8px]">
-              <button 
-                onClick={() => setView("register")}
-                className={`flex flex-1 h-full items-center justify-center rounded-[8px] font-manrope text-[14px] font-bold tracking-[0.02em] transition-colors ${
-                  view === "register" 
-                    ? "bg-[#FFC83D] text-[#000000]" 
-                    : "bg-[#1463FF] text-[#FFFFFF] hover:bg-blue-600"
-                }`}
-              >
-                Join Now
-              </button>
-              <button 
-                onClick={() => setView("login")}
-                className={`flex flex-1 h-full items-center justify-center rounded-[8px] font-manrope text-[14px] font-bold tracking-[0.02em] transition-colors ${
-                  view === "login" 
-                    ? "bg-[#FFC83D] text-[#000000]" 
-                    : "bg-[#1463FF] text-[#FFFFFF] hover:bg-blue-600"
-                }`}
-              >
-                Log In
-              </button>
-            </div>
-
-            {/* Form Container */}
-            <div className="flex w-full flex-col">
-              {view === "login" ? <LoginForm /> : <RegisterForm />}
-            </div>
-            
-          </div>
+          {view === "login" ? (
+            <LoginForm setView={setView} />
+          ) : (
+            <RegisterForm setView={setView} />
+          )}
 
         </div>
 

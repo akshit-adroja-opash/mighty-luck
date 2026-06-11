@@ -6,9 +6,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useDispatch } from "react-redux";
 import { login as authLogin } from "@/store/slices/authSlice";
-import { closeModal } from "@/store/slices/uiSlice";
+import { closeModal, setAuthModalView } from "@/store/slices/uiSlice";
 import { toast } from "sonner";
-import { Eye } from "lucide-react"; // Using Lucide eye as placeholder for the password eye icon
 
 const registerSchema = z.object({
   username: z.string().min(3, "Username must be at least 3 characters"),
@@ -21,7 +20,11 @@ const registerSchema = z.object({
 
 type RegisterFormData = z.infer<typeof registerSchema>;
 
-export default function RegisterForm() {
+interface RegisterFormProps {
+  setView: (view: "login" | "register") => void;
+}
+
+export default function RegisterForm({ setView }: RegisterFormProps) {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -65,115 +68,181 @@ export default function RegisterForm() {
     }
   };
 
+  const onError = (errors: any) => {
+    const firstError = Object.values(errors)[0] as any;
+    if (firstError?.message) {
+      toast.error(firstError.message);
+    }
+  };
+
   return (
-    <div className="flex w-[350px] flex-col items-start gap-[12px]">
-      <form onSubmit={handleSubmit(onSubmit)} className="flex w-full flex-col gap-[12px]">
+    <form 
+      onSubmit={handleSubmit(onSubmit, onError)} 
+      className="relative z-10 flex h-[546px] w-[390px] flex-col justify-between p-[24px_20px] flex-none"
+    >
+      
+      {/* Top Container - Height: 389.54px */}
+      <div className="flex flex-col gap-[16px] w-[350px] h-[389.54px] flex-none">
         
-        {/* Row 1: Username */}
-        <div className="relative flex h-[40px] w-full items-center rounded-[8px] bg-[#112F82] px-[16px]">
-          <input
-            {...register("username")}
-            type="text"
-            placeholder="User name"
-            className="w-full bg-transparent font-manrope text-[14px] font-semibold tracking-[0.02em] text-white outline-none placeholder:text-[#A5B8EF]"
-          />
+        {/* Header with Logo */}
+        <div className="flex w-[140px] h-[25.54px] mx-auto items-center justify-center gap-1">
+          <span className="text-lg text-[#FFC83D] leading-none">👑</span>
+          <span className="text-sm font-black uppercase tracking-wide text-white leading-none">
+            MIGHTY <span className="text-[#FFC83D]">LUCK</span>
+          </span>
         </div>
 
-        {/* Row 2: First Name & Last Name */}
-        <div className="flex w-full gap-[8px]">
-          <div className="relative flex h-[40px] flex-1 items-center rounded-[8px] bg-[#112F82] px-[16px]">
-            <input
-              {...register("firstName")}
-              type="text"
-              placeholder="First Name"
-              className="w-full bg-transparent font-manrope text-[14px] font-semibold tracking-[0.02em] text-white outline-none placeholder:text-[#A5B8EF]"
-            />
-          </div>
-          <div className="relative flex h-[40px] flex-1 items-center rounded-[8px] bg-[#112F82] px-[16px]">
-            <input
-              {...register("lastName")}
-              type="text"
-              placeholder="Last Name"
-              className="w-full bg-transparent font-manrope text-[14px] font-semibold tracking-[0.02em] text-white outline-none placeholder:text-[#A5B8EF]"
-            />
-          </div>
-        </div>
-
-        {/* Row 3: Email */}
-        <div className="relative flex h-[40px] w-full items-center rounded-[8px] bg-[#112F82] px-[16px]">
-          <input
-            {...register("email")}
-            type="email"
-            placeholder="Email"
-            className="w-full bg-transparent font-manrope text-[14px] font-semibold tracking-[0.02em] text-white outline-none placeholder:text-[#A5B8EF]"
-          />
-        </div>
-
-        {/* Row 4: Password */}
-        <div className="relative flex h-[40px] w-full items-center justify-between rounded-[8px] bg-[#112F82] px-[16px]">
-          <input
-            {...register("password")}
-            type={showPassword ? "text" : "password"}
-            placeholder="Password"
-            className="w-full bg-transparent font-manrope text-[14px] font-semibold tracking-[0.02em] text-white outline-none placeholder:text-[#A5B8EF]"
-          />
+        {/* Tab Switcher */}
+        <div className="flex w-[350px] h-[40px] items-center gap-[8px] flex-none">
           <button 
             type="button"
-            onClick={() => setShowPassword(!showPassword)}
-            className="text-[#A5B8EF] hover:text-white"
+            onClick={() => {
+              dispatch(setAuthModalView("register"));
+              setView("register");
+            }}
+            className="flex flex-grow h-full items-center justify-center rounded-[8px] font-manrope text-[14px] font-bold tracking-[0.02em] bg-[#FFC83D] text-[#000000] cursor-pointer"
           >
-            <Eye size={18} />
+            Join Now
+          </button>
+          <button 
+            type="button"
+            onClick={() => {
+              dispatch(setAuthModalView("login"));
+              setView("login");
+            }}
+            className="flex flex-grow h-full items-center justify-center rounded-[8px] font-manrope text-[14px] font-bold tracking-[0.02em] bg-[#1463FF] text-[#FFFFFF] hover:bg-blue-600 transition-all cursor-pointer"
+          >
+            Log In
           </button>
         </div>
 
-        {/* Row 5: Phone Number */}
-        <div className="flex w-full gap-[8px]">
-          <div className="flex h-[40px] w-[121px] items-center gap-[10px] rounded-[8px] bg-[#112F82] px-[16px] cursor-pointer hover:bg-blue-800 transition-colors">
-            {/* American flag icon placeholder */}
-            <span className="text-lg leading-none">🇺🇸</span>
-            <span className="font-manrope text-[14px] font-semibold tracking-[0.02em] text-white">+1</span>
-            <div className="ml-auto flex flex-col gap-[2px]">
-               {/* Arrow down icon */}
-               <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1 1L5 5L9 1" stroke="#A5B8EF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-               </svg>
-            </div>
-          </div>
-          <div className="relative flex h-[40px] flex-1 items-center rounded-[8px] bg-[#112F82] px-[16px]">
+        {/* Fields Container - Height: 248px */}
+        <div className="flex flex-col gap-[12px] w-[350px] h-[248px] flex-none">
+          
+          {/* Row 1: Username */}
+          <div className="relative flex h-[40px] w-[350px] items-center rounded-[8px] bg-[#112F82] px-[16px] py-[10px]">
             <input
-              {...register("phone")}
+              {...register("username")}
               type="text"
-              placeholder="Phone Number"
-              className="w-full bg-transparent font-manrope text-[14px] font-semibold tracking-[0.02em] text-white outline-none placeholder:text-[#A5B8EF]"
+              placeholder="User name"
+              className="w-full bg-transparent font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white outline-none placeholder:text-[#A5B8EF]"
             />
           </div>
+
+          {/* Row 2: First Name & Last Name */}
+          <div className="flex w-[350px] gap-[8px]">
+            <div className="relative flex h-[40px] w-[171px] items-center rounded-[8px] bg-[#112F82] px-[16px] py-[10px]">
+              <input
+                {...register("firstName")}
+                type="text"
+                placeholder="First Name"
+                className="w-full bg-transparent font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white outline-none placeholder:text-[#A5B8EF]"
+              />
+            </div>
+            <div className="relative flex h-[40px] w-[171px] items-center rounded-[8px] bg-[#112F82] px-[16px] py-[10px]">
+              <input
+                {...register("lastName")}
+                type="text"
+                placeholder="Last Name"
+                className="w-full bg-transparent font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white outline-none placeholder:text-[#A5B8EF]"
+              />
+            </div>
+          </div>
+
+          {/* Row 3: Email */}
+          <div className="relative flex h-[40px] w-[350px] items-center rounded-[8px] bg-[#112F82] px-[16px] py-[10px]">
+            <input
+              {...register("email")}
+              type="email"
+              placeholder="Email"
+              className="w-full bg-transparent font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white outline-none placeholder:text-[#A5B8EF]"
+            />
+          </div>
+
+          {/* Row 4: Password */}
+          <div className="relative flex h-[40px] w-[350px] items-center justify-between rounded-[8px] bg-[#112F82] px-[16px] py-[10px]">
+            <input
+              {...register("password")}
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              className="w-full bg-transparent font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white outline-none placeholder:text-[#A5B8EF]"
+            />
+            <button 
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="text-[#A5B8EF] hover:text-white transition-colors cursor-pointer"
+            >
+              {showPassword ? (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
+                  <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
+                  <path d="M6.61 6.61A13.52 13.52 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
+                  <line x1="2" y1="2" x2="22" y2="22"/>
+                </svg>
+              ) : (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+              )}
+            </button>
+          </div>
+
+          {/* Row 5: Phone Number */}
+          <div className="flex w-[350px] gap-[8px]">
+            <div className="flex h-[40px] w-[121px] items-center gap-[10px] rounded-[8px] bg-[#112F82] px-[16px] py-[10px] cursor-pointer hover:bg-blue-800 transition-colors">
+              <span className="text-[20px] leading-none">🇺🇸</span>
+              <span className="font-manrope text-[14px] font-semibold leading-[19px] text-white">+380</span>
+              <div className="ml-auto flex items-center justify-center">
+                <svg width="7" height="4" viewBox="0 0 7 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L3.5 3L6 1" stroke="#A5B8EF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+            </div>
+            <div className="relative flex h-[40px] w-[221px] items-center rounded-[8px] bg-[#112F82] px-[16px] py-[10px]">
+              <input
+                {...register("phone")}
+                type="text"
+                placeholder="Phone Number"
+                className="w-full bg-transparent font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white outline-none placeholder:text-[#A5B8EF]"
+              />
+            </div>
+          </div>
+
         </div>
 
-        {/* Terms Text */}
-        <p className="w-[300px] font-manrope text-[10px] font-medium leading-[14px] tracking-[0.01em] text-[#BBCAF3] text-left mt-2">
-          By clicking "Join Now" I confirm that I'm over 18 years old and agree to Mighty Luck's T&C along with the Privacy Policy
+        {/* Terms Text - Height: 28px */}
+        <p className="w-[300px] h-[28px] font-manrope text-[10px] font-medium leading-[14px] text-justify tracking-[0.01em] text-[#BBCAF3]">
+          By clicking &ldquo;Join Now&rdquo; I confirm that I&rsquo;m over 18 years old and agree to Mighty Luck&rsquo;s T&amp;C along with the Privacy Policy
         </p>
 
+      </div>
+
+      {/* Bottom Container - Height: 78px */}
+      <div className="flex flex-col gap-[12px] w-[350px] h-[78px] flex-none">
+        
         {/* Submit Button */}
         <button
           type="submit"
           disabled={isLoading}
-          className="mt-2 flex h-[50px] w-full items-center justify-center rounded-[8px] bg-[#FFC83D] font-manrope text-[14px] font-bold tracking-[0.02em] text-[#1A1404] transition-colors hover:bg-yellow-400 disabled:opacity-50"
+          className="flex h-[50px] w-[350px] items-center justify-center gap-[10px] rounded-[8px] bg-[#FFC83D] px-[30px] py-[10px] font-manrope text-[14px] font-bold tracking-[0.02em] text-[#1A1404] transition-all hover:bg-yellow-400 disabled:opacity-50 cursor-pointer"
         >
           {isLoading ? "Creating account..." : "Join with a 350% Bonus"}
         </button>
 
         {/* Support Link */}
-        <div className="flex w-full items-center gap-[8px] mt-2">
-          <div className="flex h-[16px] w-[16px] items-center justify-center rounded-full bg-[#7795E8]/20 text-[#7795E8]">
-            <span className="text-[10px] font-bold">?</span>
-          </div>
-          <p className="font-manrope text-[10px] font-medium tracking-[0.02em] text-[#7795E8]">
+        <div className="flex w-[350px] h-[16px] items-center gap-[8px]">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="8" cy="8" r="7.25" stroke="#7795E8" strokeWidth="1.5"/>
+            <path d="M8 11V10M8 8.5C8.82843 8.5 9.5 7.82843 9.5 7C9.5 6.17157 8.82843 5.5 8 5.5C7.17157 5.5 6.5 6.17157 6.5 7" stroke="#7795E8" strokeWidth="1.5" strokeLinecap="round"/>
+          </svg>
+          <p className="font-manrope text-[10px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8]">
             Having problems? <a href="#" className="font-bold text-[#FFC83D] hover:underline">Contact support</a>
           </p>
         </div>
 
-      </form>
-    </div>
+      </div>
+
+    </form>
   );
 }

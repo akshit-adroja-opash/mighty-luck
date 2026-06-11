@@ -5,6 +5,7 @@ import "@/styles/globals.css";
 import Header from "@/components/layout/Header";
 import StoreProvider from "@/store/StoreProvider";
 import AuthModal from "@/components/auth/AuthModal";
+import WalletModal from "@/components/wallet/WalletModal";
 import { Toaster } from "sonner";
 
 const jostFont = Jost({
@@ -36,6 +37,7 @@ export default function RootLayout({
           <Header />
           {children}
           <AuthModal />
+          <WalletModal />
           <Toaster richColors position="top-right" />
         </StoreProvider>
       </body>

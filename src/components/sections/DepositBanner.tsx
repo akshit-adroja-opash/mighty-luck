@@ -1,7 +1,8 @@
 "use client";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/store";
+import { setActiveCategory } from "@/store/slices/uiSlice";
 import {
   Bitcoin,
   Coins,
@@ -23,41 +24,45 @@ import {
 } from "lucide-react";
 
 export default function DepositBanner() {
+  const dispatch = useDispatch();
   const { isAuthenticated } = useSelector((state: RootState) => state.auth);
+  const activeCategory = useSelector((state: RootState) => state.ui.activeCategory);
 
   if (isAuthenticated) {
     const categories = [
-      { name: "Lobby", icon: Home, active: true },
-      { name: "Slots", icon: Cherry, active: false },
-      { name: "Originals", icon: Zap, active: false },
-      { name: "Crash Games", icon: Rocket, active: false },
-      { name: "Providers", icon: Gamepad2, active: false },
-      { name: "Table Games", icon: Dices, active: false },
-      { name: "Bonus Buys", icon: CircleDollarSign, active: false },
-      { name: "Collection", icon: Library, active: false },
+      { name: "Lobby", icon: Home },
+      { name: "Slots", icon: Cherry },
+      { name: "Originals", icon: Zap },
+      { name: "Crash Games", icon: Rocket },
+      { name: "Providers", icon: Gamepad2 },
+      { name: "Table Games", icon: Dices },
+      { name: "Bonus Buys", icon: CircleDollarSign },
+      { name: "Collection", icon: Library },
     ];
 
     return (
       <div className="flex w-full items-center gap-2 h-[50px] overflow-x-auto no-scrollbar">
         {categories.map((category) => {
           const Icon = category.icon;
+          const isActive = category.name === activeCategory;
           return (
             <button
               key={category.name}
-              className={`flex h-full flex-1 min-w-[135px] items-center justify-center gap-2 rounded-[6px] px-4 py-2.5 transition-colors ${
-                category.active
+              onClick={() => dispatch(setActiveCategory(category.name))}
+              className={`flex h-full flex-1 min-w-[135px] items-center justify-center gap-2 rounded-[6px] px-4 py-2.5 transition-colors cursor-pointer ${
+                isActive
                   ? "bg-[#1463FF]"
                   : "bg-[#0C1F56] hover:bg-[#112F82]"
               }`}
             >
               <Icon 
                 size={20} 
-                className={category.active ? "text-[#FFB800]" : "text-[#D2DCF7]"} 
-                fill={category.active ? "#FFB800" : "transparent"} 
+                className={isActive ? "text-[#FFB800]" : "text-[#D2DCF7]"} 
+                fill={isActive ? "#FFB800" : "transparent"} 
               />
               <span 
                 className={`font-sans text-[14px] font-semibold tracking-[0.02em] whitespace-nowrap ${
-                  category.active ? "text-white" : "text-[#D2DCF7]"
+                  isActive ? "text-white" : "text-[#D2DCF7]"
                 }`}
               >
                 {category.name}

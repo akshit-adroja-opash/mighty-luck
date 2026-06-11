@@ -1,3 +1,8 @@
+"use client";
+
+import { useSelector } from "react-redux";
+import { RootState } from "@/store";
+
 import Container from "@/components/layout/Container";
 import Sidebar from "@/components/layout/Sidebar";
 import Footer from "@/components/layout/Footer";
@@ -10,13 +15,32 @@ import WhyChooseUs from "@/components/sections/WhyChooseUs";
 import CrashGamesSection from "@/components/sections/CrashGamesSection";
 import ProvidersSection from "@/components/sections/ProvidersSection";
 import TableGamesSection from "@/components/sections/TableGamesSection";
-import BonusBuysSection from "@/components/sections/BonusBuysSection"
+import BonusBuysSection from "@/components/sections/BonusBuysSection";
 import CollectionsSection from "@/components/sections/CollectionsSection";
 import RecentWinners from "@/components/sections/RecentWinners";
 import SeoContent from "@/components/sections/SeoContent";
 import CryptoBanner from "@/components/sections/CryptoBanner";
 
 export default function HomePage() {
+  const activeCategory = useSelector((state: RootState) => state.ui.activeCategory);
+
+  const sections = [
+    { name: "Slots", Component: SlotsSection },
+    { name: "Originals", Component: OriginalsSection },
+    { name: "Crash Games", Component: CrashGamesSection },
+    { name: "Providers", Component: ProvidersSection },
+    { name: "Table Games", Component: TableGamesSection },
+    { name: "Bonus Buys", Component: BonusBuysSection },
+    { name: "Collection", Component: CollectionsSection },
+  ];
+
+  // Dynamic Sort: Move activeCategory component to the front, keep others in their original order.
+  const sortedSections = [...sections].sort((a, b) => {
+    if (a.name === activeCategory) return -1;
+    if (b.name === activeCategory) return 1;
+    return 0;
+  });
+
   return (
     <Container>
       <div className="flex w-full flex-row">
@@ -27,33 +51,19 @@ export default function HomePage() {
         <div className="flex w-[1184px] flex-none flex-col px-[24px]">
           <main className="flex w-[1136px] flex-none flex-col gap-[40px]">
             <HeroBanner />
+            <DepositBanner />
 
-          <DepositBanner />
+            {/* Render dynamically sorted game categories */}
+            {sortedSections.map(({ name, Component }) => (
+              <Component key={name} />
+            ))}
 
-          <SlotsSection />
-
-          <OriginalsSection />
-
-          <WhyChooseUs />
-
-          <CrashGamesSection />
-
-          <ProvidersSection />
-
-          <TableGamesSection/>
-
-          <BonusBuysSection/>
-
-          <CollectionsSection/>
-
-          <RecentWinners/>  
-
-          <SeoContent/>
-
-          <CryptoBanner/>
-
-          <Footer />
-        </main>
+            <WhyChooseUs />
+            <RecentWinners />  
+            <SeoContent />
+            <CryptoBanner />
+            <Footer />
+          </main>
         </div>
       </div>
     </Container>

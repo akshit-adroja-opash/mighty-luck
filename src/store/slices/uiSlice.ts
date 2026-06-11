@@ -6,12 +6,16 @@ interface UiState {
   modals: {
     [key: string]: boolean;
   };
+  authModalView: 'login' | 'register';
+  activeCategory: string;
 }
 
 const initialState: UiState = {
   theme: 'dark',
   sidebarOpen: false,
   modals: {},
+  authModalView: 'register',
+  activeCategory: 'Lobby',
 };
 
 const uiSlice = createSlice({
@@ -36,8 +40,14 @@ const uiSlice = createSlice({
     closeModal: (state, action: PayloadAction<string>) => {
       state.modals[action.payload] = false;
     },
+    setAuthModalView: (state, action: PayloadAction<'login' | 'register'>) => {
+      state.authModalView = action.payload;
+    },
+    setActiveCategory: (state, action: PayloadAction<string>) => {
+      state.activeCategory = action.payload;
+    },
   },
 });
 
-export const { toggleTheme, setTheme, toggleSidebar, setSidebarOpen, openModal, closeModal } = uiSlice.actions;
+export const { toggleTheme, setTheme, toggleSidebar, setSidebarOpen, openModal, closeModal, setAuthModalView, setActiveCategory } = uiSlice.actions;
 export default uiSlice.reducer;
