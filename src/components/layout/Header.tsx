@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Menu, Search, User as UserIcon, LogOut, Bell, Gift, Wallet } from "lucide-react";
+import { Menu, Search, User as UserIcon, LogOut, Bell, Gift, Wallet, Users } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { openModal, closeModal, setAuthModalView } from "@/store/slices/uiSlice";
@@ -150,14 +150,22 @@ export default function Header() {
                 
                 {/* Dropdown Menu */}
                 {isDropdownOpen && (
-                  <div className="absolute right-0 top-[calc(100%+8px)] flex w-40 flex-col overflow-hidden rounded-lg bg-[#112F82] shadow-xl">
+                  <div className="absolute right-0 top-[calc(100%+8px)] flex w-48 flex-col overflow-hidden rounded-lg bg-[#112F82] shadow-xl">
                     <div className="px-4 py-3 border-b border-[#173EAD]">
                       <p className="text-sm font-bold text-white truncate">{user?.name || "Player"}</p>
                       <p className="text-xs text-[#BBCAF3] truncate">{user?.email || "player@example.com"}</p>
                     </div>
+                    <Link 
+                      href="/refer-a-friend"
+                      onClick={() => setIsDropdownOpen(false)}
+                      className="flex w-full items-center gap-2 px-4 py-3 text-sm font-semibold text-[#BBCAF3] transition-colors hover:bg-[#173EAD] hover:text-white cursor-pointer"
+                    >
+                      <Users size={16} />
+                      Refer a Friend
+                    </Link>
                     <button 
                       onClick={handleLogout}
-                      className="flex items-center gap-2 px-4 py-3 text-sm font-semibold text-[#BBCAF3] transition-colors hover:bg-[#173EAD] hover:text-white cursor-pointer"
+                      className="flex w-full items-center gap-2 px-4 py-3 text-sm font-semibold text-[#BBCAF3] transition-colors hover:bg-[#173EAD] hover:text-white cursor-pointer"
                     >
                       <LogOut size={16} />
                       Logout

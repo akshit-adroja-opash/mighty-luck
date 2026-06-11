@@ -5,7 +5,7 @@ export default function TopPromoCards() {
       <div className="flex w-[200px] flex-none flex-col items-start gap-[8px]">
         
         {/* Top Two Cards Row */}
-        <div className="relative z-10 flex h-[44px] w-[200px] flex-none flex-row items-center gap-[4px]">
+        <div className="flex h-[44px] w-[200px] flex-none flex-row items-center gap-[4px]">
           
           {/* Refer Friend */}
           <div className="relative isolate flex h-[44px] w-[98px] flex-none items-center gap-[2px] rounded-[8px] bg-[#3B005F] px-[8px] py-[6px]">
@@ -16,8 +16,8 @@ export default function TopPromoCards() {
             
             <div className="relative z-[1] flex h-[24px] w-[24px] flex-none items-center justify-center">
               <div 
-                className="absolute -left-[35px] -top-[12px] z-[1] h-[85px] w-[85px] bg-contain bg-center bg-no-repeat"
-                style={{ backgroundImage: "url('/games/sider/promo_megaphone.png')" }}
+                className="absolute -left-[26px] -top-[5px] h-[39.33px] w-[59px] bg-contain bg-center bg-no-repeat"
+                style={{ backgroundImage: "url('/Роскошный мегафон казино с золотыми монетами.png')" }}
               />
             </div>
             
@@ -37,8 +37,8 @@ export default function TopPromoCards() {
             
             <div className="relative z-[1] flex h-[24px] w-[24px] flex-none items-center justify-center">
               <div 
-                className="absolute -left-[24px] -top-[6px] h-[56px] w-[56px] bg-contain bg-center bg-no-repeat"
-                style={{ backgroundImage: "url('/games/sider/promo_crown.png')" }}
+                className="absolute -left-[32.36px] -top-[13.7px] h-[33.01px] w-[64px] bg-contain bg-center bg-no-repeat"
+                style={{ transform: "rotate(11.84deg)", backgroundImage: "url('/Роскошная корона с молнией.png')" }}
               />
             </div>
             
@@ -61,6 +61,12 @@ export default function TopPromoCards() {
           {/* Spacer Frame */}
           <div className="relative z-[1] flex h-[20px] w-[20px] flex-none items-center justify-center"></div>
 
+          {/* Rectangle (Gold Snowflake) */}
+          <div 
+            className="absolute -left-[53px] -top-[18px] z-[2] h-[68px] w-[102px] bg-contain bg-center bg-no-repeat"
+            style={{ transform: "matrix(-1, 0, 0, 1, 0, 0)", backgroundImage: "url('/Золотая снежинка на прозрачном фоне.png')" }}
+          />
+          
           {/* Text Container */}
           <div className="relative z-[3] flex h-[30px] w-[138px] flex-none flex-col items-start gap-[2px]">
             <h3 className="h-[14px] w-full whitespace-nowrap font-jost text-[18px] font-black italic leading-[14px] text-white">
@@ -73,8 +79,8 @@ export default function TopPromoCards() {
 
           {/* image 26 */}
           <div 
-            className="absolute -left-[45px] -top-[30px] z-[1] h-[120px] w-[120px] bg-contain bg-center bg-no-repeat"
-            style={{ backgroundImage: "url('/games/sider/promo_snowflake.png')" }}
+            className="absolute -left-[60px] -top-[53px] z-[4] h-[165px] w-[165px] bg-contain bg-center bg-no-repeat"
+            style={{ backgroundImage: "url('/image26.png')" }}
           />
         </div>
         
