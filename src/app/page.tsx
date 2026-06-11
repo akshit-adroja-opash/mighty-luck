@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
@@ -57,10 +58,14 @@ export default function HomePage() {
 
             {/* Render dynamically sorted game categories */}
             {sortedSections.map(({ name, Component }) => (
-              <Component key={name} />
+              <React.Fragment key={name}>
+                <Component />
+                {name === "Originals" && (
+                  isAuthenticated ? <PromotionsSection /> : <WhyChooseUs />
+                )}
+              </React.Fragment>
             ))}
 
-            {isAuthenticated ? <PromotionsSection /> : <WhyChooseUs />}
             <RecentWinners />  
             <SeoContent />
             <CryptoBanner />
