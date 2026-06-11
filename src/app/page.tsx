@@ -9,6 +9,7 @@ import Footer from "@/components/layout/Footer";
 
 import HeroBanner from "@/components/sections/HeroBanner";
 import DepositBanner from "@/components/sections/DepositBanner";
+import PromotionsSection from "@/components/sections/PromotionsSection";
 import SlotsSection from "@/components/sections/SlotsSection";
 import OriginalsSection from "@/components/sections/OriginalsSection";
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
@@ -23,6 +24,7 @@ import CryptoBanner from "@/components/sections/CryptoBanner";
 
 export default function HomePage() {
   const activeCategory = useSelector((state: RootState) => state.ui.activeCategory);
+  const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
 
   const sections = [
     { name: "Slots", Component: SlotsSection },
@@ -58,7 +60,7 @@ export default function HomePage() {
               <Component key={name} />
             ))}
 
-            <WhyChooseUs />
+            {isAuthenticated ? <PromotionsSection /> : <WhyChooseUs />}
             <RecentWinners />  
             <SeoContent />
             <CryptoBanner />

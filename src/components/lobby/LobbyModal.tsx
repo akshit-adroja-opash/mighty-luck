@@ -48,6 +48,25 @@ export default function LobbyModal() {
     { image: "/games/5.png", title: "RIDE'EM POKER" },
   ];
 
+  const allGamesDatabase = [
+    { image: "/games/2.png", title: "SWEET BONANZA SUPER SCATTER" },
+    { image: "/games/2.png", title: "SWEET BONANZA SUPER SCATTER" },
+    { image: "/games/3.png", title: "SWEET BONANZA" },
+    { image: "/games/4.png", title: "RETRO SWEETS" },
+    { image: "/games/5.png", title: "SWEET BONANZA CANDYLAND" },
+    { image: "/games/6.png", title: "SWEET CRAZE" },
+    { image: "/games/7.png", title: "SWEET RUSH MEGAWAYS" },
+    { image: "/games/1.png", title: "SWEET LAND" },
+    { image: "/games/1.png", title: "PATRICK VS NEFERTITI" },
+    { image: "/games/3.png", title: "AMERICAN ROULETTE" },
+    { image: "/games/4.png", title: "CASH-O-MATIC! EXTREME CASH OUT" },
+    { image: "/games/5.png", title: "RIDE'EM POKER" },
+  ];
+
+  const filteredGames = allGamesDatabase.filter((g) =>
+    g.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   const providers = [
     { name: "Belatra", games: 226, logo: "/providers/belatra.png" },
     { name: "BGaming", games: 226, logo: "/providers/bgaming.png" },
@@ -339,51 +358,114 @@ export default function LobbyModal() {
 
         </div>
 
-        {/* Right Content: 808px x 532px */}
-        <div className="flex flex-col items-start gap-[40px] w-[808px] h-[532px] flex-none overflow-hidden">
+        {/* Right Content */}
+        <div className={`flex flex-col items-start w-[808px] flex-none overflow-hidden transition-all duration-300 ${
+          searchQuery 
+            ? filteredGames.length > 0 
+              ? "gap-[32px] h-[543px]" 
+              : "gap-[32px] h-[156px]"
+            : "gap-[40px] h-[532px]"
+        }`}>
           
           {/* Search bar row */}
-          <div className="flex flex-row items-center px-[20px] py-[10px] gap-[10px] w-[808px] h-[40px] bg-[#112F82] rounded-[8px] flex-none">
-            <div className="w-[16px] h-[16px] flex items-center justify-center flex-none text-[#BBCAF3]">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="11" cy="11" r="8"/>
-                <path d="m21 21-4.3-4.3"/>
-              </svg>
+          <div className={`flex flex-row items-center justify-between rounded-[12px] flex-none transition-all duration-300 w-[808px] ${
+            searchQuery 
+              ? "px-[20px] pr-[10px] py-[10px] h-[50px] bg-[#112F82] border border-[#1463FF]" 
+              : "px-[20px] py-[10px] h-[40px] bg-[#112F82] border border-transparent"
+          }`}>
+            <div className="flex flex-row items-center gap-[10px] flex-grow">
+              <div className="w-[16px] h-[16px] flex items-center justify-center flex-none text-[#BBCAF3]">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="11" cy="11" r="8"/>
+                  <path d="m21 21-4.3-4.3"/>
+                </svg>
+              </div>
+              <input
+                type="text"
+                placeholder="Start typing a game name"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="bg-transparent text-white outline-none w-full font-manrope text-[14px] font-semibold leading-[19px] placeholder-[#BBCAF3]"
+              />
             </div>
-            <input
-              type="text"
-              placeholder="Start typing a game name"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="bg-transparent text-white outline-none w-full font-manrope text-[14px] font-semibold leading-[19px] placeholder-[#BBCAF3]"
-            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery("")}
+                className="flex flex-row justify-center items-center px-[16px] py-[10px] w-[64px] h-[30px] bg-[#1463FF] hover:bg-[#1463FF]/80 text-white rounded-[6px] transition-all cursor-pointer flex-none"
+              >
+                <span className="font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em]">Clear</span>
+              </button>
+            )}
           </div>
 
-          {/* Lobby Content Blocks */}
-          <div className="flex flex-col items-start gap-[32px] w-[856px] h-[452px] flex-none">
-            
-            {/* Popular Games block */}
-            <div className="flex flex-col gap-[20px] w-[808px] h-[249px] flex-none">
-              <div className="flex flex-row justify-between items-center w-[808px] h-[29px] flex-none">
-                <div className="flex flex-row items-center gap-[8px] h-[29px]">
-                  <div className="w-[20px] h-[20px] flex items-center justify-center text-[#FFBF1F]">
-                    <svg width="16" height="20" viewBox="0 0 16 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M11.6667 8.33333C12.375 7.625 12.875 6.20833 13.0833 5.375C14.7917 7.04167 15 10.6667 15 11.6667C15 15.3486 11.8661 18.3333 8 18.3333C4.13391 18.3333 1 15.3486 1 11.6667C1 7.98477 4.13391 5 8 5C8.83333 5 9.625 5.58333 10.2083 6.16667L11.6667 8.33333Z" stroke="#FFBF1F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M8.00008 14.1667C9.38079 14.1667 10.5001 13.0474 10.5001 11.6667C10.5001 10.2859 9.38079 9.16667 8.00008 9.16667C6.61937 9.16667 5.50008 10.2859 5.50008 11.6667C5.50008 13.0474 6.61937 14.1667 8.00008 14.1667Z" stroke="#FFBF1F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
+          {searchQuery ? (
+            filteredGames.length > 0 ? (
+              /* Search Results Block */
+              <div className="flex flex-col gap-[20px] w-[808px] h-[461px] flex-none">
+                
+                <div className="flex flex-row justify-between items-center w-[808px] h-[29px] flex-none">
+                  <div className="flex flex-row items-center gap-[12px] h-[29px]">
+                    <span className="font-jost font-extrabold text-[20px] leading-[29px] tracking-[0.01em] uppercase text-white select-none">
+                      ALL GAMES
+                    </span>
                   </div>
-                  <span className="font-jost font-extrabold text-[20px] leading-[29px] tracking-[0.01em] uppercase text-white select-none">
-                    Popular Games
-                  </span>
+                </div>
+
+                <div className="flex flex-col gap-[12px] w-[808px] h-[412px] flex-none overflow-y-auto scrollbar-none">
+                  <div className="flex flex-row flex-wrap gap-x-[12px] gap-y-[12px] w-[808px]">
+                    {filteredGames.map((game, index) => (
+                      <div key={index} className="flex-none w-[152px] h-[200px]">
+                        <GameCard 
+                          image={game.image} 
+                          title={game.title} 
+                          onClick={() => handleGameClick(game)}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+              </div>
+            ) : (
+              /* No Results Block */
+              <div className="flex flex-col items-start gap-[8px] w-[808px] flex-none">
+                {/* Title row */}
+                <div className="flex flex-col items-start w-[808px] h-[22px] flex-none">
+                  <h3 className="w-[808px] font-manrope font-extrabold text-[16px] leading-[22px] text-center text-white select-none">
+                    No Results for your Search
+                  </h3>
+                </div>
+                {/* Subtitle row */}
+                <div className="flex flex-col items-start w-[808px] h-[44px] flex-none">
+                  <p className="w-[800px] mx-auto font-manrope font-medium text-[16px] leading-[22px] text-center text-[#7795E8] select-none">
+                    There are no results in this category for your search term, please select a different category or try searching for something else
+                  </p>
                 </div>
               </div>
+            )
+          ) : (
+            /* Lobby Content Blocks (Normal view) */
+            <div className="flex flex-col items-start gap-[32px] w-[856px] h-[452px] flex-none">
+              
+              {/* Popular Games block */}
+              <div className="flex flex-col gap-[20px] w-[808px] h-[249px] flex-none">
+                <div className="flex flex-row justify-between items-center w-[808px] h-[29px] flex-none">
+                  <div className="flex flex-row items-center gap-[8px] h-[29px]">
+                    <div className="w-[20px] h-[20px] flex items-center justify-center text-[#FFBF1F]">
+                      <svg width="16" height="20" viewBox="0 0 16 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11.6667 8.33333C12.375 7.625 12.875 6.20833 13.0833 5.375C14.7917 7.04167 15 10.6667 15 11.6667C15 15.3486 11.8661 18.3333 8 18.3333C4.13391 18.3333 1 15.3486 1 11.6667C1 7.98477 4.13391 5 8 5C8.83333 5 9.625 5.58333 10.2083 6.16667L11.6667 8.33333Z" stroke="#FFBF1F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M8.00008 14.1667C9.38079 14.1667 10.5001 13.0474 10.5001 11.6667C10.5001 10.2859 9.38079 9.16667 8.00008 9.16667C6.61937 9.16667 5.50008 10.2859 5.50008 11.6667C5.50008 13.0474 6.61937 14.1667 8.00008 14.1667Z" stroke="#FFBF1F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </div>
+                    <span className="font-jost font-extrabold text-[20px] leading-[29px] tracking-[0.01em] uppercase text-white select-none">
+                      Popular Games
+                    </span>
+                  </div>
+                </div>
 
-              {/* 5 Cards Row */}
-              <div className="flex flex-row items-center gap-[12px] w-[808px] h-[200px] flex-none">
-                {popularGames
-                  .filter((g) => g.title.toLowerCase().includes(searchQuery.toLowerCase()))
-                  .slice(0, 5)
-                  .map((game, index) => (
+                {/* 5 Cards Row */}
+                <div className="flex flex-row items-center gap-[12px] w-[808px] h-[200px] flex-none">
+                  {popularGames.map((game, index) => (
                     <div key={index} className="flex-none">
                       <GameCard 
                         image={game.image} 
@@ -392,89 +474,90 @@ export default function LobbyModal() {
                       />
                     </div>
                   ))}
-              </div>
-            </div>
-
-            {/* Game Providers block */}
-            <div className="flex flex-col gap-[20px] w-[856px] h-[171px] flex-none">
-              
-              <div className="flex flex-row justify-between items-center w-[856px] h-[29px] flex-none">
-                <div className="flex flex-row items-center gap-[8px] h-[29px]">
-                  <div className="w-[20px] h-[20px] flex items-center justify-center text-[#FFC83D]">
-                    <svg width="15" height="20" viewBox="0 0 15 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="7.5" cy="5" r="4.25" stroke="#FFC83D" strokeWidth="1.5"/>
-                      <path d="M1.5 18.5C1.5 14.5 4.18629 11.5 7.5 11.5C10.8137 11.5 13.5 14.5 13.5 18.5" stroke="#FFC83D" strokeWidth="1.5" strokeLinecap="round"/>
-                    </svg>
-                  </div>
-                  <span className="font-jost font-extrabold text-[20px] leading-[29px] tracking-[0.01em] uppercase text-white select-none">
-                    Game Providers
-                  </span>
                 </div>
               </div>
 
-              {/* 5 Providers row */}
-              <div className="flex flex-col gap-[16px] w-[856px] h-[122px] flex-none">
-                <div
-                  ref={providersRef}
-                  onScroll={handleScroll}
-                  className="flex flex-row items-center gap-[12px] w-[856px] h-[100px] flex-none overflow-x-auto scrollbar-none snap-x snap-mandatory"
-                >
-                  {providers.map((p, index) => (
-                    <div
-                      key={index}
-                      onClick={() => {
-                        dispatch(setActiveCategory("Providers"));
-                        dispatch(closeModal("lobby"));
-                        toast.success(`Selected provider ${p.name}`);
-                      }}
-                      className="group flex flex-col justify-center items-center p-[12px] px-[24px] gap-[8px] w-[152px] h-[100px] bg-[#0C1F56] hover:bg-[#112f82]/50 border border-white/5 hover:border-white/10 rounded-[12px] flex-none cursor-pointer transition-all snap-start"
-                    >
-                      <div className="flex h-[40px] w-[80px] flex-none items-center justify-center">
-                        <span className="text-center text-[12px] font-extrabold uppercase leading-tight tracking-wider text-white select-none group-hover:scale-105 transition-transform">
-                          {p.name}
-                        </span>
-                      </div>
-                      <div className="flex flex-row justify-center items-center gap-[10px] w-[104px] h-[14px] flex-none">
-                        <span className="font-manrope text-[10px] font-semibold leading-[14px] text-center text-[#FFC83D]">
-                          {p.games} Games
-                        </span>
-                      </div>
+              {/* Game Providers block */}
+              <div className="flex flex-col gap-[20px] w-[856px] h-[171px] flex-none">
+                
+                <div className="flex flex-row justify-between items-center w-[856px] h-[29px] flex-none">
+                  <div className="flex flex-row items-center gap-[8px] h-[29px]">
+                    <div className="w-[20px] h-[20px] flex items-center justify-center text-[#FFC83D]">
+                      <svg width="15" height="20" viewBox="0 0 15 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="7.5" cy="5" r="4.25" stroke="#FFC83D" strokeWidth="1.5"/>
+                        <path d="M1.5 18.5C1.5 14.5 4.18629 11.5 7.5 11.5C10.8137 11.5 13.5 14.5 13.5 18.5" stroke="#FFC83D" strokeWidth="1.5" strokeLinecap="round"/>
+                      </svg>
                     </div>
-                  ))}
+                    <span className="font-jost font-extrabold text-[20px] leading-[29px] tracking-[0.01em] uppercase text-white select-none">
+                      Game Providers
+                    </span>
+                  </div>
                 </div>
 
-                {/* Pagination dots */}
-                <div className="flex flex-col items-center w-[856px] h-[6px] flex-none">
-                  <div className="flex flex-row justify-center items-center gap-[4px] w-[32px] h-[6px] flex-none">
-                    <button
-                      onClick={() => handleDotClick(0)}
-                      className={`h-[6px] rounded-[150px] transition-all cursor-pointer flex-none ${
-                        activePage === 0 ? "w-[12px] bg-[#BBCAF3]" : "w-[6px] bg-[#BBCAF3]/50 hover:bg-[#BBCAF3]/80"
-                      }`}
-                      aria-label="Page 1"
-                    />
-                    <button
-                      onClick={() => handleDotClick(1)}
-                      className={`h-[6px] rounded-[150px] transition-all cursor-pointer flex-none ${
-                        activePage === 1 ? "w-[12px] bg-[#BBCAF3]" : "w-[6px] bg-[#BBCAF3]/50 hover:bg-[#BBCAF3]/80"
-                      }`}
-                      aria-label="Page 2"
-                    />
-                    <button
-                      onClick={() => handleDotClick(2)}
-                      className={`h-[6px] rounded-[150px] transition-all cursor-pointer flex-none ${
-                        activePage === 2 ? "w-[12px] bg-[#BBCAF3]" : "w-[6px] bg-[#BBCAF3]/50 hover:bg-[#BBCAF3]/80"
-                      }`}
-                      aria-label="Page 3"
-                    />
+                {/* 5 Providers row */}
+                <div className="flex flex-col gap-[16px] w-[856px] h-[122px] flex-none">
+                  <div
+                    ref={providersRef}
+                    onScroll={handleScroll}
+                    className="flex flex-row items-center gap-[12px] w-[856px] h-[100px] flex-none overflow-x-auto scrollbar-none snap-x snap-mandatory"
+                  >
+                    {providers.map((p, index) => (
+                      <div
+                        key={index}
+                        onClick={() => {
+                          dispatch(setActiveCategory("Providers"));
+                          dispatch(closeModal("lobby"));
+                          toast.success(`Selected provider ${p.name}`);
+                        }}
+                        className="group flex flex-col justify-center items-center p-[12px] px-[24px] gap-[8px] w-[152px] h-[100px] bg-[#0C1F56] hover:bg-[#112f82]/50 border border-white/5 hover:border-white/10 rounded-[12px] flex-none cursor-pointer transition-all snap-start"
+                      >
+                        <div className="flex h-[40px] w-[80px] flex-none items-center justify-center">
+                          <span className="text-center text-[12px] font-extrabold uppercase leading-tight tracking-wider text-white select-none group-hover:scale-105 transition-transform">
+                            {p.name}
+                          </span>
+                        </div>
+                        <div className="flex flex-row justify-center items-center gap-[10px] w-[104px] h-[14px] flex-none">
+                          <span className="font-manrope text-[10px] font-semibold leading-[14px] text-center text-[#FFC83D]">
+                            {p.games} Games
+                          </span>
+                        </div>
+                      </div>
+                    ))}
                   </div>
+
+                  {/* Pagination dots */}
+                  <div className="flex flex-col items-center w-[856px] h-[6px] flex-none">
+                    <div className="flex flex-row justify-center items-center gap-[4px] w-[32px] h-[6px] flex-none">
+                      <button
+                        onClick={() => handleDotClick(0)}
+                        className={`h-[6px] rounded-[150px] transition-all cursor-pointer flex-none ${
+                          activePage === 0 ? "w-[12px] bg-[#BBCAF3]" : "w-[6px] bg-[#BBCAF3]/50 hover:bg-[#BBCAF3]/80"
+                        }`}
+                        aria-label="Page 1"
+                      />
+                      <button
+                        onClick={() => handleDotClick(1)}
+                        className={`h-[6px] rounded-[150px] transition-all cursor-pointer flex-none ${
+                          activePage === 1 ? "w-[12px] bg-[#BBCAF3]" : "w-[6px] bg-[#BBCAF3]/50 hover:bg-[#BBCAF3]/80"
+                        }`}
+                        aria-label="Page 2"
+                      />
+                      <button
+                        onClick={() => handleDotClick(2)}
+                        className={`h-[6px] rounded-[150px] transition-all cursor-pointer flex-none ${
+                          activePage === 2 ? "w-[12px] bg-[#BBCAF3]" : "w-[6px] bg-[#BBCAF3]/50 hover:bg-[#BBCAF3]/80"
+                        }`}
+                        aria-label="Page 3"
+                      />
+                    </div>
+                  </div>
+
                 </div>
 
               </div>
 
             </div>
-
-          </div>
+          )}
 
         </div>
 

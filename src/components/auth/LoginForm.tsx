@@ -175,9 +175,24 @@ export default function LoginForm({ setView }: LoginFormProps) {
         <button
           type="submit"
           disabled={isLoading}
-          className="flex h-[50px] w-[350px] items-center justify-center rounded-[8px] bg-[#1463FF] font-manrope text-[14px] font-bold tracking-[0.02em] text-[#FFFFFF] transition-all hover:bg-blue-600 disabled:opacity-50 cursor-pointer"
+          className="flex h-[50px] w-[350px] items-center justify-center gap-[8px] rounded-[8px] bg-[#1463FF] font-manrope text-[14px] font-bold tracking-[0.02em] text-[#FFFFFF] transition-all hover:bg-blue-600 disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer"
         >
-          {isLoading ? "Logging in..." : "Log In"}
+          {isLoading ? (
+            <>
+              <svg
+                className="animate-spin h-[18px] w-[18px] text-white flex-none"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+              </svg>
+              <span>Logging in...</span>
+            </>
+          ) : (
+            "Log In"
+          )}
         </button>
 
         {/* Support Link */}

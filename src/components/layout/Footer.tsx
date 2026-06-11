@@ -25,7 +25,7 @@ const columns = [
 
 export default function Footer() {
   return (
-    <footer className="mt-[100px] flex w-[1136px] h-[357px] flex-none flex-col gap-[48px] items-start pb-[48px]">
+    <footer className="flex w-[1136px] h-[357px] flex-none flex-col gap-[48px] items-start pb-[48px]">
       
       {/* Top Section */}
       <div className="flex w-[1136px] h-[205px] flex-none flex-row justify-between items-start">
