@@ -92,22 +92,36 @@ export default function LobbyModal() {
   ];
 
   const allGamesDatabase = [
-    { image: "/games/slots/slot-2.png", title: "SWEET BONANZA SUPER SCATTER" },
-    { image: "/games/slots/slot-3.png", title: "SWEET BONANZA" },
-    { image: "/games/slots/slot-4.png", title: "RETRO SWEETS" },
-    { image: "/games/slots/slot-5.png", title: "SWEET BONANZA CANDYLAND" },
-    { image: "/games/slots/slot-6.png", title: "SWEET CRAZE" },
-    { image: "/games/slots/slot-7.png", title: "SWEET RUSH MEGAWAYS" },
-    { image: "/games/slots/slot-1.png", title: "SWEET LAND" },
-    { image: "/games/slots/slot-1.png", title: "PATRICK VS NEFERTITI" },
-    { image: "/games/table/table-1.png", title: "AMERICAN ROULETTE" },
-    { image: "/games/slots/slot-3.png", title: "CASH-O-MATIC! EXTREME CASH OUT" },
-    { image: "/games/table/table-2.png", title: "RIDE'EM POKER" },
+    { image: "/games/slots/slot-2.png", title: "SWEET BONANZA SUPER SCATTER", category: "Slots" },
+    { image: "/games/slots/slot-3.png", title: "SWEET BONANZA", category: "Slots" },
+    { image: "/games/slots/slot-4.png", title: "RETRO SWEETS", category: "Slots" },
+    { image: "/games/slots/slot-5.png", title: "SWEET BONANZA CANDYLAND", category: "Slots" },
+    { image: "/games/slots/slot-6.png", title: "SWEET CRAZE", category: "Slots" },
+    { image: "/games/slots/slot-7.png", title: "SWEET RUSH MEGAWAYS", category: "Slots" },
+    { image: "/games/slots/slot-1.png", title: "SWEET LAND", category: "Slots" },
+    { image: "/games/slots/slot-1.png", title: "PATRICK VS NEFERTITI", category: "Slots" },
+    { image: "/games/table/table-1.png", title: "AMERICAN ROULETTE", category: "Table Games" },
+    { image: "/games/slots/slot-3.png", title: "CASH-O-MATIC! EXTREME CASH OUT", category: "Slots" },
+    { image: "/games/table/table-2.png", title: "RIDE'EM POKER", category: "Table Games" },
+    { image: "/games/original/original-1.png", title: "ALLY ALIENS", category: "Originals" },
+    { image: "/games/original/original-2.png", title: "NEON SHAPES", category: "Originals" },
+    { image: "/games/original/original-3.png", title: "COSMIC QUEST", category: "Originals" },
+    { image: "/games/original/original-4.png", title: "CYBER SPIN", category: "Originals" },
+    { image: "/games/crash/crash-1.png", title: "CRASH LANDING", category: "Crash Games" },
+    { image: "/games/crash/crash-2.png", title: "NINJA CRASH", category: "Crash Games" },
+    { image: "/games/table/table-1.png", title: "ROULETTE PRO", category: "Roulette" },
+    { image: "/games/table/table-2.png", title: "LIVE BACCARAT", category: "Baccarat" },
+    { image: "/games/table/table-1.png", title: "BLACKJACK VIP", category: "Blackjack" },
   ];
 
-  const filteredGames = allGamesDatabase.filter((g) =>
-    g.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const isBrowsingCategory = activeCategory !== "Lobby" && activeCategory !== "all" && activeTab !== "all" && activeTab !== "recent" && activeTab !== "favorites" && activeTab !== "new";
+  const shouldShowGrid = searchQuery !== "" || isBrowsingCategory;
+
+  const filteredGames = allGamesDatabase.filter((g) => {
+    const matchesSearch = g.title.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesCategory = isBrowsingCategory ? g.category === activeCategory : true;
+    return matchesSearch && matchesCategory;
+  });
 
   const providers = [
     { name: "Belatra", games: 226, logo: "/games/providers/g1.png" },
@@ -122,8 +136,7 @@ export default function LobbyModal() {
 
   const handleCategoryClick = (categoryName: string) => {
     dispatch(setActiveCategory(categoryName));
-    dispatch(closeModal("lobby"));
-    toast.success(`Category switched to ${categoryName}`);
+    setActiveTab("" as any); // Clear top tabs selection
   };
 
   const handleGameClick = (game: { title: string; image: string }) => {
@@ -289,13 +302,13 @@ export default function LobbyModal() {
             )}
           </div>
 
-          {searchQuery ? (
+          {shouldShowGrid ? (
             filteredGames.length > 0 ? (
-              /* Search Results */
+              /* Search / Category Results */
               <div className="flex flex-col gap-4 lg:gap-[20px] w-full flex-1 min-h-0">
                 <div className="flex flex-row items-center h-[29px] flex-none">
                   <span className="font-jost font-extrabold text-[18px] lg:text-[20px] leading-[29px] tracking-[0.01em] uppercase text-white select-none">
-                    ALL GAMES
+                    {searchQuery ? "SEARCH RESULTS" : activeCategory.toUpperCase()}
                   </span>
                 </div>
                 <div className="flex-1 overflow-y-auto no-scrollbar min-h-0">

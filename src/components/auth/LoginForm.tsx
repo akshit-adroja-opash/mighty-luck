@@ -64,10 +64,19 @@ export default function LoginForm({ setView }: LoginFormProps) {
       <div className="flex flex-col gap-4 w-full">
 
         {/* Header with Logo */}
-        <div className="flex w-full items-center justify-center gap-1 py-1">
-          <span className="text-lg text-[#FFC83D] leading-none">👑</span>
-          <span className="text-sm font-black uppercase tracking-wide text-white leading-none">
-            MIGHTY <span className="text-[#FFC83D]">LUCK</span>
+        <div className="flex w-full items-center justify-center gap-[6px] py-1">
+          <svg width="22" height="17" viewBox="0 0 26 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-none -mt-0.5">
+            <path d="M2 19H24L21 5L16.5 10L13 2L9.5 10L5 5L2 19Z" fill="url(#crownGradientAuth1)"/>
+            <path d="M14 7L10 13.5H13.5L12 18L16.5 11.5H13L14 7Z" fill="#0C1F56"/>
+            <defs>
+              <linearGradient id="crownGradientAuth1" x1="0" y1="12" x2="26" y2="12" gradientUnits="userSpaceOnUse">
+                <stop offset="0.12" stopColor="#FFD85A"/>
+                <stop offset="0.8668" stopColor="#FFB800"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <span className="text-[14px] font-black uppercase tracking-wide text-white font-jost whitespace-nowrap leading-none mt-0.5">
+            MIGHTY <span style={{ background: "linear-gradient(90deg, #FFD85A 12%, #FFB800 86.68%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>LUCK</span>
           </span>
         </div>
 
@@ -98,7 +107,7 @@ export default function LoginForm({ setView }: LoginFormProps) {
               {...register("email")}
               type="email"
               placeholder="Email Address"
-              className="w-full bg-transparent font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white outline-none placeholder:text-[#A5B8EF]"
+              className="w-full bg-transparent font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white outline-none border-none ring-0 focus:ring-0 placeholder:text-[#A5B8EF]"
             />
           </div>
 
@@ -108,7 +117,7 @@ export default function LoginForm({ setView }: LoginFormProps) {
               {...register("password")}
               type={showPassword ? "text" : "password"}
               placeholder="Password"
-              className="w-full bg-transparent font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white outline-none placeholder:text-[#A5B8EF]"
+              className="w-full bg-transparent font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white outline-none border-none ring-0 focus:ring-0 placeholder:text-[#A5B8EF]"
             />
             <button type="button" onClick={() => setShowPassword(!showPassword)} className="text-[#A5B8EF] hover:text-white transition-colors cursor-pointer flex-none">
               {showPassword ? (
