@@ -143,8 +143,8 @@ export default function PromotionsSection() {
               >
                 {promo.title}
               </h3>
-              <button className="flex items-center justify-center px-[24px] py-[10px] w-[110px] h-[40px] bg-[#FFC83D] hover:bg-[#FFD966] rounded-[8px] transition-colors cursor-pointer">
-                <span className="font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] text-[#1A1404]">
+              <button className="flex flex-row items-center justify-center gap-[10px] px-[24px] py-[10px] min-w-[110px] w-max h-[40px] bg-[#FFC83D] hover:bg-[#FFD966] rounded-[8px] transition-colors cursor-pointer flex-none">
+                <span className="font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] text-[#1A1404] whitespace-nowrap">
                   {promo.cta}
                 </span>
               </button>

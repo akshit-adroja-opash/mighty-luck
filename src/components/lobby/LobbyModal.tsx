@@ -178,11 +178,16 @@ export default function LobbyModal() {
                   if (item.key === "all") dispatch(setActiveCategory("Lobby"));
                   else toast.info(`Showing ${item.label.toLowerCase()}.`);
                 }}
-                className={`flex-none px-3 py-[6px] rounded-[8px] font-manrope text-[11px] font-semibold tracking-[0.02em] transition-all cursor-pointer whitespace-nowrap ${
+                className={`flex-none flex items-center gap-1.5 px-3 py-[6px] rounded-[8px] transition-all cursor-pointer whitespace-nowrap ${
                   activeTab === item.key ? "bg-[#1463FF] text-white" : "bg-[#112F82] text-[#A5B8EF]"
                 }`}
               >
-                {item.label}
+                <div className="flex w-[14px] h-[14px] justify-center items-center">
+                  {navIcons[item.key]}
+                </div>
+                <span className="font-manrope text-[11px] font-semibold tracking-[0.02em]">
+                  {item.label}
+                </span>
               </button>
             ))}
             <button
@@ -205,13 +210,18 @@ export default function LobbyModal() {
                     handleCategoryClick(c.category || c.key);
                     setShowMobileCategories(false);
                   }}
-                  className={`px-3 py-[6px] rounded-[8px] font-manrope text-[11px] font-semibold tracking-[0.02em] transition-all cursor-pointer ${
+                  className={`flex items-center gap-1.5 px-3 py-[6px] rounded-[8px] transition-all cursor-pointer ${
                     activeCategory === (c.category || c.key)
                       ? "bg-[#1463FF] text-white"
                       : "bg-[#0C1F56] text-[#A5B8EF] hover:bg-[#112F82]"
                   }`}
                 >
-                  {c.label}
+                  <div className="flex w-[14px] h-[14px] justify-center items-center">
+                    {catIcons[c.category || c.key]}
+                  </div>
+                  <span className="font-manrope text-[11px] font-semibold tracking-[0.02em] whitespace-nowrap">
+                    {c.label}
+                  </span>
                 </button>
               ))}
             </div>
@@ -249,7 +259,7 @@ export default function LobbyModal() {
         </div>
 
         {/* ── Right Content ── */}
-        <div className="flex flex-col items-start gap-6 lg:gap-[40px] w-full lg:w-[808px] flex-1 lg:flex-none overflow-y-auto lg:overflow-hidden min-h-0 lg:h-[532px]">
+        <div className="flex flex-col items-start gap-6 lg:gap-[40px] w-full flex-1 min-w-0 overflow-y-auto lg:overflow-hidden min-h-0 lg:h-[532px]">
           
           {/* Search bar */}
           <div className={`flex flex-row items-center justify-between rounded-[8px] flex-none transition-all duration-300 w-full ${
