@@ -95,61 +95,58 @@ export default function GamePage() {
     <Container>
       <div className="flex w-full flex-row">
         {/* Sidebar */}
-        <div className="w-[232px] flex-none">
+        <div className="hidden lg:block w-[232px] flex-none">
           <Sidebar />
         </div>
 
-        {/* ── Main column ──
-            Matches Figma: width 1184px, px 24px (inner content 1136px), gap 100px
-        */}
-        <div className="flex w-[1184px] flex-none flex-col items-start gap-[100px] px-[24px]">
+        {/* ── Main column ── */}
+        <div className="flex w-full lg:w-[calc(100%_-_232px)] flex-none flex-col items-start gap-12 lg:gap-[100px] px-0 lg:pl-[24px] lg:pr-0">
 
           {/* ══════════════════════════════
               SECTION 1: Game Block (1067px)
               Contains: Game Window (777px) + Other Games (250px)
               Gap: 40px
           ══════════════════════════════ */}
-          <div className="flex w-[1136px] flex-none flex-col items-start gap-[40px]">
+          <div className="flex w-full max-w-[1136px] flex-none flex-col items-start gap-8 lg:gap-[40px]">
 
             {/* ── Game Preview + Info Bar (gap: 20px) ── */}
-            <div className="flex w-[1136px] flex-none flex-col items-start gap-[20px]">
+            <div className="flex w-full max-w-[1136px] flex-none flex-col items-start gap-[20px]">
 
               {/* Game Preview — 1136 × 657px */}
-              <div className="relative h-[657px] w-[1136px] flex-none overflow-hidden rounded-[16px]">
+              <div className="relative w-full max-w-[1136px] aspect-[1136/657] flex-none overflow-hidden rounded-[16px]">
                 <Image
                   src="/game 1.png"
                   alt={game.title}
                   fill
-                  sizes="1136px"
+                  sizes="(max-width: 1136px) 100vw, 1136px"
                   className="object-cover object-top"
                   priority
                 />
               </div>
 
               {/* Info Bar — 1136 × 100px */}
-              <div className="flex h-[100px] w-[1136px] flex-none flex-row items-center justify-between rounded-[16px] bg-[#0C1F56] px-[30px] py-[12px]">
-                {/* LEFT: provider + divider + title — 295px, gap 32px */}
-                <div className="flex h-[40px] w-[295px] flex-none flex-row items-center gap-[32px]">
-                  {/* Provider logo — 80 × 40px, built from Figma */}
+              <div className="flex h-auto lg:h-[100px] w-full max-w-[1136px] flex-none flex-col lg:flex-row items-center justify-between rounded-[16px] bg-[#0C1F56] p-4 lg:px-[30px] lg:py-[12px] gap-4 lg:gap-0">
+                {/* LEFT: provider + divider + title */}
+                <div className="flex h-auto lg:h-[40px] w-full lg:w-[295px] flex-none flex-row items-center justify-start gap-4 lg:gap-[32px]">
+                  {/* Provider logo */}
                   <BGamingLogo />
 
+                  {/* Divider */}
+                  <div className="hidden lg:block h-[33px] w-px flex-none bg-white/60" />
 
-                  {/* Divider — 1px × 33px */}
-                  <div className="h-[33px] w-px flex-none bg-white/60" />
-
-                  {/* Game title — Jost 700 20px */}
-                  <div className="flex w-[151px] flex-none flex-row items-center justify-center gap-[10px]">
-                    <span className="w-full text-center font-jost text-[20px] font-bold leading-[29px] text-white">
+                  {/* Game title */}
+                  <div className="flex w-auto lg:w-[151px] flex-none flex-row items-center justify-start lg:gap-[10px]">
+                    <span className="w-full text-left font-jost text-[16px] lg:text-[20px] font-bold leading-[29px] text-white">
                       {game.title}
                     </span>
                   </div>
                 </div>
 
                 {/* RIGHT: icons + toggle */}
-                <div className="flex h-[24px] w-auto flex-none flex-row items-center justify-end gap-[40px]">
+                <div className="flex h-auto lg:h-[24px] w-full lg:w-auto flex-none flex-row items-center justify-between lg:justify-end gap-4 lg:gap-[40px]">
 
-                  {/* Icons — 64×20, gap 24 */}
-                  <div className="flex h-[20px] w-[64px] flex-none flex-row items-center gap-[24px]">
+                  {/* Icons */}
+                  <div className="flex h-[20px] w-auto lg:w-[64px] flex-none flex-row items-center gap-[24px]">
                     <button className="relative flex h-[20px] w-[20px] flex-none items-center justify-center cursor-pointer hover:opacity-70 transition-opacity" aria-label="Fullscreen">
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <polyline points="9 5 5 5 5 9" />
@@ -184,7 +181,7 @@ export default function GamePage() {
                       Fun Play
                     </span>
 
-                    {/* Toggle — 42×24, radius 30 */}
+                    {/* Toggle */}
                     <button
                       onClick={() => setIsRealPlay(!isRealPlay)}
                       className={`flex h-[24px] w-[42px] flex-none cursor-pointer flex-row items-start gap-[10px] rounded-[30px] transition-colors duration-200 ${
@@ -203,33 +200,33 @@ export default function GamePage() {
               </div>
             </div>
 
-            {/* ── OTHER GAMES YOU MIGHT LIKE — 1136 × 250px, gap 20px ── */}
-            <div className="flex h-[250px] w-[1136px] flex-none flex-col items-start gap-[20px]">
+            {/* ── OTHER GAMES YOU MIGHT LIKE ── */}
+            <div className="flex h-auto lg:h-[250px] w-full max-w-[1136px] flex-none flex-col items-start gap-[20px]">
 
-              {/* Header — 1136 × 30px */}
-              <div className="flex h-[30px] w-[1136px] flex-none flex-row items-center justify-between">
+              {/* Header */}
+              <div className="flex w-full flex-row flex-wrap items-center justify-between gap-y-4 gap-x-2">
                 {/* Left: icon + title */}
-                <div className="flex h-[30px] flex-none flex-row items-center gap-[12px]">
-                  <div className="relative h-[30px] w-[30px] flex-none">
-                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                <div className="flex w-auto flex-row items-center gap-[12px]">
+                  <div className="relative h-[24px] w-[24px] sm:h-[30px] sm:w-[30px] flex-none">
+                    <svg className="w-full h-full" viewBox="0 0 30 30" fill="none">
                       <path d="M15 1L6 11V19C6 25.5 10.5 29 15 30C19.5 29 24 25.5 24 19V11L15 1Z" fill="#FFBF1F"/>
                     </svg>
                   </div>
-                  <span className="whitespace-nowrap flex-none font-jost text-[20px] font-extrabold leading-[29px] tracking-[0.01em] uppercase text-white">
+                  <h2 className="m-0 font-jost text-[16px] sm:text-[20px] font-extrabold leading-[1.2] sm:leading-[29px] tracking-[0.01em] uppercase text-white">
                     OTHER GAMES YOU MIGHT LIKE
-                  </span>
+                  </h2>
                 </div>
 
                 {/* Right: View all + arrows */}
-                <div className="flex h-[30px] flex-none flex-row items-center gap-[20px]">
+                <div className="flex w-auto h-[30px] flex-none flex-row items-center gap-[20px]">
                   <span className="whitespace-nowrap cursor-pointer font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#D6BBE7] transition-colors hover:text-white">
                     View all
                   </span>
-                  <div className="flex flex-row items-center gap-[8px]">
+                  <div className="flex w-auto h-[30px] flex-row items-center gap-[8px]">
                     <button
                       onClick={scrollLeft}
                       className="flex h-[30px] w-[30px] flex-none cursor-pointer items-center justify-center rounded-[4px] hover:opacity-100 transition-opacity"
-                      style={{ background: "#40105C", opacity: 0.4, transform: "matrix(-1, 0, 0, 1, 0, 0)" }}
+                      style={{ background: "#40105C", opacity: 0.4 }}
                       aria-label="Previous"
                     >
                       <ChevronLeft size={12} color="white" />
@@ -249,11 +246,11 @@ export default function GamePage() {
               {/* Cards row — 1136 × 200px, gap 12px */}
               <div
                 ref={scrollRef}
-                className="flex h-[200px] w-[1136px] flex-none flex-row items-center overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+                className="flex w-full h-[160px] sm:h-[185px] lg:h-[200px] flex-none flex-row items-center overflow-x-auto snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
                 style={{ gap: "12px" }}
               >
                 {otherGames.map((g) => (
-                  <div key={g.id} className="h-[200px] w-[152px] flex-none">
+                  <div key={g.id} className="h-[160px] sm:h-[185px] lg:h-[200px] w-[120px] sm:w-[140px] lg:w-[152px] flex-none">
                     <GameCard
                       image={g.image}
                       title={g.title}

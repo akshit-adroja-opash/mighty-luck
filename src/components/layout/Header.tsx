@@ -122,7 +122,7 @@ export default function Header() {
                   />
                 </button>
                 {isDropdownOpen && (
-                  <div className="absolute right-0 top-[calc(100%+8px)] flex w-48 flex-col overflow-hidden rounded-lg bg-[#112F82] shadow-xl z-50">
+                  <div className="absolute right-0 top-[calc(100%_+_8px)] flex w-48 flex-col overflow-hidden rounded-lg bg-[#112F82] shadow-xl z-50">
                     <div className="px-4 py-3 border-b border-[#173EAD]">
                       <p className="text-sm font-bold text-white truncate">{user?.name || "Player"}</p>
                       <p className="text-xs text-[#BBCAF3] truncate">{user?.email || "player@example.com"}</p>

@@ -3,6 +3,10 @@ import { Jost, Manrope } from "next/font/google";
 import "@/styles/globals.css";
 
 import Header from "@/components/layout/Header";
+import Container from "@/components/layout/Container";
+import Sidebar from "@/components/layout/Sidebar";
+import Footer from "@/components/layout/Footer";
+import CryptoBanner from "@/components/sections/CryptoBanner";
 import StoreProvider from "@/store/StoreProvider";
 import AuthModal from "@/components/auth/AuthModal";
 import WalletModal from "@/components/wallet/WalletModal";
@@ -34,10 +38,27 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${jostFont.variable} ${manropeFont.variable}`}>
-      <body className="antialiased font-sans">
+      <body className="antialiased font-sans bg-[#091741] text-white">
         <StoreProvider>
           <Header />
-          {children}
+          <Container>
+            <div className="flex w-full flex-col lg:flex-row relative">
+              <div className="hidden lg:block w-[232px] flex-none">
+                <Sidebar />
+              </div>
+              <div className="flex w-full lg:w-[calc(100%_-_232px)] flex-none flex-col px-0 lg:pl-6 lg:pr-0 overflow-hidden pb-10">
+                {children}
+                
+                <div className="hidden lg:block w-full max-w-[1136px] mt-10">
+                  <CryptoBanner />
+                </div>
+                
+                <div className="mt-10">
+                  <Footer />
+                </div>
+              </div>
+            </div>
+          </Container>
           <AuthModal />
           <WalletModal />
           <LobbyModal />

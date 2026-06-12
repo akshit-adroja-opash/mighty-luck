@@ -51,7 +51,7 @@ export default function HomePage() {
           <Sidebar />
         </div>
 
-        <div className="flex w-full lg:w-[calc(100%-232px)] flex-none flex-col px-0 lg:pl-6 lg:pr-0">
+        <div className="flex w-full lg:w-[calc(100%_-_232px)] flex-none flex-col px-0 lg:pl-6 lg:pr-0">
           <main className="flex w-full flex-none flex-col gap-4 md:gap-6 lg:gap-10">
             <HeroBanner />
             <DepositBanner />
