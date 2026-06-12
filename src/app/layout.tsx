@@ -7,6 +7,7 @@ import Container from "@/components/layout/Container";
 import Sidebar from "@/components/layout/Sidebar";
 import Footer from "@/components/layout/Footer";
 import CryptoBanner from "@/components/sections/CryptoBanner";
+import SeoContent from "@/components/sections/SeoContent";
 import StoreProvider from "@/store/StoreProvider";
 import AuthModal from "@/components/auth/AuthModal";
 import WalletModal from "@/components/wallet/WalletModal";
@@ -48,6 +49,10 @@ export default function RootLayout({
               </div>
               <div className="flex w-full lg:w-[calc(100%_-_232px)] flex-none flex-col px-0 lg:pl-6 lg:pr-0 overflow-hidden pb-10">
                 {children}
+                
+                <div className="w-full mt-10">
+                  <SeoContent />
+                </div>
                 
                 <div className="hidden lg:block w-full max-w-[1136px] mt-10">
                   <CryptoBanner />

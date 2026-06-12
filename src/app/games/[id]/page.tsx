@@ -3,11 +3,6 @@
 import { useParams, useRouter } from "next/navigation";
 import { useState, useRef } from "react";
 import Image from "next/image";
-import Container from "@/components/layout/Container";
-import Sidebar from "@/components/layout/Sidebar";
-import Footer from "@/components/layout/Footer";
-import SeoContent from "@/components/sections/SeoContent";
-import CryptoBanner from "@/components/sections/CryptoBanner";
 import GameCard from "@/components/ui/GameCard";
 import { Heart, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -92,15 +87,7 @@ export default function GamePage() {
   const scrollRight = () => scrollRef.current?.scrollBy({ left: 328,  behavior: "smooth" });
 
   return (
-    <Container>
-      <div className="flex w-full flex-row">
-        {/* Sidebar */}
-        <div className="hidden lg:block w-[232px] flex-none">
-          <Sidebar />
-        </div>
-
-        {/* ── Main column ── */}
-        <div className="flex w-full lg:w-[calc(100%_-_232px)] flex-none flex-col items-start gap-12 lg:gap-[100px] px-0 lg:pl-[24px] lg:pr-0">
+        <div className="flex w-full flex-none flex-col items-start gap-12 lg:gap-[100px] pt-4 lg:pt-[24px]">
 
           {/* ══════════════════════════════
               SECTION 1: Game Block (1067px)
@@ -261,25 +248,6 @@ export default function GamePage() {
               </div>
             </div>
           </div>
-
-          {/* ══════════════════════════════
-              SECTION 2: SEO Content (708px)
-          ══════════════════════════════ */}
-          <SeoContent />
-
-          {/* ══════════════════════════════
-              SECTION 3: Crypto Banner (100px)
-          ══════════════════════════════ */}
-          <CryptoBanner />
-
-          {/* ══════════════════════════════
-              SECTION 4: Footer (357px)
-              Footer's own mt-[100px] removed;
-              parent gap:100px handles spacing
-          ══════════════════════════════ */}
-          <Footer />
         </div>
-      </div>
-    </Container>
   );
 }

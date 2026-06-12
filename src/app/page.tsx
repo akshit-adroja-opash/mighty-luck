@@ -4,10 +4,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 
-import Container from "@/components/layout/Container";
-import Sidebar from "@/components/layout/Sidebar";
-import Footer from "@/components/layout/Footer";
-
 import HeroBanner from "@/components/sections/HeroBanner";
 import DepositBanner from "@/components/sections/DepositBanner";
 import PromotionsSection from "@/components/sections/PromotionsSection";
@@ -20,8 +16,6 @@ import TableGamesSection from "@/components/sections/TableGamesSection";
 import BonusBuysSection from "@/components/sections/BonusBuysSection";
 import CollectionsSection from "@/components/sections/CollectionsSection";
 import RecentWinners from "@/components/sections/RecentWinners";
-import SeoContent from "@/components/sections/SeoContent";
-import CryptoBanner from "@/components/sections/CryptoBanner";
 
 export default function HomePage() {
   const activeCategory = useSelector((state: RootState) => state.ui.activeCategory);
@@ -45,14 +39,7 @@ export default function HomePage() {
   });
 
   return (
-    <Container>
-      <div className="flex w-full flex-col lg:flex-row relative">
-        <div className="hidden lg:block w-[232px] flex-none">
-          <Sidebar />
-        </div>
-
-        <div className="flex w-full lg:w-[calc(100%_-_232px)] flex-none flex-col px-0 lg:pl-6 lg:pr-0">
-          <main className="flex w-full flex-none flex-col gap-4 md:gap-6 lg:gap-10">
+    <main className="flex w-full flex-none flex-col gap-4 md:gap-6 lg:gap-10">
             <HeroBanner />
             <DepositBanner />
 
@@ -67,12 +54,6 @@ export default function HomePage() {
             ))}
 
             <RecentWinners />  
-            <SeoContent />
-            <CryptoBanner />
-            <Footer />
-          </main>
-        </div>
-      </div>
-    </Container>
+    </main>
   );
 }

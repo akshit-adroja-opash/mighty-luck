@@ -2,9 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Container from "@/components/layout/Container";
-import Sidebar from "@/components/layout/Sidebar";
-import Footer from "@/components/layout/Footer";
 import CryptoBanner from "@/components/sections/CryptoBanner";
 import { Users, Coins, TrendingUp, Check, ChevronDown, Award, HelpCircle, Plus, Minus } from "lucide-react";
 
@@ -17,14 +14,7 @@ export default function ReferAFriendPage() {
   };
 
   return (
-    <Container>
-      <div className="flex w-full flex-col lg:flex-row relative">
-        <div className="hidden lg:block w-[232px] flex-none">
-          <Sidebar />
-        </div>
-
-        <div className="flex w-full lg:w-[calc(100%_-_232px)] flex-none flex-col px-0 lg:pl-6 lg:pr-0 overflow-hidden">
-          <main className="flex w-full flex-none flex-col gap-[40px] pt-[20px]">
+    <main className="flex w-full flex-none flex-col gap-[40px] pt-[20px]">
 
             {/* HERO BANNER SECTION */}
             <section 
@@ -329,50 +319,6 @@ export default function ReferAFriendPage() {
                 </div>
               </div>
             </section>
-
-            {/* Footer / SEO Content */}
-            <section className="relative flex flex-col gap-[24px] w-full max-w-[800px] pt-[40px] pb-[100px] mx-auto mt-[20px] px-4 sm:px-0">
-              <h2 className="font-jost text-[24px] sm:text-[32px] font-bold text-white leading-[120%] tracking-[-0.02em] text-center">
-                Play the Best Crypto Casino Games Online at Mighty Luck — Fast, Fair and Secure
-              </h2>
-              <p className="font-manrope text-[16px] font-medium text-[#D2DCF7] leading-[160%] text-left">
-                Step into a next-generation gaming experience where every spin, bet, and hand is powered by blockchain technology. At Mighty Luck Casino, you can explore more than 9,000 crypto casino games across slots, table games, live dealer games, and crash-style favorites. As one of the top crypto casinos online, Mighty Luck gives players instant withdrawals, enhanced privacy, and a secure gambling environment without the friction of traditional payment methods. Whether you're here to play table games, explore Bitcoin casino games, or try the latest provably fair slots, Mighty Luck delivers one of the most complete online casino experiences available today. Ready to play games and win real crypto? Start playing crypto casino games at Mighty Luck Casino.
-              </p>
-              
-              <h3 className="font-jost text-[24px] font-bold text-white leading-[35px] mt-[16px] text-left">
-                Why Mighty Luck Is the Ultimate Place to Play Crypto Casino Games
-              </h3>
-              <p className="font-manrope text-[16px] font-medium text-[#D2DCF7] leading-[160%] text-left">
-                Mighty Luck Casino offers the perfect blend of crypto gambling convenience, online casino entertainment, and world-class security. Compared to traditional online casinos, Mighty Luck delivers significantly faster payouts, more generous bonuses, and an unmatched selection of various games.
-              </p>
-              
-              <h3 className="font-jost text-[24px] font-bold text-white leading-[35px] mt-[16px] text-left">
-                Massive Game Variety
-              </h3>
-              <p className="font-manrope text-[16px] font-medium text-[#D2DCF7] leading-[160%] text-left">
-                With more than 9,000 casino games, Mighty Luck outshines many crypto casinos and traditional casinos alike. You'll find:
-              </p>
-
-              {/* Gradient Overlay & Read More Button */}
-              <div className="absolute bottom-0 left-0 right-0 h-[200px] flex flex-col justify-end items-center pb-[24px] pt-[10px]" style={{ background: 'linear-gradient(0deg, #091741 0%, rgba(9, 23, 65, 0) 100%)' }}>
-                <button className="flex flex-row items-center gap-[4px] cursor-pointer hover:opacity-80 transition-opacity">
-                  <span className="font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.01em] text-[#FFC83D]">Read more</span>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4 6L8 10L12 6" stroke="#FFC83D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </button>
-              </div>
-            </section>
-
-            {/* Crypto Banner */}
-            <div className="hidden lg:block w-full max-w-[1136px]">
-              <CryptoBanner />
-            </div>
-
-            <Footer />
-          </main>
-        </div>
-      </div>
-    </Container>
+    </main>
   );
 }
