@@ -181,17 +181,19 @@ export default function LobbyModal() {
       <div className="relative flex flex-col lg:flex-row items-start bg-[#091741] rounded-none md:rounded-[16px] lg:rounded-[20px] p-4 md:p-5 lg:p-[24px] gap-4 lg:gap-[20px] w-full max-w-[1056px] h-[100dvh] md:h-auto max-h-[100dvh] md:max-h-[90dvh] lg:max-h-none lg:h-[636px] border-none md:border md:border-white/5 shadow-none md:shadow-2xl select-none animate-in fade-in zoom-in-95 duration-200 overflow-y-auto md:overflow-visible">
         
         {/* Close button */}
+        {/* Close button (Desktop/Tablet) */}
         <button
           onClick={() => dispatch(closeModal("lobby"))}
-          className="absolute top-4 right-4 md:-top-[44px] md:right-0 lg:-right-[44px] lg:top-0 flex w-[32px] h-[32px] items-center justify-center bg-[#112F82] md:bg-transparent rounded-full md:rounded-none text-white hover:text-[#A5B8EF] transition-colors cursor-pointer z-[110]"
+          className="absolute hidden md:flex -top-[44px] right-0 lg:-right-[44px] lg:top-0 w-[32px] h-[32px] items-center justify-center bg-transparent text-white hover:text-[#A5B8EF] transition-colors cursor-pointer z-[110]"
         >
           <CloseIcon />
         </button>
 
         {/* ── MOBILE: Horizontal category tabs ── */}
         <div className="flex lg:hidden flex-col gap-3 w-full flex-none">
-          {/* Nav row */}
-          <div className="flex flex-row gap-2 overflow-x-auto no-scrollbar">
+          {/* Nav row + Close Button */}
+          <div className="flex flex-row items-center gap-2 w-full">
+            <div className="flex flex-row gap-2 overflow-x-auto no-scrollbar flex-1">
             {navItems.map((item) => (
               <button
                 key={item.key}
@@ -219,6 +221,15 @@ export default function LobbyModal() {
               }`}
             >
               Categories ▾
+            </button>
+            </div>
+            
+            {/* Mobile Close Button */}
+            <button
+              onClick={() => dispatch(closeModal("lobby"))}
+              className="flex-none flex w-[32px] h-[32px] items-center justify-center bg-[#112F82] rounded-full text-white hover:bg-[#1463FF] transition-colors cursor-pointer"
+            >
+              <CloseIcon />
             </button>
           </div>
 
