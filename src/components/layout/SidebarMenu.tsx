@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { openModal } from "@/store/slices/uiSlice";
+import { openModal, setActiveCategory } from "@/store/slices/uiSlice";
 
 export const menuItems = [
   {
@@ -136,6 +136,7 @@ export default function SidebarMenu({ onItemClick }: { onItemClick?: () => void 
                       key={subItem.name}
                       onClick={() => {
                         if (subItem.name === "Popular Games" || subItem.name === "All Games") {
+                          dispatch(setActiveCategory("Lobby"));
                           dispatch(openModal("lobby"));
                         }
                         if (onItemClick) onItemClick();

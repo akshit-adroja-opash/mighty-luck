@@ -63,6 +63,15 @@ export default function LobbyModal() {
   const [showMobileCategories, setShowMobileCategories] = useState(false);
   const providersRef = React.useRef<HTMLDivElement>(null);
 
+  React.useEffect(() => {
+    if (isOpen) {
+      setSearchQuery("");
+      if (activeCategory === "Lobby") {
+        setActiveTab("all");
+      }
+    }
+  }, [isOpen, activeCategory]);
+
   const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
     const target = e.currentTarget;
     const maxScroll = target.scrollWidth - target.clientWidth;

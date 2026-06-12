@@ -75,18 +75,18 @@ export default function DepositBanner() {
   }
 
   return (
-    <section className="relative isolate flex h-auto min-h-[80px] w-full flex-none flex-col sm:flex-row items-center justify-between gap-4 overflow-hidden rounded-[16px] bg-[#0C1F56] p-5 sm:px-8 sm:py-0">
+    <section className="relative isolate flex w-full max-w-[1136px] flex-col sm:flex-row items-center justify-between gap-6 sm:gap-[79px] overflow-hidden rounded-[16px] bg-[#0C1F56] p-5 sm:px-[40px] sm:h-[100px] mx-auto">
       
       {/* Background Blur */}
-      <div className="absolute left-1/2 top-[60px] z-0 h-[534px] w-[534px] -translate-x-1/2 rounded-full bg-[#1463FF] blur-[50px]" />
+      <div className="absolute left-1/2 top-[60px] z-[-1] h-[534px] w-[534px] -translate-x-1/2 rounded-full bg-[#1463FF] blur-[50px]" />
 
       {/* Text */}
-      <h2 className="z-[1] flex flex-none items-center text-center font-jost text-base sm:text-[20px] font-extrabold leading-[29px] text-white whitespace-nowrap">
+      <h2 className="z-[1] flex-none text-center font-jost text-[20px] font-extrabold leading-[29px] text-white">
         Want to play? Deposit Now
       </h2>
 
       {/* Crypto Logos */}
-      <div className="z-[2] hidden flex-none items-center justify-center gap-[28px] text-white lg:flex">
+      <div className="z-[2] hidden flex-1 items-center justify-center gap-[28px] text-white lg:flex">
         <Bitcoin size={18} />
         <Gem size={18} />
         <CircleDollarSign size={18} />
@@ -101,8 +101,8 @@ export default function DepositBanner() {
       </div>
 
       {/* Button */}
-      <button className="z-[3] flex h-[44px] flex-none flex-row items-center justify-center gap-[10px] rounded-[8px] bg-[#FFC83D] px-[30px] py-[10px] transition-colors hover:bg-yellow-400">
-        <span className="flex-none whitespace-nowrap text-center font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-[#1A1404]">
+      <button className="z-[3] flex h-[40px] w-[148px] flex-none items-center justify-center rounded-[8px] bg-[#FFC83D] transition-colors hover:bg-yellow-400">
+        <span className="font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-[#1A1404]">
           Deposit Now
         </span>
       </button>
