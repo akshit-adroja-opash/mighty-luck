@@ -14,7 +14,7 @@ import {
 
 export default function CryptoBanner() {
   return (
-    <div className="relative flex h-[100px] w-full items-center justify-between overflow-hidden border-b border-[#112F82] px-[40px]">
+    <div className="relative flex h-[80px] sm:h-[100px] w-full items-center justify-between overflow-hidden border-b border-[#112F82] px-4 sm:px-10">
       
       {/* Background Blur Overlay */}
       <div className="absolute left-[calc(50%-195px)] top-[77px] z-0 h-[390px] w-[390px] rounded-full bg-[#1463FF] blur-[50px]" />

@@ -27,6 +27,7 @@ body {
   background-color: #091741;
   color: var(--color-text-primary);
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 * {
@@ -37,7 +38,19 @@ body {
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Fix Browser Autofill styling */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px #112F82 inset !important;
+  box-shadow: 0 0 0px 1000px #112F82 inset !important;
+  -webkit-text-fill-color: var(--color-text-primary) !important;
+  caret-color: white !important;
 }

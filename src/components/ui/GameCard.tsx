@@ -15,7 +15,7 @@ export default function GameCard({
   return (
     <div 
       onClick={onClick}
-      className="group relative w-[152px] h-[200px] cursor-pointer overflow-hidden rounded-[12px]"
+      className="group relative w-[120px] sm:w-[140px] lg:w-[152px] h-[160px] sm:h-[185px] lg:h-[200px] cursor-pointer overflow-hidden rounded-[12px]"
     >
 
       {/* Image Container matches full card size */}

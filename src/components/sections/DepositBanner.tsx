@@ -49,7 +49,7 @@ export default function DepositBanner() {
             <button
               key={category.name}
               onClick={() => dispatch(setActiveCategory(category.name))}
-              className={`flex h-full flex-1 min-w-[135px] items-center justify-center gap-2 rounded-[6px] px-4 py-2.5 transition-colors cursor-pointer ${
+              className={`flex h-full flex-1 min-w-[110px] sm:min-w-[135px] items-center justify-center gap-2 rounded-[6px] px-3 sm:px-4 py-2.5 transition-colors cursor-pointer ${
                 isActive
                   ? "bg-[#1463FF]"
                   : "bg-[#0C1F56] hover:bg-[#112F82]"
@@ -75,18 +75,18 @@ export default function DepositBanner() {
   }
 
   return (
-    <section className="relative isolate flex h-[100px] w-[1136px] flex-none flex-row items-center justify-between overflow-hidden rounded-[16px] bg-[#0C1F56] px-[40px]">
+    <section className="relative isolate flex h-auto min-h-[80px] w-full flex-none flex-col sm:flex-row items-center justify-between gap-4 overflow-hidden rounded-[16px] bg-[#0C1F56] p-5 sm:px-8 sm:py-0">
       
       {/* Background Blur */}
       <div className="absolute left-1/2 top-[60px] z-0 h-[534px] w-[534px] -translate-x-1/2 rounded-full bg-[#1463FF] blur-[50px]" />
 
       {/* Text */}
-      <h2 className="z-[1] flex h-[29px] w-[263px] flex-none items-center text-center font-jost text-[20px] font-extrabold leading-[29px] text-white">
+      <h2 className="z-[1] flex flex-none items-center text-center font-jost text-base sm:text-[20px] font-extrabold leading-[29px] text-white whitespace-nowrap">
         Want to play? Deposit Now
       </h2>
 
-      {/* Crypto Logos (Placeholders) */}
-      <div className="z-[2] hidden h-[19.05px] w-[461.68px] flex-none items-center justify-center gap-[28px] text-white lg:flex">
+      {/* Crypto Logos */}
+      <div className="z-[2] hidden flex-none items-center justify-center gap-[28px] text-white lg:flex">
         <Bitcoin size={18} />
         <Gem size={18} />
         <CircleDollarSign size={18} />
@@ -101,8 +101,8 @@ export default function DepositBanner() {
       </div>
 
       {/* Button */}
-      <button className="z-[3] flex h-[40px] w-[148px] flex-none flex-row items-center justify-center gap-[10px] rounded-[8px] bg-[#FFC83D] px-[30px] py-[10px] transition-colors hover:bg-yellow-400">
-        <span className="h-[19px] w-[88px] flex-none whitespace-nowrap text-center font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-[#1A1404]">
+      <button className="z-[3] flex h-[44px] flex-none flex-row items-center justify-center gap-[10px] rounded-[8px] bg-[#FFC83D] px-[30px] py-[10px] transition-colors hover:bg-yellow-400">
+        <span className="flex-none whitespace-nowrap text-center font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-[#1A1404]">
           Deposit Now
         </span>
       </button>

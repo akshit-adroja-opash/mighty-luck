@@ -2,6 +2,7 @@
 
 import React, { useRef } from "react";
 import SectionHeader from "@/components/ui/SectionHeader";
+import { useScrollState } from "@/hooks/useScrollState";
 
 interface ProviderCardProps {
   name: string;
@@ -39,16 +40,14 @@ function ProviderCard({ name, games, logo }: ProviderCardProps) {
 
 /* Providers list — matches Figma order */
 const providers = [
-  { name: "Belatra",        games: 226 },
-  { name: "BGaming",        games: 226 },
-  { name: "TaDa Gaming",    games: 226 },
-  { name: "Endorphina",     games: 226 },
-  { name: "Nolimit City",   games: 226 },
-  { name: "Hacksaw Gaming", games: 226 },
-  { name: "Booming Games",  games: 226 },
-  { name: "Relax Gaming",   games: 226 },
-  { name: "Push Gaming",    games: 226 },
-  { name: "Pragmatic Play", games: 226 },
+  { name: "Belatra",        games: 226, logo: "/games/providers/g1.png" },
+  { name: "BGaming",        games: 226, logo: "/games/providers/g2.png" },
+  { name: "TaDa Gaming",    games: 226, logo: "/games/providers/g3.png" },
+  { name: "Endorphina",     games: 226, logo: "/games/providers/g4.png" },
+  { name: "Nolimit City",   games: 226, logo: "/games/providers/g5.png" },
+  { name: "Hacksaw Gaming", games: 226, logo: "/games/providers/g6.png" },
+  { name: "Booming Games",  games: 226, logo: "/games/providers/g7.png" },
+  { name: "BGaming",        games: 226, logo: "/games/providers/g2.png" },
 ];
 
 /* Extend to 20 items for the scroll row */
@@ -56,6 +55,8 @@ const topProviders = Array.from({ length: 20 }, (_, i) => providers[i % provider
 
 export default function ProvidersSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  const { canScrollLeft, canScrollRight, checkScroll } = useScrollState(scrollRef);
 
   const scrollLeft = () => {
     if (scrollRef.current) {
@@ -70,8 +71,8 @@ export default function ProvidersSection() {
   };
 
   return (
-    /* Section: w-[1136px] h-[150px] flex-col gap-[20px] overflow-hidden */
-    <section className="flex h-[150px] w-[1136px] flex-none flex-col items-start gap-[20px] overflow-hidden">
+    /* Section: w-full max-w-[1136px] h-[150px] flex-col gap-[20px] overflow-hidden */
+    <section className="flex w-full flex-none flex-col items-start gap-5 overflow-hidden">
 
       {/* Header: titleWidth=237px to match "GAME PROVIDERS (34)" = 237px */}
       <SectionHeader
@@ -86,18 +87,22 @@ export default function ProvidersSection() {
         }
         onPrev={scrollLeft}
         onNext={scrollRight}
+        canScrollLeft={canScrollLeft}
+        canScrollRight={canScrollRight}
       />
 
-      {/* Card row: w-[1300px] h-[100px] flex-row gap-[12px] */}
+      {/* Card row: w-full h-[100px] flex-row gap-[12px] */}
       <div
         ref={scrollRef}
-        className="flex h-[100px] w-[1300px] flex-none flex-row gap-[12px] overflow-x-auto snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+        onScroll={checkScroll}
+        className="flex h-[100px] w-full flex-none flex-row gap-[12px] overflow-x-auto snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
       >
         {topProviders.map((provider, index) => (
           <div key={index} className="flex-none snap-start">
             <ProviderCard
               name={provider.name}
               games={provider.games}
+              logo={provider.logo}
             />
           </div>
         ))}

@@ -3,11 +3,13 @@
 import { useRef } from "react";
 import GameCard from "@/components/ui/GameCard";
 import SectionHeader from "@/components/ui/SectionHeader";
+import { useScrollState } from "@/hooks/useScrollState";
 
 const crashGames = Array.from({ length: 20 }, (_, i) => `/games/crash/crash-${(i % 8) + 1}.png`);
 
 export default function CrashGamesSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const { canScrollLeft, canScrollRight, checkScroll } = useScrollState(scrollRef);
 
   const scrollLeft = () => {
     if (scrollRef.current) {
@@ -22,17 +24,21 @@ export default function CrashGamesSection() {
   };
 
   return (
-    <section className="flex w-[1136px] flex-none flex-col gap-[20px] overflow-hidden">
+    <section className="flex w-full flex-none flex-col gap-5 overflow-hidden">
       <SectionHeader 
         title="CRASH GAMES (723)" 
         icon={<span className="text-xl">🚀</span>} 
+        iconBg="bg-[#FFC83D]"
+        canScrollLeft={canScrollLeft}
+        canScrollRight={canScrollRight}
         onPrev={scrollLeft}
         onNext={scrollRight}
       />
 
       <div 
         ref={scrollRef}
-        className="flex w-[1300px] gap-[12px] overflow-x-auto snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+        onScroll={checkScroll}
+        className="flex w-full gap-[12px] overflow-x-auto snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
       >
         {crashGames.map((image, index) => (
           <div key={index} className="flex-none snap-start">

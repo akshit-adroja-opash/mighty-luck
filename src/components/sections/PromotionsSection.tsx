@@ -51,10 +51,10 @@ export default function PromotionsSection() {
   };
 
   return (
-    <div className="flex flex-col items-flex-start gap-[20px] w-[1136px] flex-none">
+    <div className="flex flex-col items-flex-start gap-5 w-full flex-none">
 
       {/* Section Header Row */}
-      <div className="flex flex-row justify-between items-center w-[1136px] h-[30px] flex-none">
+      <div className="flex flex-row justify-between items-center w-full h-[30px] flex-none pr-[20px] md:pr-0">
 
         {/* Title */}
         <div className="flex flex-row items-center gap-[12px] h-[30px]">
@@ -104,12 +104,12 @@ export default function PromotionsSection() {
       <div
         ref={scrollRef}
         onScroll={handleScroll}
-        className="flex flex-row items-center gap-[12px] w-[1136px] h-[220px] flex-none overflow-x-auto scrollbar-none"
+        className="flex flex-row items-center gap-3 w-full h-[220px] flex-none overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
       >
         {promos.map((promo) => (
           <div
             key={promo.id}
-            className="relative w-[560px] h-[220px] rounded-[16px] flex-none overflow-hidden"
+            className="relative w-[85vw] sm:w-[400px] md:w-[560px] h-[220px] rounded-[16px] flex-none overflow-hidden"
           >
             {/* Background image */}
             <div

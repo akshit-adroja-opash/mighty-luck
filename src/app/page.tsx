@@ -46,13 +46,13 @@ export default function HomePage() {
 
   return (
     <Container>
-      <div className="flex w-full flex-row">
-        <div className="w-[232px] flex-none">
+      <div className="flex w-full flex-col lg:flex-row relative">
+        <div className="hidden lg:block w-[232px] flex-none">
           <Sidebar />
         </div>
 
-        <div className="flex w-[1184px] flex-none flex-col px-[24px]">
-          <main className="flex w-[1136px] flex-none flex-col gap-[40px]">
+        <div className="flex w-full lg:w-[calc(100%-232px)] flex-none flex-col px-0 lg:pl-6 lg:pr-0">
+          <main className="flex w-full flex-none flex-col gap-4 md:gap-6 lg:gap-10">
             <HeroBanner />
             <DepositBanner />
 

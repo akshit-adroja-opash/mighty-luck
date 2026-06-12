@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { useRouter } from "next/navigation";
 import GameCard from "@/components/ui/GameCard";
 import SectionHeader from "@/components/ui/SectionHeader";
+import { useScrollState } from "@/hooks/useScrollState";
 
 const baseOriginals = [
   { id: "original-1", title: "Alien Aliens",    image: "/games/original/original-1.png" },
@@ -23,6 +24,7 @@ const originals = Array.from({ length: 14 }, (_, i) => ({
 
 export default function OriginalsSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const { canScrollLeft, canScrollRight, checkScroll } = useScrollState(scrollRef);
   const router = useRouter();
 
   const scrollLeft = () => {
@@ -34,17 +36,21 @@ export default function OriginalsSection() {
   };
 
   return (
-    <section className="flex w-[1136px] flex-none flex-col gap-[20px] overflow-hidden">
+    <section className="flex w-full flex-none flex-col gap-5 overflow-hidden">
       <SectionHeader
         title="ORIGINALS (14)"
         icon={<span className="text-xl">👑</span>}
+        iconBg="bg-[#FFC83D]"
         onPrev={scrollLeft}
         onNext={scrollRight}
+        canScrollLeft={canScrollLeft}
+        canScrollRight={canScrollRight}
       />
 
       <div
         ref={scrollRef}
-        className="flex w-[1300px] gap-[12px] overflow-x-auto snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+        onScroll={checkScroll}
+        className="flex w-full gap-[12px] overflow-x-auto snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
       >
         {originals.map((game) => (
           <div key={game.uid} className="flex-none snap-start">

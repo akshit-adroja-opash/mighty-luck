@@ -12,7 +12,7 @@ export default function AuthModal() {
   const dispatch = useDispatch();
   const isOpen = useSelector((state: RootState) => state.ui.modals["auth"]);
   const modalView = useSelector((state: RootState) => state.ui.authModalView);
-  
+
   const [view, setView] = useState<"login" | "register">("register");
 
   useEffect(() => {
@@ -22,11 +22,11 @@ export default function AuthModal() {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-[#0C1733]/70 backdrop-blur-[8px]">
-      
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-[#0C1733]/70 backdrop-blur-[8px] p-4">
+
       {/* Modal Container */}
-      <div className="relative flex w-[730px] h-[546px] rounded-[16px] shadow-2xl bg-[#091741] overflow-hidden">
-        
+      <div className="relative flex w-full max-w-[400px] md:max-w-none sm:w-auto flex-col md:flex-row rounded-[16px] shadow-2xl bg-[#091741] overflow-hidden max-h-[90dvh] overflow-y-auto sm:overflow-visible">
+
         {/* Close Button */}
         <button
           onClick={() => dispatch(closeModal("auth"))}
@@ -35,127 +35,57 @@ export default function AuthModal() {
           <X size={16} />
         </button>
 
-        {/* Left Column - Promo */}
-        <div className="relative flex h-[546px] w-[340px] flex-col items-center overflow-hidden rounded-l-[16px] bg-[#000C24] flex-none">
-          {/* Background Image - exact position */}
-          <div 
+        {/* Left Column - Promo (hidden on mobile) */}
+        <div className="hidden md:flex relative h-[546px] w-[340px] flex-col items-center overflow-hidden rounded-l-[16px] bg-[#000C24] flex-none">
+          <div
             className="absolute bg-cover bg-center"
-            style={{ 
+            style={{
               backgroundImage: "url('/games/lion.png')",
-              width: "343px",
-              height: "483px",
-              left: "-3px",
-              top: "-29px"
+              width: "343px", height: "483px", left: "-3px", top: "-29px"
             }}
           />
-
-          {/* Bottom Gradient Overlay */}
-          <div 
+          <div
             className="absolute"
             style={{
-              width: "340px",
-              height: "219px",
-              left: "0px",
-              top: "327px",
+              width: "340px", height: "219px", left: "0px", top: "327px",
               background: "linear-gradient(180deg, rgba(0, 12, 36, 0) 6.85%, #000C24 45.66%)"
             }}
           />
-
-          {/* Glowing Blue Blur */}
-          <div 
+          <div
             className="absolute rounded-full bg-[#1463FF]"
-            style={{
-              width: "173px",
-              height: "173px",
-              left: "calc(50% - 173px/2 - 0.5px)",
-              bottom: "-129px",
-              filter: "blur(40px)"
-            }}
+            style={{ width: "173px", height: "173px", left: "calc(50% - 173px/2 - 0.5px)", bottom: "-129px", filter: "blur(40px)" }}
           />
-
-          {/* Content Area */}
-          <div 
-            className="absolute flex flex-col items-center gap-[20px]"
-            style={{
-              width: "300px",
-              height: "160px",
-              left: "calc(50% - 300px/2)",
-              top: "359px"
-            }}
+          <div
+            className="absolute flex flex-col items-center gap-5"
+            style={{ width: "300px", height: "160px", left: "calc(50% - 300px/2)", top: "359px" }}
           >
-            {/* 350% and Welcome Package Pill */}
             <div className="flex flex-col items-center w-[167px] h-[112px]">
-              <div 
-                className="font-jost font-extrabold text-[#FFFFFF] text-center"
-                style={{
-                  width: "156px",
-                  height: "75px",
-                  fontSize: "52px",
-                  lineHeight: "75px",
-                  letterSpacing: "0.01em"
-                }}
-              >
+              <div className="font-jost font-extrabold text-white text-center" style={{ fontSize: "52px", lineHeight: "75px", letterSpacing: "0.01em" }}>
                 350%
               </div>
-              
-              <div 
-                className="flex items-center justify-center bg-[#FFC83D] rounded-[100px]"
-                style={{
-                  width: "167px",
-                  height: "37px",
-                  padding: "10px 20px"
-                }}
-              >
-                <span 
-                  className="font-jost font-extrabold text-[#1A1404] text-center"
-                  style={{
-                    fontSize: "12px",
-                    lineHeight: "17px"
-                  }}
-                >
+              <div className="flex items-center justify-center bg-[#FFC83D] rounded-[100px]" style={{ width: "167px", height: "37px", padding: "10px 20px" }}>
+                <span className="font-jost font-extrabold text-[#1A1404] text-center" style={{ fontSize: "12px", lineHeight: "17px" }}>
                   WELCOME PACKAGE
                 </span>
               </div>
             </div>
-
-            {/* Subtitle */}
-            <p 
-              className="font-manrope font-bold text-[#FFFFFF] text-center"
-              style={{
-                width: "200px",
-                height: "28px",
-                fontSize: "10px",
-                lineHeight: "14px",
-                letterSpacing: "0.01em"
-              }}
-            >
+            <p className="font-manrope font-bold text-white text-center" style={{ fontSize: "10px", lineHeight: "14px", letterSpacing: "0.01em" }}>
               Boost your deposits with 350% in Bonus and 200 Free Spins
             </p>
           </div>
         </div>
 
         {/* Right Column - Forms */}
-        <div className="relative flex h-[546px] w-[390px] flex-col items-start overflow-hidden rounded-r-[16px] bg-[#091741] flex-none">
-          
-          {/* Top Blue Glow */}
-          <div 
+        <div className="relative flex w-full md:w-[390px] md:h-[546px] flex-col items-start overflow-hidden rounded-r-[16px] bg-[#091741] flex-none">
+          <div
             className="absolute rounded-full bg-[#1463FF]"
-            style={{
-              width: "173px",
-              height: "173px",
-              left: "calc(50% - 173px/2 - 0.5px)",
-              top: "-145px",
-              filter: "blur(40px)",
-              opacity: 0.8
-            }}
+            style={{ width: "173px", height: "173px", left: "calc(50% - 173px/2 - 0.5px)", top: "-145px", filter: "blur(40px)", opacity: 0.8 }}
           />
-
           {view === "login" ? (
             <LoginForm setView={setView} />
           ) : (
             <RegisterForm setView={setView} />
           )}
-
         </div>
 
       </div>

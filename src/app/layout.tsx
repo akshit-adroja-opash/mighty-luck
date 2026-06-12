@@ -42,7 +42,13 @@ export default function RootLayout({
           <WalletModal />
           <LobbyModal />
           <GamePlayModal />
-          <Toaster richColors position="top-right" />
+          <Toaster 
+            richColors 
+            position="top-right" 
+            toastOptions={{
+              style: { width: 'auto', minWidth: 'fit-content', paddingRight: '20px' }
+            }}
+          />
         </StoreProvider>
       </body>
     </html>
