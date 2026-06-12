@@ -22,10 +22,9 @@ export default function AuthModal() {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex flex-col md:flex-row items-center justify-center bg-[#091741] md:bg-[#0C1733]/70 md:backdrop-blur-[8px] p-0 md:p-4 overflow-y-auto md:overflow-hidden">
-
+    <div className="fixed inset-0 w-full h-full min-h-screen bg-[#0C1733]/70 backdrop-blur-[8px] flex items-center justify-center z-[100] mx-auto md:overflow-y-auto py-0 md:py-8">
       {/* Modal Container */}
-      <div className="relative flex w-full min-h-[100dvh] md:min-h-0 md:h-auto md:w-auto max-w-none md:max-w-[800px] lg:max-w-none flex-col md:flex-row rounded-none md:rounded-[16px] shadow-none md:shadow-2xl bg-[#091741] overflow-hidden md:max-h-[90dvh] md:overflow-visible">
+      <div className="relative w-full md:w-[95%] max-w-none md:max-w-[730px] h-[100dvh] md:h-auto md:min-h-[546px] rounded-none md:rounded-[16px] flex flex-row shadow-none md:shadow-2xl shrink-0 overflow-hidden md:my-auto">
 
         {/* Close Button */}
         <button
@@ -76,7 +75,7 @@ export default function AuthModal() {
         </div>
 
         {/* Right Column - Forms */}
-        <div className="relative flex w-full flex-1 md:flex-none md:w-[390px] md:h-[546px] flex-col items-start overflow-hidden rounded-none md:rounded-r-[16px] bg-[#091741]">
+        <div className="relative w-full md:w-[390px] h-full md:h-auto min-h-[100dvh] md:min-h-full bg-[#091741] rounded-none md:rounded-l-none md:rounded-r-[16px] flex flex-col items-center md:items-start px-0 md:px-[20px] py-[40px] md:py-[24px] shrink-0 overflow-y-auto md:overflow-hidden">
           <div
             className="absolute rounded-full bg-[#1463FF]"
             style={{ width: "173px", height: "173px", left: "calc(50% - 173px/2 - 0.5px)", top: "-145px", filter: "blur(40px)", opacity: 0.8 }}

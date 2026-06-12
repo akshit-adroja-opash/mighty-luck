@@ -58,10 +58,10 @@ export default function LoginForm({ setView }: LoginFormProps) {
   return (
     <form
       onSubmit={handleSubmit(onSubmit, onError)}
-      className="relative z-10 flex w-full flex-col justify-start md:justify-between p-5 gap-8 md:gap-4 min-h-0 md:min-h-[400px] h-auto md:h-[546px] pt-16 md:pt-5"
+      className="relative z-10 flex w-full max-w-[350px] mx-auto md:mx-0 flex-col items-center md:items-start gap-[16px] mt-[10px] md:mt-0"
     >
       {/* Top Container */}
-      <div className="flex flex-col gap-4 w-full">
+      <div className="flex flex-col gap-[16px] w-full">
 
         {/* Header with Logo */}
         <div className="flex w-full items-center justify-center gap-[6px] py-1">
@@ -143,7 +143,7 @@ export default function LoginForm({ setView }: LoginFormProps) {
       </div>
 
       {/* Bottom Container */}
-      <div className="flex flex-col gap-3 w-full mt-4 md:mt-auto">
+      <div className="flex flex-col items-center md:items-start gap-[12px] w-full mt-[16px]">
         <button
           type="submit"
           disabled={isLoading}
