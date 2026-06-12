@@ -175,15 +175,15 @@ export default function LobbyModal() {
   return (
     <div
       onClick={handleBackdropClick}
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-[#091741] sm:bg-black/60 sm:backdrop-blur-sm p-0 sm:p-4"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-[#091741] md:bg-black/60 md:backdrop-blur-sm p-0 md:p-4"
     >
       {/* Modal Container */}
-      <div className="relative flex flex-col lg:flex-row items-start bg-[#091741] rounded-none sm:rounded-[16px] lg:rounded-[20px] p-4 sm:p-5 lg:p-[24px] gap-4 lg:gap-[20px] w-full max-w-[1056px] h-[100dvh] sm:h-auto max-h-[100dvh] sm:max-h-[90dvh] lg:max-h-none lg:h-[636px] border-none sm:border sm:border-white/5 shadow-none sm:shadow-2xl select-none animate-in fade-in zoom-in-95 duration-200 overflow-y-auto sm:overflow-visible">
+      <div className="relative flex flex-col lg:flex-row items-start bg-[#091741] rounded-none md:rounded-[16px] lg:rounded-[20px] p-4 md:p-5 lg:p-[24px] gap-4 lg:gap-[20px] w-full max-w-[1056px] h-[100dvh] md:h-auto max-h-[100dvh] md:max-h-[90dvh] lg:max-h-none lg:h-[636px] border-none md:border md:border-white/5 shadow-none md:shadow-2xl select-none animate-in fade-in zoom-in-95 duration-200 overflow-y-auto md:overflow-visible">
         
         {/* Close button */}
         <button
           onClick={() => dispatch(closeModal("lobby"))}
-          className="absolute top-4 right-4 sm:-top-[44px] sm:right-0 lg:-right-[44px] lg:top-0 flex w-[32px] h-[32px] items-center justify-center bg-[#112F82] sm:bg-transparent rounded-full sm:rounded-none text-white hover:text-[#A5B8EF] transition-colors cursor-pointer z-[110]"
+          className="absolute top-4 right-4 md:-top-[44px] md:right-0 lg:-right-[44px] lg:top-0 flex w-[32px] h-[32px] items-center justify-center bg-[#112F82] md:bg-transparent rounded-full md:rounded-none text-white hover:text-[#A5B8EF] transition-colors cursor-pointer z-[110]"
         >
           <CloseIcon />
         </button>

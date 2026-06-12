@@ -62,7 +62,7 @@ export default function RegisterForm({ setView }: RegisterFormProps) {
   return (
     <form
       onSubmit={handleSubmit(onSubmit, onError)}
-      className="relative z-10 flex w-full flex-1 sm:flex-none flex-col justify-between p-5 gap-4 min-h-[400px] md:h-[546px]"
+      className="relative z-10 flex w-full flex-col justify-start md:justify-between p-5 gap-8 md:gap-4 min-h-0 md:min-h-[400px] h-auto md:h-[546px] pt-16 md:pt-5"
     >
       {/* Top Container */}
       <div className="flex flex-col gap-4 w-full">
@@ -171,7 +171,7 @@ export default function RegisterForm({ setView }: RegisterFormProps) {
       </div>
 
       {/* Bottom Container */}
-      <div className="flex flex-col gap-3 w-full mt-auto">
+      <div className="flex flex-col gap-3 w-full mt-4 md:mt-auto">
         <button
           type="submit"
           disabled={isLoading}
