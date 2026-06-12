@@ -175,15 +175,15 @@ export default function LobbyModal() {
   return (
     <div
       onClick={handleBackdropClick}
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-3 sm:p-4"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-[#091741] sm:bg-black/60 sm:backdrop-blur-sm p-0 sm:p-4"
     >
       {/* Modal Container */}
-      <div className="relative flex flex-col lg:flex-row items-start bg-[#091741] rounded-[16px] lg:rounded-[20px] p-4 sm:p-5 lg:p-[24px] gap-4 lg:gap-[20px] w-full max-w-[1056px] max-h-[90dvh] lg:max-h-none lg:h-[636px] border border-white/5 shadow-2xl select-none animate-in fade-in zoom-in-95 duration-200">
+      <div className="relative flex flex-col lg:flex-row items-start bg-[#091741] rounded-none sm:rounded-[16px] lg:rounded-[20px] p-4 sm:p-5 lg:p-[24px] gap-4 lg:gap-[20px] w-full max-w-[1056px] h-[100dvh] sm:h-auto max-h-[100dvh] sm:max-h-[90dvh] lg:max-h-none lg:h-[636px] border-none sm:border sm:border-white/5 shadow-none sm:shadow-2xl select-none animate-in fade-in zoom-in-95 duration-200 overflow-y-auto sm:overflow-visible">
         
         {/* Close button */}
         <button
           onClick={() => dispatch(closeModal("lobby"))}
-          className="absolute -top-[44px] right-0 lg:-right-[44px] lg:top-0 flex w-[32px] h-[32px] items-center justify-center bg-transparent text-white hover:text-[#A5B8EF] transition-colors cursor-pointer z-[110]"
+          className="absolute top-4 right-4 sm:-top-[44px] sm:right-0 lg:-right-[44px] lg:top-0 flex w-[32px] h-[32px] items-center justify-center bg-[#112F82] sm:bg-transparent rounded-full sm:rounded-none text-white hover:text-[#A5B8EF] transition-colors cursor-pointer z-[110]"
         >
           <CloseIcon />
         </button>

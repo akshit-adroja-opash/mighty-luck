@@ -58,7 +58,7 @@ export default function LoginForm({ setView }: LoginFormProps) {
   return (
     <form
       onSubmit={handleSubmit(onSubmit, onError)}
-      className="relative z-10 flex w-full flex-col justify-between p-5 gap-4 min-h-[400px] md:h-[546px]"
+      className="relative z-10 flex w-full flex-1 sm:flex-none flex-col justify-between p-5 gap-4 min-h-[400px] md:h-[546px]"
     >
       {/* Top Container */}
       <div className="flex flex-col gap-4 w-full">
