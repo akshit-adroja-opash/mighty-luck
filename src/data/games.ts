@@ -7,4 +7,3 @@ export const slots = [
   { id: 6, title: "Wild Safari", image: "/games/slots/slot-6.png" },
   { id: 7, title: "Mystic Dragon", image: "/games/slots/slot-7.png" },
 ];
-// test
