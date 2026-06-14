@@ -4,22 +4,6 @@ import { useRef } from "react";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { useScrollState } from "@/hooks/useScrollState";
 
-const CollectionsIcon = () => (
-  <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-    {/* Inner/middle hollow circle */}
-    <circle cx="15" cy="15" r="5.625" stroke="#FFC83D" strokeWidth="3.75" />
-    {/* 8 rays around it */}
-    <path d="M15 0L17.25 4.5H12.75L15 0Z" fill="#FFC83D" />
-    <path d="M15 30L12.75 25.5H17.25L15 30Z" fill="#FFC83D" />
-    <path d="M0 15L4.5 12.75V17.25L0 15Z" fill="#FFC83D" />
-    <path d="M30 15L25.5 17.25V12.75L30 15Z" fill="#FFC83D" />
-    
-    <path d="M4.39 4.39L8.27 6.39L6.39 8.27L4.39 4.39Z" fill="#FFC83D" />
-    <path d="M25.61 25.61L21.73 23.61L23.61 21.73L25.61 25.61Z" fill="#FFC83D" />
-    <path d="M4.39 25.61L6.39 21.73L8.27 23.61L4.39 25.61Z" fill="#FFC83D" />
-    <path d="M25.61 4.39L23.61 8.27L21.73 6.39L25.61 4.39Z" fill="#FFC83D" />
-  </svg>
-);
 
 interface CollectionItem {
   name: string;
@@ -107,8 +91,8 @@ export default function CollectionsSection() {
       <SectionHeader 
         title="COLLECTIONS (17)" 
         titleWidth="189px"
-        icon={<CollectionsIcon />} 
-        iconBg="bg-[#FFC83D]"
+        icon={<img src="/games/game-icons/collections.svg" alt="Collections" className="w-[20px] h-[20px]" />} 
+        iconBg="bg-transparent"
         onPrev={scrollLeft}
         onNext={scrollRight}
         canScrollLeft={canScrollLeft}

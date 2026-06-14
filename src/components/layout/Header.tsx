@@ -53,12 +53,12 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex h-[34.66px] items-center gap-2 cursor-pointer flex-none">
             <svg width="34" height="26" viewBox="0 0 26 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-none -mt-1">
-              <path d="M2 19H24L21 5L16.5 10L13 2L9.5 10L5 5L2 19Z" fill="url(#crownGradient)"/>
-              <path d="M14 7L10 13.5H13.5L12 18L16.5 11.5H13L14 7Z" fill="#0C1F56"/>
+              <path d="M2 19H24L21 5L16.5 10L13 2L9.5 10L5 5L2 19Z" fill="url(#crownGradient)" />
+              <path d="M14 7L10 13.5H13.5L12 18L16.5 11.5H13L14 7Z" fill="#0C1F56" />
               <defs>
                 <linearGradient id="crownGradient" x1="0" y1="12" x2="26" y2="12" gradientUnits="userSpaceOnUse">
-                  <stop offset="0.12" stopColor="#FFD85A"/>
-                  <stop offset="0.8668" stopColor="#FFB800"/>
+                  <stop offset="0.12" stopColor="#FFD85A" />
+                  <stop offset="0.8668" stopColor="#FFB800" />
                 </linearGradient>
               </defs>
             </svg>
@@ -147,7 +147,7 @@ export default function Header() {
               </button>
               <button
                 onClick={() => { dispatch(setAuthModalView("register")); dispatch(openModal("auth")); }}
-                className="flex h-[40px] min-w-[44px] sm:w-[90px] items-center justify-center gap-[10px] rounded-[8px] bg-[#FFC83D] px-3 sm:px-[30px] py-[10px] font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-[#1A1404] transition-colors hover:bg-yellow-400 cursor-pointer"
+                className="flex h-[40px] min-w-[44px] sm:w-[148px] items-center justify-center gap-[10px] rounded-[8px] bg-[#FFC83D] px-3 sm:px-[30px] py-[10px] font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-[#1A1404] transition-colors hover:bg-yellow-400 cursor-pointer"
               >
                 Join
               </button>
@@ -167,12 +167,12 @@ export default function Header() {
             <div className="flex items-center justify-between p-4 border-b border-[#112F82]">
               <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-2">
                 <svg width="28" height="22" viewBox="0 0 26 20" fill="none">
-                  <path d="M2 19H24L21 5L16.5 10L13 2L9.5 10L5 5L2 19Z" fill="url(#mcrownGradient)"/>
-                  <path d="M14 7L10 13.5H13.5L12 18L16.5 11.5H13L14 7Z" fill="#0C1F56"/>
+                  <path d="M2 19H24L21 5L16.5 10L13 2L9.5 10L5 5L2 19Z" fill="url(#mcrownGradient)" />
+                  <path d="M14 7L10 13.5H13.5L12 18L16.5 11.5H13L14 7Z" fill="#0C1F56" />
                   <defs>
                     <linearGradient id="mcrownGradient" x1="0" y1="12" x2="26" y2="12" gradientUnits="userSpaceOnUse">
-                      <stop offset="0.12" stopColor="#FFD85A"/>
-                      <stop offset="0.8668" stopColor="#FFB800"/>
+                      <stop offset="0.12" stopColor="#FFD85A" />
+                      <stop offset="0.8668" stopColor="#FFB800" />
                     </linearGradient>
                   </defs>
                 </svg>

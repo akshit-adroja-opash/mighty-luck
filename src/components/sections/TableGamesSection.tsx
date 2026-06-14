@@ -27,8 +27,8 @@ export default function TableGamesSection() {
     <section className="flex w-full flex-none flex-col gap-5 overflow-hidden">
       <SectionHeader 
         title="TABLE GAMES (51)" 
-        icon={<span className="text-xl">♠️</span>} 
-        iconBg="bg-[#FFC83D]"
+        icon={<img src="/games/game-icons/table.svg" alt="Table Games" className="w-[20px] h-[20px]" />} 
+        iconBg="bg-transparent"
         canScrollLeft={canScrollLeft}
         canScrollRight={canScrollRight}
         onPrev={scrollLeft}
