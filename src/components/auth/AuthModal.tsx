@@ -22,14 +22,14 @@ export default function AuthModal() {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 w-full h-full min-h-screen bg-[#0C1733]/70 backdrop-blur-[8px] flex items-center justify-center z-[100] mx-auto md:overflow-y-auto py-0 md:py-8">
+    <div className="fixed inset-0 w-full h-full min-h-[100dvh] bg-[#091741] md:bg-[#0C1733]/70 md:backdrop-blur-[8px] flex items-center justify-center z-[100] mx-auto overflow-y-auto md:py-8">
       {/* Modal Container */}
       <div className="relative w-full md:w-[95%] max-w-none md:max-w-[730px] h-[100dvh] md:h-[546px] rounded-none md:rounded-[16px] flex flex-row shadow-none md:shadow-2xl shrink-0 overflow-hidden md:my-auto">
 
         {/* Close Button */}
         <button
           onClick={() => dispatch(closeModal("auth"))}
-          className="absolute right-4 top-4 z-50 flex h-8 w-8 items-center justify-center rounded-full bg-[#112F82]/80 text-white/80 transition-all hover:bg-red-500 hover:text-white shadow-lg cursor-pointer"
+          className="absolute right-4 top-4 z-50 flex h-[32px] w-[32px] items-center justify-center rounded-full bg-[#112F82] md:bg-[#112F82]/80 text-white md:text-white/80 transition-all hover:bg-red-500 hover:text-white shadow-lg cursor-pointer"
         >
           <X size={16} />
         </button>
@@ -75,7 +75,7 @@ export default function AuthModal() {
         </div>
 
         {/* Right Column - Forms */}
-        <div className="relative w-full md:w-[390px] h-full md:h-[546px] min-h-[100dvh] md:min-h-full bg-[#091741] rounded-none md:rounded-l-none md:rounded-r-[16px] flex flex-col items-center md:items-start px-0 md:px-[20px] py-[40px] md:py-[20px] shrink-0 overflow-y-auto md:overflow-hidden">
+        <div className="relative w-full md:w-[390px] min-h-[100dvh] md:min-h-[546px] bg-[#091741] rounded-none md:rounded-l-none md:rounded-r-[16px] flex flex-col items-center md:items-start px-0 md:px-[20px] py-[40px] md:py-[20px] shrink-0 overflow-y-auto md:overflow-hidden">
           <div
             className="absolute rounded-full bg-[#1463FF]"
             style={{ width: "173px", height: "173px", left: "calc(50% - 173px/2 - 0.5px)", top: "-145px", filter: "blur(40px)", opacity: 0.8 }}

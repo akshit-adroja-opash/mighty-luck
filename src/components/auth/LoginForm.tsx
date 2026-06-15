@@ -65,11 +65,11 @@ export default function LoginForm({ setView }: LoginFormProps) {
       <div className="flex flex-col gap-[16px] w-full">
 
         {/* Header with Logo */}
-        <div className="flex w-full items-center justify-center py-1">
+        <div className="flex w-full items-center justify-center py-2 mb-2">
           <Logo 
-            className="gap-[6px]"
-            iconClassName="-mt-0.5 w-[22px] h-[16px]"
-            textClassName="text-[14px] mt-0.5 tracking-wide"
+            className="gap-[8px]"
+            iconClassName="-mt-1 w-[28px] h-[20px]"
+            textClassName="text-[18px] mt-1 tracking-wide"
           />
         </div>
 
