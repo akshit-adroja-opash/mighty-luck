@@ -229,11 +229,11 @@ export default function WalletModal() {
   ];
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-[#0C1733]/70 backdrop-blur-[8px] p-4">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-[#091741] sm:bg-[#0C1733]/70 sm:backdrop-blur-[8px] sm:p-4">
       
       {/* Outer absolute position alignment box (dynamic height to avoid jumps) */}
       <div 
-        className="relative transition-all duration-300 w-full sm:w-[500px] max-h-[90dvh] sm:max-h-none overflow-hidden sm:overflow-visible rounded-[16px] flex flex-col" 
+        className="relative transition-all duration-300 w-full sm:w-[500px] min-h-[100dvh] sm:min-h-0 sm:max-h-none overflow-y-auto sm:overflow-visible rounded-none sm:rounded-[16px] flex flex-col" 
         style={{ 
           height: typeof window !== "undefined" && window.innerWidth < 640 ? undefined : modalHeight 
         }}
@@ -245,7 +245,7 @@ export default function WalletModal() {
             setIsBtcSubmitted(false);
             dispatch(closeModal("wallet"));
           }}
-          className="absolute right-4 sm:-right-[36px] top-4 sm:top-0 z-50 flex h-6 w-6 items-center justify-center text-white hover:text-[#FFC83D] transition-colors cursor-pointer"
+          className="absolute right-4 sm:-right-[36px] top-4 sm:top-0 z-50 flex h-8 w-8 sm:h-6 sm:w-6 items-center justify-center rounded-full bg-[#112F82] sm:bg-transparent text-white hover:text-[#FFC83D] transition-colors cursor-pointer"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -254,7 +254,7 @@ export default function WalletModal() {
 
         {/* Outer Modal Container */}
         <div 
-          className="relative flex flex-col items-center bg-[#091741] rounded-[16px] w-full flex-1 min-h-0 shadow-2xl isolation-isolate transition-all duration-300"
+          className="relative flex flex-col items-center bg-[#091741] rounded-none sm:rounded-[16px] w-full flex-1 min-h-[100dvh] sm:min-h-0 shadow-none sm:shadow-2xl isolation-isolate transition-all duration-300"
           style={{
             padding: typeof window !== "undefined" && window.innerWidth < 640 ? "24px 16px 24px" : "24px 20px 32px",
             gap: "24px",
