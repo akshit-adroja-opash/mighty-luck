@@ -115,7 +115,7 @@ export default function GamePage() {
               {/* Info Bar (100px) */}
               <div className="flex h-auto lg:h-[100px] w-full flex-none flex-col lg:flex-row items-center justify-between rounded-[16px] bg-[#0C1F56] p-4 lg:px-[30px] lg:py-[12px] gap-4 lg:gap-0">
                 {/* LEFT: provider + divider + title */}
-                <div className="flex h-auto lg:h-[40px] w-full lg:w-[295px] flex-none flex-row items-center justify-start gap-4 lg:gap-[32px]">
+                <div className="flex h-auto lg:h-[40px] w-full lg:w-auto flex-none flex-row items-center justify-start gap-4 lg:gap-[32px]">
                   {/* Provider logo */}
                   <BGamingLogo />
 
@@ -123,8 +123,8 @@ export default function GamePage() {
                   <div className="hidden lg:block h-[33px] w-px flex-none bg-white/60" />
 
                   {/* Game title */}
-                  <div className="flex w-auto lg:w-[151px] flex-none flex-row items-center justify-start lg:gap-[10px]">
-                    <span className="w-full text-left font-jost text-[16px] lg:text-[20px] font-bold leading-[29px] text-white">
+                  <div className="flex w-auto flex-none flex-row items-center justify-start lg:gap-[10px]">
+                    <span className="w-full text-left font-jost text-[16px] lg:text-[20px] font-bold leading-[29px] text-white whitespace-nowrap">
                       {game.title}
                     </span>
                   </div>
