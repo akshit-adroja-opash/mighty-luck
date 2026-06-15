@@ -1,9 +1,9 @@
 import Link from "next/link";
 
 const columns = [
-  { title: "CASINO", links: ["Slots", "Skill Games", "Jackpot", "Bonus Buy", "Crash Games"] },
+  { title: "SLOT GAMES", links: ["Slots", "Skill Games", "Jackpot", "Bonus Buy", "Crash Games"] },
   { title: "LIVE CASINO", links: ["Roulette", "Blackjack", "Live Casino", "Table Games", "Video Poker"] },
-  { title: "PROMOS", links: ["About Us", "Promotions", "Tournaments", "Affiliate Program", "Vip Club", "Refer a Friend", "Blog", "Bonus Shop"] },
+  { title: "CASINO", links: ["About Us", "Promotions", "Tournaments", "Affiliate Program", "Vip Club", "Refer a Friend", "Blog", "Bonus Shop"] },
   { title: "LEGAL", links: ["Privacy Policy", "Terms & Conditions", "Bonus Terms", "Responsible Gambling", "Payment Methods", "Sportsbook Rules"] },
   { title: "SUPPORT", links: ["Live Support"] },
 ];
@@ -16,14 +16,14 @@ export default function Footer() {
       <div className="flex w-full flex-col lg:flex-row justify-between items-start gap-8 lg:gap-[49px]">
 
         {/* Logo & Copyright */}
-        <div className="flex flex-col items-start gap-[16px] flex-none w-[213px]">
-          <div className="flex flex-col items-start justify-center">
-            <img src="/images/logo.svg" alt="Mighty Luck" className="mb-0.5 w-[32px] h-[24px]" />
-            <h2 className="font-jost text-[15px] font-black uppercase tracking-[0.05em] text-white leading-none">
-              MIGHTY <span className="text-[#FFC83D]">LUCK</span>
-            </h2>
+        <div className="flex flex-col items-start gap-[16px] flex-none w-[213px] h-[81px]">
+          <div className="relative flex w-[132px] h-[50px] flex-col items-center justify-between">
+            <img src="/images/logo.svg" alt="Mighty Luck" className="h-[24px] w-[32px] flex-none" />
+            <span className="flex-none font-jost text-[15px] font-black uppercase tracking-widest text-white leading-none w-full text-center">
+              MIGHTY <span style={{ background: "linear-gradient(90deg, #FFD85A 12%, #FFB800 86.68%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>LUCK</span>
+            </span>
           </div>
-          <p className="font-manrope text-[11px] font-semibold leading-[15px] tracking-[0.01em] text-[#D2DCF7] w-[213px]">
+          <p className="font-manrope text-[11px] font-semibold leading-[15px] tracking-[0.01em] text-[#D2DCF7] w-[213px] flex-none">
             @ 2026 Mighty Luck. All rights reserved.
           </p>
         </div>
