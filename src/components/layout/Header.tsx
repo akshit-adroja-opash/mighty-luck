@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { openModal, closeModal, setAuthModalView, toggleSidebar } from "@/store/slices/uiSlice";
 import { logout } from "@/store/slices/authSlice";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import SidebarMenu from "./SidebarMenu";
 import Logo from "@/components/ui/Logo";
 
@@ -17,6 +17,23 @@ export default function Header() {
   const sidebarOpen = useSelector((state: RootState) => state.ui.sidebarOpen);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      setIsDropdownOpen(false);
+    }
+  }, [isAuthenticated]);
 
   const handleLogout = () => {
     localStorage.removeItem("userToken");
@@ -126,7 +143,7 @@ export default function Header() {
               </div>
 
               {/* Avatar + Dropdown */}
-              <div className="relative flex-none">
+              <div className="relative flex-none" ref={dropdownRef}>
                 <button
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                   className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border-2 border-transparent bg-[#173EAD] transition-colors hover:border-[#FFC83D] cursor-pointer"
