@@ -1,73 +1,66 @@
 "use client";
 
-import {
-  Gift,
-  Crown,
-  Trophy,
-  Dice5,
-  Club,
-  Headphones,
-  ChevronDown,
-  Gamepad2,
-  Sparkles,
-  Flame,
-  Star,
-  Rocket,
-} from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { openModal, setActiveCategory } from "@/store/slices/uiSlice";
 
+const SvgIconWrapper = (src: string) => {
+  const IconComponent = ({ size, className }: { size?: number | string; className?: string }) => (
+    <img src={src} alt="" width={size} height={size} className={className} />
+  );
+  IconComponent.displayName = `SvgIcon(${src})`;
+  return IconComponent;
+};
+
 export const menuItems = [
   {
     name: "Promotions",
-    icon: Gift,
+    icon: SvgIconWrapper("/games/side-icon/pro.svg"),
     fontSize: "text-[16px]",
     lineHeight: "leading-[22px]",
     fontWeight: "font-semibold",
   },
   {
     name: "VIP Program",
-    icon: Crown,
+    icon: SvgIconWrapper("/games/side-icon/vip.svg"),
     fontSize: "text-[14px]",
     lineHeight: "leading-[19px]",
     fontWeight: "font-semibold",
   },
   {
     name: "Tournaments",
-    icon: Trophy,
+    icon: SvgIconWrapper("/games/side-icon/tour.svg"),
     fontSize: "text-[14px]",
     lineHeight: "leading-[19px]",
     fontWeight: "font-semibold",
   },
   {
     name: "Casino",
-    icon: Dice5,
+    icon: SvgIconWrapper("/games/side-icon/casino.svg"),
     isPrimary: true, // blue bg
-    iconColor: "text-[#FFB800]", // yellow icon
     fontSize: "text-[14px]",
     lineHeight: "leading-[19px]",
     fontWeight: "font-bold",
     subItems: [
-      { name: "All Games", icon: Gamepad2 },
-      { name: "New Games", icon: Sparkles },
-      { name: "Popular Games", icon: Flame },
-      { name: "Original Games", icon: Star },
-      { name: "Crash Games", icon: Rocket },
+      { name: "All Games", icon: SvgIconWrapper("/games/side-icon/all.svg") },
+      { name: "New Games", icon: SvgIconWrapper("/games/side-icon/new.svg") },
+      { name: "Popular Games", icon: SvgIconWrapper("/games/side-icon/popular.svg") },
+      { name: "Original Games", icon: SvgIconWrapper("/games/side-icon/original.svg") },
+      { name: "Crash Games", icon: SvgIconWrapper("/games/side-icon/crash.svg") },
     ],
   },
   {
     name: "Live Casino",
-    icon: Club,
+    icon: SvgIconWrapper("/games/side-icon/live.svg"),
     isPrimary: true, // blue bg
-    iconColor: "text-[#FFB800]", // yellow icon
     fontSize: "text-[14px]",
     lineHeight: "leading-[19px]",
     fontWeight: "font-bold",
   },
   {
     name: "Live Support",
-    icon: Headphones,
+    icon: SvgIconWrapper("/games/side-icon/live-support.svg"),
     fontSize: "text-[14px]",
     lineHeight: "leading-[19px]",
     fontWeight: "font-semibold",
@@ -93,7 +86,6 @@ export default function SidebarMenu({ onItemClick }: { onItemClick?: () => void 
         const bgClass = item.isPrimary ? "bg-[#1463FF]" : "bg-[#112F82]";
         const textClass = item.isPrimary ? "text-white" : "text-[#D2DCF7]";
         const hoverClass = item.isPrimary ? "hover:bg-blue-600" : "hover:bg-[#1463FF] hover:text-white";
-        const iconColor = item.iconColor || "text-[#D2DCF7]";
 
         return (
           <div key={item.name} className={`flex w-full flex-col ${isOpen && item.subItems ? 'rounded-[8px] bg-[#112F82]' : ''}`}>
@@ -108,7 +100,7 @@ export default function SidebarMenu({ onItemClick }: { onItemClick?: () => void 
               className={`flex h-[44px] w-full items-center justify-between rounded-[8px] px-[10px] py-0 transition-all cursor-pointer ${bgClass} ${textClass} ${hoverClass}`}
             >
               <div className="flex items-center gap-[8px]">
-                <Icon size={20} className={iconColor} />
+                <Icon size={20} />
                 <span className={`font-manrope ${item.fontSize} ${item.fontWeight} ${item.lineHeight} tracking-[0.02em]`}>{item.name}</span>
               </div>
 

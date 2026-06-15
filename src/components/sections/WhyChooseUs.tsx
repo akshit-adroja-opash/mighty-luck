@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Trophy } from "lucide-react";
 
 const features = [
   {
@@ -35,7 +34,7 @@ export default function WhyChooseUs() {
       {/* Header */}
       <div className="flex items-center justify-between w-full min-h-[30px] shrink-0 overflow-hidden">
         <div className="flex items-center min-h-[30px] gap-[12px] shrink-0 flex-1 min-w-0">
-          <Trophy className="text-[#FFBF1F] w-[24px] h-[24px] shrink-0" strokeWidth={2} />
+          <img src="/games/game-icons/why.svg" alt="Why Join" className="w-[24px] h-[24px] shrink-0" />
           <span className="flex-1 min-w-0 truncate font-['Jost'] text-[16px] sm:text-[20px] font-extrabold leading-[100%] tracking-[0.01em] text-white uppercase">WHY JOIN MIGHTY LUCK?</span>
         </div>
       </div>

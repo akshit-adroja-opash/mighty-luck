@@ -49,15 +49,15 @@ export default function RootLayout({
               </div>
               <div className="flex w-full lg:w-[calc(100%_-_232px)] flex-none flex-col px-0 lg:pl-6 lg:pr-0 overflow-hidden pb-10">
                 {children}
-                
+
                 <div className="w-full mt-10">
                   <SeoContent />
                 </div>
-                
+
                 <div className="hidden lg:block w-full max-w-[1136px] mt-10">
                   <CryptoBanner />
                 </div>
-                
+
                 <div className="mt-10">
                   <Footer />
                 </div>
@@ -68,9 +68,9 @@ export default function RootLayout({
           <WalletModal />
           <LobbyModal />
           <GamePlayModal />
-          <Toaster 
-            richColors 
-            position="top-right" 
+          <Toaster
+            richColors
+            position="top-right"
             toastOptions={{
               style: { width: 'auto', minWidth: 'fit-content', paddingRight: '20px' }
             }}

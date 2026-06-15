@@ -78,13 +78,8 @@ export default function ProvidersSection() {
       <SectionHeader
         title="GAME PROVIDERS (34)"
         titleWidth="237px"
-        icon={
-          /* Provider icon: person/user silhouette in #FFC83D */
-          <svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="9" cy="6" r="5" fill="#0C1F56"/>
-            <path d="M1 21C1 17.134 4.582 14 9 14C13.418 14 17 17.134 17 21" stroke="#0C1F56" strokeWidth="2" strokeLinecap="round"/>
-          </svg>
-        }
+        icon={<img src="/games/game-icons/game.svg" alt="Game Providers" className="w-[20px] h-[20px]" />}
+        iconBg="bg-transparent"
         onPrev={scrollLeft}
         onNext={scrollRight}
         canScrollLeft={canScrollLeft}

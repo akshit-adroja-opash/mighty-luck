@@ -2,14 +2,6 @@ import { useRef } from "react";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { useScrollState } from "@/hooks/useScrollState";
 
-const TrophyIcon = () => (
-  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path
-      d="M18 2H6C4.9 2 4 2.9 4 4V7C4 8.5 4.9 9.8 6.2 10.3C6.7 11.8 7.9 13 9.4 13.7C9.8 15.2 10.8 16.5 12 16.9V20H9C8.4 20 8 20.4 8 21C8 21.6 8.4 22 9 22H15C15.6 22 16 21.6 16 21C16 20.4 15.6 20 15 20H12V16.9C13.2 16.5 14.2 15.2 14.6 13.7C16.1 13 17.3 11.8 17.8 10.3C19.1 9.8 20 8.5 20 7V4C20 2.9 19.1 2 18 2ZM6 8C5.4 8 5 7.6 5 7V4C5 3.4 5.4 3 6 3H7.5V8.3C6.7 8.3 6.1 8.2 6 8ZM18 7C18 7.6 17.6 8 17 8C16.9 8 16.3 8.3 15.5 8.3V3H17C17.6 3 18 3.4 18 4V7Z"
-      fill="#FFC83D"
-    />
-  </svg>
-);
 
 const winners = [
   { game: "Sweet Bonanza Super Scatter", image: "/games/1.png", username: "Alb****", time: "14:16 PM", payout: "$126.1", payoutColor: "text-[#00DD29]" },
@@ -25,7 +17,7 @@ export default function RecentWinners() {
     <section className="flex w-full flex-none flex-col gap-5 items-start">
       <SectionHeader
         title="RECENT WINNERS"
-        icon={<TrophyIcon />}
+        icon={<img src="/games/game-icons/recent.svg" alt="Recent Winners" className="w-[20px] h-[20px]" />}
         iconBg="bg-transparent"
         showViewAll={false}
         showPagination={false}
