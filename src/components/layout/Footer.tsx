@@ -17,14 +17,14 @@ export default function Footer() {
       <div className="flex w-full flex-col lg:flex-row justify-between items-start gap-8 lg:gap-[49px]">
 
         {/* Logo & Copyright */}
-        <div className="flex flex-col items-start gap-[16px] flex-none w-[213px] h-[81px]">
+        <div className="flex flex-col items-center lg:items-start mx-auto lg:mx-0 gap-[16px] flex-none w-[213px] h-[81px]">
           <Logo 
             orientation="vertical"
             className="w-[132px] h-[50px] relative"
             iconClassName="h-[24px] w-[32px]"
             textClassName="text-[15px] tracking-widest text-center w-full"
           />
-          <p className="font-manrope text-[11px] font-semibold leading-[15px] tracking-[0.01em] text-[#D2DCF7] w-[213px] flex-none">
+          <p className="font-manrope text-[11px] font-semibold leading-[15px] tracking-[0.01em] text-[#D2DCF7] text-center lg:text-left w-[213px] flex-none">
             @ 2026 Mighty Luck. All rights reserved.
           </p>
         </div>
@@ -61,7 +61,7 @@ export default function Footer() {
         </p>
 
         {/* Logos */}
-        <div className="flex flex-none flex-row items-center gap-6 sm:gap-8">
+        <div className="flex flex-none flex-row items-center justify-center sm:justify-end w-full sm:w-auto gap-6 sm:gap-8 mx-auto sm:mx-0 mt-4 sm:mt-0">
           <img src="/games/footer/18.svg" alt="18+" className="h-[38px] w-auto object-contain flex-shrink-0" />
           <img src="/games/footer/gamble-aware.svg" alt="GambleAware" className="h-[20px] sm:h-[24px] w-auto object-contain flex-shrink-0" />
           <img src="/games/footer/gaming-license.svg" alt="Gaming License" className="h-[38px] w-auto object-contain flex-shrink-0" />
