@@ -4,16 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/store";
 import { setActiveCategory } from "@/store/slices/uiSlice";
 import {
-  Bitcoin,
-  Coins,
   CircleDollarSign,
-  Wallet,
-  Gem,
-  Hexagon,
-  Boxes,
-  Circle,
-  Activity,
-  Triangle,
   Zap,
   Home,
   Cherry,
@@ -87,17 +78,17 @@ export default function DepositBanner() {
 
       {/* Crypto Logos */}
       <div className="z-[2] hidden flex-1 items-center justify-center gap-[28px] text-white lg:flex">
-        <Bitcoin size={18} />
-        <Gem size={18} />
-        <CircleDollarSign size={18} />
-        <Triangle size={18} />
-        <Activity size={18} />
-        <Hexagon size={18} />
-        <Coins size={18} />
-        <Wallet size={18} />
-        <Circle size={18} />
-        <Boxes size={18} />
-        <Zap size={18} />
+        <img src="/games/deposite-icon/d1.svg" alt="deposit icon" className="shrink-0" />
+        <img src="/games/deposite-icon/d2.svg" alt="deposit icon" className="shrink-0" />
+        <img src="/games/deposite-icon/d3.svg" alt="deposit icon" className="shrink-0" />
+        <img src="/games/deposite-icon/d4.svg" alt="deposit icon" className="shrink-0" />
+        <img src="/games/deposite-icon/d5.svg" alt="deposit icon" className="shrink-0" />
+        <img src="/games/deposite-icon/d6.svg" alt="deposit icon" className="shrink-0" />
+        <img src="/games/deposite-icon/d7.svg" alt="deposit icon" className="shrink-0" />
+        <img src="/games/deposite-icon/d8.svg" alt="deposit icon" className="shrink-0" />
+        <img src="/games/deposite-icon/d9.svg" alt="deposit icon" className="shrink-0" />
+        <img src="/games/deposite-icon/d10.svg" alt="deposit icon" className="shrink-0" />
+        <img src="/games/deposite-icon/d11.svg" alt="deposit icon" className="shrink-0" />
       </div>
 
       {/* Button */}
