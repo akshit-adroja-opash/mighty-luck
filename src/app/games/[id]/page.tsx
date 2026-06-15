@@ -109,16 +109,11 @@ export default function GamePage() {
                   fill
                   className="object-cover"
                 />
-                {/* Play Button Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-                  <div className="flex h-[72px] w-[72px] cursor-pointer items-center justify-center rounded-full bg-[#1463FF] hover:bg-blue-600">
-                    <Play className="ml-1 h-8 w-8 text-white" fill="white" />
-                  </div>
-                </div>
+
               </div>
 
-              {/* Info Bar (130px) */}
-              <div className="flex h-auto lg:h-[130px] w-full flex-none flex-col lg:flex-row items-center justify-between rounded-[16px] bg-[#0C1F56] p-4 lg:px-[30px] lg:py-[12px] gap-4 lg:gap-0">
+              {/* Info Bar (100px) */}
+              <div className="flex h-auto lg:h-[100px] w-full flex-none flex-col lg:flex-row items-center justify-between rounded-[16px] bg-[#0C1F56] p-4 lg:px-[30px] lg:py-[12px] gap-4 lg:gap-0">
                 {/* LEFT: provider + divider + title */}
                 <div className="flex h-auto lg:h-[40px] w-full lg:w-[295px] flex-none flex-row items-center justify-start gap-4 lg:gap-[32px]">
                   {/* Provider logo */}
@@ -141,28 +136,19 @@ export default function GamePage() {
                   {/* Icons */}
                   <div className="flex h-[20px] w-auto lg:w-[64px] flex-none flex-row items-center gap-[24px]">
                     <button className="relative flex h-[20px] w-[20px] flex-none items-center justify-center cursor-pointer hover:opacity-70 transition-opacity" aria-label="Fullscreen">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="9 5 5 5 5 9" />
-                        <line x1="5" y1="5" x2="10" y2="10" />
-                        <polyline points="15 5 19 5 19 9" />
-                        <line x1="19" y1="5" x2="14" y2="10" />
-                        <polyline points="9 19 5 19 5 15" />
-                        <line x1="5" y1="19" x2="10" y2="14" />
-                        <polyline points="15 19 19 19 19 15" />
-                        <line x1="19" y1="19" x2="14" y2="14" />
-                      </svg>
+                      <img src="/images/expand.svg" alt="Expand" className="w-full h-full object-contain" />
                     </button>
                     <button
                       onClick={() => setIsFavorite(!isFavorite)}
-                      className="flex h-[20px] w-[20px] flex-none items-center justify-center cursor-pointer"
+                      className="flex h-[20px] w-[20px] flex-none items-center justify-center cursor-pointer hover:opacity-70 transition-opacity"
                       aria-label="Favourite"
                     >
                       <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                         <path
-                          d="M10 17s-7-4.35-7-9a4 4 0 0 1 7-2.67A4 4 0 0 1 17 8c0 4.65-7 9-7 9z"
+                          d="M10 5.83337C10 5.83337 10 5.83337 9.24 4.83337C8.36 3.67337 7.06 2.83337 5.5 2.83337C3.01 2.83337 1 4.84337 1 7.33337C1 8.26337 1.28 9.12337 1.76 9.83337C2.57 11.0434 10 18.8334 10 18.8334M10 5.83337C10 5.83337 10 5.83337 10.76 4.83337C11.64 3.67337 12.94 2.83337 14.5 2.83337C16.99 2.83337 19 4.84337 19 7.33337C19 8.26337 18.72 9.12337 18.24 9.83337C17.43 11.0434 10 18.8334 10 18.8334"
                           fill={isFavorite ? "#FFC83D" : "none"}
                           stroke={isFavorite ? "#FFC83D" : "white"}
-                          strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"
+                          strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
                         />
                       </svg>
                     </button>
