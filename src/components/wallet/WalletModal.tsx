@@ -45,33 +45,9 @@ const WarningIcon = () => (
 );
 
 const USFlagIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-none">
-    <rect width="20" height="14" y="3" rx="2" fill="#FFFFFF"/>
-    <mask id="flag-mask" style={{ maskType: "alpha" }} maskUnits="userSpaceOnUse" x="0" y="3" width="20" height="14">
-      <rect width="20" height="14" y="3" rx="2" fill="#FFFFFF"/>
-    </mask>
-    <g mask="url(#flag-mask)">
-      <rect width="20" height="1.08" y="3" fill="#ED4C5C"/>
-      <rect width="20" height="1.08" y="5.16" fill="#FFFFFF"/>
-      <rect width="20" height="1.08" y="7.24" fill="#ED4C5C"/>
-      <rect width="20" height="1.08" y="9.32" fill="#FFFFFF"/>
-      <rect width="20" height="1.08" y="11.4" fill="#ED4C5C"/>
-      <rect width="20" height="1.08" y="13.48" fill="#FFFFFF"/>
-      <rect width="20" height="1.08" y="15.56" fill="#ED4C5C"/>
-      
-      <rect width="10" height="7.54" y="3" fill="#428BC1"/>
-      <circle cx="2.5" cy="4.8" r="0.6" fill="#FFFFFF"/>
-      <circle cx="5.0" cy="4.8" r="0.6" fill="#FFFFFF"/>
-      <circle cx="7.5" cy="4.8" r="0.6" fill="#FFFFFF"/>
-      <circle cx="3.75" cy="6.2" r="0.6" fill="#FFFFFF"/>
-      <circle cx="6.25" cy="6.2" r="0.6" fill="#FFFFFF"/>
-      <circle cx="2.5" cy="7.6" r="0.6" fill="#FFFFFF"/>
-      <circle cx="5.0" cy="7.6" r="0.6" fill="#FFFFFF"/>
-      <circle cx="7.5" cy="7.6" r="0.6" fill="#FFFFFF"/>
-      <circle cx="3.75" cy="9.0" r="0.6" fill="#FFFFFF"/>
-      <circle cx="6.25" cy="9.0" r="0.6" fill="#FFFFFF"/>
-    </g>
-  </svg>
+  <div className="w-[20px] h-[20px] relative flex-none">
+    <img src="/images/america.svg" alt="United States" className="w-[20px] h-[20px] absolute left-0 top-0" />
+  </div>
 );
 
 export default function WalletModal() {
