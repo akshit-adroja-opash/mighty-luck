@@ -31,8 +31,8 @@ const CloseIcon = () => (
 
 /* ── Sidebar nav items with icons ── */
 const navIcons: Record<string, React.ReactNode> = {
-  all: <MaskIcon src="/games/game-icons/game.svg" />,
-  recent: <MaskIcon src="/games/game-icons/recent.svg" />,
+  all: <MaskIcon src="/games/side-icon/all.svg" />,
+  recent: <MaskIcon src="/games/side-icon/recent.svg" />,
   favorites: <MaskIcon src="/games/side-icon/like.svg" />,
   new: <MaskIcon src="/games/side-icon/new-r.svg" />,
 };
@@ -47,7 +47,7 @@ const navItems = [
 const catIcons: Record<string, React.ReactNode> = {
   Originals: <MaskIcon src="/games/game-icons/originals.svg" />,
   Slots: <MaskIcon src="/games/game-icons/slot.svg" />,
-  Roulette: <LayoutGrid size={16} />,
+  Roulette: <MaskIcon src="/games/side-icon/roulette.svg" />,
   "Crash Games": <MaskIcon src="/games/game-icons/crash.svg" />,
   "Table Games": <MaskIcon src="/games/game-icons/table.svg" />,
   "Live Casino": <MaskIcon src="/games/side-icon/live-c.svg" />,
