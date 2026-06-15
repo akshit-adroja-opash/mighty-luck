@@ -108,7 +108,19 @@ export default function Header() {
                   <span className="absolute flex rounded-full bg-[#FF0E0E]" style={{ width: "8px", height: "8px", left: "32px", top: "0px" }} />
                 </button>
                 <button className="relative hidden sm:flex h-[40px] w-[40px] flex-none items-center justify-center rounded-[6px] bg-[#173EAD] transition-colors hover:opacity-90 cursor-pointer">
-                  <Gift size={16} className="text-[#D2DCF7]" fill="#D2DCF7" />
+                  <div 
+                    className="w-[16px] h-[16px] bg-[#D2DCF7] flex-none"
+                    style={{
+                      maskImage: `url(/games/side-icon/pro.svg)`,
+                      WebkitMaskImage: `url(/games/side-icon/pro.svg)`,
+                      maskSize: 'contain',
+                      WebkitMaskSize: 'contain',
+                      maskRepeat: 'no-repeat',
+                      WebkitMaskRepeat: 'no-repeat',
+                      maskPosition: 'center',
+                      WebkitMaskPosition: 'center'
+                    }}
+                  />
                   <span className="absolute flex rounded-full bg-[#FF0E0E]" style={{ width: "8px", height: "8px", left: "32px", top: "0px" }} />
                 </button>
               </div>
