@@ -13,7 +13,7 @@ interface UiState {
 
 const initialState: UiState = {
   theme: 'dark',
-  sidebarOpen: false,
+  sidebarOpen: true,
   modals: {},
   authModalView: 'register',
   activeCategory: 'Lobby',

@@ -67,7 +67,7 @@ export const menuItems = [
   },
 ];
 
-export default function SidebarMenu({ onItemClick }: { onItemClick?: () => void }) {
+export default function SidebarMenu({ onItemClick, isCollapsed = false }: { onItemClick?: () => void, isCollapsed?: boolean }) {
   const dispatch = useDispatch();
   const [openMenus, setOpenMenus] = useState<Record<string, boolean>>({
     Casino: true, // Keep Casino open by default
@@ -88,7 +88,7 @@ export default function SidebarMenu({ onItemClick }: { onItemClick?: () => void 
         const hoverClass = item.isPrimary ? "hover:bg-blue-600" : "hover:bg-[#1463FF] hover:text-white";
 
         return (
-          <div key={item.name} className={`flex w-full flex-col ${isOpen && item.subItems ? 'rounded-[8px] bg-[#112F82]' : ''}`}>
+          <div key={item.name} className={`flex w-full flex-col ${isOpen && item.subItems && !isCollapsed ? 'rounded-[8px] bg-[#112F82]' : ''}`}>
             <button
               onClick={() => {
                 if (item.subItems) {
@@ -97,29 +97,32 @@ export default function SidebarMenu({ onItemClick }: { onItemClick?: () => void 
                   onItemClick();
                 }
               }}
-              className={`flex h-[44px] w-full items-center justify-between rounded-[8px] px-[10px] py-0 transition-all cursor-pointer ${bgClass} ${textClass} ${hoverClass}`}
+              title={isCollapsed ? item.name : undefined}
+              className={`flex h-[44px] w-full items-center ${isCollapsed ? 'justify-center px-0' : 'justify-between px-[10px]'} rounded-[8px] py-0 transition-all cursor-pointer ${bgClass} ${textClass} ${hoverClass}`}
             >
-              <div className="flex items-center gap-[8px]">
-                <Icon size={20} />
-                <span className={`font-manrope ${item.fontSize} ${item.fontWeight} ${item.lineHeight} tracking-[0.02em]`}>{item.name}</span>
+              <div className={`flex items-center ${isCollapsed ? 'justify-center w-full' : 'gap-[8px]'}`}>
+                <div className="flex-none flex items-center justify-center">
+                  <Icon size={20} />
+                </div>
+                {!isCollapsed && <span className={`font-manrope ${item.fontSize} ${item.fontWeight} ${item.lineHeight} tracking-[0.02em] whitespace-nowrap`}>{item.name}</span>}
               </div>
 
-              {item.subItems && (
+              {!isCollapsed && item.subItems && (
                 <ChevronDown
                   size={16}
-                  className={`transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+                  className={`transition-transform duration-200 flex-none ${isOpen ? "rotate-180" : ""}`}
                 />
               )}
-              {!item.subItems && item.isPrimary && (
+              {!isCollapsed && !item.subItems && item.isPrimary && (
                 <ChevronDown
                   size={16}
-                  className="opacity-50"
+                  className="opacity-50 flex-none"
                 />
               )}
             </button>
 
             {/* Sub Menu */}
-            {item.subItems && isOpen && (
+            {item.subItems && isOpen && !isCollapsed && (
               <div className="flex w-full flex-none flex-col items-start justify-center gap-[20px] rounded-b-[8px] px-[16px] py-[20px]">
                 {item.subItems.map((subItem) => {
                   const SubIcon = subItem.icon;
@@ -135,10 +138,10 @@ export default function SidebarMenu({ onItemClick }: { onItemClick?: () => void 
                       }}
                       className="flex h-[20px] items-center gap-[12px] text-[#D2DCF7] transition-colors hover:text-white cursor-pointer"
                     >
-                      <div className="flex h-[20px] w-[20px] items-center justify-center">
+                      <div className="flex h-[20px] w-[20px] items-center justify-center flex-none">
                         <SubIcon size={18} />
                       </div>
-                      <span className="font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em]">{subItem.name}</span>
+                      <span className="font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] whitespace-nowrap">{subItem.name}</span>
                     </button>
                   );
                 })}

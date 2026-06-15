@@ -44,10 +44,10 @@ export default function RootLayout({
           <Header />
           <Container>
             <div className="flex w-full flex-col lg:flex-row relative">
-              <div className="hidden lg:block w-[232px] flex-none">
+              <div className="hidden lg:block flex-none">
                 <Sidebar />
               </div>
-              <div className="flex w-full lg:w-[calc(100%_-_232px)] flex-none flex-col px-0 lg:pl-6 lg:pr-0 overflow-hidden pb-10">
+              <div className="flex flex-1 min-w-0 flex-col px-0 lg:pl-6 lg:pr-0 overflow-hidden pb-10">
                 {children}
 
                 <div className="w-full mt-10">

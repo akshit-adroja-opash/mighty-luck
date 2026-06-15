@@ -5,7 +5,7 @@ import Image from "next/image";
 import { X, Search, LogOut, Bell, Gift, Wallet, Users, Gift as GiftIcon, Crown, Trophy, Dice5, Club, Headphones } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
-import { openModal, closeModal, setAuthModalView } from "@/store/slices/uiSlice";
+import { openModal, closeModal, setAuthModalView, toggleSidebar } from "@/store/slices/uiSlice";
 import { logout } from "@/store/slices/authSlice";
 import { useState } from "react";
 import SidebarMenu from "./SidebarMenu";
@@ -15,6 +15,7 @@ import SidebarMenu from "./SidebarMenu";
 export default function Header() {
   const dispatch = useDispatch();
   const { isAuthenticated, user } = useSelector((state: RootState) => state.auth);
+  const sidebarOpen = useSelector((state: RootState) => state.ui.sidebarOpen);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -46,8 +47,20 @@ export default function Header() {
           </button>
 
           {/* Desktop menu icon */}
-          <button className="hidden lg:flex h-[24px] w-[24px] items-center justify-center flex-none text-white transition-colors hover:opacity-80 cursor-pointer">
-            <Image src="/images/Vector.png" alt="Menu" width={21} height={14} style={{ width: "20.57px", height: "13.71px" }} />
+          <button 
+            onClick={() => dispatch(toggleSidebar())}
+            className="hidden lg:flex h-[24px] w-[24px] items-center justify-center flex-none text-white transition-colors hover:opacity-80 cursor-pointer"
+          >
+            {sidebarOpen ? (
+              <Image src="/images/Vector.png" alt="Menu" width={21} height={14} style={{ width: "20.57px", height: "13.71px" }} />
+            ) : (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
+                <line x1="4" y1="6" x2="20" y2="6"/>
+                <line x1="4" y1="12" x2="14" y2="12"/>
+                <line x1="4" y1="18" x2="20" y2="18"/>
+                <polyline points="18 9 15 12 18 15"/>
+              </svg>
+            )}
           </button>
 
           {/* Logo */}
