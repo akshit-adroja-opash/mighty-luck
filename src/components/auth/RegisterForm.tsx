@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { login as authLogin } from "@/store/slices/authSlice";
 import { closeModal, setAuthModalView } from "@/store/slices/uiSlice";
 import { toast } from "sonner";
+import Logo from "@/components/ui/Logo";
 
 const registerSchema = z.object({
   username: z.string().min(3, "Username must be at least 3 characters"),
@@ -68,11 +69,12 @@ export default function RegisterForm({ setView }: RegisterFormProps) {
       <div className="flex flex-col gap-[16px] w-full">
 
         {/* Header with Logo */}
-        <div className="flex w-full items-center justify-center gap-[6px] py-1">
-          <img src="/images/logo.svg" alt="Mighty Luck" className="flex-none -mt-0.5 w-[22px] h-[16px]" />
-          <span className="text-[14px] font-black uppercase tracking-wide text-white font-jost whitespace-nowrap leading-none mt-0.5">
-            MIGHTY <span style={{ background: "linear-gradient(90deg, #FFD85A 12%, #FFB800 86.68%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>LUCK</span>
-          </span>
+        <div className="flex w-full items-center justify-center py-1">
+          <Logo 
+            className="gap-[6px]"
+            iconClassName="-mt-0.5 w-[22px] h-[16px]"
+            textClassName="text-[14px] mt-0.5 tracking-wide"
+          />
         </div>
 
         {/* Tab Switcher */}

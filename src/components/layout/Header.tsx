@@ -9,8 +9,7 @@ import { openModal, closeModal, setAuthModalView, toggleSidebar } from "@/store/
 import { logout } from "@/store/slices/authSlice";
 import { useState } from "react";
 import SidebarMenu from "./SidebarMenu";
-
-
+import Logo from "@/components/ui/Logo";
 
 export default function Header() {
   const dispatch = useDispatch();
@@ -64,12 +63,13 @@ export default function Header() {
           </button>
 
           {/* Logo */}
-          <Link href="/" className="flex h-[34.66px] items-center gap-2 cursor-pointer flex-none">
-          <img src="/images/logo.svg" alt="Mighty Luck" className="flex-none -mt-1 w-[34px] h-[25px]" />
-            <span className="hidden sm:inline-block text-[20px] font-black uppercase tracking-wide text-white font-jost whitespace-nowrap leading-[34.66px]">
-              MIGHTY <span style={{ background: "linear-gradient(90deg, #FFD85A 12%, #FFB800 86.68%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>LUCK</span>
-            </span>
-          </Link>
+          <Logo 
+            isLink 
+            className="h-[34.66px] gap-2 cursor-pointer flex-none" 
+            iconClassName="-mt-1 w-[34px] h-[25px]" 
+            textClassName="text-[20px] tracking-wide leading-[34.66px]" 
+            hideTextOnMobile 
+          />
 
           {/* Search Bar — desktop only */}
           <div className="hidden lg:flex h-[40px] w-[280px] flex-none flex-row items-center rounded-[8px] bg-[#112F82] px-5 py-[10px] gap-[10px]">

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Logo from "@/components/ui/Logo";
 
 const columns = [
   { title: "SLOT GAMES", links: ["Slots", "Skill Games", "Jackpot", "Bonus Buy", "Crash Games"] },
@@ -17,21 +18,21 @@ export default function Footer() {
 
         {/* Logo & Copyright */}
         <div className="flex flex-col items-start gap-[16px] flex-none w-[213px] h-[81px]">
-          <div className="relative flex w-[132px] h-[50px] flex-col items-center justify-between">
-            <img src="/images/logo.svg" alt="Mighty Luck" className="h-[24px] w-[32px] flex-none" />
-            <span className="flex-none font-jost text-[15px] font-black uppercase tracking-widest text-white leading-none w-full text-center">
-              MIGHTY <span style={{ background: "linear-gradient(90deg, #FFD85A 12%, #FFB800 86.68%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>LUCK</span>
-            </span>
-          </div>
+          <Logo 
+            orientation="vertical"
+            className="w-[132px] h-[50px] relative"
+            iconClassName="h-[24px] w-[32px]"
+            textClassName="text-[15px] tracking-widest text-center w-full"
+          />
           <p className="font-manrope text-[11px] font-semibold leading-[15px] tracking-[0.01em] text-[#D2DCF7] w-[213px] flex-none">
             @ 2026 Mighty Luck. All rights reserved.
           </p>
         </div>
 
         {/* Links Grid */}
-        <div className="flex flex-wrap lg:flex-nowrap flex-row items-start gap-8 lg:gap-[32px] w-full lg:w-[728px]">
+        <div className="flex flex-wrap xl:flex-nowrap flex-row items-start gap-8 lg:gap-[20px] xl:gap-[32px] w-full lg:w-auto xl:w-[728px] justify-between lg:justify-start">
           {columns.map((col, idx) => (
-            <div key={idx} className="flex flex-col items-start gap-[12px] w-[120px]">
+            <div key={idx} className="flex flex-col items-start gap-[12px] w-auto min-w-[120px] flex-none">
               <span className="w-full h-[17px] font-jost text-[12px] font-bold uppercase leading-[17px] tracking-[0.02em] text-white">
                 {col.title}
               </span>
