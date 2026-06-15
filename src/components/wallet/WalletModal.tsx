@@ -88,6 +88,34 @@ export default function WalletModal() {
   // Bonuses Carousel Index
   const [bonusSlideIndex, setBonusSlideIndex] = useState(0);
 
+  // Swipe logic for bonuses
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEndHandler = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe && bonusSlideIndex < availableBonuses.length - 1) {
+      setBonusSlideIndex(prev => prev + 1);
+    }
+    if (isRightSwipe && bonusSlideIndex > 0) {
+      setBonusSlideIndex(prev => prev - 1);
+    }
+  };
+
   // Promo code states
   const [promoCode, setPromoCode] = useState("");
   const [isPromoApplied, setIsPromoApplied] = useState(false);
@@ -1060,7 +1088,12 @@ export default function WalletModal() {
                     </span>
 
                     {/* Slider Window */}
-                    <div className="w-full sm:w-[428px] h-auto sm:h-[205px] overflow-hidden relative">
+                    <div 
+                      className="w-full sm:w-[428px] h-auto sm:h-[205px] overflow-hidden relative"
+                      onTouchStart={onTouchStart}
+                      onTouchMove={onTouchMove}
+                      onTouchEnd={onTouchEndHandler}
+                    >
                       <div 
                         className="flex flex-row gap-[8px] h-auto sm:h-[205px]"
                       >
