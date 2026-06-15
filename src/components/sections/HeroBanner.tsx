@@ -9,13 +9,13 @@ export default function HeroBanner() {
       />
 
       {/* Ellipse 7 */}
-      <div className="absolute -left-[161px] -top-[102px] z-[1] h-[575px] w-[575px] rounded-full bg-[#06102B] blur-[75px]" />
+      <div className="absolute -left-[100px] -top-[100px] md:-left-[161px] md:-top-[102px] z-[1] h-[350px] w-[350px] md:h-[575px] md:w-[575px] rounded-full bg-[#06102B] blur-[50px] md:blur-[75px]" />
       
       {/* Ellipse 9 */}
-      <div className="absolute left-[198px] top-[224px] z-[1] h-[194px] w-[194px] rounded-full bg-[#103686] blur-[25px]" />
+      <div className="absolute left-[40%] md:left-[198px] top-[150px] md:top-[224px] z-[1] h-[100px] w-[100px] md:h-[194px] md:w-[194px] rounded-full bg-[#103686] blur-[25px]" />
       
       {/* Ellipse 8 */}
-      <div className="absolute right-[-50px] top-[271px] z-[1] h-[129px] w-[129px] rounded-full bg-[#010A25] blur-[25px]" />
+      <div className="absolute right-[-20px] md:right-[-50px] top-[180px] md:top-[271px] z-[1] h-[80px] w-[80px] md:h-[129px] md:w-[129px] rounded-full bg-[#010A25] blur-[25px]" />
 
       {/* Content Box */}
       <div className="relative z-10 flex flex-col items-start gap-4 md:gap-6 px-5 md:px-10 pt-8 sm:pt-12 md:pt-[101px] pb-8 md:pb-[101px] w-full md:max-w-[600px]">
