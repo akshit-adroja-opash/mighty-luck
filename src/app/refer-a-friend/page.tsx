@@ -43,74 +43,112 @@ export default function ReferAFriendPage() {
                 </div>
 
                 {/* Right side calculator */}
-                <div className="flex w-full lg:w-[430px] min-h-[345px] flex-col items-center p-4 sm:p-[20px] gap-[24px] rounded-[16px] bg-[#091741] relative isolation-isolate">
-                  <div className="absolute top-[-118px] w-[173px] h-[173px] bg-[#1463FF] blur-[40px] rounded-full z-0 pointer-events-none opacity-40" />
+                <div className="flex flex-col items-center p-[20px] gap-[24px] w-full lg:w-[430px] h-auto sm:h-[345px] bg-[#091741] rounded-[16px] relative isolation-isolate mx-auto mt-8 lg:mt-0 flex-none">
+                  {/* Background Glow */}
+                  <div className="absolute top-[-118px] left-[calc(50%_-_173px/2_-_0.5px)] w-[173px] h-[173px] bg-[#1463FF] blur-[40px] rounded-full z-0 pointer-events-none" />
                   
-                  <div className="relative z-10 flex flex-col w-full gap-[12px] h-full justify-between">
-                    <h2 className="w-full text-center font-jost text-[20px] font-extrabold leading-[29px] tracking-[0.01em] text-white">
-                      How much can you earn with Mighty Luck?
-                    </h2>
+                  {/* Inner Content Wrapper */}
+                  <div className="flex flex-col items-start w-full sm:w-[390px] h-auto sm:h-[305px] gap-[12px] z-10 flex-none relative">
+                    
+                    {/* Header Title */}
+                    <div className="flex flex-row justify-center items-start w-full sm:w-[390px] h-auto sm:h-[58px] gap-[12px] flex-none">
+                      <h2 className="w-full sm:w-[300px] h-auto sm:h-[58px] text-center font-jost text-[20px] font-extrabold leading-[29px] tracking-[0.01em] text-white">
+                        How much can you earn with Mighty Luck?
+                      </h2>
+                    </div>
 
-                    <div className="flex flex-col gap-[16px] w-full">
-                      {/* Slider section */}
-                      <div className="flex flex-col gap-[8px]">
-                        <span className="font-manrope text-[12px] font-semibold tracking-[0.02em] text-[#BBCAF3]">Invited Friends</span>
-                        <div className="relative flex flex-col justify-center w-full h-[40px]">
+                    {/* Bottom Form Frame */}
+                    <div className="flex flex-col items-start w-full sm:w-[390px] h-auto sm:h-[235px] gap-[16px] flex-none">
+                      
+                      {/* Slider Block */}
+                      <div className="flex flex-col items-start w-full sm:w-[390px] h-[64px] gap-[8px] flex-none">
+                        <div className="flex flex-row items-center w-full sm:w-[390px] h-[16px] gap-[8px] flex-none">
+                          <span className="font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#BBCAF3] w-[88px] h-[16px]">
+                            Invited Friends
+                          </span>
+                        </div>
+                        <div className="flex flex-col justify-center items-start w-full sm:w-[390px] h-[40px] gap-[2px] isolation-isolate flex-none relative">
                           <input 
                             type="range" 
                             min="1" 
                             max="50" 
                             value={sliderValue}
                             onChange={(e) => setSliderValue(Number(e.target.value))}
-                            className="w-full h-[6px] rounded-full appearance-none outline-none z-0 relative cursor-pointer"
+                            className="w-full h-[6px] rounded-[100px] appearance-none outline-none z-0 relative cursor-pointer bg-[#112F82] flex-none"
                             style={{
-                              background: `linear-gradient(to right, #1463FF ${(sliderValue/50)*100}%, #112F82 ${(sliderValue/50)*100}%)`
+                              background: `linear-gradient(to right, #1463FF ${((sliderValue - 1) / 49) * 100}%, transparent ${((sliderValue - 1) / 49) * 100}%)`,
+                              backgroundColor: "#112F82"
                             }}
                           />
-                          <div className="absolute top-[5px] flex items-center justify-center bg-[#1463FF] rounded-full h-[30px] min-w-[54px] px-[12px] pointer-events-none text-white font-manrope text-[16px] font-bold shadow-lg gap-1"
-                            style={{ left: `calc(${(sliderValue/50)*100}% - 27px)` }}
+                          <div 
+                            className="absolute top-[5px] flex flex-row items-center justify-center p-[4px_12px] gap-[4px] w-[54px] h-[30px] bg-[#1463FF] rounded-[100px] pointer-events-none z-10"
+                            style={{ left: `calc(${((sliderValue - 1) / 49) * 100}% - 27px)` }}
                           >
-                            <Users size={14} className="text-white" fill="white" />
-                            <span>{sliderValue}</span>
+                            <div className="flex-none w-[16px] h-[16px] flex items-center justify-center">
+                              <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11.3333 9.33333C11.3333 10.0406 10.7607 10.6133 10.0533 10.6133H1.94667C1.23933 10.6133 0.666667 10.0406 0.666667 9.33333C0.666667 7.86067 1.86067 6.66667 3.33333 6.66667H8.66667C10.1393 6.66667 11.3333 7.86067 11.3333 9.33333ZM8.66667 3.33333C8.66667 4.806 7.47267 6 6 6C4.52733 6 3.33333 4.806 3.33333 3.33333C3.33333 1.86067 4.52733 0.666667 6 0.666667C7.47267 0.666667 8.66667 1.86067 8.66667 3.33333ZM15.3333 9.33333C15.3333 10.0406 14.7607 10.6133 14.0533 10.6133H12.2133C12.482 10.222 12.6667 9.754 12.6667 9.33333C12.6667 7.49267 11.174 6 9.33333 6C9.102 6 8.878 6.03667 8.66667 6.082C9.48 6.55133 10 7.424 10 8.4V9.33333H14.0533C14.7607 9.33333 15.3333 9.906 15.3333 10.6133V9.33333ZM12.6667 3.33333C12.6667 4.806 11.4727 6 10 6C9.84533 6 9.69667 5.98667 9.552 5.952C10.0467 5.25933 10.2707 4.39867 10.082 3.522C9.91933 2.766 9.40067 2.128 8.66667 1.80267C8.98667 1.54133 9.38067 1.39067 9.80533 1.35333C11.3067 1.22133 12.6667 2.45067 12.6667 3.96V3.33333Z" fill="white"/>
+                              </svg>
+                            </div>
+                            <span className="font-manrope font-bold text-[16px] leading-[22px] tracking-[0.02em] text-white w-[10px] h-[22px] flex-none">
+                              {sliderValue}
+                            </span>
                           </div>
-                          {/* Slider thumb styling via CSS would go here, using a hidden thumb for custom one above */}
                           <style dangerouslySetInnerHTML={{__html: `
                             input[type=range]::-webkit-slider-thumb {
                               appearance: none;
-                              width: 30px;
+                              width: 54px;
                               height: 30px;
                               background: transparent;
-                              border-radius: 50%;
+                              cursor: pointer;
+                            }
+                            input[type=range]::-moz-range-thumb {
+                              width: 54px;
+                              height: 30px;
+                              background: transparent;
+                              border: none;
                               cursor: pointer;
                             }
                           `}} />
                         </div>
                       </div>
 
-                      {/* Earnings Result */}
-                      <div className="flex flex-col gap-[8px] mt-[10px]">
-                        <div className="flex flex-row items-center justify-center p-[10px_16px] gap-[12px] bg-[#112F82] rounded-[8px] h-[60px]">
-                          <span className="font-manrope text-[14px] font-bold text-white">Your monthly earnings:</span>
-                          <span className="font-manrope text-[24px] font-bold text-white">${calculateEarnings(sliderValue)}</span>
+                      {/* Earnings Result Block */}
+                      <div className="flex flex-col items-start w-full sm:w-[390px] h-auto sm:h-[99px] gap-[8px] flex-none">
+                        <div className="flex flex-col items-start w-full sm:w-[390px] h-[60px] gap-[12px] flex-1">
+                          <div className="flex flex-row items-center justify-center p-[10px_16px] gap-[12px] w-full sm:w-[390px] h-[60px] bg-[#112F82] rounded-[8px] flex-none">
+                            <div className="flex flex-row items-center justify-center gap-[8px] w-full sm:w-[358px] h-[33px] flex-1">
+                              <span className="font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-white w-auto sm:w-[164px] h-[19px] flex-none">
+                                Your monthly earnings:
+                              </span>
+                              <span className="font-manrope text-[24px] font-bold leading-[33px] tracking-[0.02em] text-white w-auto sm:w-[61px] h-[33px] flex-none">
+                                ${calculateEarnings(sliderValue)}
+                              </span>
+                            </div>
+                          </div>
                         </div>
-                        <p className="font-manrope text-[10px] font-medium leading-[14px] text-[#7795E8] text-center">
+                        <span className="font-manrope text-[10px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] w-full sm:w-[390px] h-[28px] text-left flex-none">
                           * Calculations are based on average player activity and may vary in individual cases
-                        </p>
+                        </span>
                       </div>
 
-                      {/* Invite Input */}
-                      <div className="flex flex-row items-center bg-[#112F82] rounded-[8px] h-[40px] overflow-hidden mt-[4px]">
-                        <input 
-                          type="email" 
-                          placeholder="Enter email address" 
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          className="flex-1 bg-transparent border-none outline-none pl-[16px] font-manrope text-[14px] font-semibold text-white placeholder-[#7795E8]"
-                        />
-                        <button className="h-[40px] px-[20px] bg-[#FFC83D] rounded-[8px] flex items-center justify-center font-manrope text-[14px] font-bold text-[#1A1404] hover:opacity-90 transition-opacity whitespace-nowrap">
-                          Send Invite
+                      {/* Invite Input Block */}
+                      <div className="flex flex-col sm:flex-row items-start w-full sm:w-[390px] h-auto sm:h-[40px] gap-[8px] flex-none">
+                        <div className="flex flex-row items-center p-[10px_16px] gap-[12px] w-full sm:w-[260px] h-[40px] bg-[#112F82] rounded-[8px] flex-none">
+                          <input 
+                            type="email" 
+                            placeholder="Enter email address" 
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            className="flex-1 bg-transparent border-none outline-none font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white placeholder-[#7795E8] w-[228px] h-[19px]"
+                          />
+                        </div>
+                        <button className="flex flex-row justify-center items-center px-[10px] gap-[10px] w-full sm:w-[122px] h-[40px] bg-[#FFC83D] rounded-[8px] transition-opacity hover:opacity-90 flex-none">
+                          <span className="font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-[#1A1404] whitespace-nowrap">
+                            Send Invite
+                          </span>
                         </button>
                       </div>
+
                     </div>
                   </div>
                 </div>
