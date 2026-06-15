@@ -39,7 +39,7 @@ export default function SectionHeader({
 
         {/* Title: Jost 800 20px #FFFFFF letter-spacing 0.01em */}
         <h2
-          className="flex-1 min-w-0 truncate font-jost text-[16px] sm:text-[20px] font-extrabold leading-[29px] tracking-[0.01em] text-white"
+          className="flex-1 min-w-0 truncate font-jost text-[20px] font-extrabold leading-[29px] tracking-[0.01em] text-white"
         >
           {title}
         </h2>

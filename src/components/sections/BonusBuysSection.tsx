@@ -27,7 +27,7 @@ export default function BonusBuysSection() {
     <section className="flex w-full flex-none flex-col gap-5 overflow-hidden">
       <SectionHeader 
         title="BONUS BUYS (145)" 
-        icon={<img src="/games/game-icons/bonus.svg" alt="Bonus Buys" className="w-[20px] h-[20px]" />} 
+        icon={<img src="/games/game-icons/bonus.svg" alt="Bonus Buys" className="w-[30px] h-[30px]" />} 
         iconBg="bg-transparent"
         onPrev={scrollLeft}
         onNext={scrollRight}

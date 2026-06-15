@@ -29,7 +29,7 @@ export default function SlotsSection() {
     <section className="flex w-full flex-none flex-col gap-5 overflow-hidden">
       <SectionHeader 
         title="SLOTS (1,487)" 
-        icon={<img src="/games/game-icons/slot.svg" alt="Slots" className="w-[20px] h-[20px]" />} 
+        icon={<img src="/games/game-icons/slot.svg" alt="Slots" className="w-[30px] h-[30px]" />} 
         iconBg="bg-transparent"
         canScrollLeft={canScrollLeft}
         canScrollRight={canScrollRight}

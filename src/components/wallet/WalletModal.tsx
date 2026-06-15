@@ -444,7 +444,7 @@ export default function WalletModal() {
                     <>
                     {/* Step 1: Select a Bonus */}
                     <div className="relative flex flex-col gap-[8px] w-full sm:w-[428px] h-auto sm:h-[64px] flex-none">
-                      <span className="font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#C8A7DD] w-[97px] h-[16px]">
+                      <span className="font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#BBCAF3] w-[97px] h-[16px]">
                         1.Select a Bonus
                       </span>
                       <div 
@@ -563,7 +563,7 @@ export default function WalletModal() {
 
                     {/* Step 2: Select Payment Method */}
                     <div className="relative flex flex-col gap-[8px] w-full sm:w-[428px] h-auto sm:h-[64px] flex-none">
-                      <span className="font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#C8A7DD] w-full sm:w-[163px] h-[16px]">
+                      <span className="font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#BBCAF3] w-full sm:w-[163px] h-[16px]">
                         2.Select payment method
                       </span>
                       
@@ -876,7 +876,7 @@ export default function WalletModal() {
 
                         {/* Calculate amount */}
                         <div className="flex flex-col gap-[8px] w-full sm:w-[428px]">
-                          <span className="font-manrope text-[12px] font-semibold tracking-[0.02em] text-[#C8A7DD]">
+                          <span className="font-manrope text-[12px] font-semibold tracking-[0.02em] text-[#BBCAF3]">
                             3.Calculate the amount you want to deposit
                           </span>
                           <div className="flex flex-col sm:flex-row items-center gap-[8px] w-full sm:w-[428px] h-auto sm:h-[40px]">
@@ -928,7 +928,7 @@ export default function WalletModal() {
 
                         {/* Deposit Address */}
                         <div className="flex flex-col gap-[8px] w-full sm:w-[428px]">
-                          <span className="font-manrope text-[12px] font-semibold tracking-[0.02em] text-[#C8A7DD]">
+                          <span className="font-manrope text-[12px] font-semibold tracking-[0.02em] text-[#BBCAF3]">
                             4.BTC Deposit Address
                           </span>
                           <div className="flex items-center justify-between bg-[#112F82] rounded-[8px] w-full sm:w-[428px] h-[44px] sm:h-[40px] px-[16px] py-[10px]">

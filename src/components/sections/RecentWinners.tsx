@@ -4,12 +4,12 @@ import { useScrollState } from "@/hooks/useScrollState";
 
 
 const winners = [
-  { game: "Sweet Bonanza Super Scatter", image: "/games/1.png", username: "Alb****", time: "14:16 PM", payout: "$126.1", payoutColor: "text-[#00DD29]" },
-  { game: "Honey Money Multiplier", image: "/games/2.png", username: "Tra****", time: "14:16 PM", payout: "$15.2", payoutColor: "text-[#00DD29]" },
-  { game: "Dragon Tiger", image: "/games/3.png", username: "Hid******", time: "14:15 PM", payout: "$77.08", payoutColor: "text-[#00DD29]" },
-  { game: "Eleven Fortune", image: "/games/4.png", username: "Gin***", time: "14:15 PM", payout: "$0.00", payoutColor: "text-[#7795E8]" },
-  { game: "Honey Money Multiplier", image: "/games/2.png", username: "Tra****", time: "14:15 PM", payout: "$11.23", payoutColor: "text-[#00DD29]" },
-  { game: "XO Paradise", image: "/games/5.png", username: "Amr******", time: "14:15 PM", payout: "$67.88", payoutColor: "text-[#00DD29]" },
+  { game: "Sweet Bonanza Super Scatter", image: "/games/slots/slot-1.png", username: "Alb****", time: "14:16 PM", payout: "$126.1", payoutColor: "text-[#00DD29]" },
+  { game: "Honey Money Multiplier", image: "/games/slots/slot-2.png", username: "Tra****", time: "14:16 PM", payout: "$15.2", payoutColor: "text-[#00DD29]" },
+  { game: "Dragon Tiger", image: "/games/table/table-1.png", username: "Hid******", time: "14:15 PM", payout: "$77.08", payoutColor: "text-[#00DD29]" },
+  { game: "Eleven Fortune", image: "/games/slots/slot-3.png", username: "Gin***", time: "14:15 PM", payout: "$0.00", payoutColor: "text-[#7795E8]" },
+  { game: "Honey Money Multiplier", image: "/games/slots/slot-2.png", username: "Tra****", time: "14:15 PM", payout: "$11.23", payoutColor: "text-[#00DD29]" },
+  { game: "XO Paradise", image: "/games/slots/slot-4.png", username: "Amr******", time: "14:15 PM", payout: "$67.88", payoutColor: "text-[#00DD29]" },
 ];
 
 export default function RecentWinners() {
@@ -17,7 +17,7 @@ export default function RecentWinners() {
     <section className="flex w-full flex-none flex-col gap-5 items-start">
       <SectionHeader
         title="RECENT WINNERS"
-        icon={<img src="/games/game-icons/recent.svg" alt="Recent Winners" className="w-[20px] h-[20px]" />}
+        icon={<img src="/games/game-icons/recent.svg" alt="Recent Winners" className="w-[30px] h-[30px]" />}
         iconBg="bg-transparent"
         showViewAll={false}
         showPagination={false}

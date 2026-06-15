@@ -91,7 +91,7 @@ export default function CollectionsSection() {
       <SectionHeader 
         title="COLLECTIONS (17)" 
         titleWidth="189px"
-        icon={<img src="/games/game-icons/collections.svg" alt="Collections" className="w-[20px] h-[20px]" />} 
+        icon={<img src="/games/game-icons/collections.svg" alt="Collections" className="w-[30px] h-[30px]" />} 
         iconBg="bg-transparent"
         onPrev={scrollLeft}
         onNext={scrollRight}

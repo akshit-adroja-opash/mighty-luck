@@ -78,7 +78,7 @@ export default function ProvidersSection() {
       <SectionHeader
         title="GAME PROVIDERS (34)"
         titleWidth="237px"
-        icon={<img src="/games/game-icons/game.svg" alt="Game Providers" className="w-[20px] h-[20px]" />}
+        icon={<img src="/games/game-icons/game.svg" alt="Game Providers" className="w-[30px] h-[30px]" />}
         iconBg="bg-transparent"
         onPrev={scrollLeft}
         onNext={scrollRight}

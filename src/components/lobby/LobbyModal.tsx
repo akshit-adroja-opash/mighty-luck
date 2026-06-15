@@ -6,8 +6,22 @@ import { RootState } from "@/store";
 import { closeModal, openModal, setActiveCategory, setSelectedGame } from "@/store/slices/uiSlice";
 import GameCard from "@/components/ui/GameCard";
 import { toast } from "sonner";
+import { Heart, Star, LayoutGrid, User, CircleDot, Square } from "lucide-react";
 
 /* ── Icon helpers ── */
+const MaskIcon = ({ src }: { src: string }) => (
+  <div 
+    className="w-full h-full bg-current transition-colors" 
+    style={{ 
+      WebkitMaskImage: `url(${src})`, 
+      maskImage: `url(${src})`, 
+      WebkitMaskSize: 'contain', 
+      WebkitMaskRepeat: 'no-repeat', 
+      WebkitMaskPosition: 'center' 
+    }} 
+  />
+);
+
 const SearchIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
 );
@@ -17,10 +31,10 @@ const CloseIcon = () => (
 
 /* ── Sidebar nav items with icons ── */
 const navIcons: Record<string, React.ReactNode> = {
-  all: <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M14 1H2C1.45 1 1 1.45 1 2V10C1 10.55 1.45 11 2 11H14C14.55 11 15 10.55 15 10V2C15 1.45 14.55 1 14 1Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M4.5 6H6.5M5.5 5V7M10.5 6.5C10.5 6.78 10.28 7 10 7C9.72 7 9.5 6.78 9.5 6.5C9.5 6.22 9.72 6 10 6C10.28 6 10.5 6.22 10.5 6.5ZM12.5 5.5C12.5 5.78 12.28 6 12 6C11.72 6 11.5 5.78 11.5 5.5C11.5 5.22 11.72 5 12 5C12.28 5 12.5 5.22 12.5 5.5Z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>,
-  recent: <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="1.5"/><path d="M8 4.5V8.5L11 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>,
-  favorites: <svg width="16" height="15" viewBox="0 0 16 15" fill="none"><path d="M8 13.5C8 13.5 1.5 10 1.5 5.5C1.5 3 3.5 1.5 5.5 1.5C6.8 1.5 7.6 2.3 8 3C8.4 2.3 9.2 1.5 10.5 1.5C12.5 1.5 14.5 3 14.5 5.5C14.5 10 8 13.5 8 13.5Z" fill="currentColor"/></svg>,
-  new: <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1L9.2 5.8H14L10.1 8.8L11.3 13.6L8 10.7L4.7 13.6L5.9 8.8L2 5.8H6.8L8 1Z" fill="currentColor"/></svg>,
+  all: <MaskIcon src="/games/game-icons/game.svg" />,
+  recent: <MaskIcon src="/games/game-icons/recent.svg" />,
+  favorites: <MaskIcon src="/games/side-icon/like.svg" />,
+  new: <MaskIcon src="/games/side-icon/new-r.svg" />,
 };
 
 const navItems = [
@@ -31,14 +45,14 @@ const navItems = [
 ];
 
 const catIcons: Record<string, React.ReactNode> = {
-  Originals: <svg width="12" height="16" viewBox="0 0 12 16" fill="none"><path d="M10.5 6H6.5V1L1.5 10H5.5V15L10.5 6Z" fill="currentColor"/></svg>,
-  Slots: <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3V9M8 3C8 3 9 1 11.5 1C12.5 1 13.5 2 13.5 3.5C13.5 6 11 8.5 11 8.5M8 3C8 3 7 1 4.5 1C3.5 1 2.5 2 2.5 3.5C2.5 6 5 8.5 5 8.5" stroke="currentColor" strokeWidth="1.5"/><circle cx="5" cy="11" r="3" fill="currentColor"/><circle cx="11" cy="11" r="3" fill="currentColor"/></svg>,
-  Roulette: <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5"/><circle cx="8" cy="8" r="4" stroke="currentColor" strokeWidth="1.2"/><path d="M8 1V15M1 8H15" stroke="currentColor" strokeWidth="1"/></svg>,
-  "Crash Games": <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.5 2.5C13.5 2.5 12.5 3.5 10 3.5C7.5 3.5 5.5 5.5 5.5 8C5.5 9 6.5 10.5 6.5 10.5M13.5 2.5C13.5 2.5 12.5 1.5 10 1.5C7.5 1.5 5.5 3.5 5.5 6M13.5 2.5L10 6M5.5 8L1.5 12.5L3.5 14.5L8 10.5M2 14L1 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>,
-  "Table Games": <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1.5 4.5V13.5C1.5 14 2 14.5 2.5 14.5H11.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/><rect x="4.5" y="1.5" width="10" height="10" rx="1.5" stroke="currentColor" strokeWidth="1.5"/><circle cx="9.5" cy="6.5" r="1" fill="currentColor"/></svg>,
-  "Live Casino": <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="3" stroke="currentColor" strokeWidth="1.5"/><path d="M3 14C3 11.2 5.2 9 8 9C10.8 9 13 11.2 13 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>,
-  Baccarat: <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" strokeWidth="1.5"/><circle cx="8" cy="8" r="2" fill="currentColor"/></svg>,
-  Blackjack: <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="8" height="11" rx="1.5" stroke="currentColor" strokeWidth="1.3"/><rect x="7" y="2" width="8" height="11" rx="1.5" stroke="currentColor" strokeWidth="1.3"/></svg>,
+  Originals: <MaskIcon src="/games/game-icons/originals.svg" />,
+  Slots: <MaskIcon src="/games/game-icons/slot.svg" />,
+  Roulette: <LayoutGrid size={16} />,
+  "Crash Games": <MaskIcon src="/games/game-icons/crash.svg" />,
+  "Table Games": <MaskIcon src="/games/game-icons/table.svg" />,
+  "Live Casino": <MaskIcon src="/games/side-icon/live-c.svg" />,
+  Baccarat: <MaskIcon src="/games/side-icon/baccrarat.svg" />,
+  Blackjack: <MaskIcon src="/games/side-icon/blackjack.svg" />,
 };
 
 const categoryItems = [

@@ -29,7 +29,7 @@ export default function CrashGamesSection() {
     <section className="flex w-full flex-none flex-col gap-5 overflow-hidden">
       <SectionHeader 
         title="CRASH GAMES (723)" 
-        icon={<img src="/games/game-icons/crash.svg" alt="Crash Games" className="w-[20px] h-[20px]" />} 
+        icon={<img src="/games/game-icons/crash.svg" alt="Crash Games" className="w-[30px] h-[30px]" />} 
         iconBg="bg-transparent"
         canScrollLeft={canScrollLeft}
         canScrollRight={canScrollRight}

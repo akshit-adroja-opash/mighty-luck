@@ -39,7 +39,7 @@ export default function OriginalsSection() {
     <section className="flex w-full flex-none flex-col gap-5 overflow-hidden">
       <SectionHeader
         title="ORIGINALS (14)"
-        icon={<img src="/games/game-icons/originals.svg" alt="Originals" className="w-[20px] h-[20px]" />}
+        icon={<img src="/games/game-icons/originals.svg" alt="Originals" className="w-[30px] h-[30px]" />}
         iconBg="bg-transparent"
         onPrev={scrollLeft}
         onNext={scrollRight}
