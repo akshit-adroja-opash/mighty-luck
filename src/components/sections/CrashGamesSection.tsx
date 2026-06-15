@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import { useRouter } from "next/navigation";
 import GameCard from "@/components/ui/GameCard";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { useScrollState } from "@/hooks/useScrollState";
@@ -9,6 +10,7 @@ const crashGames = Array.from({ length: 20 }, (_, i) => `/games/crash/crash-${(i
 
 export default function CrashGamesSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
   const { canScrollLeft, canScrollRight, checkScroll } = useScrollState(scrollRef);
 
   const scrollLeft = () => {
@@ -45,6 +47,7 @@ export default function CrashGamesSection() {
             <GameCard
               image={image}
               title={`Crash Game ${index + 1}`}
+              onClick={() => router.push(`/games/crash-${(index % 8) + 1}`)}
             />
           </div>
         ))}

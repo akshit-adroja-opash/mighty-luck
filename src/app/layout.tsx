@@ -54,7 +54,7 @@ export default function RootLayout({
                   <SeoContent />
                 </div>
 
-                <div className="hidden lg:block w-full max-w-[1136px] mt-10">
+                <div className="hidden lg:block w-full mt-10">
                   <CryptoBanner />
                 </div>
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import { useRouter } from "next/navigation";
 import GameCard from "@/components/ui/GameCard";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { useScrollState } from "@/hooks/useScrollState";
@@ -9,6 +10,7 @@ const games = Array.from({ length: 20 }, (_, i) => `/games/slots/slot-${(i % 7) 
 
 export default function SlotsSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
   const { canScrollLeft, canScrollRight, checkScroll } = useScrollState(scrollRef);
 
   const scrollLeft = () => {
@@ -44,7 +46,8 @@ export default function SlotsSection() {
           <div key={index} className="flex-none snap-start">
             <GameCard
               image={game}
-              title={`Game ${index}`}
+              title={`Slot Game ${index + 1}`}
+              onClick={() => router.push(`/games/slot-${(index % 7) + 1}`)}
             />
           </div>
         ))}

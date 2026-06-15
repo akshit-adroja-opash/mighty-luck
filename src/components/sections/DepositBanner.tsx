@@ -20,15 +20,38 @@ export default function DepositBanner() {
   const activeCategory = useSelector((state: RootState) => state.ui.activeCategory);
 
   if (isAuthenticated) {
+const SvgIconWrapper = (src: string) => {
+  const IconComponent = ({ size, className, isActive, ...props }: any) => (
+    <div 
+      style={{ 
+        width: size, 
+        height: size, 
+        WebkitMaskImage: `url(${src})`, 
+        WebkitMaskSize: 'contain', 
+        WebkitMaskRepeat: 'no-repeat', 
+        WebkitMaskPosition: 'center',
+        maskImage: `url(${src})`,
+        maskSize: 'contain',
+        maskRepeat: 'no-repeat',
+        maskPosition: 'center'
+      }} 
+      className={`flex-none ${isActive ? 'bg-[#FFB800]' : 'bg-[#D2DCF7]'} ${className || ''}`}
+    />
+  );
+  IconComponent.displayName = `SvgIcon(${src})`;
+  return IconComponent;
+};
+
+// ... inside the component
     const categories = [
-      { name: "Lobby", icon: Home },
-      { name: "Slots", icon: Cherry },
-      { name: "Originals", icon: Zap },
-      { name: "Crash Games", icon: Rocket },
-      { name: "Providers", icon: Gamepad2 },
-      { name: "Table Games", icon: Dices },
-      { name: "Bonus Buys", icon: CircleDollarSign },
-      { name: "Collection", icon: Library },
+      { name: "Lobby", icon: ({ size, className, fill }: any) => <Home size={size} className={className} fill={fill} /> },
+      { name: "Slots", icon: SvgIconWrapper("/games/game-icons/slot.svg") },
+      { name: "Originals", icon: SvgIconWrapper("/games/game-icons/originals.svg") },
+      { name: "Crash Games", icon: SvgIconWrapper("/games/game-icons/crash.svg") },
+      { name: "Providers", icon: SvgIconWrapper("/games/game-icons/game.svg") },
+      { name: "Table Games", icon: SvgIconWrapper("/games/game-icons/table.svg") },
+      { name: "Bonus Buys", icon: SvgIconWrapper("/games/game-icons/bonus.svg") },
+      { name: "Collection", icon: SvgIconWrapper("/games/game-icons/collections.svg") },
     ];
 
     return (
@@ -50,6 +73,7 @@ export default function DepositBanner() {
                 size={20} 
                 className={isActive ? "text-[#FFB800]" : "text-[#D2DCF7]"} 
                 fill={isActive ? "#FFB800" : "transparent"} 
+                isActive={isActive}
               />
               <span 
                 className={`font-sans text-[14px] font-semibold tracking-[0.02em] whitespace-nowrap ${
