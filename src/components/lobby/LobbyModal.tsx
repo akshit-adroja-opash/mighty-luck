@@ -357,6 +357,7 @@ export default function LobbyModal() {
                           image={game.image} 
                           title={game.title} 
                           onClick={() => handleGameClick(game)}
+                          fluid
                         />
                       </div>
                     ))}

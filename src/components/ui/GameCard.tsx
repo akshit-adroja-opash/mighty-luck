@@ -5,17 +5,23 @@ interface GameCardProps {
   image: string;
   title: string;
   onClick?: () => void;
+  fluid?: boolean;
 }
 
 export default function GameCard({
   image,
   title,
   onClick,
+  fluid = false,
 }: GameCardProps) {
   return (
     <div 
       onClick={onClick}
-      className="group relative w-[120px] sm:w-[140px] lg:w-[152px] h-[160px] sm:h-[185px] lg:h-[200px] cursor-pointer overflow-hidden rounded-[12px]"
+      className={`group relative cursor-pointer overflow-hidden rounded-[12px] ${
+        fluid 
+          ? "w-full aspect-[152/200] h-auto" 
+          : "w-[120px] sm:w-[140px] lg:w-[152px] h-[160px] sm:h-[185px] lg:h-[200px]"
+      }`}
     >
 
       {/* Image Container matches full card size */}
