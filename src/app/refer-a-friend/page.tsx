@@ -263,8 +263,8 @@ export default function ReferAFriendPage() {
             {/* HOW REFERRAL PROGRAM WORKS */}
             <section className="flex flex-col gap-[32px] w-full">
               <div className="flex flex-row items-center gap-[12px]">
-                <div className="flex items-center justify-center w-[30px] h-[30px] rounded-full bg-[#FFC83D]">
-                  <Award size={18} className="text-[#1A1404]" fill="#1A1404" />
+                <div className="w-[30px] h-[30px] relative flex-none">
+                  <Image src="/images/how-referral.svg" alt="How Referral Works" fill className="object-contain" />
                 </div>
                 <h3 className="font-jost text-[20px] font-extrabold text-white uppercase tracking-[0.01em]">HOW REFERRAL PROGRAM WORKS</h3>
               </div>
@@ -284,8 +284,8 @@ export default function ReferAFriendPage() {
             {/* FAQs */}
             <section className="flex flex-col gap-[20px] w-full mt-[20px]">
               <div className="flex flex-row items-center gap-[12px]">
-                <div className="w-[30px] h-[30px] bg-[#FFC83D] flex items-center justify-center rounded-full text-[#1A1404]">
-                  <HelpCircle size={18} className="text-[#1A1404]" fill="#1A1404" />
+                <div className="w-[30px] h-[30px] relative flex-none">
+                  <Image src="/images/invite-friends.svg" alt="FAQs" fill className="object-contain" />
                 </div>
                 <h3 className="font-jost text-[20px] font-extrabold text-white uppercase tracking-[0.01em]">FAQs</h3>
               </div>

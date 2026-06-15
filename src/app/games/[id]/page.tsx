@@ -104,7 +104,7 @@ export default function GamePage() {
                */}
               <div className="relative w-full aspect-[1136/657] flex-none overflow-hidden rounded-[16px]">
                 <Image
-                  src={game.image}
+                  src="/game-1.png"
                   alt={game.title}
                   fill
                   className="object-cover"

@@ -88,7 +88,7 @@ export default function SidebarMenu({ onItemClick, isCollapsed = false }: { onIt
         const hoverClass = item.isPrimary ? "hover:bg-blue-600" : "hover:bg-[#1463FF] hover:text-white";
 
         return (
-          <div key={item.name} className={`flex w-full flex-col ${isOpen && item.subItems && !isCollapsed ? 'rounded-[8px] bg-[#112F82]' : ''}`}>
+          <div key={item.name} className={`flex w-full flex-col ${isOpen && item.subItems ? 'rounded-[8px] bg-[#112F82]' : ''}`}>
             <button
               onClick={() => {
                 if (item.subItems) {
@@ -122,13 +122,14 @@ export default function SidebarMenu({ onItemClick, isCollapsed = false }: { onIt
             </button>
 
             {/* Sub Menu */}
-            {item.subItems && isOpen && !isCollapsed && (
-              <div className="flex w-full flex-none flex-col items-start justify-center gap-[20px] rounded-b-[8px] px-[16px] py-[20px]">
+            {item.subItems && isOpen && (
+              <div className={`flex w-full flex-none flex-col ${isCollapsed ? 'items-center' : 'items-start'} justify-center gap-[20px] rounded-b-[8px] ${isCollapsed ? 'px-0' : 'px-[16px]'} py-[20px]`}>
                 {item.subItems.map((subItem) => {
                   const SubIcon = subItem.icon;
                   return (
                     <button
                       key={subItem.name}
+                      title={isCollapsed ? subItem.name : undefined}
                       onClick={() => {
                         if (subItem.name === "Popular Games" || subItem.name === "All Games") {
                           dispatch(setActiveCategory("Lobby"));
@@ -136,12 +137,12 @@ export default function SidebarMenu({ onItemClick, isCollapsed = false }: { onIt
                         }
                         if (onItemClick) onItemClick();
                       }}
-                      className="flex h-[20px] items-center gap-[12px] text-[#D2DCF7] transition-colors hover:text-white cursor-pointer"
+                      className={`flex items-center text-[#D2DCF7] transition-colors hover:text-white cursor-pointer w-full ${isCollapsed ? 'justify-center h-[24px]' : 'h-[20px] gap-[12px]'}`}
                     >
                       <div className="flex h-[20px] w-[20px] items-center justify-center flex-none">
                         <SubIcon size={18} />
                       </div>
-                      <span className="font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] whitespace-nowrap">{subItem.name}</span>
+                      {!isCollapsed && <span className="font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] whitespace-nowrap">{subItem.name}</span>}
                     </button>
                   );
                 })}
