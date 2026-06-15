@@ -7,7 +7,7 @@ const features = [
     image: "/images/promo-stopwatch.png",
     descClass: "h-[88px] font-medium leading-[140%]",
     ellipse9: { right: "-61px", top: "32px" },
-    imgClassName: "w-[180px] sm:w-[322px] h-[140px] sm:h-[215px] -right-[30px] sm:right-auto sm:left-[133px] top-[40px] sm:top-[5px] sm:-rotate-[11deg]",
+    imgClassName: "w-[180px] sm:w-[310px] h-[140px] sm:h-[205px] -right-[30px] sm:left-auto sm:-right-[90px] top-[40px] sm:top-[15px] sm:rotate-0",
   },
   {
     title: "BIG WINNERS WELCOME",

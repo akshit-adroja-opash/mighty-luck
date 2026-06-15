@@ -193,28 +193,30 @@ export default function WalletModal() {
   if (!isOpen) return null;
 
   // Dynamic sizing based on active tab, payment method, CC step, and BTC submitted state
+  const isFixedSizeTab = activeTab === "bonuses" || activeTab === "withdraw" || activeTab === "transactions";
+
   const modalHeight = isBtcSubmitted 
     ? "532px" 
-    : (activeTab === "bonuses"
-        ? "518px"
+    : (isFixedSizeTab
+        ? "530px"
         : (paymentMethod === "btc" ? "604px" : (ccStep === "address" ? "633px" : "647px")));
     
   const innerHeight = isBtcSubmitted 
     ? "386px" 
-    : (activeTab === "bonuses"
-        ? "462px"
+    : (isFixedSizeTab
+        ? "474px"
         : (paymentMethod === "btc" ? "474px" : (ccStep === "address" ? "503px" : "517px")));
     
   const tabViewHeight = isBtcSubmitted 
     ? "287px" 
-    : (activeTab === "bonuses"
-        ? "363px"
+    : (isFixedSizeTab
+        ? "375px"
         : (paymentMethod === "btc" ? "376px" : (ccStep === "address" ? "404px" : "418px")));
 
   const tabsContentHeight = isBtcSubmitted 
     ? "333px" 
-    : (activeTab === "bonuses"
-        ? "409px"
+    : (isFixedSizeTab
+        ? "421px"
         : (paymentMethod === "btc" ? "428px" : (ccStep === "address" ? "450px" : "464px")));
 
   const activeAmount = selectedAmountOption === "custom" ? customAmount : selectedAmountOption;
@@ -479,8 +481,10 @@ export default function WalletModal() {
                         }`}
                       >
                         <div className="flex items-center gap-[8px] w-full sm:w-[370px] h-[19px]">
-                          <GiftIcon />
-                          <span className="font-manrope text-[12px] font-bold leading-[16px] tracking-[0.02em] text-white truncate w-full sm:w-[245px]">
+                          <div className="w-[16px] h-[16px] relative flex-none">
+                            <img src="/images/bonus-icon.svg" alt="Bonus" className="w-[16px] h-[16px] absolute left-0 top-0" />
+                          </div>
+                          <span className="font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-white truncate w-full sm:w-[245px] h-[19px]">
                             {selectedBonus}
                           </span>
                         </div>
@@ -600,32 +604,28 @@ export default function WalletModal() {
                         <div className="flex items-center gap-[8px] w-full sm:w-[370px] h-[20px]">
                           {paymentMethod === "btc" ? (
                             <>
-                              <div className="w-[42px] h-[20px] flex items-center justify-center text-[#A5B8EF]">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                  <circle cx="12" cy="12" r="10"/>
-                                  <path d="M12 6v12M9 9h4.5a2.5 2.5 0 0 1 0 5H9M9 12h5.5a2.5 2.5 0 0 1 0 5H9"/>
-                                </svg>
+                              <div className="w-[16px] h-[16px] relative flex-none">
+                                <img src="/images/bitcoin.svg" alt="Bitcoin" className="w-[16px] h-[16px] absolute left-0 top-0" />
                               </div>
-                              <div className="flex items-center gap-[8px] w-full sm:w-[288px] h-[19px]">
-                                <span className="font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-white w-[81px]">
+                              <div className="flex items-center gap-[8px] w-full sm:w-[346px] h-[19px]">
+                                <span className="font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-white w-auto whitespace-nowrap flex-none">
                                   Bitcoin
                                 </span>
-                                <span className="font-manrope text-[10px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] w-full sm:w-[199px] h-[14px]">
+                                <span className="font-manrope text-[10px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] w-auto whitespace-nowrap flex-none">
                                   (Min. Deposit $10)
                                 </span>
                               </div>
                             </>
                           ) : (
                             <>
-                              <div className="flex items-center gap-[4px] w-[44px] h-[20px]">
-                                <VisaIcon />
-                                <MastercardIcon />
+                              <div className="flex items-center gap-[2px] w-[42px] h-[20px] flex-none">
+                                <img src="/images/visa.svg" alt="Credit Card" className="w-[42px] h-[20px]" />
                               </div>
                               <div className="flex items-center gap-[8px] w-full sm:w-[288px] h-[19px]">
-                                <span className="font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-white w-[81px]">
+                                <span className="font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-white w-auto whitespace-nowrap flex-none">
                                   Credit Card
                                 </span>
-                                <span className="font-manrope text-[10px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] w-full sm:w-[199px] h-[14px]">
+                                <span className="font-manrope text-[10px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] w-auto whitespace-nowrap flex-none hidden sm:block">
                                   (Min. Deposit $30 - Max. Deposit $2,500)
                                 </span>
                               </div>
@@ -648,11 +648,10 @@ export default function WalletModal() {
                             }}
                             className="flex items-center gap-[8px] px-[16px] py-[10px] hover:bg-[#173EAD] transition-colors text-left w-full cursor-pointer text-white font-manrope text-[14px]"
                           >
-                            <div className="flex items-center gap-[4px] w-[44px] h-[20px]">
-                              <VisaIcon />
-                              <MastercardIcon />
+                            <div className="flex items-center gap-[2px] w-[42px] h-[20px] flex-none">
+                              <img src="/images/visa.svg" alt="Credit Card" className="w-[42px] h-[20px]" />
                             </div>
-                            <span>Credit Card (Visa/Mastercard)</span>
+                            <span className="whitespace-nowrap">Credit Card</span>
                           </button>
                           <button
                             onClick={() => {
@@ -661,13 +660,10 @@ export default function WalletModal() {
                             }}
                             className="flex items-center gap-[8px] px-[16px] py-[10px] hover:bg-[#173EAD] transition-colors text-left w-full cursor-pointer text-white font-manrope text-[14px]"
                           >
-                            <div className="w-[42px] h-[20px] flex items-center justify-center text-[#A5B8EF]">
-                              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                                <circle cx="12" cy="12" r="10"/>
-                                <path d="M12 6v12M9 9h4.5a2.5 2.5 0 0 1 0 5H9M9 12h5.5a2.5 2.5 0 0 1 0 5H9"/>
-                              </svg>
+                            <div className="w-[16px] h-[16px] relative flex-none">
+                              <img src="/images/bitcoin.svg" alt="Bitcoin" className="w-[16px] h-[16px] absolute left-0 top-0" />
                             </div>
-                            <span>Bitcoin (BTC)</span>
+                            <span className="whitespace-nowrap">Bitcoin (BTC)</span>
                           </button>
                         </div>
                       )}
@@ -911,13 +907,17 @@ export default function WalletModal() {
                             
                             {/* USD input */}
                             <div className="flex items-center gap-[12px] bg-[#112F82] rounded-[8px] w-full sm:w-[186px] h-[44px] sm:h-[40px] px-[16px] py-[10px]">
-                              <span className="text-[#FFC83D] font-bold text-[14px] leading-none">$</span>
-                              <input 
-                                type="text" 
-                                value={usdAmount}
-                                onChange={(e) => handleUsdChange(e.target.value)}
-                                className="w-full bg-transparent font-manrope text-[14px] font-bold text-white outline-none"
-                              />
+                              <div className="flex items-center gap-[8px] w-full sm:w-[154px] h-[19px]">
+                                <div className="w-[16px] h-[16px] relative flex-none">
+                                  <img src="/images/doller.svg" alt="USD" className="w-[16px] h-[16px] absolute left-0 top-0" />
+                                </div>
+                                <input 
+                                  type="text" 
+                                  value={usdAmount}
+                                  onChange={(e) => handleUsdChange(e.target.value)}
+                                  className="w-full sm:w-[130px] h-[19px] bg-transparent font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-white outline-none p-0"
+                                />
+                              </div>
                             </div>
 
                             {/* Swap Icon */}
@@ -934,13 +934,17 @@ export default function WalletModal() {
 
                             {/* BTC input */}
                             <div className="flex items-center gap-[12px] bg-[#112F82] rounded-[8px] w-full sm:w-[186px] h-[44px] sm:h-[40px] px-[16px] py-[10px]">
-                              <span className="text-[#FFC83D] font-bold text-[14px] leading-none">฿</span>
-                              <input 
-                                type="text" 
-                                value={btcAmount}
-                                onChange={(e) => handleBtcChange(e.target.value)}
-                                className="w-full bg-transparent font-manrope text-[14px] font-bold text-white outline-none"
-                              />
+                              <div className="flex items-center gap-[8px] w-full sm:w-[154px] h-[19px]">
+                                <div className="w-[16px] h-[16px] relative flex-none">
+                                  <img src="/images/bitcoin.svg" alt="BTC" className="w-[16px] h-[16px] absolute left-0 top-0" />
+                                </div>
+                                <input 
+                                  type="text" 
+                                  value={btcAmount}
+                                  onChange={(e) => handleBtcChange(e.target.value)}
+                                  className="w-full sm:w-[130px] h-[19px] bg-transparent font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-white outline-none p-0"
+                                />
+                              </div>
                             </div>
 
                           </div>
@@ -1140,7 +1144,7 @@ export default function WalletModal() {
                 </div>
               ) : (
                 /* Empty states for other tabs (Withdraw, Transactions) */
-                <div className="flex flex-col items-center justify-center gap-4 w-full sm:w-[428px] h-auto sm:h-[331px]">
+                <div className="flex flex-col items-center justify-center gap-4 w-full sm:w-[428px] h-full sm:h-full flex-1">
                   <span className="text-4xl">🛠️</span>
                   <p className="font-manrope text-[16px] font-bold text-white uppercase tracking-[0.02em]">
                     {activeTab} Feature

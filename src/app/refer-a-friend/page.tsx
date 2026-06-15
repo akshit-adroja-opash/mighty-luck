@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import CryptoBanner from "@/components/sections/CryptoBanner";
-import { Users, Coins, TrendingUp, Check, ChevronDown, Award, HelpCircle, Plus, Minus } from "lucide-react";
+import { Users, Coins, TrendingUp, Check, ChevronDown, Award, HelpCircle, Plus, Minus, DollarSign } from "lucide-react";
 
 export default function ReferAFriendPage() {
   const [sliderValue, setSliderValue] = useState(5);
@@ -38,7 +38,7 @@ export default function ReferAFriendPage() {
               <div className="relative z-10 flex w-full flex-col lg:flex-row justify-between items-center min-h-[345px] gap-8 lg:gap-0 mt-8 lg:mt-0">
                 {/* Left side text */}
                 <div className="flex flex-col w-full lg:w-[457px] gap-[4px] lg:mt-[-80px] text-center lg:text-left">
-                  <span className="font-jost text-[24px] sm:text-[28px] font-medium leading-[1.2] lg:leading-[40px] text-white">Get PAID every time</span>
+                  <span className="font-jost text-[24px] sm:text-[28px] font-medium leading-[1.2] lg:leading-[40px] text-white">Get <span className="text-[#FFC83D]">PAID</span> every time</span>
                   <h1 className="font-jost text-[36px] sm:text-[48px] font-extrabold leading-[100%] text-white">YOUR FRIEND PLAYS!</h1>
                 </div>
 
@@ -121,9 +121,7 @@ export default function ReferAFriendPage() {
                 <div className="flex flex-col flex-1 gap-[8px] w-full">
                   <span className="font-manrope text-[12px] font-semibold text-[#BBCAF3]">Total Referrals</span>
                   <div className="flex flex-row items-center p-[10px_16px] gap-[12px] bg-[#112F82] rounded-[8px] h-[40px]">
-                    <div className="w-[20px] h-[20px] rounded-full bg-[#FFC83D] flex items-center justify-center">
-                      <Users size={12} className="text-[#1A1404]" />
-                    </div>
+                    <img src="/images/doller.svg" alt="Dollar Icon" className="w-[20px] h-[20px] shrink-0" />
                     <span className="font-manrope text-[16px] font-bold text-white">12</span>
                   </div>
                 </div>
@@ -131,9 +129,7 @@ export default function ReferAFriendPage() {
                 <div className="flex flex-col flex-1 gap-[8px] w-full">
                   <span className="font-manrope text-[12px] font-semibold text-[#BBCAF3]">Total Deposits</span>
                   <div className="flex flex-row items-center p-[10px_16px] gap-[12px] bg-[#112F82] rounded-[8px] h-[40px]">
-                    <div className="w-[20px] h-[20px] rounded-full bg-[#FFC83D] flex items-center justify-center">
-                      <Coins size={12} className="text-[#1A1404]" />
-                    </div>
+                    <img src="/images/doller.svg" alt="Dollar Icon" className="w-[20px] h-[20px] shrink-0" />
                     <span className="font-manrope text-[16px] font-bold text-white">$5000.00</span>
                   </div>
                 </div>
@@ -141,9 +137,7 @@ export default function ReferAFriendPage() {
                 <div className="flex flex-col flex-1 gap-[8px] w-full">
                   <span className="font-manrope text-[12px] font-semibold text-[#BBCAF3]">Total Earnings</span>
                   <div className="flex flex-row items-center p-[10px_16px] gap-[12px] bg-[#112F82] rounded-[8px] h-[40px]">
-                    <div className="w-[20px] h-[20px] rounded-full bg-[#FFC83D] flex items-center justify-center">
-                      <TrendingUp size={12} className="text-[#1A1404]" />
-                    </div>
+                    <img src="/images/doller.svg" alt="Dollar Icon" className="w-[20px] h-[20px] shrink-0" />
                     <span className="font-manrope text-[16px] font-bold text-white">$500.00</span>
                   </div>
                 </div>
@@ -152,9 +146,7 @@ export default function ReferAFriendPage() {
                   <span className="font-manrope text-[12px] font-semibold text-[#BBCAF3]">Pending Income</span>
                   <div className="flex flex-row items-center justify-between p-[10px_16px] bg-[#112F82] rounded-[8px] h-[40px]">
                     <div className="flex flex-row items-center gap-[8px]">
-                      <div className="w-[20px] h-[20px] rounded-full bg-[#FFC83D] flex items-center justify-center">
-                        <Coins size={12} className="text-[#1A1404]" />
-                      </div>
+                      <img src="/images/doller.svg" alt="Dollar Icon" className="w-[20px] h-[20px] shrink-0" />
                       <span className="font-manrope text-[16px] font-bold text-white">$150.00</span>
                     </div>
                     <button className="bg-[#1463FF] px-[12px] py-[4px] rounded-[6px] font-manrope text-[12px] font-semibold text-white hover:opacity-90 transition-opacity">
