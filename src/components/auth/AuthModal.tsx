@@ -68,7 +68,7 @@ export default function AuthModal() {
                 </span>
               </div>
             </div>
-            <p className="font-manrope font-bold text-white text-center" style={{ fontSize: "10px", lineHeight: "14px", letterSpacing: "0.01em" }}>
+            <p className="font-manrope font-bold text-white text-center w-[200px]" style={{ fontSize: "10px", lineHeight: "14px", letterSpacing: "0.01em" }}>
               Boost your deposits with 350% in Bonus and 200 Free Spins
             </p>
           </div>
