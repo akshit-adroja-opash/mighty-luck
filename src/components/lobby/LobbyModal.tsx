@@ -195,85 +195,15 @@ export default function LobbyModal() {
       <div className="relative flex flex-col lg:flex-row items-start bg-[#091741] rounded-none md:rounded-[16px] lg:rounded-[20px] p-4 md:p-5 lg:p-[24px] gap-4 lg:gap-[20px] w-full max-w-[1056px] h-[100dvh] md:h-auto max-h-[100dvh] md:max-h-[90dvh] lg:max-h-none lg:h-[636px] border-none md:border md:border-white/5 shadow-none md:shadow-2xl select-none animate-in fade-in zoom-in-95 duration-200 overflow-y-auto md:overflow-visible">
         
         {/* Close button */}
-        {/* Close button (Desktop/Tablet) */}
+        {/* Close button (Desktop) */}
         <button
           onClick={() => dispatch(closeModal("lobby"))}
-          className="absolute hidden md:flex -top-[44px] right-0 lg:-right-[44px] lg:top-0 w-[32px] h-[32px] items-center justify-center bg-transparent text-white hover:text-[#A5B8EF] transition-colors cursor-pointer z-[110]"
+          className="absolute hidden lg:flex -top-[44px] right-0 lg:-right-[44px] lg:top-0 w-[32px] h-[32px] items-center justify-center bg-transparent text-white hover:text-[#A5B8EF] transition-colors cursor-pointer z-[110]"
         >
           <CloseIcon />
         </button>
 
-        {/* ── MOBILE: Horizontal category tabs ── */}
-        <div className="flex lg:hidden flex-col gap-3 w-full flex-none">
-          {/* Nav row + Close Button */}
-          <div className="flex flex-row items-center gap-2 w-full">
-            <div className="flex flex-row gap-2 overflow-x-auto no-scrollbar flex-1">
-            {navItems.map((item) => (
-              <button
-                key={item.key}
-                onClick={() => {
-                  setActiveTab(item.key as any);
-                  if (item.key === "all") dispatch(setActiveCategory("Lobby"));
-                  else toast.info(`Showing ${item.label.toLowerCase()}.`);
-                }}
-                className={`flex-none flex items-center gap-1.5 px-3 py-[6px] rounded-[8px] transition-all cursor-pointer whitespace-nowrap ${
-                  activeTab === item.key ? "bg-[#1463FF] text-white" : "bg-[#112F82] text-[#A5B8EF]"
-                }`}
-              >
-                <div className="flex w-[14px] h-[14px] justify-center items-center">
-                  {navIcons[item.key]}
-                </div>
-                <span className="font-manrope text-[11px] font-semibold tracking-[0.02em]">
-                  {item.label}
-                </span>
-              </button>
-            ))}
-            <button
-              onClick={() => setShowMobileCategories(!showMobileCategories)}
-              className={`flex-none px-3 py-[6px] rounded-[8px] font-manrope text-[11px] font-semibold tracking-[0.02em] transition-all cursor-pointer whitespace-nowrap ${
-                showMobileCategories ? "bg-[#FFC83D] text-black" : "bg-[#112F82] text-[#A5B8EF]"
-              }`}
-            >
-              Categories ▾
-            </button>
-            </div>
-            
-            {/* Mobile Close Button */}
-            <button
-              onClick={() => dispatch(closeModal("lobby"))}
-              className="flex-none flex w-[32px] h-[32px] items-center justify-center bg-[#112F82] rounded-full text-white hover:bg-[#1463FF] transition-colors cursor-pointer"
-            >
-              <CloseIcon />
-            </button>
-          </div>
 
-          {/* Expandable category list */}
-          {showMobileCategories && (
-            <div className="flex flex-row flex-wrap gap-2">
-              {categoryItems.map((c) => (
-                <button
-                  key={c.key}
-                  onClick={() => {
-                    handleCategoryClick(c.category || c.key);
-                    setShowMobileCategories(false);
-                  }}
-                  className={`flex items-center gap-1.5 px-3 py-[6px] rounded-[8px] transition-all cursor-pointer ${
-                    activeCategory === (c.category || c.key)
-                      ? "bg-[#1463FF] text-white"
-                      : "bg-[#0C1F56] text-[#A5B8EF] hover:bg-[#112F82]"
-                  }`}
-                >
-                  <div className="flex w-[14px] h-[14px] justify-center items-center">
-                    {catIcons[c.category || c.key]}
-                  </div>
-                  <span className="font-manrope text-[11px] font-semibold tracking-[0.02em] whitespace-nowrap">
-                    {c.label}
-                  </span>
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
 
         {/* ── DESKTOP: Left Sidebar ── */}
         <div className="hidden lg:flex flex-col justify-center items-start gap-[12px] w-[180px] h-[588px] flex-none">
@@ -308,31 +238,105 @@ export default function LobbyModal() {
         {/* ── Right Content ── */}
         <div className="flex flex-col items-start gap-6 lg:gap-[40px] w-full flex-1 min-w-0 overflow-y-auto lg:overflow-hidden min-h-0 lg:h-[532px]">
           
-          {/* Search bar */}
-          <div className={`flex flex-row items-center justify-between rounded-[8px] flex-none transition-all duration-300 w-full ${
-            searchQuery 
-              ? "px-4 lg:px-[20px] pr-[10px] py-[10px] h-[44px] lg:h-[50px] bg-[#112F82] border border-[#1463FF]" 
-              : "px-4 lg:px-[20px] py-[10px] h-[40px] bg-[#112F82] border border-transparent"
-          }`}>
-            <div className="flex flex-row items-center gap-[10px] flex-grow min-w-0">
-              <div className="w-[16px] h-[16px] flex items-center justify-center flex-none text-[#BBCAF3]">
-                <SearchIcon />
+          {/* Top row: Search bar + Mobile Close Button */}
+          <div className="flex flex-row items-center gap-2 w-full flex-none">
+            {/* Search bar */}
+            <div className={`flex flex-row items-center justify-between rounded-[8px] flex-1 transition-all duration-300 ${
+              searchQuery 
+                ? "px-4 lg:px-[20px] pr-[10px] py-[10px] h-[44px] lg:h-[50px] bg-[#112F82] border border-[#1463FF]" 
+                : "px-4 lg:px-[20px] py-[10px] h-[40px] bg-[#112F82] border border-transparent"
+            }`}>
+              <div className="flex flex-row items-center gap-[10px] flex-grow min-w-0">
+                <div className="w-[16px] h-[16px] flex items-center justify-center flex-none text-[#BBCAF3]">
+                  <SearchIcon />
+                </div>
+                <input
+                  type="text"
+                  placeholder="What are you looking for?"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full bg-transparent outline-none font-manrope text-[12px] lg:text-[14px] font-semibold tracking-[0.02em] text-white placeholder:text-[#BBCAF3]"
+                />
               </div>
-              <input
-                type="text"
-                placeholder="What are you looking for?"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="bg-transparent text-white outline-none w-full font-manrope text-[13px] lg:text-[14px] font-semibold leading-[19px] placeholder-[#BBCAF3] min-w-0"
-              />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery("")}
+                  className="flex items-center justify-center w-[24px] h-[24px] lg:w-[28px] lg:h-[28px] bg-[#1463FF] rounded-[6px] text-white flex-none"
+                >
+                  <CloseIcon />
+                </button>
+              )}
             </div>
-            {searchQuery && (
+            
+            {/* Mobile Close Button */}
+            <button
+              onClick={() => dispatch(closeModal("lobby"))}
+              className="flex lg:hidden flex-none w-[32px] h-[32px] items-center justify-center bg-[#112F82] rounded-full text-white hover:bg-[#1463FF] transition-colors cursor-pointer"
+            >
+              <CloseIcon />
+            </button>
+          </div>
+
+          {/* ── MOBILE: Horizontal category tabs ── */}
+          <div className="flex lg:hidden flex-col gap-3 w-full flex-none">
+            <div className="flex flex-row items-center gap-2 w-full">
+              <div className="flex flex-row gap-2 overflow-x-auto no-scrollbar flex-1">
+              {navItems.map((item) => (
+                <button
+                  key={item.key}
+                  onClick={() => {
+                    setActiveTab(item.key as any);
+                    if (item.key === "all") dispatch(setActiveCategory("Lobby"));
+                    else toast.info(`Showing ${item.label.toLowerCase()}.`);
+                  }}
+                  className={`flex-none flex items-center gap-1.5 px-3 py-[6px] rounded-[8px] transition-all cursor-pointer whitespace-nowrap ${
+                    activeTab === item.key ? "bg-[#1463FF] text-white" : "bg-[#112F82] text-[#A5B8EF]"
+                  }`}
+                >
+                  <div className="flex w-[14px] h-[14px] justify-center items-center">
+                    {navIcons[item.key]}
+                  </div>
+                  <span className="font-manrope text-[11px] font-semibold tracking-[0.02em]">
+                    {item.label}
+                  </span>
+                </button>
+              ))}
               <button
-                onClick={() => setSearchQuery("")}
-                className="flex items-center justify-center px-3 lg:px-[16px] py-[6px] lg:py-[10px] bg-[#1463FF] hover:bg-[#1463FF]/80 text-white rounded-[6px] transition-all cursor-pointer flex-none ml-2"
+                onClick={() => setShowMobileCategories(!showMobileCategories)}
+                className={`flex-none px-3 py-[6px] rounded-[8px] font-manrope text-[11px] font-semibold tracking-[0.02em] transition-all cursor-pointer whitespace-nowrap ${
+                  showMobileCategories ? "bg-[#FFC83D] text-black" : "bg-[#112F82] text-[#A5B8EF]"
+                }`}
               >
-                <span className="font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em]">Clear</span>
+                Categories ▾
               </button>
+              </div>
+            </div>
+
+            {/* Expandable category list */}
+            {showMobileCategories && (
+              <div className="flex flex-row flex-wrap gap-2">
+                {categoryItems.map((c) => (
+                  <button
+                    key={c.key}
+                    onClick={() => {
+                      handleCategoryClick(c.category || c.key);
+                      setShowMobileCategories(false);
+                    }}
+                    className={`flex items-center gap-1.5 px-3 py-[6px] rounded-[8px] transition-all cursor-pointer ${
+                      activeCategory === (c.category || c.key)
+                        ? "bg-[#1463FF] text-white"
+                        : "bg-[#0C1F56] text-[#A5B8EF] hover:bg-[#112F82]"
+                    }`}
+                  >
+                    <div className="flex w-[14px] h-[14px] justify-center items-center">
+                      {catIcons[c.category || c.key]}
+                    </div>
+                    <span className="font-manrope text-[11px] font-semibold tracking-[0.02em] whitespace-nowrap">
+                      {c.label}
+                    </span>
+                  </button>
+                ))}
+              </div>
             )}
           </div>
 
