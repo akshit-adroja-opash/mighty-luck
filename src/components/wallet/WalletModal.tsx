@@ -296,15 +296,22 @@ export default function WalletModal() {
 
               {/* Icon & Label Box */}
               <div className="flex flex-row items-center w-[94px] h-[29px] gap-[12px]">
-                <div className="w-[20px] h-[20px] flex items-center justify-center text-[#FFBF1F]">
-                  <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[20px] h-[17.96px]">
-                    {/* Wallet Body */}
-                    <rect x="0" y="2" width="20" height="14" rx="3.5" fill="#FFBF1F" />
-                    {/* Clasp division line */}
-                    <path d="M0 7H11C11.5 7 12 7.5 12 8V8.5C12 9 12.5 9.5 13 9.5H17C17.5 9.5 18 9 18 8.5V7H20" stroke="#091741" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-                    {/* Clasp button */}
-                    <circle cx="15.5" cy="8.2" r="1" fill="#091741" />
-                  </svg>
+                <div className="w-[20px] h-[20px] flex items-center justify-center relative flex-none">
+                  <div 
+                    className="absolute w-[20px] h-[17.96px] bg-[#FFC83D]"
+                    style={{
+                      left: 'calc(50% - 20px/2)',
+                      top: 'calc(50% - 17.96px/2 + 0.23px)',
+                      maskImage: `url(/games/wallet.svg)`,
+                      WebkitMaskImage: `url(/games/wallet.svg)`,
+                      maskSize: 'contain',
+                      WebkitMaskSize: 'contain',
+                      maskRepeat: 'no-repeat',
+                      WebkitMaskRepeat: 'no-repeat',
+                      maskPosition: 'center',
+                      WebkitMaskPosition: 'center'
+                    }}
+                  />
                 </div>
                 <span className="font-jost font-extrabold text-[20px] leading-[29px] text-white tracking-[0.01em] w-[62px] h-[29px] flex items-center">
                   Wallet
@@ -458,7 +465,29 @@ export default function WalletModal() {
                       >
                         <div className="flex items-center gap-[8px] w-full sm:w-[370px] h-[19px]">
                           <div className="w-[16px] h-[16px] relative flex-none">
-                            <img src="/images/bonus-icon.svg" alt="Bonus" className="w-[16px] h-[16px] absolute left-0 top-0" />
+                            <div 
+                              className="w-[16px] h-[16px] absolute left-0 top-0 bg-[#FFC83D]"
+                              style={{
+                                maskImage: `url(${[
+                                  { name: "150% Reload Bonus + 30 Free Spins", icon: "/games/deposite-cashback/150.svg" },
+                                  { name: "350% Welcome Bonus", icon: "/games/deposite-cashback/350.svg" },
+                                  { name: "500% Crypto Bonus", icon: "/games/deposite-cashback/500.svg" },
+                                  { name: "I will deposit without bonus", icon: "/games/deposite-cashback/i.svg" }
+                                ].find(b => b.name === selectedBonus)?.icon || "/games/deposite-cashback/150.svg"})`,
+                                WebkitMaskImage: `url(${[
+                                  { name: "150% Reload Bonus + 30 Free Spins", icon: "/games/deposite-cashback/150.svg" },
+                                  { name: "350% Welcome Bonus", icon: "/games/deposite-cashback/350.svg" },
+                                  { name: "500% Crypto Bonus", icon: "/games/deposite-cashback/500.svg" },
+                                  { name: "I will deposit without bonus", icon: "/games/deposite-cashback/i.svg" }
+                                ].find(b => b.name === selectedBonus)?.icon || "/games/deposite-cashback/150.svg"})`,
+                                maskSize: 'contain',
+                                WebkitMaskSize: 'contain',
+                                maskRepeat: 'no-repeat',
+                                WebkitMaskRepeat: 'no-repeat',
+                                maskPosition: 'center',
+                                WebkitMaskPosition: 'center'
+                              }}
+                            />
                           </div>
                           <span className="font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-white truncate w-full sm:w-[245px] h-[19px]">
                             {selectedBonus}
@@ -489,21 +518,25 @@ export default function WalletModal() {
                                 name: "150% Reload Bonus + 30 Free Spins",
                                 subtext: "(Min. Deposit $10)",
                                 hasSub: true,
+                                icon: "/games/deposite-cashback/150.svg"
                               },
                               {
                                 name: "350% Welcome Bonus",
                                 subtext: "45x PT - Min. Dep. $20",
                                 hasSub: true,
+                                icon: "/games/deposite-cashback/350.svg"
                               },
                               {
                                 name: "500% Crypto Bonus",
                                 subtext: "45x PT - Min. Dep. $20",
                                 hasSub: true,
+                                icon: "/games/deposite-cashback/500.svg"
                               },
                               {
                                 name: "I will deposit without bonus",
                                 subtext: "",
                                 hasSub: false,
+                                icon: "/games/deposite-cashback/i.svg"
                               }
                             ].map((option, idx, arr) => {
                               const isActive = selectedBonus === option.name;
@@ -526,16 +559,19 @@ export default function WalletModal() {
                                 >
                                   {/* Radio icon */}
                                   <div className="w-[16px] h-[16px] flex items-center justify-center flex-none">
-                                    {isActive ? (
-                                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="8" cy="8" r="7.25" stroke="white" strokeWidth="1.5"/>
-                                        <circle cx="8" cy="8" r="4" fill="white"/>
-                                      </svg>
-                                    ) : (
-                                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="8" cy="8" r="7.25" stroke="#A5B8EF" strokeWidth="1.5"/>
-                                      </svg>
-                                    )}
+                                    <div 
+                                      className={`w-[16px] h-[16px] ${isActive ? 'bg-white' : 'bg-[#A5B8EF]'}`}
+                                      style={{
+                                        maskImage: `url(${option.icon})`,
+                                        WebkitMaskImage: `url(${option.icon})`,
+                                        maskSize: 'contain',
+                                        WebkitMaskSize: 'contain',
+                                        maskRepeat: 'no-repeat',
+                                        WebkitMaskRepeat: 'no-repeat',
+                                        maskPosition: 'center',
+                                        WebkitMaskPosition: 'center'
+                                      }}
+                                    />
                                   </div>
 
                                   {/* Text container */}
@@ -547,7 +583,7 @@ export default function WalletModal() {
                                     </span>
                                     {option.hasSub && (
                                       <span className={`font-manrope text-[10px] font-medium leading-[14px] tracking-[0.02em] ${
-                                        isActive ? "text-white" : "text-[#C8A7DD]"
+                                        isActive ? "text-white" : "text-[#A5B8EF]"
                                       }`}>
                                         {option.subtext}
                                       </span>
@@ -876,7 +912,7 @@ export default function WalletModal() {
 
                         {/* Calculate amount */}
                         <div className="flex flex-col gap-[8px] w-full sm:w-[428px]">
-                          <span className="font-manrope text-[12px] font-semibold tracking-[0.02em] text-[#BBCAF3]">
+                          <span className="font-manrope text-[12px] font-semibold tracking-[0.02em] text-[#BBCAF3] w-[259px] h-[16px]">
                             3.Calculate the amount you want to deposit
                           </span>
                           <div className="flex flex-col sm:flex-row items-center gap-[8px] w-full sm:w-[428px] h-auto sm:h-[40px]">
@@ -891,7 +927,7 @@ export default function WalletModal() {
                                   type="text" 
                                   value={usdAmount}
                                   onChange={(e) => handleUsdChange(e.target.value)}
-                                  className="w-full sm:w-[130px] h-[19px] bg-transparent font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-white outline-none p-0"
+                                  className="w-full sm:w-[130px] h-[19px] bg-transparent font-manrope text-[12px] font-bold leading-[19px] tracking-[0.02em] text-white outline-none p-0"
                                 />
                               </div>
                             </div>
@@ -918,7 +954,7 @@ export default function WalletModal() {
                                   type="text" 
                                   value={btcAmount}
                                   onChange={(e) => handleBtcChange(e.target.value)}
-                                  className="w-full sm:w-[130px] h-[19px] bg-transparent font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-white outline-none p-0"
+                                  className="w-full sm:w-[130px] h-[19px] bg-transparent font-manrope text-[12px] font-bold leading-[19px] tracking-[0.02em] text-white outline-none p-0"
                                 />
                               </div>
                             </div>
@@ -928,7 +964,7 @@ export default function WalletModal() {
 
                         {/* Deposit Address */}
                         <div className="flex flex-col gap-[8px] w-full sm:w-[428px]">
-                          <span className="font-manrope text-[12px] font-semibold tracking-[0.02em] text-[#BBCAF3]">
+                          <span className="font-manrope text-[12px] font-semibold tracking-[0.02em] text-[#BBCAF3] w-[135px] h-[16px]">
                             4.BTC Deposit Address
                           </span>
                           <div className="flex items-center justify-between bg-[#112F82] rounded-[8px] w-full sm:w-[428px] h-[44px] sm:h-[40px] px-[16px] py-[10px]">

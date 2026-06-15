@@ -47,18 +47,18 @@ export default function RootLayout({
               <div className="hidden lg:block flex-none">
                 <Sidebar />
               </div>
-              <div className="flex flex-1 min-w-0 flex-col px-0 lg:pl-6 lg:pr-0 overflow-hidden pb-10">
+              <div className="flex flex-1 min-w-0 flex-col px-0 lg:px-[24px] gap-[100px] overflow-hidden">
                 {children}
 
-                <div className="w-full mt-10">
+                <div className="w-full">
                   <SeoContent />
                 </div>
 
-                <div className="hidden lg:block w-full mt-10">
+                <div className="w-full">
                   <CryptoBanner />
                 </div>
 
-                <div className="mt-10">
+                <div className="w-full">
                   <Footer />
                 </div>
               </div>

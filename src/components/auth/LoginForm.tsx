@@ -65,16 +65,7 @@ export default function LoginForm({ setView }: LoginFormProps) {
 
         {/* Header with Logo */}
         <div className="flex w-full items-center justify-center gap-[6px] py-1">
-          <svg width="22" height="17" viewBox="0 0 26 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-none -mt-0.5">
-            <path d="M2 19H24L21 5L16.5 10L13 2L9.5 10L5 5L2 19Z" fill="url(#crownGradientAuth1)"/>
-            <path d="M14 7L10 13.5H13.5L12 18L16.5 11.5H13L14 7Z" fill="#0C1F56"/>
-            <defs>
-              <linearGradient id="crownGradientAuth1" x1="0" y1="12" x2="26" y2="12" gradientUnits="userSpaceOnUse">
-                <stop offset="0.12" stopColor="#FFD85A"/>
-                <stop offset="0.8668" stopColor="#FFB800"/>
-              </linearGradient>
-            </defs>
-          </svg>
+          <img src="/images/logo.svg" alt="Mighty Luck" className="flex-none -mt-0.5 w-[22px] h-[16px]" />
           <span className="text-[14px] font-black uppercase tracking-wide text-white font-jost whitespace-nowrap leading-none mt-0.5">
             MIGHTY <span style={{ background: "linear-gradient(90deg, #FFD85A 12%, #FFB800 86.68%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>LUCK</span>
           </span>

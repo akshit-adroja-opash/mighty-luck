@@ -69,9 +69,8 @@ export default function SectionHeader({
               className={`flex h-[30px] w-[30px] flex-none flex-col items-center justify-center rounded-[4px] bg-[#112F82] transition-opacity ${canScrollLeft ? "opacity-100 hover:opacity-80 active:scale-95 cursor-pointer" : "opacity-40 cursor-default"}`}
               aria-label="Previous"
             >
-              {/* Pointing left (rotated 90deg from down) */}
-              <svg width="6" height="4" viewBox="0 0 6 4" fill="none" className="rotate-90">
-                <path d="M1 1L3 3L5 1" stroke="white" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
+                <path d="M8.5 3.5L5 7L8.5 10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </button>
 
@@ -82,9 +81,8 @@ export default function SectionHeader({
               className={`flex h-[30px] w-[30px] flex-none flex-col items-center justify-center rounded-[4px] bg-[#112F82] transition-opacity ${canScrollRight ? "opacity-100 hover:opacity-80 active:scale-95 cursor-pointer" : "opacity-40 cursor-default"}`}
               aria-label="Next"
             >
-              {/* Pointing right (rotated -90deg from down) */}
-              <svg width="6" height="4" viewBox="0 0 6 4" fill="none" className="-rotate-90">
-                <path d="M1 1L3 3L5 1" stroke="white" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
+                <path d="M5.5 3.5L9 7L5.5 10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </button>
 

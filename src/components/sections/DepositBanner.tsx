@@ -90,7 +90,7 @@ const SvgIconWrapper = (src: string) => {
   }
 
   return (
-    <section className="relative isolate flex w-full flex-col sm:flex-row items-center justify-between gap-6 sm:gap-[79px] overflow-hidden rounded-[16px] bg-[#0C1F56] p-5 sm:px-[40px] sm:h-[100px]">
+    <section className="relative isolate flex w-full flex-col sm:flex-row items-center justify-between gap-6 sm:gap-0 overflow-hidden rounded-[16px] bg-[#0C1F56] py-5 sm:py-0 px-5 sm:px-[40px] sm:h-[100px]">
       
       {/* Background Blur */}
       <div className="absolute left-1/2 top-[60px] z-[-1] h-[534px] w-[534px] -translate-x-1/2 rounded-full bg-[#1463FF] blur-[50px]" />
@@ -101,7 +101,7 @@ const SvgIconWrapper = (src: string) => {
       </h2>
 
       {/* Crypto Logos */}
-      <div className="z-[2] hidden flex-1 items-center justify-center gap-[28px] text-white lg:flex">
+      <div className="z-[2] flex flex-1 items-center justify-start lg:justify-center gap-[16px] lg:gap-[28px] text-white overflow-x-auto no-scrollbar w-full pb-2 sm:pb-0">
         <img src="/games/deposite-icon/d1.svg" alt="deposit icon" className="shrink-0" />
         <img src="/games/deposite-icon/d2.svg" alt="deposit icon" className="shrink-0" />
         <img src="/games/deposite-icon/d3.svg" alt="deposit icon" className="shrink-0" />

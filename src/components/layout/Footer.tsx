@@ -10,48 +10,37 @@ const columns = [
 
 export default function Footer() {
   return (
-    <footer className="flex w-full flex-none flex-col gap-10 md:gap-12 items-start pb-10 md:pb-12">
+    <footer className="flex w-full flex-none flex-col gap-10 md:gap-12 items-start">
 
       {/* Top Section */}
-      <div className="flex w-full flex-col md:flex-row justify-between items-start gap-8 md:gap-6">
+      <div className="flex w-full flex-col lg:flex-row justify-between items-start gap-8 lg:gap-[49px]">
 
         {/* Logo & Copyright */}
-        <div className="flex flex-col items-start gap-4 flex-none">
+        <div className="flex flex-col items-start gap-[16px] flex-none w-[213px]">
           <div className="flex flex-col items-start justify-center">
-            <svg width="32" height="24" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="mb-0.5">
-              <defs>
-                <linearGradient id="footer-logo-gold" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="12%" stopColor="#FFD85A" />
-                  <stop offset="86.68%" stopColor="#FFB800" />
-                </linearGradient>
-              </defs>
-              <path d="M2 13L6 4L10 8L12 2L14 8L18 4L22 13H2Z" fill="url(#footer-logo-gold)" />
-              <circle cx="12" cy="1.5" r="1" fill="url(#footer-logo-gold)" />
-              <circle cx="6" cy="3.5" r="0.75" fill="url(#footer-logo-gold)" />
-              <circle cx="18" cy="3.5" r="0.75" fill="url(#footer-logo-gold)" />
-            </svg>
+            <img src="/images/logo.svg" alt="Mighty Luck" className="mb-0.5 w-[32px] h-[24px]" />
             <h2 className="font-jost text-[15px] font-black uppercase tracking-[0.05em] text-white leading-none">
               MIGHTY <span className="text-[#FFC83D]">LUCK</span>
             </h2>
           </div>
-          <p className="font-manrope text-[11px] font-semibold leading-[15px] tracking-[0.01em] text-[#D2DCF7] max-w-[213px]">
+          <p className="font-manrope text-[11px] font-semibold leading-[15px] tracking-[0.01em] text-[#D2DCF7] w-[213px]">
             @ 2026 Mighty Luck. All rights reserved.
           </p>
         </div>
 
         {/* Links Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 w-full md:w-auto">
+        <div className="flex flex-wrap lg:flex-nowrap flex-row items-start gap-8 lg:gap-[32px] w-full lg:w-[728px]">
           {columns.map((col, idx) => (
-            <div key={idx} className="flex flex-col items-start gap-3">
-              <span className="font-jost text-[12px] font-bold uppercase tracking-[0.02em] text-white">
+            <div key={idx} className="flex flex-col items-start gap-[12px] w-[120px]">
+              <span className="w-full h-[17px] font-jost text-[12px] font-bold uppercase leading-[17px] tracking-[0.02em] text-white">
                 {col.title}
               </span>
-              <div className="flex flex-col items-start gap-2">
+              <div className="flex flex-col items-start gap-[8px] w-full">
                 {col.links.map((link) => (
                   <Link
                     href="/"
                     key={link}
-                    className="font-manrope text-[11px] font-semibold leading-[15px] tracking-[0.01em] text-[#D2DCF7] transition-colors hover:text-white"
+                    className="w-full h-[15px] font-manrope text-[11px] font-semibold leading-[15px] tracking-[0.01em] text-[#D2DCF7] transition-colors hover:text-white"
                   >
                     {link}
                   </Link>
@@ -72,16 +61,9 @@ export default function Footer() {
 
         {/* Logos */}
         <div className="flex flex-none flex-row items-center gap-6 sm:gap-8">
-          <div className="flex h-[38px] w-[38px] flex-shrink-0 items-center justify-center rounded-full border-2 border-[#D2DCF7] text-[#D2DCF7]">
-            <span className="font-sans text-[14px] font-bold leading-none">18+</span>
-          </div>
-          <div className="flex h-[24px] items-center justify-center text-[18px] tracking-tight text-[#D2DCF7]">
-            Gamble<span className="font-bold">Aware</span>
-          </div>
-          <div className="flex h-[38px] w-[66px] flex-shrink-0 flex-col items-center justify-center rounded bg-[#20082E] text-[#D2DCF7]">
-            <span className="font-sans text-[16px] font-black leading-none">GCB</span>
-            <span className="font-sans text-[6px] font-semibold tracking-wider">cert.gcb.cw</span>
-          </div>
+          <img src="/games/footer/18.svg" alt="18+" className="h-[38px] w-auto object-contain flex-shrink-0" />
+          <img src="/games/footer/gamble-aware.svg" alt="GambleAware" className="h-[20px] sm:h-[24px] w-auto object-contain flex-shrink-0" />
+          <img src="/games/footer/gaming-license.svg" alt="Gaming License" className="h-[38px] w-auto object-contain flex-shrink-0" />
         </div>
       </div>
 
