@@ -141,13 +141,13 @@ export default function Header() {
             <div className="flex h-[40px] items-center gap-2">
               <button
                 onClick={() => { dispatch(setAuthModalView("login")); dispatch(openModal("auth")); }}
-                className="flex h-[40px] min-w-[44px] sm:w-[99px] items-center justify-center gap-[10px] rounded-[8px] bg-[#1463FF] px-3 sm:px-[30px] py-[10px] font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-white transition-colors hover:bg-blue-600 cursor-pointer"
+                className="flex h-[40px] w-auto sm:w-[99px] flex-none items-center justify-center gap-[10px] rounded-[8px] bg-[#1463FF] px-3 py-[10px] font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-white whitespace-nowrap transition-colors hover:bg-blue-600 cursor-pointer"
               >
                 Login
               </button>
               <button
                 onClick={() => { dispatch(setAuthModalView("register")); dispatch(openModal("auth")); }}
-                className="flex h-[40px] min-w-[44px] sm:w-[148px] items-center justify-center gap-[10px] rounded-[8px] bg-[#FFC83D] px-3 sm:px-[30px] py-[10px] font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-[#1A1404] transition-colors hover:bg-yellow-400 cursor-pointer"
+                className="flex h-[40px] w-auto sm:w-[90px] flex-none items-center justify-center gap-[10px] rounded-[8px] bg-[#FFC83D] px-3 py-[10px] font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-[#1A1404] whitespace-nowrap transition-colors hover:bg-yellow-400 cursor-pointer"
               >
                 Join
               </button>
