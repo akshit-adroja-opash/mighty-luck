@@ -148,14 +148,16 @@ export default function RegisterForm({ setView }: RegisterFormProps) {
 
           {/* Phone */}
           <div className="flex w-full gap-2">
-            <div className="flex h-[44px] w-[110px] items-center gap-2 rounded-[8px] bg-[#112F82] px-3 py-[10px] cursor-pointer hover:bg-blue-800 transition-colors flex-none">
-              <span className="text-[20px] leading-none">🇺🇸</span>
-              <span className="font-manrope text-[14px] font-semibold leading-[19px] text-white">+380</span>
-              <svg width="7" height="4" viewBox="0 0 7 4" fill="none" className="ml-auto flex-none">
-                <path d="M1 1L3.5 3L6 1" stroke="#A5B8EF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+            <div className="flex h-[40px] w-[121px] items-center gap-[10px] rounded-[8px] bg-[#112F82] px-[16px] cursor-pointer hover:bg-blue-800 transition-colors flex-none">
+              <img src="/images/america.svg" alt="US" className="w-[20px] h-[20px] flex-none" />
+              <span className="font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white flex-none w-[35px] whitespace-nowrap">+380</span>
+              <div className="flex items-center justify-center w-[14px] h-[14px] flex-none">
+                <svg width="7" height="4" viewBox="0 0 7 4" fill="none">
+                  <path d="M1 1L3.5 3L6 1" stroke="#A5B8EF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
             </div>
-            <div className="relative flex h-[44px] flex-1 items-center rounded-[8px] bg-[#112F82] px-4 py-[10px]">
+            <div className="relative flex h-[40px] flex-1 items-center rounded-[8px] bg-[#112F82] px-4">
               <input {...register("phone")} type="text" placeholder="Phone Number"
                 className="w-full bg-transparent font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white outline-none border-none ring-0 focus:ring-0 placeholder:text-[#A5B8EF]" />
             </div>
