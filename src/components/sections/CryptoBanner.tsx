@@ -7,18 +7,18 @@ export default function CryptoBanner() {
       <div className="absolute left-[calc(50%-195px)] top-[77px] z-0 h-[390px] w-[390px] rounded-full bg-[#1463FF] blur-[50px]" />
       
       {/* Crypto Icons Row */}
-      <div className="relative z-10 flex w-full items-center justify-start sm:justify-center gap-[20px] sm:gap-[28px] overflow-x-auto snap-x px-4 sm:px-10 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-        <img src="/games/deposite-icon/d1.svg" alt="deposit icon" className="w-5 h-5 object-contain flex-none snap-center" />
-        <img src="/games/deposite-icon/d2.svg" alt="deposit icon" className="w-5 h-5 object-contain flex-none snap-center" />
-        <img src="/games/deposite-icon/d3.svg" alt="deposit icon" className="w-5 h-5 object-contain flex-none snap-center" />
-        <img src="/games/deposite-icon/d4.svg" alt="deposit icon" className="w-5 h-5 object-contain flex-none snap-center" />
-        <img src="/games/deposite-icon/d5.svg" alt="deposit icon" className="w-5 h-5 object-contain flex-none snap-center" />
-        <img src="/games/deposite-icon/d6.svg" alt="deposit icon" className="w-5 h-5 object-contain flex-none snap-center" />
-        <img src="/games/deposite-icon/d7.svg" alt="deposit icon" className="w-5 h-5 object-contain flex-none snap-center" />
-        <img src="/games/deposite-icon/d8.svg" alt="deposit icon" className="w-5 h-5 object-contain flex-none snap-center" />
-        <img src="/games/deposite-icon/d9.svg" alt="deposit icon" className="w-5 h-5 object-contain flex-none snap-center" />
-        <img src="/games/deposite-icon/d10.svg" alt="deposit icon" className="w-5 h-5 object-contain flex-none snap-center" />
-        <img src="/games/deposite-icon/d11.svg" alt="deposit icon" className="w-5 h-5 object-contain flex-none snap-center" />
+      <div className="relative z-10 flex w-full items-center justify-center flex-wrap gap-y-3 gap-x-[16px] sm:gap-[28px] px-4 sm:px-10">
+        <img src="/games/deposite-icon/d1.svg" alt="deposit icon" className="w-5 h-5 object-contain flex-none" />
+        <img src="/games/deposite-icon/d2.svg" alt="deposit icon" className="w-5 h-5 object-contain flex-none" />
+        <img src="/games/deposite-icon/d3.svg" alt="deposit icon" className="w-5 h-5 object-contain flex-none" />
+        <img src="/games/deposite-icon/d4.svg" alt="deposit icon" className="w-5 h-5 object-contain flex-none" />
+        <img src="/games/deposite-icon/d5.svg" alt="deposit icon" className="w-5 h-5 object-contain flex-none" />
+        <img src="/games/deposite-icon/d6.svg" alt="deposit icon" className="w-5 h-5 object-contain flex-none" />
+        <img src="/games/deposite-icon/d7.svg" alt="deposit icon" className="w-5 h-5 object-contain flex-none" />
+        <img src="/games/deposite-icon/d8.svg" alt="deposit icon" className="w-5 h-5 object-contain flex-none" />
+        <img src="/games/deposite-icon/d9.svg" alt="deposit icon" className="w-5 h-5 object-contain flex-none" />
+        <img src="/games/deposite-icon/d10.svg" alt="deposit icon" className="w-5 h-5 object-contain flex-none" />
+        <img src="/games/deposite-icon/d11.svg" alt="deposit icon" className="w-5 h-5 object-contain flex-none" />
       </div>
       
     </div>
