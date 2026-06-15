@@ -14,11 +14,11 @@ export default function ReferAFriendPage() {
   };
 
   return (
-    <main className="flex w-full flex-none flex-col gap-[40px] pt-[20px]">
+    <main className="flex w-full flex-none flex-col gap-[40px]">
 
             {/* HERO BANNER SECTION */}
             <section 
-              className="relative flex w-full max-w-[1136px] h-auto min-h-[533px] flex-col items-start gap-[20px] rounded-[16px] overflow-hidden p-4 sm:p-[32px_40px]"
+              className="relative flex w-full h-auto min-h-[533px] flex-col items-start gap-[20px] rounded-[16px] overflow-hidden p-4 sm:p-[32px_40px]"
               style={{ backgroundColor: "#2A0B3E" }}
             >
               <div className="absolute inset-0 z-0">
@@ -37,7 +37,7 @@ export default function ReferAFriendPage() {
 
               <div className="relative z-10 flex w-full flex-col lg:flex-row justify-between items-center min-h-[345px] gap-8 lg:gap-0 mt-8 lg:mt-0">
                 {/* Left side text */}
-                <div className="flex flex-col w-full lg:w-[457px] gap-[4px] lg:mt-[-80px] text-center lg:text-left">
+                <div className="flex flex-col w-full lg:max-w-[457px] gap-[4px] text-center lg:text-left">
                   <span className="font-jost text-[24px] sm:text-[28px] font-medium leading-[1.2] lg:leading-[40px] text-white">Get <span className="text-[#FFC83D]">PAID</span> every time</span>
                   <h1 className="font-jost text-[36px] sm:text-[48px] font-extrabold leading-[100%] text-white">YOUR FRIEND PLAYS!</h1>
                 </div>
@@ -158,44 +158,23 @@ export default function ReferAFriendPage() {
             </section>
 
             {/* 3 STATS CARDS */}
-            <section className="flex flex-col lg:flex-row gap-[12px] w-full max-w-[1136px]">
+            <section className="flex flex-col lg:flex-row gap-[12px] w-full">
               <div className="flex flex-col items-center justify-center p-[24px] gap-[8px] flex-1 bg-[#0C1F56] rounded-[16px]">
                 <span className="font-jost text-[40px] font-extrabold text-white leading-[58px] tracking-[0.01em]">$2.5 K</span>
-                <span className="font-manrope text-[16px] font-semibold text-[#A5B8EF]">Claim By the Most Active Referrer</span>
+                <span className="font-manrope text-[16px] font-semibold text-[#A5B8EF] text-center">Claim By the Most Active Referrer</span>
               </div>
               <div className="flex flex-col items-center justify-center p-[24px] gap-[8px] flex-1 bg-[#0C1F56] rounded-[16px]">
                 <span className="font-jost text-[40px] font-extrabold text-white leading-[58px] tracking-[0.01em]">500+</span>
-                <span className="font-manrope text-[16px] font-semibold text-[#A5B8EF]">Players are already earning with us</span>
+                <span className="font-manrope text-[16px] font-semibold text-[#A5B8EF] text-center">Players are already earning with us</span>
               </div>
               <div className="flex flex-col items-center justify-center p-[24px] gap-[8px] flex-1 bg-[#0C1F56] rounded-[16px]">
                 <span className="font-jost text-[40px] font-extrabold text-white leading-[58px] tracking-[0.01em]">19,000</span>
-                <span className="font-manrope text-[16px] font-semibold text-[#A5B8EF]">Free Spins received by friends</span>
-              </div>
-            </section>
-
-            {/* HOW REFERRAL PROGRAM WORKS */}
-            <section className="flex flex-col gap-[32px] w-full max-w-[1136px]">
-              <div className="flex flex-row items-center gap-[12px]">
-                <div className="flex items-center justify-center w-[30px] h-[30px] rounded-full bg-[#FFC83D]">
-                  <Award size={18} className="text-[#1A1404]" fill="#1A1404" />
-                </div>
-                <h3 className="font-jost text-[20px] font-extrabold text-white uppercase tracking-[0.01em]">HOW REFERRAL PROGRAM WORKS</h3>
-              </div>
-              <div className="flex flex-col md:flex-row gap-[12px] w-full">
-                <div className="relative flex-1 min-h-[220px] rounded-[12px] overflow-hidden">
-                  <Image src="/games/refrels/r1.png" alt="Step 1" fill className="object-cover" />
-                </div>
-                <div className="relative flex-1 min-h-[220px] rounded-[12px] overflow-hidden">
-                  <Image src="/games/refrels/r2.png" alt="Step 2" fill className="object-cover" />
-                </div>
-                <div className="relative flex-1 min-h-[220px] rounded-[12px] overflow-hidden">
-                  <Image src="/games/refrels/r3.png" alt="Step 3" fill className="object-cover" />
-                </div>
+                <span className="font-manrope text-[16px] font-semibold text-[#A5B8EF] text-center">Free Spins received by friends</span>
               </div>
             </section>
 
             {/* WHAT YOU GET & WHAT YOUR FRIEND GETS */}
-            <section className="flex flex-col lg:flex-row gap-[12px] w-full max-w-[1136px]">
+            <section className="flex flex-col lg:flex-row gap-[12px] w-full">
               {/* WHAT YOU GET */}
               <div className="flex flex-col p-[32px_24px] sm:p-[32px_40px] gap-[24px] flex-1 bg-[#0C1F56] rounded-[16px] relative overflow-hidden isolation-isolate">
                 <div className="absolute top-[-97px] left-[calc(50%_-_182px/2_-_241px)] w-[182px] h-[182px] bg-[#57FF3D] blur-[60px] rounded-full z-0 pointer-events-none" />
@@ -281,8 +260,29 @@ export default function ReferAFriendPage() {
               </div>
             </section>
 
+            {/* HOW REFERRAL PROGRAM WORKS */}
+            <section className="flex flex-col gap-[32px] w-full">
+              <div className="flex flex-row items-center gap-[12px]">
+                <div className="flex items-center justify-center w-[30px] h-[30px] rounded-full bg-[#FFC83D]">
+                  <Award size={18} className="text-[#1A1404]" fill="#1A1404" />
+                </div>
+                <h3 className="font-jost text-[20px] font-extrabold text-white uppercase tracking-[0.01em]">HOW REFERRAL PROGRAM WORKS</h3>
+              </div>
+              <div className="flex flex-col md:flex-row gap-[12px] w-full">
+                <div className="relative flex-1 w-full rounded-[12px] overflow-hidden aspect-[370/220]">
+                  <Image src="/games/refrels/r1.png" alt="Step 1" fill className="object-cover" />
+                </div>
+                <div className="relative flex-1 w-full rounded-[12px] overflow-hidden aspect-[370/220]">
+                  <Image src="/games/refrels/r2.png" alt="Step 2" fill className="object-cover" />
+                </div>
+                <div className="relative flex-1 w-full rounded-[12px] overflow-hidden aspect-[370/220]">
+                  <Image src="/games/refrels/r3.png" alt="Step 3" fill className="object-cover" />
+                </div>
+              </div>
+            </section>
+
             {/* FAQs */}
-            <section className="flex flex-col gap-[20px] w-full max-w-[1136px] mt-[20px]">
+            <section className="flex flex-col gap-[20px] w-full mt-[20px]">
               <div className="flex flex-row items-center gap-[12px]">
                 <div className="w-[30px] h-[30px] bg-[#FFC83D] flex items-center justify-center rounded-full text-[#1A1404]">
                   <HelpCircle size={18} className="text-[#1A1404]" fill="#1A1404" />

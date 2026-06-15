@@ -4,7 +4,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useState, useRef } from "react";
 import Image from "next/image";
 import GameCard from "@/components/ui/GameCard";
-import { Heart, ChevronLeft, ChevronRight } from "lucide-react";
+import { Heart, ChevronLeft, ChevronRight, Play } from "lucide-react";
 
 /* ─────────────────────────────────────────────
    Mock game database (replace with real API)
@@ -87,32 +87,38 @@ export default function GamePage() {
   const scrollRight = () => scrollRef.current?.scrollBy({ left: 328,  behavior: "smooth" });
 
   return (
-        <div className="flex w-full flex-none flex-col items-start gap-12 lg:gap-[100px] pt-4 lg:pt-[24px]">
+        <div className="flex w-full flex-none flex-col items-start gap-12 lg:gap-[100px]">
 
           {/* ══════════════════════════════
               SECTION 1: Game Block (1067px)
-              Contains: Game Window (777px) + Other Games (250px)
+              SECTION 1: Game Block
+              Contains: Game Window + Other Games
               Gap: 40px
           ══════════════════════════════ */}
-          <div className="flex w-full max-w-[1136px] flex-none flex-col items-start gap-8 lg:gap-[40px]">
+          <div className="flex w-full flex-none flex-col items-start gap-8 lg:gap-[40px]">
 
             {/* ── Game Preview + Info Bar (gap: 20px) ── */}
-            <div className="flex w-full max-w-[1136px] flex-none flex-col items-start gap-[20px]">
-
-              {/* Game Preview — 1136 × 657px */}
-              <div className="relative w-full max-w-[1136px] aspect-[1136/657] flex-none overflow-hidden rounded-[16px]">
+            <div className="flex w-full flex-none flex-col items-start gap-[20px]">
+              {/* Game Window Placeholder
+                  aspect-[1136/657] ensures height scales correctly with width
+               */}
+              <div className="relative w-full aspect-[1136/657] flex-none overflow-hidden rounded-[16px]">
                 <Image
-                  src="/game 1.png"
+                  src={game.image}
                   alt={game.title}
                   fill
-                  sizes="(max-width: 1136px) 100vw, 1136px"
-                  className="object-cover object-top"
-                  priority
+                  className="object-cover"
                 />
+                {/* Play Button Overlay */}
+                <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+                  <div className="flex h-[72px] w-[72px] cursor-pointer items-center justify-center rounded-full bg-[#1463FF] hover:bg-blue-600">
+                    <Play className="ml-1 h-8 w-8 text-white" fill="white" />
+                  </div>
+                </div>
               </div>
 
-              {/* Info Bar — 1136 × 100px */}
-              <div className="flex h-auto lg:h-[100px] w-full max-w-[1136px] flex-none flex-col lg:flex-row items-center justify-between rounded-[16px] bg-[#0C1F56] p-4 lg:px-[30px] lg:py-[12px] gap-4 lg:gap-0">
+              {/* Info Bar (130px) */}
+              <div className="flex h-auto lg:h-[130px] w-full flex-none flex-col lg:flex-row items-center justify-between rounded-[16px] bg-[#0C1F56] p-4 lg:px-[30px] lg:py-[12px] gap-4 lg:gap-0">
                 {/* LEFT: provider + divider + title */}
                 <div className="flex h-auto lg:h-[40px] w-full lg:w-[295px] flex-none flex-row items-center justify-start gap-4 lg:gap-[32px]">
                   {/* Provider logo */}
@@ -188,7 +194,7 @@ export default function GamePage() {
             </div>
 
             {/* ── OTHER GAMES YOU MIGHT LIKE ── */}
-            <div className="flex h-auto lg:h-[250px] w-full max-w-[1136px] flex-none flex-col items-start gap-[20px]">
+            <div className="flex h-auto lg:h-[250px] w-full flex-none flex-col items-start gap-[20px]">
 
               {/* Header */}
               <div className="flex w-full flex-row flex-wrap items-center justify-between gap-y-4 gap-x-2">

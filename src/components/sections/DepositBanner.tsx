@@ -90,7 +90,7 @@ const SvgIconWrapper = (src: string) => {
   }
 
   return (
-    <section className="relative isolate flex w-full max-w-[1136px] flex-col sm:flex-row items-center justify-between gap-6 sm:gap-[79px] overflow-hidden rounded-[16px] bg-[#0C1F56] p-5 sm:px-[40px] sm:h-[100px] mx-auto">
+    <section className="relative isolate flex w-full flex-col sm:flex-row items-center justify-between gap-6 sm:gap-[79px] overflow-hidden rounded-[16px] bg-[#0C1F56] p-5 sm:px-[40px] sm:h-[100px]">
       
       {/* Background Blur */}
       <div className="absolute left-1/2 top-[60px] z-[-1] h-[534px] w-[534px] -translate-x-1/2 rounded-full bg-[#1463FF] blur-[50px]" />
