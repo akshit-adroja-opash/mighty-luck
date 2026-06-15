@@ -22,8 +22,8 @@ const baseCollections: CollectionItem[] = [
     imageStyle: {
       width: "71px",
       height: "67px",
-      left: "2px",
-      top: "5px",
+      left: "calc(50% - 71px/2 - 0.5px)",
+      top: "calc(50% - 67px/2 + 0.5px)",
     },
   },
   {
@@ -34,8 +34,8 @@ const baseCollections: CollectionItem[] = [
     imageStyle: {
       width: "77px",
       height: "73px",
-      left: "-1px",
-      top: "2px",
+      left: "calc(50% - 77px/2 - 0.5px)",
+      top: "calc(50% - 73px/2 + 0.5px)",
     },
   },
   {
@@ -47,7 +47,7 @@ const baseCollections: CollectionItem[] = [
       width: "77px",
       height: "73px",
       right: "0px",
-      top: "2px",
+      top: "calc(50% - 73px/2 + 0.5px)",
     },
   },
   {
@@ -58,8 +58,8 @@ const baseCollections: CollectionItem[] = [
     imageStyle: {
       width: "68px",
       height: "60px",
-      left: "4px",
-      top: "8px",
+      left: "calc(50% - 68px/2)",
+      top: "calc(50% - 60px/2)",
     },
   },
 ];
@@ -108,32 +108,21 @@ export default function CollectionsSection() {
         {collections.map((item, index) => (
           <div
             key={index}
-            className="group relative flex h-[100px] w-[316px] flex-shrink-0 cursor-pointer items-center gap-[12px] rounded-[12px] bg-[#0C1F56] p-[12px_24px_12px_12px] transition-colors duration-300 hover:bg-[#173EAD] snap-start"
+            className="group relative flex h-[100px] w-[260px] sm:w-[316px] flex-shrink-0 cursor-pointer items-center gap-[12px] rounded-[12px] bg-[#0C1F56] p-[12px_24px_12px_12px] transition-colors duration-300 hover:bg-[#173EAD] snap-start"
           >
-            {/* Left decorative frame */}
-            <div className="relative flex h-[76px] w-[76px] flex-shrink-0 items-center justify-center rounded-[8px] bg-[#0E1B3D] overflow-visible">
-              {/* Blue Glow (Ellipse 7) */}
-              <div className="absolute h-[70px] w-[70px] rounded-full bg-[#1463FF] opacity-90 blur-[21.875px] z-0" />
-              
-              {/* Yellow Ellipse (Ellipse 10) - hidden in design */}
-              <div 
-                className="absolute bg-[#FFC83D] rounded-full invisible pointer-events-none z-0" 
-                style={{ width: item.ellipseWidth, height: item.ellipseHeight }}
-              />
-
-              {/* Golden object image */}
-              <img 
-                src={item.image} 
-                alt={item.name} 
-                className="absolute object-contain z-10 select-none pointer-events-none" 
-                style={item.imageStyle} 
-              />
-            </div>
+            {/* Left decorative frame - Image contains the box design */}
+            <img 
+              src={item.image} 
+              alt={item.name} 
+              className="h-[76px] w-[76px] flex-shrink-0 rounded-[8px] object-cover select-none pointer-events-none" 
+            />
 
             {/* Collection Title */}
-            <h3 className="flex-1 text-center font-jost text-[22px] font-extrabold tracking-[0.01em] text-white select-none">
-              {item.name}
-            </h3>
+            <div className="flex flex-1 items-center justify-center h-[32px]">
+              <h3 className="w-full text-center font-jost text-[18px] sm:text-[22px] font-extrabold leading-[32px] tracking-[0.01em] text-white select-none">
+                {item.name}
+              </h3>
+            </div>
           </div>
         ))}
       </div>
