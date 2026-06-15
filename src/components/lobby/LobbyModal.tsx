@@ -382,7 +382,7 @@ export default function LobbyModal() {
               <div className="flex flex-col gap-4 lg:gap-[20px] w-full lg:w-[808px] lg:h-[249px] flex-none">
                 <div className="flex flex-row items-center gap-[8px] h-[29px] flex-none">
                   <div className="w-[20px] h-[20px] flex items-center justify-center text-[#FFBF1F]">
-                    <svg width="16" height="20" viewBox="0 0 16 20" fill="currentColor"><path d="M11.6667 8.33333C12.375 7.625 12.875 6.20833 13.0833 5.375C14.7917 7.04167 15 10.6667 15 11.6667C15 15.3486 11.8661 18.3333 8 18.3333C4.13391 18.3333 1 15.3486 1 11.6667C1 7.98477 4.13391 5 8 5C8.83333 5 9.625 5.58333 10.2083 6.16667L11.6667 8.33333Z" stroke="#FFBF1F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M8.00008 14.1667C9.38079 14.1667 10.5001 13.0474 10.5001 11.6667C10.5001 10.2859 9.38079 9.16667 8.00008 9.16667C6.61937 9.16667 5.50008 10.2859 5.50008 11.6667C5.50008 13.0474 6.61937 14.1667 8.00008 14.1667Z" stroke="#FFBF1F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    <MaskIcon src="/games/side-icon/popular.svg" />
                   </div>
                   <span className="font-jost font-extrabold text-[18px] lg:text-[20px] leading-[29px] tracking-[0.01em] uppercase text-white select-none">
                     Popular Games
@@ -407,7 +407,7 @@ export default function LobbyModal() {
               <div className="flex flex-col gap-4 lg:gap-[20px] w-full lg:w-[856px] lg:h-[171px] flex-none">
                 <div className="flex flex-row items-center gap-[8px] h-[29px] flex-none">
                   <div className="w-[20px] h-[20px] flex items-center justify-center text-[#FFC83D]">
-                    <svg width="15" height="20" viewBox="0 0 15 20" fill="currentColor"><circle cx="7.5" cy="5" r="4.25" stroke="#FFC83D" strokeWidth="1.5"/><path d="M1.5 18.5C1.5 14.5 4.18629 11.5 7.5 11.5C10.8137 11.5 13.5 14.5 13.5 18.5" stroke="#FFC83D" strokeWidth="1.5" strokeLinecap="round"/></svg>
+                    <MaskIcon src="/games/side-icon/game-p.svg" />
                   </div>
                   <span className="font-jost font-extrabold text-[18px] lg:text-[20px] leading-[29px] tracking-[0.01em] uppercase text-white select-none">
                     Game Providers
