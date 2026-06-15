@@ -7,7 +7,7 @@ const features = [
     image: "/images/promo-stopwatch.png",
     descClass: "h-[88px] font-medium leading-[140%]",
     ellipse9: { right: "-61px", top: "32px" },
-    imgClassName: "w-[160px] sm:w-[210px] h-[122px] sm:h-[160px] -right-[40px] sm:-right-[63px] top-[40px] sm:top-[31px] rotate-[10deg]",
+    imgClassName: "w-[180px] sm:w-[322px] h-[140px] sm:h-[215px] -right-[30px] sm:right-auto sm:left-[133px] top-[40px] sm:top-[5px] sm:-rotate-[11deg]",
   },
   {
     title: "BIG WINNERS WELCOME",
@@ -15,7 +15,7 @@ const features = [
     image: "/images/trophy.png",
     descClass: "h-[66px] font-medium leading-[140%]",
     ellipse9: { right: "-66px", top: "20px" },
-    imgClassName: "w-[220px] sm:w-[312px] h-[146px] sm:h-[208px] -right-[60px] sm:-right-[115px] top-[20px] sm:top-[3px] rotate-[12deg]",
+    imgClassName: "w-[220px] sm:w-[312.37px] h-[146px] sm:h-[208.08px] -right-[60px] sm:right-auto sm:left-[105.74px] top-[20px] sm:top-[3px] rotate-[9deg]",
   },
   {
     title: "WEEKLY 10% CASHBACK",
@@ -23,7 +23,7 @@ const features = [
     image: "/images/promo-10percent.png",
     descClass: "h-[88px] font-semibold leading-[22px]",
     ellipse9: { right: "-65px", top: "27px" },
-    imgClassName: "w-[180px] sm:w-[237px] h-[131px] sm:h-[173px] -right-[40px] sm:-right-[61px] top-[50px] sm:top-[41px] -rotate-[1deg]",
+    imgClassName: "w-[180px] sm:w-[190.48px] h-[131px] sm:h-[173.55px] -right-[40px] sm:right-auto sm:left-[194px] top-[50px] sm:top-[41.3px] sm:-rotate-[1.3deg]",
   },
 ];
 
