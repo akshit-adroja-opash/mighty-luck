@@ -182,16 +182,7 @@ export default function Header() {
           <div className="fixed top-0 left-0 h-full w-[280px] bg-[#0C1F56] z-50 lg:hidden flex flex-col transform transition-transform duration-300 translate-x-0 overflow-y-auto">
             <div className="flex items-center justify-between p-4 border-b border-[#112F82]">
               <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-2">
-                <svg width="28" height="22" viewBox="0 0 26 20" fill="none">
-                  <path d="M2 19H24L21 5L16.5 10L13 2L9.5 10L5 5L2 19Z" fill="url(#mcrownGradient)" />
-                  <path d="M14 7L10 13.5H13.5L12 18L16.5 11.5H13L14 7Z" fill="#0C1F56" />
-                  <defs>
-                    <linearGradient id="mcrownGradient" x1="0" y1="12" x2="26" y2="12" gradientUnits="userSpaceOnUse">
-                      <stop offset="0.12" stopColor="#FFD85A" />
-                      <stop offset="0.8668" stopColor="#FFB800" />
-                    </linearGradient>
-                  </defs>
-                </svg>
+                <img src="/images/logo.svg" alt="Mighty Luck" className="flex-none w-[34px] h-[25px]" />
                 <span className="text-[18px] font-black uppercase tracking-wide text-white font-jost">
                   MIGHTY <span style={{ background: "linear-gradient(90deg, #FFD85A 12%, #FFB800 86.68%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>LUCK</span>
                 </span>
