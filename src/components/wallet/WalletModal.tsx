@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Copy, QrCode, ArrowLeft } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
@@ -85,35 +85,58 @@ export default function WalletModal() {
   const [cardExpiry, setCardExpiry] = useState("");
   const [cardCVC, setCardCVC] = useState("");
 
-  // Bonuses Carousel Index
+  // Mouse Drag to Scroll for bonuses
   const [bonusSlideIndex, setBonusSlideIndex] = useState(0);
+  const bonusSliderRef = useRef<HTMLDivElement>(null);
+  const [isDraggingBonus, setIsDraggingBonus] = useState(false);
+  const [bonusStartX, setBonusStartX] = useState(0);
+  const [bonusScrollLeft, setBonusScrollLeft] = useState(0);
 
-  // Swipe logic for bonuses
-  const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [touchEnd, setTouchEnd] = useState<number | null>(null);
-  const minSwipeDistance = 50;
-
-  const onTouchStart = (e: React.TouchEvent) => {
-    setTouchEnd(null);
-    setTouchStart(e.targetTouches[0].clientX);
+  const onBonusMouseDown = (e: React.MouseEvent) => {
+    setIsDraggingBonus(true);
+    if (!bonusSliderRef.current) return;
+    setBonusStartX(e.pageX - bonusSliderRef.current.offsetLeft);
+    setBonusScrollLeft(bonusSliderRef.current.scrollLeft);
   };
 
-  const onTouchMove = (e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX);
+  const onBonusMouseMove = (e: React.MouseEvent) => {
+    if (!isDraggingBonus || !bonusSliderRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - bonusSliderRef.current.offsetLeft;
+    const walk = (x - bonusStartX) * 2; // scroll fast
+    bonusSliderRef.current.scrollLeft = bonusScrollLeft - walk;
   };
 
-  const onTouchEndHandler = () => {
-    if (!touchStart || !touchEnd) return;
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > minSwipeDistance;
-    const isRightSwipe = distance < -minSwipeDistance;
+  const onBonusMouseUpOrLeave = () => {
+    setIsDraggingBonus(false);
+  };
 
-    if (isLeftSwipe && bonusSlideIndex < availableBonuses.length - 1) {
-      setBonusSlideIndex(prev => prev + 1);
-    }
-    if (isRightSwipe && bonusSlideIndex > 0) {
-      setBonusSlideIndex(prev => prev - 1);
-    }
+  useEffect(() => {
+    const slider = bonusSliderRef.current;
+    if (!slider) return;
+
+    const handleWheel = (e: WheelEvent) => {
+      if (Math.abs(e.deltaY) > 0 && Math.abs(e.deltaX) === 0) {
+        e.preventDefault();
+        slider.scrollLeft += e.deltaY;
+      }
+    };
+
+    slider.addEventListener("wheel", handleWheel, { passive: false });
+    return () => slider.removeEventListener("wheel", handleWheel);
+  }, [activeTab]);
+
+  const onBonusScroll = () => {
+    if (!bonusSliderRef.current) return;
+    const scrollLeft = bonusSliderRef.current.scrollLeft;
+    // Card width is 300px + 8px gap = 308px
+    const index = Math.round(scrollLeft / 308);
+    setBonusSlideIndex(index);
+  };
+
+  const scrollToBonusIndex = (idx: number) => {
+    if (!bonusSliderRef.current) return;
+    bonusSliderRef.current.scrollTo({ left: idx * 308, behavior: 'smooth' });
   };
 
   // Promo code states
@@ -202,25 +225,25 @@ export default function WalletModal() {
   const modalHeight = isBtcSubmitted 
     ? "532px" 
     : (isFixedSizeTab
-        ? "530px"
+        ? "518px"
         : (paymentMethod === "btc" ? "604px" : (ccStep === "address" ? "633px" : "647px")));
     
   const innerHeight = isBtcSubmitted 
     ? "386px" 
     : (isFixedSizeTab
-        ? "474px"
+        ? "462px"
         : (paymentMethod === "btc" ? "474px" : (ccStep === "address" ? "503px" : "517px")));
     
   const tabViewHeight = isBtcSubmitted 
     ? "287px" 
     : (isFixedSizeTab
-        ? "375px"
+        ? "363px"
         : (paymentMethod === "btc" ? "376px" : (ccStep === "address" ? "404px" : "418px")));
 
   const tabsContentHeight = isBtcSubmitted 
     ? "333px" 
     : (isFixedSizeTab
-        ? "421px"
+        ? "409px"
         : (paymentMethod === "btc" ? "428px" : (ccStep === "address" ? "450px" : "464px")));
 
   const activeAmount = selectedAmountOption === "custom" ? customAmount : selectedAmountOption;
@@ -306,7 +329,7 @@ export default function WalletModal() {
 
           {/* Inner Content Box */}
           <div 
-            className="relative z-10 flex flex-col items-start w-full sm:w-[460px] gap-[24px] transition-all duration-300 flex-1 sm:flex-none min-h-0"
+            className="relative z-20 flex flex-col items-start w-full sm:w-[460px] gap-[24px] transition-all duration-300 flex-1 sm:flex-none min-h-0"
             style={{ height: typeof window !== "undefined" && window.innerWidth < 640 ? undefined : innerHeight }}
           >
             
@@ -387,7 +410,7 @@ export default function WalletModal() {
 
               {/* Tab View Container */}
               <div 
-                className="flex flex-col items-start gap-[16px] w-full sm:w-[460px] bg-[#0C1F56] rounded-[16px] border border-[#173EAD]/30 overflow-y-auto no-scrollbar transition-all duration-300 flex-1 sm:flex-none min-h-0"
+                className="flex flex-col items-start gap-[16px] w-full sm:w-[460px] bg-[#0C1F56] rounded-[16px] border border-[#173EAD]/30 overflow-visible transition-all duration-300 flex-1 sm:flex-none min-h-0"
                 style={{ 
                   height: typeof window !== "undefined" && window.innerWidth < 640 ? undefined : tabViewHeight,
                   padding: isBtcSubmitted ? "20px 16px" : "16px"
@@ -1089,19 +1112,21 @@ export default function WalletModal() {
 
                     {/* Slider Window */}
                     <div 
-                      className="w-full sm:w-[428px] h-auto sm:h-[205px] overflow-hidden relative"
-                      onTouchStart={onTouchStart}
-                      onTouchMove={onTouchMove}
-                      onTouchEnd={onTouchEndHandler}
+                      ref={bonusSliderRef}
+                      className="w-full sm:w-[428px] h-auto sm:h-[205px] overflow-x-auto snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] cursor-grab active:cursor-grabbing"
+                      onMouseDown={onBonusMouseDown}
+                      onMouseMove={onBonusMouseMove}
+                      onMouseUp={onBonusMouseUpOrLeave}
+                      onMouseLeave={onBonusMouseUpOrLeave}
+                      onScroll={onBonusScroll}
                     >
                       <div 
-                        className="flex flex-row gap-[8px] h-auto sm:h-[205px]"
+                        className="flex flex-row gap-[8px] h-auto sm:h-[205px] w-max"
                       >
                         {availableBonuses.map((bonus, idx) => (
                           <div 
                             key={idx}
-                            className="flex flex-col justify-center items-start bg-[#112F82] rounded-[12px] p-[20px] gap-[12px] w-full sm:w-[300px] h-auto sm:h-[205px] flex-none transition-transform duration-300 ease-out"
-                            style={{ transform: `translateX(calc(-${bonusSlideIndex * 100}% - ${bonusSlideIndex * 8}px))` }}
+                            className="flex flex-col justify-center items-start bg-[#112F82] rounded-[12px] p-[20px] gap-[12px] w-[300px] sm:w-[300px] h-auto sm:h-[205px] flex-none snap-start select-none"
                           >
                             {/* Title */}
                             <span className="font-jost font-bold text-[14px] leading-[20px] tracking-[0.02em] text-white w-full sm:w-[260px] h-[20px] truncate">
@@ -1166,7 +1191,7 @@ export default function WalletModal() {
                     </div>
 
                     {/* Pagination Indicator dots */}
-                    <div className="flex flex-col items-center w-full sm:w-[428px] h-[6px] flex-none mt-[8px]">
+                    <div className="flex flex-col items-center w-full sm:w-[428px] h-[6px] flex-none">
                       <div className="flex flex-row justify-center items-center gap-[4px] w-[32px] h-[6px]">
                         {availableBonuses.map((_, idx) => {
                           const isSlideActive = idx === bonusSlideIndex;
@@ -1174,7 +1199,7 @@ export default function WalletModal() {
                             <button
                               key={idx}
                               type="button"
-                              onClick={() => setBonusSlideIndex(idx)}
+                              onClick={() => scrollToBonusIndex(idx)}
                               className={`h-[6px] rounded-[150px] transition-all cursor-pointer ${
                                 isSlideActive ? "w-[12px] bg-[#BBCAF3]" : "w-[6px] bg-[#BBCAF3]/50"
                               }`}
