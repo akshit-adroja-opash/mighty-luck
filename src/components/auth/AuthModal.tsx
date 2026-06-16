@@ -62,8 +62,8 @@ export default function AuthModal() {
               <div className="font-jost font-extrabold text-white text-center" style={{ fontSize: "52px", lineHeight: "75px", letterSpacing: "0.01em" }}>
                 350%
               </div>
-              <div className="flex items-center justify-center bg-[#FFC83D] rounded-[100px]" style={{ width: "167px", height: "37px", padding: "10px 20px" }}>
-                <span className="font-jost font-extrabold text-[#1A1404] text-center" style={{ fontSize: "12px", lineHeight: "17px" }}>
+              <div className="flex items-center justify-center bg-[#2BEA51] rounded-[100px]" style={{ width: "167px", height: "37px", padding: "10px 20px" }}>
+                <span className="font-jost font-extrabold text-[#051D09] text-center" style={{ fontSize: "12px", lineHeight: "17px" }}>
                   WELCOME PACKAGE
                 </span>
               </div>

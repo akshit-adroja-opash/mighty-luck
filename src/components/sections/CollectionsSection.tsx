@@ -1,8 +1,6 @@
 "use client";
 
-import { useRef } from "react";
-import SectionHeader from "@/components/ui/SectionHeader";
-import { useScrollState } from "@/hooks/useScrollState";
+import GameCarousel from "@/components/ui/GameCarousel";
 
 
 interface CollectionItem {
@@ -71,40 +69,12 @@ const collections = Array.from(
 );
 
 export default function CollectionsSection() {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const { canScrollLeft, canScrollRight, checkScroll } = useScrollState(scrollRef);
-
-  const scrollLeft = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: -328, behavior: "smooth" });
-    }
-  };
-
-  const scrollRight = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: 328, behavior: "smooth" });
-    }
-  };
-
   return (
-    <section className="flex w-full flex-none flex-col gap-5 overflow-hidden">
-      <SectionHeader 
-        title="COLLECTIONS (17)" 
-        titleWidth="189px"
-        icon={<img src="/games/game-icons/collections.svg" alt="Collections" className="w-[30px] h-[30px]" />} 
-        iconBg="bg-transparent"
-        onPrev={scrollLeft}
-        onNext={scrollRight}
-        canScrollLeft={canScrollLeft}
-        canScrollRight={canScrollRight}
-      />
-
-      {/* Card row */}
-      <div 
-        ref={scrollRef}
-        onScroll={checkScroll}
-        className="flex w-full gap-[12px] overflow-x-auto snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
-      >
+    <GameCarousel
+      title="COLLECTIONS (17)"
+      titleWidth="189px"
+      icon={<img src="/games/game-icons/collections.svg" alt="Collections" className="w-[30px] h-[30px]" />}
+    >
         {collections.map((item, index) => (
           <div
             key={index}
@@ -125,7 +95,6 @@ export default function CollectionsSection() {
             </div>
           </div>
         ))}
-      </div>
-    </section>
+      </GameCarousel>
   );
 }

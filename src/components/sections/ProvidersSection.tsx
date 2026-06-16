@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useRef } from "react";
-import SectionHeader from "@/components/ui/SectionHeader";
-import { useScrollState } from "@/hooks/useScrollState";
+import React from "react";
+import GameCarousel from "@/components/ui/GameCarousel";
 
 interface ProviderCardProps {
   name: string;
@@ -54,44 +53,12 @@ const providers = [
 const topProviders = Array.from({ length: 20 }, (_, i) => providers[i % providers.length]);
 
 export default function ProvidersSection() {
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  const { canScrollLeft, canScrollRight, checkScroll } = useScrollState(scrollRef);
-
-  const scrollLeft = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: -(152 + 12) * 2, behavior: "smooth" });
-    }
-  };
-
-  const scrollRight = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: (152 + 12) * 2, behavior: "smooth" });
-    }
-  };
-
   return (
-    /* Section: w-full max-w-[1136px] h-[150px] flex-col gap-[20px] overflow-hidden */
-    <section className="flex w-full flex-none flex-col items-start gap-5 overflow-hidden">
-
-      {/* Header: titleWidth=237px to match "GAME PROVIDERS (34)" = 237px */}
-      <SectionHeader
-        title="GAME PROVIDERS (34)"
-        titleWidth="237px"
-        icon={<img src="/games/game-icons/game.svg" alt="Game Providers" className="w-[30px] h-[30px]" />}
-        iconBg="bg-transparent"
-        onPrev={scrollLeft}
-        onNext={scrollRight}
-        canScrollLeft={canScrollLeft}
-        canScrollRight={canScrollRight}
-      />
-
-      {/* Card row: w-full h-[100px] flex-row gap-[12px] */}
-      <div
-        ref={scrollRef}
-        onScroll={checkScroll}
-        className="flex h-[100px] w-full flex-none flex-row gap-[12px] overflow-x-auto snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
-      >
+    <GameCarousel
+      title="GAME PROVIDERS (34)"
+      titleWidth="237px"
+      icon={<img src="/games/game-icons/game.svg" alt="Game Providers" className="w-[30px] h-[30px]" />}
+    >
         {topProviders.map((provider, index) => (
           <div key={index} className="flex-none snap-start">
             <ProviderCard
@@ -101,8 +68,6 @@ export default function ProvidersSection() {
             />
           </div>
         ))}
-      </div>
-
-    </section>
+      </GameCarousel>
   );
 }
