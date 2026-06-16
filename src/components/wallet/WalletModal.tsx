@@ -675,7 +675,7 @@ export default function WalletModal() {
                                   Bitcoin
                                 </span>
                                 <span className="font-manrope text-[10px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] w-auto whitespace-nowrap flex-none">
-                                  (Min. Deposit $10)
+                                  (Min. $10)
                                 </span>
                               </div>
                             </>
@@ -689,7 +689,7 @@ export default function WalletModal() {
                                   Credit Card
                                 </span>
                                 <span className="font-manrope text-[10px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] w-auto whitespace-nowrap flex-none hidden sm:block">
-                                  (Min. Deposit $30 - Max. Deposit $2,500)
+                                  (Min. $30 - Max. $2,500)
                                 </span>
                               </div>
                             </>
