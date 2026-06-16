@@ -45,8 +45,8 @@ export default function SectionHeader({
         </h2>
       </div>
 
-      {/* Right group: w-[125px] h-[30px] flex-row gap-[12px] */}
-      <div className="flex h-[30px] w-[125px] flex-none flex-row items-center gap-[12px]">
+      {/* Right group */}
+      <div className="flex h-[30px] w-auto flex-none flex-row items-center justify-end gap-[12px]">
 
         {/* "View all": Manrope 600 12px #D2DCF7 */}
         {showViewAll && (
