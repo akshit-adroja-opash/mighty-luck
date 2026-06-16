@@ -765,7 +765,7 @@ export default function WalletModal() {
                       ccStep === "address" ? (
                         /* CC Step 1: Address Form */
                         <div className="flex flex-col gap-[12px] w-full sm:w-[428px] h-auto sm:h-[212px] flex-none">
-                          <span className="font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#BBCAF3] w-[112px] h-[16px]">
+                          <span className="font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#BBCAF3] w-full h-auto">
                             Enter your address
                           </span>
 
@@ -871,7 +871,7 @@ export default function WalletModal() {
                         <>
                           {/* Step 3: Select an amount */}
                           <div className="flex flex-col gap-[8px] w-full sm:w-[428px] h-auto sm:h-[64px] flex-none">
-                            <span className="font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#BBCAF3] w-[105px] h-[16px]">
+                            <span className="font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#BBCAF3] w-full h-auto">
                               Select an amount
                             </span>
                             
@@ -924,7 +924,7 @@ export default function WalletModal() {
 
                           {/* Step 4: Enter payment details */}
                           <div className="flex flex-col gap-[12px] w-full sm:w-[428px] h-auto sm:h-[146px] flex-none">
-                            <span className="font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#BBCAF3] w-full sm:w-[160px] h-[16px]">
+                            <span className="font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#BBCAF3] w-full h-auto">
                               Enter your payment details
                             </span>
 
@@ -995,7 +995,7 @@ export default function WalletModal() {
 
                         {/* Calculate amount */}
                         <div className="flex flex-col gap-[8px] w-full sm:w-[428px]">
-                          <span className="font-manrope text-[12px] font-semibold tracking-[0.02em] text-[#BBCAF3] w-[259px] h-[16px]">
+                          <span className="font-manrope text-[12px] font-semibold tracking-[0.02em] text-[#BBCAF3] w-full h-auto">
                             3.Calculate the amount you want to deposit
                           </span>
                           <div className="flex flex-col sm:flex-row items-center gap-[8px] w-full sm:w-[428px] h-auto sm:h-[40px]">
@@ -1047,7 +1047,7 @@ export default function WalletModal() {
 
                         {/* Deposit Address */}
                         <div className="flex flex-col gap-[8px] w-full sm:w-[428px]">
-                          <span className="font-manrope text-[12px] font-semibold tracking-[0.02em] text-[#BBCAF3] w-[135px] h-[16px]">
+                          <span className="font-manrope text-[12px] font-semibold tracking-[0.02em] text-[#BBCAF3] w-full h-auto">
                             4.BTC Deposit Address
                           </span>
                           <div className="flex items-center justify-between bg-[#112F82] rounded-[8px] w-full sm:w-[428px] h-[44px] sm:h-[40px] px-[16px] py-[10px]">
@@ -1082,7 +1082,7 @@ export default function WalletModal() {
                   
                   {/* Promo Code Input Block */}
                   <div className="flex flex-col gap-[8px] w-full sm:w-[428px] h-auto sm:h-[64px] flex-none">
-                    <span className="font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#A5B8EF] w-full sm:w-[236px] h-[16px]">
+                    <span className="font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#A5B8EF] w-full h-auto">
                       If you have a Bonus Code — enter it here
                     </span>
                     <div className="flex flex-row items-start gap-[8px] w-full sm:w-[428px] h-[40px]">
@@ -1138,7 +1138,7 @@ export default function WalletModal() {
 
                   {/* Available Bonuses Slider Block */}
                   <div className="flex flex-col gap-[12px] w-full sm:w-[428px] h-auto sm:h-[251px] flex-none relative">
-                    <span className="font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#BBCAF3] w-full sm:w-[151px] h-[16px]">
+                    <span className="font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#BBCAF3] w-full h-auto">
                       Available bonuses for you
                     </span>
 
