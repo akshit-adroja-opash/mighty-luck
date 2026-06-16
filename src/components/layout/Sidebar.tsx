@@ -1,22 +1,5 @@
 "use client";
 
-import {
-  Gift,
-  Crown,
-  Trophy,
-  Dice5,
-  Club,
-  Headphones,
-  ChevronDown,
-  Gamepad2,
-  Sparkles,
-  Flame,
-  Star,
-  Rocket,
-} from "lucide-react";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { openModal } from "@/store/slices/uiSlice";
 
 import TopPromoCards from "@/components/sections/TopPromoCards";
 import SidebarMenu from "./SidebarMenu";

@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { X, Search, LogOut, Bell, Gift, Wallet, Users, Gift as GiftIcon, Crown, Trophy, Dice5, Club, Headphones } from "lucide-react";
+import { X, Search, LogOut, Bell, Wallet, Users } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
-import { openModal, closeModal, setAuthModalView, toggleSidebar } from "@/store/slices/uiSlice";
+import { openModal, setAuthModalView, toggleSidebar } from "@/store/slices/uiSlice";
 import { logout } from "@/store/slices/authSlice";
 import { useState, useRef, useEffect } from "react";
 import SidebarMenu from "./SidebarMenu";

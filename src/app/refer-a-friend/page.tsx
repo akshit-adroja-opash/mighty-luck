@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import CryptoBanner from "@/components/sections/CryptoBanner";
-import { Users, Coins, TrendingUp, Check, ChevronDown, Award, HelpCircle, Plus, Minus, DollarSign } from "lucide-react";
+import { Plus, Minus } from "lucide-react";
 
 export default function ReferAFriendPage() {
   const [sliderValue, setSliderValue] = useState(5);
