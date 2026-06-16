@@ -124,7 +124,7 @@ export default function Header() {
                   <Bell size={16} className="text-[#D2DCF7]" fill="#D2DCF7" />
                   <span className="absolute flex rounded-full bg-[#FF0E0E]" style={{ width: "8px", height: "8px", left: "32px", top: "0px" }} />
                 </button>
-                <button className="relative hidden sm:flex h-[40px] w-[40px] flex-none items-center justify-center rounded-[6px] bg-[#173EAD] transition-colors hover:opacity-90 cursor-pointer">
+                <button className="relative flex h-[40px] w-[40px] flex-none items-center justify-center rounded-[6px] bg-[#173EAD] transition-colors hover:opacity-90 cursor-pointer">
                   <div 
                     className="w-[16px] h-[16px] bg-[#D2DCF7] flex-none"
                     style={{

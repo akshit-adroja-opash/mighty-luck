@@ -9,7 +9,7 @@ export default function HeroBanner() {
       />
 
       {/* Ellipse 7 */}
-      <div className="absolute -left-[100px] -top-[100px] md:-left-[161px] md:-top-[102px] z-[1] h-[350px] w-[350px] md:h-[575px] md:w-[575px] rounded-full bg-[#06102B] blur-[50px] md:blur-[75px]" />
+      <div className="absolute -left-[100px] -top-[100px] md:-left-[161px] md:-top-[102px] z-[1] h-[250px] w-[250px] md:h-[575px] md:w-[575px] rounded-full bg-[#06102B] bg-opacity-60 md:bg-opacity-100 blur-[50px] md:blur-[75px]" />
       
       {/* Ellipse 9 */}
       <div className="absolute left-[40%] md:left-[198px] top-[150px] md:top-[224px] z-[1] h-[100px] w-[100px] md:h-[194px] md:w-[194px] rounded-full bg-[#103686] blur-[25px]" />
