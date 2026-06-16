@@ -702,7 +702,7 @@ export default function WalletModal() {
                                 <span className="font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-white w-auto whitespace-nowrap flex-none">
                                   Bitcoin
                                 </span>
-                                <span className="font-manrope text-[10px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] w-auto whitespace-nowrap flex-none">
+                                <span className="font-manrope text-[11px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] w-auto whitespace-nowrap flex-none">
                                   (Min. $10)
                                 </span>
                               </div>
@@ -716,7 +716,7 @@ export default function WalletModal() {
                                 <span className="font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-white w-auto whitespace-nowrap flex-none">
                                   Credit Card
                                 </span>
-                                <span className="font-manrope text-[10px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] w-auto whitespace-nowrap flex-none hidden sm:block">
+                                <span className="font-manrope text-[11px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] w-auto whitespace-nowrap flex-none hidden sm:block">
                                   (Min. $30 - Max. $2,500)
                                 </span>
                               </div>
@@ -772,7 +772,7 @@ export default function WalletModal() {
                           {/* Warning Info */}
                           <div className="flex items-start gap-[8px] w-full sm:w-[428px] h-[28px]">
                             <WarningIcon />
-                            <p className="font-manrope text-[10px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] w-full sm:w-[408px] h-[28px]">
+                            <p className="font-manrope text-[11px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] w-full sm:w-[408px] h-[28px]">
                               Please fill up your address details before completing your deposit. This information is required for credit card deposits.
                             </p>
                           </div>
