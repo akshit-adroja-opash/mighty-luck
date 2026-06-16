@@ -31,23 +31,25 @@ export default function PromotionsSection() {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
-  const CARD_WIDTH = 560;
-  const GAP = 12;
-  const SCROLL_BY = CARD_WIDTH + GAP;
-
   const handleScroll = () => {
     const el = scrollRef.current;
     if (!el) return;
     setCanScrollLeft(el.scrollLeft > 0);
-    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 1);
+    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 2);
   };
 
   const scrollLeft = () => {
-    scrollRef.current?.scrollBy({ left: -SCROLL_BY, behavior: "smooth" });
+    if (!scrollRef.current) return;
+    const cardWidth = scrollRef.current.firstElementChild?.clientWidth || 560;
+    const gap = 12;
+    scrollRef.current.scrollBy({ left: -(cardWidth + gap), behavior: "smooth" });
   };
 
   const scrollRight = () => {
-    scrollRef.current?.scrollBy({ left: SCROLL_BY, behavior: "smooth" });
+    if (!scrollRef.current) return;
+    const cardWidth = scrollRef.current.firstElementChild?.clientWidth || 560;
+    const gap = 12;
+    scrollRef.current.scrollBy({ left: (cardWidth + gap), behavior: "smooth" });
   };
 
   return (
