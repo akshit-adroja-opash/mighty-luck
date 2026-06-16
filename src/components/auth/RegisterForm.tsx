@@ -30,14 +30,22 @@ export default function RegisterForm({ setView }: RegisterFormProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showCountryCodeDropdown, setShowCountryCodeDropdown] = useState(false);
-  const [selectedCountryCode, setSelectedCountryCode] = useState({ code: "+1", image: "https://flagcdn.com/w40/us.png" });
+  const [selectedCountryCode, setSelectedCountryCode] = useState({ code: "+1", iso: "us" });
 
   const countryCodes = [
-    { code: "+1", image: "https://flagcdn.com/w40/us.png" },
-    { code: "+44", image: "https://flagcdn.com/w40/gb.png" },
-    { code: "+380", image: "https://flagcdn.com/w40/ua.png" },
-    { code: "+91", image: "https://flagcdn.com/w40/in.png" },
-    { code: "+61", image: "https://flagcdn.com/w40/au.png" },
+    { code: "+1", iso: "us" },
+    { code: "+1", iso: "ca" },
+    { code: "+44", iso: "gb" },
+    { code: "+380", iso: "ua" },
+    { code: "+91", iso: "in" },
+    { code: "+61", iso: "au" },
+    { code: "+49", iso: "de" },
+    { code: "+33", iso: "fr" },
+    { code: "+55", iso: "br" },
+    { code: "+81", iso: "jp" },
+    { code: "+82", iso: "kr" },
+    { code: "+34", iso: "es" },
+    { code: "+39", iso: "it" },
   ];
 
   const { register, handleSubmit } = useForm<RegisterFormData>({
@@ -155,9 +163,7 @@ export default function RegisterForm({ setView }: RegisterFormProps) {
               onClick={() => setShowCountryCodeDropdown(!showCountryCodeDropdown)}
               className="flex h-[40px] w-[121px] items-center gap-[10px] rounded-[8px] bg-[#112F82] px-[16px] cursor-pointer hover:bg-blue-800 transition-colors flex-none"
             >
-              {selectedCountryCode.image && (
-                <img src={selectedCountryCode.image} alt="Flag" className="w-[20px] h-[20px] flex-none rounded-full object-cover" />
-              )}
+              <span className={`fi fi-${selectedCountryCode.iso} fis !rounded-full !w-[20px] !h-[20px] overflow-hidden flex-none bg-cover bg-center`}></span>
               <span className="font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white flex-none w-[35px] whitespace-nowrap">
                 {selectedCountryCode.code}
               </span>
@@ -180,9 +186,7 @@ export default function RegisterForm({ setView }: RegisterFormProps) {
                     }}
                     className="flex items-center gap-[10px] px-[16px] py-[10px] hover:bg-[#173EAD] transition-colors text-left w-full cursor-pointer text-white font-manrope text-[14px]"
                   >
-                    {country.image && (
-                      <img src={country.image} alt="Flag" className="w-[20px] h-[20px] flex-none rounded-full object-cover" />
-                    )}
+                    <span className={`fi fi-${country.iso} fis !rounded-full !w-[20px] !h-[20px] overflow-hidden flex-none bg-cover bg-center`}></span>
                     <span>{country.code}</span>
                   </button>
                 ))}

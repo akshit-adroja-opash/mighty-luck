@@ -45,12 +45,19 @@ const WarningIcon = () => (
 );
 
 const countryList = [
-  { name: "United States", flag: "https://flagcdn.com/w40/us.png" },
-  { name: "Canada", flag: "https://flagcdn.com/w40/ca.png" },
-  { name: "United Kingdom", flag: "https://flagcdn.com/w40/gb.png" },
-  { name: "Ukraine", flag: "https://flagcdn.com/w40/ua.png" },
-  { name: "India", flag: "https://flagcdn.com/w40/in.png" },
-  { name: "Australia", flag: "https://flagcdn.com/w40/au.png" },
+  { name: "United States", iso: "us" },
+  { name: "Canada", iso: "ca" },
+  { name: "United Kingdom", iso: "gb" },
+  { name: "Ukraine", iso: "ua" },
+  { name: "India", iso: "in" },
+  { name: "Australia", iso: "au" },
+  { name: "Germany", iso: "de" },
+  { name: "France", iso: "fr" },
+  { name: "Brazil", iso: "br" },
+  { name: "Japan", iso: "jp" },
+  { name: "South Korea", iso: "kr" },
+  { name: "Spain", iso: "es" },
+  { name: "Italy", iso: "it" },
 ];
 
 export default function WalletModal() {
@@ -825,11 +832,9 @@ export default function WalletModal() {
                                 className="flex items-center justify-between bg-[#112F82] rounded-[8px] w-full sm:w-[210px] h-[44px] sm:h-[40px] px-[16px] py-[10px] gap-[10px] cursor-pointer hover:bg-[#153bb0] transition-colors"
                               >
                                 <div className="flex items-center gap-[8px]">
-                                  <img 
-                                    src={countryList.find(c => c.name === selectedCountry)?.flag || "https://flagcdn.com/w40/us.png"} 
-                                    alt="Flag" 
-                                    className="w-[20px] h-[20px] flex-none rounded-full object-cover" 
-                                  />
+                                  <span 
+                                    className={`fi fi-${countryList.find(c => c.name === selectedCountry)?.iso || "us"} fis !rounded-full !w-[20px] !h-[20px] overflow-hidden flex-none bg-cover bg-center`}
+                                  ></span>
                                   <span className="font-manrope text-[12px] font-bold leading-[16px] tracking-[0.02em] text-white w-full sm:w-[124px] h-[16px] flex items-center">
                                     {selectedCountry}
                                   </span>
@@ -850,11 +855,9 @@ export default function WalletModal() {
                                       }}
                                       className="flex items-center gap-[8px] px-[16px] py-[10px] hover:bg-[#173EAD] transition-colors text-left w-full cursor-pointer text-white font-manrope text-[14px]"
                                     >
-                                      <img 
-                                        src={country.flag} 
-                                        alt="Flag" 
-                                        className="w-[20px] h-[20px] flex-none rounded-full object-cover" 
-                                      />
+                                      <span 
+                                        className={`fi fi-${country.iso} fis !rounded-full !w-[20px] !h-[20px] overflow-hidden flex-none bg-cover bg-center`}
+                                      ></span>
                                       <span>{country.name}</span>
                                     </button>
                                   ))}
