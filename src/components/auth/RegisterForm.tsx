@@ -29,6 +29,16 @@ export default function RegisterForm({ setView }: RegisterFormProps) {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [showCountryCodeDropdown, setShowCountryCodeDropdown] = useState(false);
+  const [selectedCountryCode, setSelectedCountryCode] = useState({ code: "+1", image: "/images/america.svg", emoji: "" });
+
+  const countryCodes = [
+    { code: "+1", image: "/images/america.svg", emoji: "" },
+    { code: "+44", image: "", emoji: "🇬🇧" },
+    { code: "+380", image: "", emoji: "🇺🇦" },
+    { code: "+91", image: "", emoji: "🇮🇳" },
+    { code: "+61", image: "", emoji: "🇦🇺" },
+  ];
 
   const { register, handleSubmit } = useForm<RegisterFormData>({
     resolver: zodResolver(registerSchema),
@@ -140,16 +150,48 @@ export default function RegisterForm({ setView }: RegisterFormProps) {
           </div>
 
           {/* Phone */}
-          <div className="flex w-full gap-[8px]">
-            <div className="flex h-[40px] w-[121px] items-center gap-[10px] rounded-[8px] bg-[#112F82] px-[16px] cursor-pointer hover:bg-blue-800 transition-colors flex-none">
-              <img src="/images/america.svg" alt="US" className="w-[20px] h-[20px] flex-none" />
-              <span className="font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white flex-none w-[35px] whitespace-nowrap">+380</span>
+          <div className="flex w-full gap-[8px] relative">
+            <div 
+              onClick={() => setShowCountryCodeDropdown(!showCountryCodeDropdown)}
+              className="flex h-[40px] w-[121px] items-center gap-[10px] rounded-[8px] bg-[#112F82] px-[16px] cursor-pointer hover:bg-blue-800 transition-colors flex-none"
+            >
+              {selectedCountryCode.image ? (
+                <img src={selectedCountryCode.image} alt="Flag" className="w-[20px] h-[20px] flex-none" />
+              ) : (
+                <span className="w-[20px] h-[20px] flex-none text-[14px] flex items-center justify-center">{selectedCountryCode.emoji}</span>
+              )}
+              <span className="font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white flex-none w-[35px] whitespace-nowrap">
+                {selectedCountryCode.code}
+              </span>
               <div className="flex items-center justify-center w-[14px] h-[14px] flex-none">
                 <svg width="7" height="4" viewBox="0 0 7 4" fill="none">
                   <path d="M1 1L3.5 3L6 1" stroke="#A5B8EF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
             </div>
+
+            {showCountryCodeDropdown && (
+              <div className="absolute left-0 top-[48px] z-50 flex w-[121px] flex-col rounded-[8px] bg-[#112F82] border border-[#173EAD] overflow-y-auto shadow-2xl max-h-[130px] [&::-webkit-scrollbar]:w-[4px] [&::-webkit-scrollbar-thumb]:bg-[#1463FF] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent">
+                {countryCodes.map((country, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => {
+                      setSelectedCountryCode(country);
+                      setShowCountryCodeDropdown(false);
+                    }}
+                    className="flex items-center gap-[10px] px-[16px] py-[10px] hover:bg-[#173EAD] transition-colors text-left w-full cursor-pointer text-white font-manrope text-[14px]"
+                  >
+                    {country.image ? (
+                      <img src={country.image} alt="Flag" className="w-[20px] h-[20px] flex-none" />
+                    ) : (
+                      <span className="w-[20px] h-[20px] flex-none text-[14px] flex items-center justify-center">{country.emoji}</span>
+                    )}
+                    <span>{country.code}</span>
+                  </button>
+                ))}
+              </div>
+            )}
             <div className="relative flex h-[40px] flex-1 items-center rounded-[8px] bg-[#112F82] px-4">
               <input {...register("phone")} type="text" placeholder="Phone Number"
                 className="w-full bg-transparent font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white outline-none border-none ring-0 focus:ring-0 placeholder:text-[#A5B8EF]" />
