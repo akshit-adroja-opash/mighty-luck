@@ -11,13 +11,13 @@ export default function TopPromoCards() {
           <div className="relative isolate overflow-hidden flex h-[44px] w-[98px] flex-none items-center gap-[2px] rounded-[8px] bg-[#3B005F] px-[8px] py-[6px]">
             {/* Blur Effect (Contained) */}
             <div className="absolute inset-0 z-[-1] overflow-hidden rounded-[8px]">
-              <div className="absolute -left-[43px] -top-[15px] h-[97px] w-[97px] rounded-full bg-[#A92BF5] blur-[25px]" />
+              <div className="absolute -left-[40px] -top-[15px] h-[97px] w-[97px] rounded-full bg-[#A92BF5] blur-[25px]" />
             </div>
             
             <div className="relative z-[1] w-[24px] h-[24px] shrink-0 flex items-center justify-center">
             <div 
-              className="absolute -left-[20px] -top-[4px] h-[39.33px] w-[59px] bg-contain bg-center bg-no-repeat pointer-events-none mix-blend-screen"
-              style={{ backgroundImage: "url('/images/promo-megaphone.png')" }}
+              className="absolute -left-[17px] -top-[4px] h-[39.33px] w-[59px] bg-contain bg-center bg-no-repeat pointer-events-none mix-blend-screen"
+              style={{ backgroundImage: "url('/images/promo-megaphone.svg')" }}
             />
           </div>
             
@@ -37,8 +37,8 @@ export default function TopPromoCards() {
             
             <div className="relative z-[1] w-[24px] h-[24px] shrink-0 flex items-center justify-center">
             <div 
-              className="absolute -left-[25px] -top-[4px] h-[33.01px] w-[64px] bg-contain bg-center bg-no-repeat pointer-events-none mix-blend-screen"
-              style={{ transform: "rotate(11.84deg)", backgroundImage: "url('/images/promo-crown.png')" }}
+              className="absolute -left-[23px] -top-[4px] h-[33.01px] w-[64px] bg-contain bg-center bg-no-repeat pointer-events-none mix-blend-screen"
+              style={{ transform: "rotate(11.84deg)", backgroundImage: "url('/images/promo-crown.svg')" }}
             />
           </div>
             
@@ -59,11 +59,11 @@ export default function TopPromoCards() {
           </div>
           
           <div className="relative z-[1] w-[24px] h-[24px] shrink-0 flex items-center justify-center">
-          <div 
-            className="absolute -left-[50px] -top-[40px] h-[68px] w-[102px] bg-contain bg-center bg-no-repeat pointer-events-none mix-blend-screen"
-            style={{ transform: "scaleX(-1) rotate(-110deg)", backgroundImage: "url('/images/promo-snowflake.png')" }}
-          />
-        </div>  
+                            <div
+                                className="absolute h-[50px] w-[80px] -left-[20px] -top-[12px] bg-contain bg-center bg-no-repeat pointer-events-none"
+                                style={{ backgroundImage: "url('/images/promo-snowflake.svg')" }}
+                            />
+                        </div> 
           
           {/* Text Container */}
           <div className="relative z-[3] flex h-[30px] w-[138px] flex-none flex-col items-start gap-[2px]">
