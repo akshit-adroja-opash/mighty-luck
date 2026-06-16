@@ -75,7 +75,7 @@ export default function AuthModal() {
         </div>
 
         {/* Right Column - Forms */}
-        <div className="relative w-full md:w-[390px] min-h-[100dvh] md:min-h-[546px] bg-[#091741] rounded-none md:rounded-l-none md:rounded-r-[16px] flex flex-col justify-center md:justify-start items-center md:items-start px-0 md:px-[20px] py-[40px] md:py-[20px] shrink-0 overflow-y-auto md:overflow-hidden">
+        <div className="relative w-full md:w-[390px] min-h-[100dvh] md:min-h-[546px] bg-[#091741] rounded-none md:rounded-l-none md:rounded-r-[16px] flex flex-col justify-center md:justify-start items-center md:items-start px-0 md:px-[20px] py-[40px] md:py-[24px] shrink-0 overflow-y-auto md:overflow-hidden">
           <div
             className="absolute rounded-full bg-[#1463FF]"
             style={{ width: "173px", height: "173px", left: "calc(50% - 173px/2 - 0.5px)", top: "-145px", filter: "blur(40px)", opacity: 0.8 }}

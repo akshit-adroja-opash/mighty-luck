@@ -63,17 +63,17 @@ export default function RegisterForm({ setView }: RegisterFormProps) {
   return (
     <form
       onSubmit={handleSubmit(onSubmit, onError)}
-      className="relative z-10 flex w-full max-w-[350px] mx-auto md:mx-0 flex-col items-center md:items-start gap-[16px] mt-[10px] md:mt-0"
+      className="relative z-10 flex w-full max-w-[350px] mx-auto md:mx-0 flex-col items-center md:items-start gap-[32px] mt-[10px] md:mt-0"
     >
       {/* Top Container */}
       <div className="flex flex-col gap-[16px] w-full">
 
         {/* Header with Logo */}
-        <div className="flex w-full items-center justify-center py-2 mb-2">
+        <div className="flex w-full items-center justify-center h-[25.54px]">
           <Logo 
-            className="gap-[8px]"
-            iconClassName="-mt-1 w-[28px] h-[20px]"
-            textClassName="text-[18px] mt-1 tracking-wide"
+            className="gap-[4px]"
+            iconClassName="w-[18px] h-[18px]"
+            textClassName="text-[14px] tracking-wide"
           />
         </div>
 
@@ -96,34 +96,34 @@ export default function RegisterForm({ setView }: RegisterFormProps) {
         </div>
 
         {/* Fields */}
-        <div className="flex flex-col gap-3 w-full">
+        <div className="flex flex-col gap-[12px] w-full">
 
           {/* Username */}
-          <div className="relative flex h-[44px] w-full items-center rounded-[8px] bg-[#112F82] px-4 py-[10px]">
+          <div className="relative flex h-[40px] w-full items-center rounded-[8px] bg-[#112F82] px-4">
             <input {...register("username")} type="text" placeholder="User name"
               className="w-full bg-transparent font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white outline-none border-none ring-0 focus:ring-0 placeholder:text-[#A5B8EF]" />
           </div>
 
           {/* First + Last Name */}
-          <div className="flex w-full gap-2">
-            <div className="relative flex h-[44px] flex-1 items-center rounded-[8px] bg-[#112F82] px-4 py-[10px]">
+          <div className="flex w-full gap-[8px]">
+            <div className="relative flex h-[40px] flex-1 items-center rounded-[8px] bg-[#112F82] px-4">
               <input {...register("firstName")} type="text" placeholder="First Name"
                 className="w-full bg-transparent font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white outline-none border-none ring-0 focus:ring-0 placeholder:text-[#A5B8EF]" />
             </div>
-            <div className="relative flex h-[44px] flex-1 items-center rounded-[8px] bg-[#112F82] px-4 py-[10px]">
+            <div className="relative flex h-[40px] flex-1 items-center rounded-[8px] bg-[#112F82] px-4">
               <input {...register("lastName")} type="text" placeholder="Last Name"
                 className="w-full bg-transparent font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white outline-none border-none ring-0 focus:ring-0 placeholder:text-[#A5B8EF]" />
             </div>
           </div>
 
           {/* Email */}
-          <div className="relative flex h-[44px] w-full items-center rounded-[8px] bg-[#112F82] px-4 py-[10px]">
+          <div className="relative flex h-[40px] w-full items-center rounded-[8px] bg-[#112F82] px-4">
             <input {...register("email")} type="email" placeholder="Email"
               className="w-full bg-transparent font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white outline-none border-none ring-0 focus:ring-0 placeholder:text-[#A5B8EF]" />
           </div>
 
           {/* Password */}
-          <div className="relative flex h-[44px] w-full items-center justify-between rounded-[8px] bg-[#112F82] px-4 py-[10px]">
+          <div className="relative flex h-[40px] w-full items-center justify-between rounded-[8px] bg-[#112F82] px-4">
             <input {...register("password")} type={showPassword ? "text" : "password"} placeholder="Password"
               className="w-full bg-transparent font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white outline-none border-none ring-0 focus:ring-0 placeholder:text-[#A5B8EF]" />
             <button type="button" onClick={() => setShowPassword(!showPassword)} className="text-[#A5B8EF] hover:text-white transition-colors cursor-pointer flex-none">
@@ -140,7 +140,7 @@ export default function RegisterForm({ setView }: RegisterFormProps) {
           </div>
 
           {/* Phone */}
-          <div className="flex w-full gap-2">
+          <div className="flex w-full gap-[8px]">
             <div className="flex h-[40px] w-[121px] items-center gap-[10px] rounded-[8px] bg-[#112F82] px-[16px] cursor-pointer hover:bg-blue-800 transition-colors flex-none">
               <img src="/images/america.svg" alt="US" className="w-[20px] h-[20px] flex-none" />
               <span className="font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white flex-none w-[35px] whitespace-nowrap">+380</span>
@@ -166,7 +166,7 @@ export default function RegisterForm({ setView }: RegisterFormProps) {
       </div>
 
       {/* Bottom Container */}
-      <div className="flex flex-col items-center md:items-start gap-[12px] w-full mt-[4px]">
+      <div className="flex flex-col items-center md:items-start gap-[12px] w-full">
         <button
           type="submit"
           disabled={isLoading}

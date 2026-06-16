@@ -59,17 +59,17 @@ export default function LoginForm({ setView }: LoginFormProps) {
   return (
     <form
       onSubmit={handleSubmit(onSubmit, onError)}
-      className="relative z-10 flex w-full max-w-[350px] mx-auto md:mx-0 flex-col items-center md:items-start gap-[16px] mt-[10px] md:mt-0"
+      className="relative z-10 flex w-full max-w-[350px] mx-auto md:mx-0 flex-col items-center md:items-start gap-[32px] mt-[10px] md:mt-0"
     >
       {/* Top Container */}
       <div className="flex flex-col gap-[16px] w-full">
 
         {/* Header with Logo */}
-        <div className="flex w-full items-center justify-center py-2 mb-2">
+        <div className="flex w-full items-center justify-center h-[25.54px]">
           <Logo 
-            className="gap-[8px]"
-            iconClassName="-mt-1 w-[28px] h-[20px]"
-            textClassName="text-[18px] mt-1 tracking-wide"
+            className="gap-[4px]"
+            iconClassName="w-[18px] h-[18px]"
+            textClassName="text-[14px] tracking-wide"
           />
         </div>
 
@@ -92,10 +92,10 @@ export default function LoginForm({ setView }: LoginFormProps) {
         </div>
 
         {/* Fields */}
-        <div className="flex flex-col gap-3 w-full pt-2">
+        <div className="flex flex-col gap-[12px] w-full">
 
           {/* Email */}
-          <div className="relative flex h-[44px] w-full items-center rounded-[8px] bg-[#112F82] px-4 py-[10px]">
+          <div className="relative flex h-[40px] w-full items-center rounded-[8px] bg-[#112F82] px-4">
             <input
               {...register("email")}
               type="email"
@@ -105,7 +105,7 @@ export default function LoginForm({ setView }: LoginFormProps) {
           </div>
 
           {/* Password */}
-          <div className="relative flex h-[44px] w-full items-center justify-between rounded-[8px] bg-[#112F82] px-4 py-[10px]">
+          <div className="relative flex h-[40px] w-full items-center justify-between rounded-[8px] bg-[#112F82] px-4">
             <input
               {...register("password")}
               type={showPassword ? "text" : "password"}
@@ -136,7 +136,7 @@ export default function LoginForm({ setView }: LoginFormProps) {
       </div>
 
       {/* Bottom Container */}
-      <div className="flex flex-col items-center md:items-start gap-[12px] w-full mt-[16px]">
+      <div className="flex flex-col items-center md:items-start gap-[12px] w-full">
         <button
           type="submit"
           disabled={isLoading}
