@@ -44,11 +44,14 @@ const WarningIcon = () => (
   </svg>
 );
 
-const USFlagIcon = () => (
-  <div className="w-[20px] h-[20px] relative flex-none">
-    <img src="/images/america.svg" alt="United States" className="w-[20px] h-[20px] absolute left-0 top-0" />
-  </div>
-);
+const countryList = [
+  { name: "United States", flag: "https://flagcdn.com/w40/us.png" },
+  { name: "Canada", flag: "https://flagcdn.com/w40/ca.png" },
+  { name: "United Kingdom", flag: "https://flagcdn.com/w40/gb.png" },
+  { name: "Ukraine", flag: "https://flagcdn.com/w40/ua.png" },
+  { name: "India", flag: "https://flagcdn.com/w40/in.png" },
+  { name: "Australia", flag: "https://flagcdn.com/w40/au.png" },
+];
 
 export default function WalletModal() {
   const dispatch = useDispatch();
@@ -822,7 +825,11 @@ export default function WalletModal() {
                                 className="flex items-center justify-between bg-[#112F82] rounded-[8px] w-full sm:w-[210px] h-[44px] sm:h-[40px] px-[16px] py-[10px] gap-[10px] cursor-pointer hover:bg-[#153bb0] transition-colors"
                               >
                                 <div className="flex items-center gap-[8px]">
-                                  {selectedCountry === "United States" ? <USFlagIcon /> : <span className="text-[14px]">🇨🇦</span>}
+                                  <img 
+                                    src={countryList.find(c => c.name === selectedCountry)?.flag || "https://flagcdn.com/w40/us.png"} 
+                                    alt="Flag" 
+                                    className="w-[20px] h-[20px] flex-none rounded-full object-cover" 
+                                  />
                                   <span className="font-manrope text-[12px] font-bold leading-[16px] tracking-[0.02em] text-white w-full sm:w-[124px] h-[16px] flex items-center">
                                     {selectedCountry}
                                   </span>
@@ -833,18 +840,22 @@ export default function WalletModal() {
                               </div>
 
                               {showCountryDropdown && (
-                                <div className="absolute right-0 top-[48px] z-50 flex w-full sm:w-[210px] flex-col rounded-[8px] bg-[#112F82] border border-[#173EAD] overflow-hidden shadow-2xl">
-                                  {["United States", "Canada"].map((country) => (
+                                <div className="absolute right-0 top-[48px] z-50 flex w-full sm:w-[210px] flex-col rounded-[8px] bg-[#112F82] border border-[#173EAD] overflow-y-auto max-h-[130px] shadow-2xl [&::-webkit-scrollbar]:w-[4px] [&::-webkit-scrollbar-thumb]:bg-[#1463FF] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent">
+                                  {countryList.map((country) => (
                                     <button
-                                      key={country}
+                                      key={country.name}
                                       onClick={() => {
-                                        setSelectedCountry(country);
+                                        setSelectedCountry(country.name);
                                         setShowCountryDropdown(false);
                                       }}
                                       className="flex items-center gap-[8px] px-[16px] py-[10px] hover:bg-[#173EAD] transition-colors text-left w-full cursor-pointer text-white font-manrope text-[14px]"
                                     >
-                                      {country === "United States" ? <USFlagIcon /> : <span className="text-[14px]">🇨🇦</span>}
-                                      <span>{country}</span>
+                                      <img 
+                                        src={country.flag} 
+                                        alt="Flag" 
+                                        className="w-[20px] h-[20px] flex-none rounded-full object-cover" 
+                                      />
+                                      <span>{country.name}</span>
                                     </button>
                                   ))}
                                 </div>

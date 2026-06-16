@@ -30,14 +30,14 @@ export default function RegisterForm({ setView }: RegisterFormProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showCountryCodeDropdown, setShowCountryCodeDropdown] = useState(false);
-  const [selectedCountryCode, setSelectedCountryCode] = useState({ code: "+1", image: "/images/america.svg", emoji: "" });
+  const [selectedCountryCode, setSelectedCountryCode] = useState({ code: "+1", image: "https://flagcdn.com/w40/us.png" });
 
   const countryCodes = [
-    { code: "+1", image: "/images/america.svg", emoji: "" },
-    { code: "+44", image: "", emoji: "🇬🇧" },
-    { code: "+380", image: "", emoji: "🇺🇦" },
-    { code: "+91", image: "", emoji: "🇮🇳" },
-    { code: "+61", image: "", emoji: "🇦🇺" },
+    { code: "+1", image: "https://flagcdn.com/w40/us.png" },
+    { code: "+44", image: "https://flagcdn.com/w40/gb.png" },
+    { code: "+380", image: "https://flagcdn.com/w40/ua.png" },
+    { code: "+91", image: "https://flagcdn.com/w40/in.png" },
+    { code: "+61", image: "https://flagcdn.com/w40/au.png" },
   ];
 
   const { register, handleSubmit } = useForm<RegisterFormData>({
@@ -155,10 +155,8 @@ export default function RegisterForm({ setView }: RegisterFormProps) {
               onClick={() => setShowCountryCodeDropdown(!showCountryCodeDropdown)}
               className="flex h-[40px] w-[121px] items-center gap-[10px] rounded-[8px] bg-[#112F82] px-[16px] cursor-pointer hover:bg-blue-800 transition-colors flex-none"
             >
-              {selectedCountryCode.image ? (
-                <img src={selectedCountryCode.image} alt="Flag" className="w-[20px] h-[20px] flex-none" />
-              ) : (
-                <span className="w-[20px] h-[20px] flex-none text-[14px] flex items-center justify-center">{selectedCountryCode.emoji}</span>
+              {selectedCountryCode.image && (
+                <img src={selectedCountryCode.image} alt="Flag" className="w-[20px] h-[20px] flex-none rounded-full object-cover" />
               )}
               <span className="font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white flex-none w-[35px] whitespace-nowrap">
                 {selectedCountryCode.code}
@@ -182,10 +180,8 @@ export default function RegisterForm({ setView }: RegisterFormProps) {
                     }}
                     className="flex items-center gap-[10px] px-[16px] py-[10px] hover:bg-[#173EAD] transition-colors text-left w-full cursor-pointer text-white font-manrope text-[14px]"
                   >
-                    {country.image ? (
-                      <img src={country.image} alt="Flag" className="w-[20px] h-[20px] flex-none" />
-                    ) : (
-                      <span className="w-[20px] h-[20px] flex-none text-[14px] flex items-center justify-center">{country.emoji}</span>
+                    {country.image && (
+                      <img src={country.image} alt="Flag" className="w-[20px] h-[20px] flex-none rounded-full object-cover" />
                     )}
                     <span>{country.code}</span>
                   </button>
