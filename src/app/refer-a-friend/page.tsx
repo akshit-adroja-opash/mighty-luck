@@ -18,7 +18,7 @@ export default function ReferAFriendPage() {
 
             {/* HERO BANNER SECTION */}
             <section 
-              className="relative flex w-full h-auto min-h-[533px] flex-col items-start gap-[20px] rounded-[16px] overflow-hidden p-4 sm:p-[32px_40px]"
+              className="relative flex w-full h-auto aspect-auto lg:aspect-[1136/533] flex-col items-start gap-[20px] rounded-[16px] overflow-hidden p-4 sm:p-[32px_40px]"
               style={{ backgroundColor: "#2A0B3E" }}
             >
               <div className="absolute inset-0 z-0">
@@ -26,7 +26,7 @@ export default function ReferAFriendPage() {
                   src="/games/refrels/refer.png" 
                   alt="Refer A Friend" 
                   fill 
-                  className="object-cover object-right" 
+                  className="object-cover object-center" 
                   priority
                 />
                 <div 
@@ -35,15 +35,15 @@ export default function ReferAFriendPage() {
                 />
               </div>
 
-              <div className="relative z-10 flex w-full flex-col lg:flex-row justify-between items-center min-h-[345px] gap-8 lg:gap-0 mt-8 lg:mt-0">
+              <div className="relative z-10 flex w-full flex-col lg:flex-row justify-between items-center min-h-[345px] gap-8 lg:gap-[24px] mt-8 lg:mt-0">
                 {/* Left side text */}
-                <div className="flex flex-col w-full lg:max-w-[457px] gap-[4px] text-center lg:text-left">
+                <div className="flex flex-col w-full lg:w-[350px] flex-none gap-[4px] text-center lg:text-left">
                   <span className="font-jost text-[24px] sm:text-[28px] font-medium leading-[1.2] lg:leading-[40px] text-white">Get <span className="text-[#FFC83D]">PAID</span> every time</span>
                   <h1 className="font-jost text-[36px] sm:text-[48px] font-extrabold leading-[100%] text-white">YOUR FRIEND PLAYS!</h1>
                 </div>
 
                 {/* Right side calculator */}
-                <div className="flex flex-col items-center p-[20px] gap-[24px] w-full lg:w-[430px] h-auto sm:h-[345px] bg-[#091741] rounded-[16px] relative isolation-isolate mx-auto mt-8 lg:mt-0 flex-none">
+                <div className="flex flex-col items-center p-[20px] gap-[24px] w-full lg:w-[430px] h-auto sm:h-[345px] bg-[#091741] rounded-[16px] overflow-hidden relative isolation-isolate mt-8 lg:mt-0 flex-none">
                   {/* Background Glow */}
                   <div className="absolute top-[-118px] left-[calc(50%_-_173px/2_-_0.5px)] w-[173px] h-[173px] bg-[#1463FF] blur-[40px] rounded-full z-0 pointer-events-none" />
                   
@@ -155,7 +155,7 @@ export default function ReferAFriendPage() {
               </div>
 
               {/* Stats Bar */}
-              <div className="relative z-10 flex flex-col lg:flex-row items-center p-4 lg:p-[20px_24px] w-full max-w-[1056px] h-auto lg:h-[104px] bg-[#091741] rounded-[16px] gap-[8px] mx-auto mt-8 lg:mt-auto">
+              <div className="relative z-10 flex flex-col lg:flex-row items-center p-4 lg:p-[20px_24px] w-full h-auto lg:h-[104px] bg-[#091741] rounded-[16px] gap-[8px] mt-8 lg:mt-auto">
                 <div className="flex flex-col flex-1 gap-[8px] w-full">
                   <span className="font-manrope text-[12px] font-semibold text-[#BBCAF3]">Total Referrals</span>
                   <div className="flex flex-row items-center p-[10px_16px] gap-[12px] bg-[#112F82] rounded-[8px] h-[40px]">
