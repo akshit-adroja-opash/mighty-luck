@@ -199,7 +199,7 @@ export default function Header() {
           <div className="fixed top-0 left-0 h-full w-[280px] bg-[#0C1F56] z-50 lg:hidden flex flex-col transform transition-transform duration-300 translate-x-0 overflow-y-auto">
             <div className="flex items-center justify-between p-4 border-b border-[#112F82]">
               <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-2">
-                <img src="/images/logo.svg" alt="Mighty Luck" className="flex-none w-[34px] h-[25px]" />
+                <img src="/images/layout/logo.svg" alt="Mighty Luck" className="flex-none w-[34px] h-[25px]" />
                 <span className="text-[18px] font-black uppercase tracking-wide text-white font-jost">
                   MIGHTY <span style={{ background: "linear-gradient(90deg, #FFD85A 12%, #FFB800 86.68%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>LUCK</span>
                 </span>

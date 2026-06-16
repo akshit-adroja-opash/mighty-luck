@@ -696,7 +696,7 @@ export default function WalletModal() {
                           {paymentMethod === "btc" ? (
                             <>
                               <div className="w-[16px] h-[16px] relative flex-none">
-                                <img src="/images/bitcoin.svg" alt="Bitcoin" className="w-[16px] h-[16px] absolute left-0 top-0" />
+                                <img src="/images/icons/bitcoin.svg" alt="Bitcoin" className="w-[16px] h-[16px] absolute left-0 top-0" />
                               </div>
                               <div className="flex items-center gap-[8px] w-full sm:w-[346px] h-[19px]">
                                 <span className="font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-white w-auto whitespace-nowrap flex-none">
@@ -710,7 +710,7 @@ export default function WalletModal() {
                           ) : (
                             <>
                               <div className="flex items-center gap-[2px] w-[42px] h-[20px] flex-none">
-                                <img src="/images/visa.svg" alt="Credit Card" className="w-[42px] h-[20px]" />
+                                <img src="/images/icons/visa.svg" alt="Credit Card" className="w-[42px] h-[20px]" />
                               </div>
                               <div className="flex items-center gap-[8px] w-full sm:w-[288px] h-[19px]">
                                 <span className="font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-white w-auto whitespace-nowrap flex-none">
@@ -740,7 +740,7 @@ export default function WalletModal() {
                             className="flex items-center gap-[8px] px-[16px] py-[10px] hover:bg-[#173EAD] transition-colors text-left w-full cursor-pointer text-white font-manrope text-[14px]"
                           >
                             <div className="flex items-center gap-[2px] w-[42px] h-[20px] flex-none">
-                              <img src="/images/visa.svg" alt="Credit Card" className="w-[42px] h-[20px]" />
+                              <img src="/images/icons/visa.svg" alt="Credit Card" className="w-[42px] h-[20px]" />
                             </div>
                             <span className="whitespace-nowrap">Credit Card</span>
                           </button>
@@ -752,7 +752,7 @@ export default function WalletModal() {
                             className="flex items-center gap-[8px] px-[16px] py-[10px] hover:bg-[#173EAD] transition-colors text-left w-full cursor-pointer text-white font-manrope text-[14px]"
                           >
                             <div className="w-[16px] h-[16px] relative flex-none">
-                              <img src="/images/bitcoin.svg" alt="Bitcoin" className="w-[16px] h-[16px] absolute left-0 top-0" />
+                              <img src="/images/icons/bitcoin.svg" alt="Bitcoin" className="w-[16px] h-[16px] absolute left-0 top-0" />
                             </div>
                             <span className="whitespace-nowrap">Bitcoin (BTC)</span>
                           </button>
@@ -1004,7 +1004,7 @@ export default function WalletModal() {
                             <div className="flex items-center gap-[12px] bg-[#112F82] rounded-[8px] w-full sm:w-[186px] h-[44px] sm:h-[40px] px-[16px] py-[10px]">
                               <div className="flex items-center gap-[8px] w-full sm:w-[154px] h-[19px]">
                                 <div className="w-[16px] h-[16px] relative flex-none">
-                                  <img src="/images/doller.svg" alt="USD" className="w-[16px] h-[16px] absolute left-0 top-0" />
+                                  <img src="/images/icons/doller.svg" alt="USD" className="w-[16px] h-[16px] absolute left-0 top-0" />
                                 </div>
                                 <input 
                                   type="text" 
@@ -1031,7 +1031,7 @@ export default function WalletModal() {
                             <div className="flex items-center gap-[12px] bg-[#112F82] rounded-[8px] w-full sm:w-[186px] h-[44px] sm:h-[40px] px-[16px] py-[10px]">
                               <div className="flex items-center gap-[8px] w-full sm:w-[154px] h-[19px]">
                                 <div className="w-[16px] h-[16px] relative flex-none">
-                                  <img src="/images/bitcoin.svg" alt="BTC" className="w-[16px] h-[16px] absolute left-0 top-0" />
+                                  <img src="/images/icons/bitcoin.svg" alt="BTC" className="w-[16px] h-[16px] absolute left-0 top-0" />
                                 </div>
                                 <input 
                                   type="text" 

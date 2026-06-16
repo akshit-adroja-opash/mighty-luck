@@ -2,15 +2,15 @@ import Image from "next/image";
 
 const features = [
   {
-    image: "/images/fast.svg",
+    image: "/images/features/fast.svg",
     alt: "Fast Withdrawals",
   },
   {
-    image: "/images/big.svg",
+    image: "/images/features/big.svg",
     alt: "Big Winners Welcome",
   },
   {
-    image: "/images/weekly.svg",
+    image: "/images/features/weekly.svg",
     alt: "Weekly 10% Cashback",
   },
 ];

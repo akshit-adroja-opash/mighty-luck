@@ -136,7 +136,7 @@ export default function GamePage() {
                   {/* Icons */}
                   <div className="flex h-[20px] w-auto lg:w-[64px] flex-none flex-row items-center gap-[24px]">
                     <button className="relative flex h-[20px] w-[20px] flex-none items-center justify-center cursor-pointer hover:opacity-70 transition-opacity" aria-label="Fullscreen">
-                      <img src="/images/expand.svg" alt="Expand" className="w-full h-full object-contain" />
+                      <img src="/images/icons/expand.svg" alt="Expand" className="w-full h-full object-contain" />
                     </button>
                     <button
                       onClick={() => setIsFavorite(!isFavorite)}

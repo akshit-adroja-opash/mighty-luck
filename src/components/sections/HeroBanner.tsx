@@ -5,7 +5,7 @@ export default function HeroBanner() {
       {/* Background Image */}
       <div 
         className="absolute inset-0 z-0 h-full w-full bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url('/images/hero.jpg')` }}
+        style={{ backgroundImage: `url('/images/layout/hero.jpg')` }}
       />
 
       {/* Ellipse 7 */}

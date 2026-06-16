@@ -17,7 +17,7 @@ export default function TopPromoCards() {
             <div className="relative z-[1] w-[24px] h-[24px] shrink-0 flex items-center justify-center">
             <div 
               className="absolute -left-[17px] -top-[4px] h-[39.33px] w-[59px] bg-contain bg-center bg-no-repeat pointer-events-none mix-blend-screen"
-              style={{ backgroundImage: "url('/images/promo-megaphone.svg')" }}
+              style={{ backgroundImage: "url('/images/promotions/promo-megaphone.svg')" }}
             />
           </div>
             
@@ -38,7 +38,7 @@ export default function TopPromoCards() {
             <div className="relative z-[1] w-[24px] h-[24px] shrink-0 flex items-center justify-center">
             <div 
               className="absolute -left-[23px] -top-[4px] h-[33.01px] w-[64px] bg-contain bg-center bg-no-repeat pointer-events-none mix-blend-screen"
-              style={{ transform: "rotate(11.84deg)", backgroundImage: "url('/images/promo-crown.svg')" }}
+              style={{ transform: "rotate(11.84deg)", backgroundImage: "url('/images/promotions/promo-crown.svg')" }}
             />
           </div>
             
@@ -61,7 +61,7 @@ export default function TopPromoCards() {
           <div className="relative z-[1] w-[24px] h-[24px] shrink-0 flex items-center justify-center">
                             <div
                                 className="absolute h-[50px] w-[80px] -left-[20px] -top-[12px] bg-contain bg-center bg-no-repeat pointer-events-none"
-                                style={{ backgroundImage: "url('/images/promo-snowflake.svg')" }}
+                                style={{ backgroundImage: "url('/images/promotions/promo-snowflake.svg')" }}
                             />
                         </div> 
           

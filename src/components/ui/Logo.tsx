@@ -27,7 +27,7 @@ export default function Logo({
   const content = (
     <>
       <img
-        src="/images/logo.svg"
+        src="/images/layout/logo.svg"
         alt="Mighty Luck"
         className={`flex-none ${iconClassName}`}
       />

@@ -158,7 +158,7 @@ export default function ReferAFriendPage() {
                 <div className="flex flex-col flex-1 gap-[8px] w-full">
                   <span className="font-manrope text-[12px] font-semibold text-[#BBCAF3]">Total Referrals</span>
                   <div className="flex flex-row items-center p-[10px_16px] gap-[12px] bg-[#112F82] rounded-[8px] h-[40px]">
-                    <img src="/images/doller.svg" alt="Dollar Icon" className="w-[20px] h-[20px] shrink-0" />
+                    <img src="/images/icons/doller.svg" alt="Dollar Icon" className="w-[20px] h-[20px] shrink-0" />
                     <span className="font-manrope text-[16px] font-bold text-white">12</span>
                   </div>
                 </div>
@@ -166,7 +166,7 @@ export default function ReferAFriendPage() {
                 <div className="flex flex-col flex-1 gap-[8px] w-full">
                   <span className="font-manrope text-[12px] font-semibold text-[#BBCAF3]">Total Deposits</span>
                   <div className="flex flex-row items-center p-[10px_16px] gap-[12px] bg-[#112F82] rounded-[8px] h-[40px]">
-                    <img src="/images/doller.svg" alt="Dollar Icon" className="w-[20px] h-[20px] shrink-0" />
+                    <img src="/images/icons/doller.svg" alt="Dollar Icon" className="w-[20px] h-[20px] shrink-0" />
                     <span className="font-manrope text-[16px] font-bold text-white">$5000.00</span>
                   </div>
                 </div>
@@ -174,7 +174,7 @@ export default function ReferAFriendPage() {
                 <div className="flex flex-col flex-1 gap-[8px] w-full">
                   <span className="font-manrope text-[12px] font-semibold text-[#BBCAF3]">Total Earnings</span>
                   <div className="flex flex-row items-center p-[10px_16px] gap-[12px] bg-[#112F82] rounded-[8px] h-[40px]">
-                    <img src="/images/doller.svg" alt="Dollar Icon" className="w-[20px] h-[20px] shrink-0" />
+                    <img src="/images/icons/doller.svg" alt="Dollar Icon" className="w-[20px] h-[20px] shrink-0" />
                     <span className="font-manrope text-[16px] font-bold text-white">$500.00</span>
                   </div>
                 </div>
@@ -183,7 +183,7 @@ export default function ReferAFriendPage() {
                   <span className="font-manrope text-[12px] font-semibold text-[#BBCAF3]">Pending Income</span>
                   <div className="flex flex-row items-center justify-between p-[10px_16px] bg-[#112F82] rounded-[8px] h-[40px]">
                     <div className="flex flex-row items-center gap-[8px]">
-                      <img src="/images/doller.svg" alt="Dollar Icon" className="w-[20px] h-[20px] shrink-0" />
+                      <img src="/images/icons/doller.svg" alt="Dollar Icon" className="w-[20px] h-[20px] shrink-0" />
                       <span className="font-manrope text-[16px] font-bold text-white">$150.00</span>
                     </div>
                     <button className="bg-[#1463FF] px-[12px] py-[4px] rounded-[6px] font-manrope text-[12px] font-semibold text-white hover:opacity-90 transition-opacity">
@@ -301,7 +301,7 @@ export default function ReferAFriendPage() {
             <section className="flex flex-col gap-[32px] w-full">
               <div className="flex flex-row items-center gap-[12px]">
                 <div className="w-[30px] h-[30px] relative flex-none">
-                  <Image src="/images/how-referral.svg" alt="How Referral Works" fill className="object-contain" />
+                  <Image src="/images/referral/how-referral.svg" alt="How Referral Works" fill className="object-contain" />
                 </div>
                 <h3 className="font-jost text-[20px] font-extrabold text-white uppercase tracking-[0.01em]">HOW REFERRAL PROGRAM WORKS</h3>
               </div>
@@ -322,7 +322,7 @@ export default function ReferAFriendPage() {
             <section className="flex flex-col gap-[20px] w-full mt-[20px]">
               <div className="flex flex-row items-center gap-[12px]">
                 <div className="w-[30px] h-[30px] relative flex-none">
-                  <Image src="/images/invite-friends.svg" alt="FAQs" fill className="object-contain" />
+                  <Image src="/images/referral/invite-friends.svg" alt="FAQs" fill className="object-contain" />
                 </div>
                 <h3 className="font-jost text-[20px] font-extrabold text-white uppercase tracking-[0.01em]">FAQs</h3>
               </div>
