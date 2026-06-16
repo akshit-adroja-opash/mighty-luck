@@ -111,14 +111,32 @@ export default function WalletModal() {
     setIsDraggingBonus(false);
   };
 
+  const currentIndexRef = useRef(bonusSlideIndex);
+  useEffect(() => {
+    currentIndexRef.current = bonusSlideIndex;
+  }, [bonusSlideIndex]);
+
   useEffect(() => {
     const slider = bonusSliderRef.current;
     if (!slider) return;
 
+    let isWheelScrolling = false;
+
     const handleWheel = (e: WheelEvent) => {
       if (Math.abs(e.deltaY) > 0 && Math.abs(e.deltaX) === 0) {
         e.preventDefault();
-        slider.scrollLeft += e.deltaY;
+        
+        if (isWheelScrolling) return;
+        
+        const direction = e.deltaY > 0 ? 1 : -1;
+        const nextIndex = Math.max(0, currentIndexRef.current + direction);
+        
+        isWheelScrolling = true;
+        slider.scrollTo({ left: nextIndex * 312, behavior: 'smooth' });
+        
+        setTimeout(() => {
+          isWheelScrolling = false;
+        }, 600);
       }
     };
 
@@ -129,14 +147,14 @@ export default function WalletModal() {
   const onBonusScroll = () => {
     if (!bonusSliderRef.current) return;
     const scrollLeft = bonusSliderRef.current.scrollLeft;
-    // Card width is 300px + 8px gap = 308px
-    const index = Math.round(scrollLeft / 308);
+    // Card width is 300px + 12px gap = 312px
+    const index = Math.round(scrollLeft / 312);
     setBonusSlideIndex(index);
   };
 
   const scrollToBonusIndex = (idx: number) => {
     if (!bonusSliderRef.current) return;
-    bonusSliderRef.current.scrollTo({ left: idx * 308, behavior: 'smooth' });
+    bonusSliderRef.current.scrollTo({ left: idx * 312, behavior: 'smooth' });
   };
 
   // Promo code states
