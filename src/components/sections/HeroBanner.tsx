@@ -13,7 +13,10 @@ export default function HeroBanner() {
       
       
       {/* Ellipse 8 */}
-      <div className="absolute right-[-20px] md:left-[1041px] top-[180px] md:top-[271px] z-[1] h-[80px] w-[80px] md:h-[129px] md:w-[129px] rounded-full bg-[#010A25] blur-[25px]" />
+      <div className="absolute -right-[20px] -bottom-[20px] md:-right-[34px] md:-bottom-[44px] z-[1] h-[80px] w-[80px] md:h-[129px] md:w-[129px] rounded-full bg-[#010A25] blur-[25px]" />
+
+      {/* Ellipse 9 */}
+      <div className="absolute left-[50px] top-[150px] md:left-[198px] md:top-[224px] z-[1] h-[100px] w-[100px] md:h-[194px] md:w-[194px] rounded-full bg-[#103686] blur-[25px]" />
 
       {/* Content Box */}
       <div className="relative z-10 flex flex-col items-start gap-4 md:gap-[24px] px-5 md:pl-[40px] md:pr-0 pt-8 sm:pt-12 md:pt-[101px] pb-8 md:pb-0 w-full md:max-w-[497px]">
