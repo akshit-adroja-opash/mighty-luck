@@ -41,29 +41,26 @@ export default function PromotionsSection() {
 
   const scrollLeft = () => {
     if (!scrollRef.current) return;
-    const cardWidth = scrollRef.current.firstElementChild?.clientWidth || 560;
-    const gap = 12;
+    const cardWidth = scrollRef.current.firstElementChild?.clientWidth || 278;
+    const gap = 8;
     scrollRef.current.scrollBy({ left: -(cardWidth + gap), behavior: "smooth" });
   };
 
   const scrollRight = () => {
     if (!scrollRef.current) return;
-    const cardWidth = scrollRef.current.firstElementChild?.clientWidth || 560;
-    const gap = 12;
+    const cardWidth = scrollRef.current.firstElementChild?.clientWidth || 278;
+    const gap = 8;
     scrollRef.current.scrollBy({ left: (cardWidth + gap), behavior: "smooth" });
   };
 
   return (
-    <div className="flex flex-col items-flex-start gap-5 w-full flex-none">
+    <div className="flex flex-col items-start gap-[14.81px] md:gap-5 w-full flex-none overflow-hidden">
 
       <SectionHeader
-        title="Promotions"
+        title="PROMOTIONS"
         iconBg="bg-transparent"
         icon={
-          <svg width="29" height="30" viewBox="0 0 29 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M28.5 14.5L14.75 0.75H1V14.5L14.75 28.25L28.5 14.5Z" fill="#FFC83D" stroke="#FFC83D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            <circle cx="8" cy="8.5" r="2.5" fill="#091741"/>
-          </svg>
+          <img src="/games/game-icons/promotions.svg" alt="Promotions" className="w-[18px] h-[18px] md:w-[30px] md:h-[30px]" />
         }
         showViewAll={false}
         onPrev={scrollLeft}
@@ -76,47 +73,51 @@ export default function PromotionsSection() {
       <div
         ref={scrollRef}
         onScroll={handleScroll}
-        className="flex flex-row items-center gap-3 w-full h-[220px] flex-none overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+        className="flex flex-row items-center gap-[8px] md:gap-3 w-full h-[163px] md:h-[220px] flex-none overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory"
       >
         {promos.map((promo) => (
           <div
             key={promo.id}
-            className="relative w-[85vw] sm:w-[400px] md:w-[560px] h-[220px] rounded-[16px] flex-none overflow-hidden"
+            className="relative w-[278px] sm:w-[400px] md:w-[560px] h-[163px] md:h-[220px] rounded-[8px] md:rounded-[16px] flex-none overflow-hidden snap-start"
           >
             {/* Background image */}
             <div
-              className="absolute inset-0 bg-cover bg-right bg-no-repeat"
+              className="absolute inset-0 bg-cover bg-right bg-no-repeat rounded-[10px] md:rounded-[16px]"
               style={{ backgroundImage: `url('${promo.bg}')` }}
             />
 
             {/* Gradient overlay */}
             <div
-              className="absolute inset-0"
+              className="absolute inset-0 rounded-[10px] md:rounded-[16px]"
               style={{ background: promo.gradient }}
             />
 
             {/* Blue glow ellipse */}
             <div
-              className="absolute w-[160px] h-[160px] rounded-full pointer-events-none"
+              className="absolute w-[118.52px] md:w-[160px] h-[118.52px] md:h-[160px] rounded-full pointer-events-none"
               style={{
-                left: "-75px",
-                top: "-77.6px",
+                left: "-55.56px",
+                top: "-57.48px",
                 background: "#1463FF",
-                filter: "blur(50px)",
+                filter: "blur(37px)",
                 opacity: 0.7,
               }}
             />
 
             {/* Content */}
-            <div className="relative z-[2] flex flex-col items-start justify-center gap-[16px] p-[24px] w-full h-full">
+            <div className="relative z-[2] flex flex-col items-start justify-center gap-[12px] md:gap-[16px] p-[17.78px] md:p-[24px] w-full h-full">
+              
+              {/* Optional hidden text paragraph would go here with hidden md:block */}
+
               <h3
-                className="font-jost font-extrabold text-[24px] leading-[120%] tracking-[0.01em] text-white w-[290px]"
+                className="font-jost font-extrabold text-[14px] md:text-[24px] leading-[120%] tracking-[0.01em] text-white w-[141px] md:w-[290px]"
                 style={{ whiteSpace: "pre-line" }}
               >
                 {promo.title}
               </h3>
-              <button className="flex flex-row items-center justify-center gap-[10px] px-[24px] py-[10px] min-w-[110px] w-max h-[40px] bg-[#FFC83D] hover:bg-[#FFD966] rounded-[8px] transition-colors cursor-pointer flex-none">
-                <span className="font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] text-[#1A1404] whitespace-nowrap">
+              
+              <button className="flex flex-row items-center justify-center gap-[8.64px] px-[20.73px] py-[8.64px] min-w-[95px] w-max h-[34.55px] md:h-[40px] bg-[#FFBF1F] md:bg-[#FFC83D] hover:bg-[#FFD966] rounded-[6px] md:rounded-[8px] transition-colors cursor-pointer flex-none">
+                <span className="font-manrope font-bold text-[12.09px] md:text-[14px] leading-[17px] md:leading-[19px] tracking-[0.02em] text-[#1A1404] whitespace-nowrap">
                   {promo.cta}
                 </span>
               </button>

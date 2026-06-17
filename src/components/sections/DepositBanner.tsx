@@ -55,28 +55,30 @@ const SvgIconWrapper = (src: string) => {
     ];
 
     return (
-      <div className="flex w-full items-center gap-2 h-[50px] overflow-x-auto no-scrollbar">
+      <div className="flex w-full items-center gap-[8px] md:gap-2 h-[40px] md:h-[50px] overflow-x-auto no-scrollbar">
         {categories.map((category) => {
           const Icon = category.icon;
           const isActive = category.name === activeCategory;
+          // Apply smaller font size to longer names to fit on mobile
+          const isLongName = ["Providers", "Table Games", "Bonus Buys", "Collection"].includes(category.name);
           return (
             <button
               key={category.name}
               onClick={() => dispatch(setActiveCategory(category.name))}
-              className={`flex h-full flex-1 min-w-[110px] sm:min-w-[135px] items-center justify-center gap-2 rounded-[6px] px-3 sm:px-4 py-2.5 transition-colors cursor-pointer ${
+              className={`flex h-[40px] md:h-full flex-1 min-w-[106.6px] sm:min-w-[135px] items-center justify-center gap-[6.4px] md:gap-2 rounded-[6px] px-[12.8px] md:px-4 py-[8px] md:py-2.5 transition-colors cursor-pointer flex-none ${
                 isActive
                   ? "bg-[#1463FF]"
                   : "bg-[#0C1F56] hover:bg-[#112F82]"
               }`}
             >
               <Icon 
-                size={20} 
-                className={isActive ? "text-[#FFB800]" : "text-[#D2DCF7]"} 
+                size={16} 
+                className={`md:w-[20px] md:h-[20px] ${isActive ? "text-[#FFB800]" : "text-[#D2DCF7]"}`} 
                 fill={isActive ? "#FFB800" : "transparent"} 
                 isActive={isActive}
               />
               <span 
-                className={`font-sans text-[14px] font-semibold tracking-[0.02em] whitespace-nowrap ${
+                className={`font-manrope ${isLongName ? "text-[11.2px]" : "text-[12px]"} md:text-[14px] font-bold md:font-semibold leading-[16px] md:leading-normal tracking-[0.02em] whitespace-nowrap ${
                   isActive ? "text-white" : "text-[#D2DCF7]"
                 }`}
               >
