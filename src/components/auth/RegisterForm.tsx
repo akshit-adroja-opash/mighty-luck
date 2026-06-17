@@ -89,9 +89,9 @@ export default function RegisterForm({ setView }: RegisterFormProps) {
         {/* Header with Logo (Desktop Only) */}
         <div className="hidden md:flex w-full items-center justify-center h-[25.54px]">
           <Logo 
-            className="gap-[4px]"
-            iconClassName="w-[18px] h-[18px]"
-            textClassName="text-[14px] tracking-wide"
+            className="gap-[6px]"
+            iconClassName="w-[25px] h-[18.24px]"
+            textClassName="text-[18px] leading-[18.24px] tracking-[0.01em]"
           />
         </div>
 
