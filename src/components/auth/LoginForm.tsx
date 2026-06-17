@@ -95,7 +95,7 @@ export default function LoginForm({ setView }: LoginFormProps) {
         <div className="flex flex-col gap-[12px] w-full">
 
           {/* Email */}
-          <div className="relative flex h-[50px] w-full items-center rounded-[8px] bg-[#112F82] px-4">
+          <div className="relative flex h-[40px] w-full items-center rounded-[8px] bg-[#112F82] px-4">
             <input
               {...register("email")}
               type="email"
@@ -105,7 +105,7 @@ export default function LoginForm({ setView }: LoginFormProps) {
           </div>
 
           {/* Password */}
-          <div className="relative flex h-[50px] w-full items-center justify-between rounded-[8px] bg-[#112F82] px-4">
+          <div className="relative flex h-[40px] w-full items-center justify-between rounded-[8px] bg-[#112F82] px-4">
             <input
               {...register("password")}
               type={showPassword ? "text" : "password"}
@@ -140,7 +140,7 @@ export default function LoginForm({ setView }: LoginFormProps) {
         <button
           type="submit"
           disabled={isLoading}
-          className="flex h-[60px] w-full items-center justify-center gap-2 rounded-[8px] bg-[#1463FF] font-manrope text-[16px] leading-[22px] font-bold tracking-[0.02em] text-white transition-all hover:bg-blue-600 disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer"
+          className="flex h-[50px] w-full items-center justify-center gap-2 rounded-[8px] bg-[#1463FF] font-manrope text-[14px] leading-[19px] font-bold tracking-[0.02em] text-white transition-all hover:bg-blue-600 disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer"
         >
           {isLoading ? (
             <>
@@ -158,8 +158,8 @@ export default function LoginForm({ setView }: LoginFormProps) {
             <circle cx="8" cy="8" r="7.25" stroke="#7795E8" strokeWidth="1.5"/>
             <path d="M8 11V10M8 8.5C8.82843 8.5 9.5 7.82843 9.5 7C9.5 6.17157 8.82843 5.5 8 5.5C7.17157 5.5 6.5 6.17157 6.5 7" stroke="#7795E8" strokeWidth="1.5" strokeLinecap="round"/>
           </svg>
-          <p className="font-manrope text-[12px] font-medium leading-[16px] tracking-[0.02em] text-[#7795E8]">
-            Having problems? <a href="#" className="font-bold text-[#FFC83D] hover:underline">Contact support</a>
+          <p className="font-manrope text-[10px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8]">
+            Having problems? <a href="#" className="font-bold text-[#7795E8] hover:text-white transition-colors">Contact support</a>
           </p>
         </div>
       </div>

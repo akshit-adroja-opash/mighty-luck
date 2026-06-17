@@ -9,6 +9,10 @@ interface CollectionItem {
   ellipseWidth: string;
   ellipseHeight: string;
   imageStyle: React.CSSProperties;
+  mobileWidthClass: string;
+  mobileTextWidthClass: string;
+  mobileTextSizeClass: string;
+  bgColorClass: string;
 }
 
 const baseCollections: CollectionItem[] = [
@@ -23,6 +27,10 @@ const baseCollections: CollectionItem[] = [
       left: "calc(50% - 71px/2 - 0.5px)",
       top: "calc(50% - 67px/2 + 0.5px)",
     },
+    mobileWidthClass: "w-[183px]",
+    mobileTextWidthClass: "w-[108.6px]",
+    mobileTextSizeClass: "text-[12px]",
+    bgColorClass: "bg-[#0C1F56]",
   },
   {
     name: "FRUITS",
@@ -35,6 +43,10 @@ const baseCollections: CollectionItem[] = [
       left: "calc(50% - 77px/2 - 0.5px)",
       top: "calc(50% - 73px/2 + 0.5px)",
     },
+    mobileWidthClass: "w-[182px]",
+    mobileTextWidthClass: "w-[107.6px]",
+    mobileTextSizeClass: "text-[12px]",
+    bgColorClass: "bg-[#173EAD]",
   },
   {
     name: "ANIMALS",
@@ -47,6 +59,10 @@ const baseCollections: CollectionItem[] = [
       right: "0px",
       top: "calc(50% - 73px/2 + 0.5px)",
     },
+    mobileWidthClass: "w-[189.6px]",
+    mobileTextWidthClass: "w-[115.2px]",
+    mobileTextSizeClass: "text-[13.2px]",
+    bgColorClass: "bg-[#0C1F56]",
   },
   {
     name: "ASIA",
@@ -59,6 +75,10 @@ const baseCollections: CollectionItem[] = [
       left: "calc(50% - 68px/2)",
       top: "calc(50% - 60px/2)",
     },
+    mobileWidthClass: "w-[189.6px]",
+    mobileTextWidthClass: "w-[115.2px]",
+    mobileTextSizeClass: "text-[13.2px]",
+    bgColorClass: "bg-[#0C1F56]",
   },
 ];
 
@@ -75,12 +95,11 @@ export default function CollectionsSection() {
         title="COLLECTIONS (17)"
         titleWidth="189px"
         icon={<img src="/games/game-icons/collections.svg" alt="Collections" className="w-[18px] h-[18px] md:w-[30px] md:h-[30px]" />}
-        customGap="gap-[12px] md:gap-[20px]"
       >
         {collections.map((item, index) => (
           <div
             key={index}
-            className="group relative flex h-[60px] md:h-[100px] w-max md:w-[316px] flex-shrink-0 cursor-pointer items-center gap-[7.2px] md:gap-[12px] rounded-[8px] md:rounded-[12px] bg-[#0C1F56] p-[7.2px_14.4px_7.2px_7.2px] md:p-[12px_24px_12px_12px] transition-colors duration-300 hover:bg-[#173EAD] snap-start"
+            className={`group relative flex h-[60px] md:h-[100px] ${item.mobileWidthClass} md:w-[316px] flex-shrink-0 cursor-pointer items-center gap-[7.2px] md:gap-[12px] rounded-[8px] md:rounded-[12px] ${item.bgColorClass} p-[7.2px_14.4px_7.2px_7.2px] md:p-[12px_24px_12px_12px] transition-colors duration-300 hover:bg-[#173EAD] snap-start`}
           >
             {/* Left decorative frame - Image contains the box design */}
             <img 
@@ -91,7 +110,7 @@ export default function CollectionsSection() {
 
             {/* Collection Title */}
             <div className="flex flex-1 items-center justify-center h-[17px] md:h-[32px]">
-              <h3 className="w-full text-center font-jost text-[12px] md:text-[22px] font-extrabold leading-[17px] md:leading-[32px] tracking-[0.01em] text-white select-none whitespace-nowrap uppercase">
+              <h3 className={`${item.mobileTextWidthClass} md:w-full text-center font-jost ${item.mobileTextSizeClass} md:text-[22px] font-extrabold leading-[17px] md:leading-[32px] tracking-[0.01em] text-white select-none whitespace-nowrap uppercase`}>
                 {item.name}
               </h3>
             </div>
