@@ -11,25 +11,24 @@ interface ProviderCardProps {
 
 function ProviderCard({ name, games, logo }: ProviderCardProps) {
   return (
-    /* Card: w-[152px] h-[100px] flex-col justify-center items-center px-[24px] py-[12px] gap-[8px] rounded-[12px] */
     <div
-      className="group flex h-[100px] w-[152px] flex-none cursor-pointer flex-col items-center justify-center gap-[8px] rounded-[12px] bg-[#0C1F56] px-[24px] py-[12px] transition-colors hover:bg-[#173EAD]"
+      className="group flex h-[60px] md:h-[100px] w-[88px] md:w-[152px] flex-none cursor-pointer flex-col items-center justify-center gap-[4.8px] md:gap-[8px] rounded-[8px] md:rounded-[12px] bg-[#0C1F56] px-[14.4px] md:px-[24px] py-[7.2px] md:py-[12px] transition-colors hover:bg-[#173EAD]"
     >
-      {/* Logo area: w-[80px] h-[40px] */}
-      <div className="flex h-[40px] w-[80px] flex-none items-center justify-center">
+      {/* Logo area */}
+      <div className="flex h-[24px] md:h-[40px] w-[48px] md:w-[80px] flex-none items-center justify-center">
         {logo ? (
           <img src={logo} alt={name} className="max-h-full max-w-full object-contain" />
         ) : (
           /* Fallback: white text label mimicking vector logo */
-          <span className="text-center text-[11px] font-extrabold uppercase leading-tight tracking-wider text-white">
+          <span className="text-center text-[8px] md:text-[11px] font-extrabold uppercase leading-tight tracking-wider text-white">
             {name}
           </span>
         )}
       </div>
 
-      {/* Games label: w-[104px] h-[14px] container → text w-[53px] Manrope 600 10px center #FFC83D */}
-      <div className="flex h-[14px] w-[104px] flex-none items-center justify-center">
-        <span className="w-[53px] text-center font-manrope text-[10px] font-semibold leading-[14px] text-[#FFC83D]">
+      {/* Games label */}
+      <div className="flex h-[11px] md:h-[14px] w-[59.2px] md:w-[104px] flex-none items-center justify-center">
+        <span className="w-[43px] md:w-[53px] text-center font-manrope text-[8px] md:text-[10px] font-semibold leading-[11px] md:leading-[14px] text-[#FFC83D]">
           {games} Games
         </span>
       </div>
@@ -54,20 +53,22 @@ const topProviders = Array.from({ length: 20 }, (_, i) => providers[i % provider
 
 export default function ProvidersSection() {
   return (
-    <GameCarousel
-      title="GAME PROVIDERS (34)"
-      titleWidth="237px"
-      icon={<img src="/games/game-icons/game.svg" alt="Game Providers" className="w-[30px] h-[30px]" />}
-    >
-        {topProviders.map((provider, index) => (
-          <div key={index} className="flex-none snap-start">
-            <ProviderCard
-              name={provider.name}
-              games={provider.games}
-              logo={provider.logo}
-            />
-          </div>
-        ))}
+    <div className="flex flex-col gap-[12px] md:gap-5 w-full flex-none overflow-hidden">
+      <GameCarousel
+        title="GAME PROVIDERS (34)"
+        titleWidth="237px"
+        icon={<img src="/games/game-icons/game.svg" alt="Game Providers" className="w-[18px] h-[18px] md:w-[30px] md:h-[30px]" />}
+      >
+          {topProviders.map((provider, index) => (
+            <div key={index} className="flex-none snap-start">
+              <ProviderCard
+                name={provider.name}
+                games={provider.games}
+                logo={provider.logo}
+              />
+            </div>
+          ))}
       </GameCarousel>
+    </div>
   );
 }

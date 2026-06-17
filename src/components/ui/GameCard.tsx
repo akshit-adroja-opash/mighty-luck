@@ -17,7 +17,7 @@ export default function GameCard({
   return (
     <div 
       onClick={onClick}
-      className={`group relative cursor-pointer overflow-hidden rounded-[10px] md:rounded-[12px] ${
+      className={`group relative cursor-pointer overflow-hidden rounded-[9.6px] md:rounded-[12px] ${
         fluid 
           ? "w-full aspect-[152/200] h-auto" 
           : "w-[121.6px] md:w-[152px] h-[160px] md:h-[200px]"
@@ -25,7 +25,7 @@ export default function GameCard({
     >
 
       {/* Image Container matches full card size */}
-      <div className="relative h-full w-full overflow-hidden rounded-[10px] md:rounded-[12px]">
+      <div className="relative h-full w-full overflow-hidden rounded-[9.6px] md:rounded-[12px]">
 
         <Image
           src={image}
@@ -35,7 +35,7 @@ export default function GameCard({
         />
 
         {/* Overlay */}
-        <div className="absolute inset-0 rounded-[10px] md:rounded-[12px] bg-black/0 transition-all duration-300 group-hover:bg-black/50 group-hover:backdrop-blur-[4px]" />
+        <div className="absolute inset-0 rounded-[9.6px] md:rounded-[12px] bg-black/0 transition-all duration-300 group-hover:bg-black/50 group-hover:backdrop-blur-[4px]" />
 
         {/* Favorite */}
         <button 

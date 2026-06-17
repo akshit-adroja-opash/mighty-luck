@@ -59,15 +59,15 @@ export default function RecentWinners() {
       >
         <div className="flex flex-col w-[610px] md:w-full gap-[8px] md:gap-2">
           
-          {/* Header Row - Hidden on Mobile */}
-          <div className="hidden md:flex h-[20px] w-full flex-none flex-row justify-between items-center px-6">
-            <div className="flex w-[40%] items-center">
-              <span className="font-jost text-[14px] font-bold uppercase tracking-[0.02em] text-white">Game</span>
+          {/* Header Row */}
+          <div className="flex h-[14px] md:h-[20px] w-full flex-none flex-row items-center px-[12px] md:px-6 gap-[40px] md:gap-0 md:justify-between">
+            <div className="flex w-[220px] md:w-[40%] items-center">
+              <span className="font-jost text-[10px] md:text-[14px] font-bold uppercase tracking-[0.02em] text-white">Game</span>
             </div>
-            <div className="flex w-[60%] flex-none flex-row items-center gap-3">
-              <span className="flex-1 font-jost text-[14px] font-bold uppercase tracking-[0.02em] text-white">Username</span>
-              <span className="w-[120px] font-jost text-[14px] font-bold uppercase tracking-[0.02em] text-white">Time</span>
-              <span className="w-[100px] text-right font-jost text-[14px] font-bold uppercase tracking-[0.02em] text-white">Payout</span>
+            <div className="flex w-[326px] md:w-[60%] flex-none flex-row items-center gap-[8.41px] md:gap-3">
+              <span className="w-[189px] md:flex-1 font-jost text-[9.81px] md:text-[14px] font-bold uppercase tracking-[0.02em] text-white">Username</span>
+              <span className="w-[60px] md:w-[120px] font-jost text-[9.81px] md:text-[14px] font-bold uppercase tracking-[0.02em] text-white">Time</span>
+              <span className="w-[60px] md:w-[100px] text-right font-jost text-[9.81px] md:text-[14px] font-bold uppercase tracking-[0.02em] text-white">Payout</span>
             </div>
           </div>
 
@@ -75,28 +75,28 @@ export default function RecentWinners() {
           {winners.map((winner, index) => (
             <div
               key={index}
-              className="flex flex-row w-full flex-none items-center px-[12px] md:px-6 h-[42px] md:h-[60px] bg-[#0C1F56] rounded-[5.6px] md:rounded-[8px] transition-colors duration-300 hover:bg-[#112F82] gap-[40px] md:gap-0 md:justify-between"
+              className="flex flex-row w-full flex-none items-center px-[12px] md:px-6 h-[42px] md:h-[60px] bg-[#0C1F56] rounded-[5.61px] md:rounded-[8px] transition-colors duration-300 hover:bg-[#112F82] gap-[40px] md:gap-0 md:justify-between"
             >
               {/* Game Info */}
               <div className="flex w-[220px] md:w-[40%] items-center gap-[8.41px] md:gap-3">
                 <div
-                  className="h-[21px] md:h-[30px] w-[15.4px] md:w-[22px] flex-none rounded-[1.26px] md:rounded-[1.8px] bg-cover bg-center bg-[#CDCDCD]"
+                  className="h-[21.03px] md:h-[30px] w-[15.42px] md:w-[22px] flex-none rounded-[1.26px] md:rounded-[1.8px] bg-cover bg-center bg-[#CDCDCD]"
                   style={{ backgroundImage: `url('${winner.image}')` }}
                 />
-                <span className="w-[176px] md:w-auto truncate font-manrope text-[12px] md:text-[14px] font-semibold tracking-[0.02em] text-white">
+                <span className="w-[176px] md:w-auto truncate font-manrope text-[12px] md:text-[14px] font-semibold leading-[16px] tracking-[0.02em] text-white">
                   {winner.game}
                 </span>
               </div>
 
               {/* Metadata */}
               <div className="flex w-[326px] md:w-[60%] flex-none flex-row items-center gap-[8.41px] md:gap-3">
-                <span className="w-[189px] md:flex-1 truncate font-manrope text-[12px] md:text-[14px] font-semibold tracking-[0.02em] text-white">
+                <span className="w-[189.18px] md:flex-1 truncate font-manrope text-[12px] md:text-[14px] font-semibold leading-[16px] tracking-[0.02em] text-white">
                   {winner.username}
                 </span>
-                <span className="w-[60px] md:w-[120px] font-manrope text-[12px] md:text-[14px] font-semibold tracking-[0.02em] text-white">
+                <span className="w-[60px] md:w-[120px] font-manrope text-[12px] md:text-[14px] font-semibold leading-[16px] tracking-[0.02em] text-white">
                   {winner.time}
                 </span>
-                <span className={`w-[60px] md:w-[100px] text-right font-manrope text-[12px] md:text-[14px] font-semibold tracking-[0.02em] ${winner.payoutColor}`}>
+                <span className={`w-[60px] md:w-[100px] text-right font-manrope text-[12px] md:text-[14px] font-semibold leading-[16px] tracking-[0.02em] ${winner.payoutColor}`}>
                   {winner.payout}
                 </span>
               </div>

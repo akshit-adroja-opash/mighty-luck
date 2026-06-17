@@ -12,7 +12,7 @@ export default function SlotsSection() {
   return (
     <GameCarousel
       title="SLOTS (1,487)"
-      icon={<img src="/games/game-icons/slot.svg" alt="Slots" className="w-[30px] h-[30px]" />}
+      icon={<img src="/games/game-icons/slot.svg" alt="Slots" className="w-[18px] h-[18px] md:w-[30px] md:h-[30px]" />}
     >
         {games.map((game, index) => (
           <div key={index} className="flex-none snap-start">
