@@ -94,27 +94,27 @@ export default function Header() {
         {/* Right: Auth */}
         <div className="relative z-10 flex h-[30px] lg:h-[40px] flex-none flex-row items-center justify-end gap-2 lg:gap-4">
           {isAuthenticated ? (
-            <div className="flex flex-row items-center gap-2 lg:gap-4">
+            <div className="flex flex-row items-center gap-[16px] lg:gap-4">
 
               {/* Balance + Deposit */}
-              <div className="flex h-[30px] lg:h-[40px] flex-none flex-row items-center gap-1">
-                <div className="hidden md:flex h-[40px] w-[116px] flex-none flex-row items-center justify-center rounded-[8px] bg-[#112F82] px-4 lg:px-[30px] gap-[10px]">
-                  <span className="flex-none font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-white">$105,98</span>
+              <div className="flex h-[30px] lg:h-[40px] flex-none flex-row items-center gap-1 lg:gap-[10px]">
+                <div className="flex h-[30px] w-[82px] lg:h-[40px] lg:w-[116px] flex-none flex-row items-center justify-center rounded-[6px] lg:rounded-[8px] bg-[#112F82] px-[20px] lg:px-[30px] py-[8px] lg:py-0 gap-[7.5px] lg:gap-[10px]">
+                  <span className="flex-none font-manrope text-[10.5px] lg:text-[14px] font-bold leading-[14px] lg:leading-[19px] tracking-[0.02em] text-white">$105,98</span>
                 </div>
                 <button
                   onClick={() => dispatch(openModal("wallet"))}
-                  className="flex h-[30px] lg:h-[40px] min-w-[44px] sm:w-[110px] flex-none flex-row items-center justify-center rounded-[6px] lg:rounded-[8px] bg-[#FFC83D] transition-colors hover:opacity-90 cursor-pointer px-3 sm:px-4 gap-2"
+                  className="flex h-[30px] w-[30px] lg:h-[40px] lg:w-[110px] flex-none flex-row items-center justify-center rounded-[6px] lg:rounded-[8px] bg-[#FFC83D] transition-colors hover:opacity-90 cursor-pointer p-[8px] lg:px-[16px] lg:py-[0px] gap-2"
                 >
-                  <Wallet size={15} className="text-[#1A1404]" fill="#1A1404" />
-                  <span className="hidden sm:inline font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-[#1A1404]">Deposit</span>
+                  <Wallet className="w-[12px] h-[12px] lg:w-[15px] lg:h-[15px] text-[#1A1404] flex-none" fill="#1A1404" />
+                  <span className="hidden lg:inline font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-[#1A1404]">Deposit</span>
                 </button>
               </div>
 
-              {/* Icons */}
-              <div className="flex h-[30px] lg:h-[40px] items-center gap-2">
+              {/* Icons & Avatar */}
+              <div className="flex h-[30px] lg:h-[40px] items-center gap-[8px]">
                 <button className="relative flex h-[30px] w-[30px] lg:h-[40px] lg:w-[40px] flex-none items-center justify-center rounded-[6px] bg-[#173EAD] transition-colors hover:opacity-90 cursor-pointer">
                   <Bell size={16} className="text-[#D2DCF7]" fill="#D2DCF7" />
-                  <span className="absolute flex rounded-full bg-[#FF0E0E]" style={{ width: "8px", height: "8px", left: "22px", top: "0px" }} />
+                  <span className="absolute flex rounded-full bg-[#FF0E0E] w-[8px] h-[8px] lg:w-[10px] lg:h-[10px] left-[22px] lg:left-[30px] top-[0px] lg:top-[-2px]" />
                 </button>
                 <button className="relative flex h-[30px] w-[30px] lg:h-[40px] lg:w-[40px] flex-none items-center justify-center rounded-[6px] bg-[#173EAD] transition-colors hover:opacity-90 cursor-pointer">
                   <div 
@@ -130,36 +130,36 @@ export default function Header() {
                       WebkitMaskPosition: 'center'
                     }}
                   />
-                  <span className="absolute flex rounded-full bg-[#FF0E0E]" style={{ width: "8px", height: "8px", left: "22px", top: "0px" }} />
+                  <span className="absolute flex rounded-full bg-[#FF0E0E] w-[8px] h-[8px] lg:w-[10px] lg:h-[10px] left-[22px] lg:left-[30px] top-[0px] lg:top-[-2px]" />
                 </button>
-              </div>
-
-              {/* Avatar + Dropdown */}
-              <div className="relative flex-none" ref={dropdownRef}>
-                <button
-                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                  className="flex h-[30px] w-[30px] lg:h-[40px] lg:w-[40px] items-center justify-center overflow-hidden rounded-full border-2 border-transparent bg-[#173EAD] transition-colors hover:border-[#FFC83D] cursor-pointer"
-                >
-                  <img
-                    src={`https://ui-avatars.com/api/?name=${user?.name || "User"}&background=1463FF&color=fff&bold=true`}
-                    alt="User Avatar"
-                    className="h-full w-full object-cover"
-                  />
-                </button>
-                {isDropdownOpen && (
-                  <div className="absolute right-0 top-[calc(100%_+_8px)] flex w-48 flex-col overflow-hidden rounded-lg bg-[#112F82] shadow-xl z-50">
-                    <div className="px-4 py-3 border-b border-[#173EAD]">
-                      <p className="text-sm font-bold text-white truncate">{user?.name || "Player"}</p>
-                      <p className="text-xs text-[#BBCAF3] truncate">{user?.email || "player@example.com"}</p>
+                
+                {/* Avatar + Dropdown */}
+                <div className="relative flex-none h-[30px] w-[30px] lg:h-[40px] lg:w-[40px]" ref={dropdownRef}>
+                  <button
+                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                    className="flex h-full w-full items-center justify-center overflow-hidden rounded-full border-2 border-transparent bg-[#173EAD] transition-colors hover:border-[#FFC83D] cursor-pointer"
+                  >
+                    <img
+                      src={`https://ui-avatars.com/api/?name=${user?.name || "User"}&background=1463FF&color=fff&bold=true`}
+                      alt="User Avatar"
+                      className="h-full w-full object-cover"
+                    />
+                  </button>
+                  {isDropdownOpen && (
+                    <div className="absolute right-0 top-[calc(100%_+_8px)] flex w-48 flex-col overflow-hidden rounded-lg bg-[#112F82] shadow-xl z-50">
+                      <div className="px-4 py-3 border-b border-[#173EAD]">
+                        <p className="text-sm font-bold text-white truncate">{user?.name || "Player"}</p>
+                        <p className="text-xs text-[#BBCAF3] truncate">{user?.email || "player@example.com"}</p>
+                      </div>
+                      <Link href="/refer-a-friend" onClick={() => setIsDropdownOpen(false)} className="flex w-full items-center gap-2 px-4 py-3 text-sm font-semibold text-[#BBCAF3] transition-colors hover:bg-[#173EAD] hover:text-white cursor-pointer">
+                        <Users size={16} /> Refer a Friend
+                      </Link>
+                      <button onClick={handleLogout} className="flex w-full items-center gap-2 px-4 py-3 text-sm font-semibold text-[#BBCAF3] transition-colors hover:bg-[#173EAD] hover:text-white cursor-pointer">
+                        <LogOut size={16} /> Logout
+                      </button>
                     </div>
-                    <Link href="/refer-a-friend" onClick={() => setIsDropdownOpen(false)} className="flex w-full items-center gap-2 px-4 py-3 text-sm font-semibold text-[#BBCAF3] transition-colors hover:bg-[#173EAD] hover:text-white cursor-pointer">
-                      <Users size={16} /> Refer a Friend
-                    </Link>
-                    <button onClick={handleLogout} className="flex w-full items-center gap-2 px-4 py-3 text-sm font-semibold text-[#BBCAF3] transition-colors hover:bg-[#173EAD] hover:text-white cursor-pointer">
-                      <LogOut size={16} /> Logout
-                    </button>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
             </div>
           ) : (

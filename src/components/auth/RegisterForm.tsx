@@ -217,13 +217,13 @@ export default function RegisterForm({ setView }: RegisterFormProps) {
           {isLoading ? "Creating account..." : "Join with a 350% Bonus"}
         </button>
 
-        <div className="flex w-full items-center justify-center gap-2">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div className="flex w-full sm:w-[350px] h-[16px] items-center justify-center gap-[8px]">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-none">
             <circle cx="8" cy="8" r="7.25" stroke="#7795E8" strokeWidth="1.5"/>
             <path d="M8 11V10M8 8.5C8.82843 8.5 9.5 7.82843 9.5 7C9.5 6.17157 8.82843 5.5 8 5.5C7.17157 5.5 6.5 6.17157 6.5 7" stroke="#7795E8" strokeWidth="1.5" strokeLinecap="round"/>
           </svg>
-          <p className="font-manrope text-[10px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8]">
-            Having problems? <a href="#" className="font-bold text-[#7795E8] hover:text-white transition-colors">Contact support</a>
+          <p className="font-manrope text-[10px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] flex items-center">
+            Having problems?&nbsp;<a href="#" className="font-bold text-[#FFC83D] hover:underline">Contact support</a>
           </p>
         </div>
       </div>
