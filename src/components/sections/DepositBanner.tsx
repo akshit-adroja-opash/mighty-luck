@@ -90,7 +90,7 @@ const SvgIconWrapper = (src: string) => {
   }
 
   return (
-    <section className="relative isolate flex w-full flex-col md:flex-row items-center justify-between gap-[20px] md:gap-0 overflow-hidden rounded-[10px] md:rounded-[16px] bg-[#0C1F56] p-5 md:py-0 md:px-[40px] h-[165px] md:h-[100px]">
+    <section className="relative isolate flex w-full flex-col md:flex-row items-center justify-start md:justify-between gap-[20px] md:gap-0 overflow-hidden rounded-[10px] md:rounded-[16px] bg-[#0C1F56] p-[20px] md:py-0 md:px-[40px] h-[165px] md:h-[100px]">
       
       {/* Background Blur */}
       <div 
@@ -113,7 +113,7 @@ const SvgIconWrapper = (src: string) => {
       </h2>
 
       {/* Crypto Logos */}
-      <div className="z-[2] flex flex-row flex-nowrap items-center justify-between md:justify-center gap-[4px] md:gap-[28px] text-white w-full pb-0 flex-none md:flex-1">
+      <div className="z-[2] flex flex-row flex-wrap items-center justify-between md:justify-center gap-[12px] md:gap-[28px] text-white w-[334px] md:w-auto pb-0 flex-none md:flex-1 h-[19px] md:h-auto">
         <img src="/games/deposite-icon/d1.svg" alt="deposit icon" className="w-[13.38px] h-[18.39px] md:w-auto md:h-auto shrink" />
         <img src="/games/deposite-icon/d2.svg" alt="deposit icon" className="w-[11.3px] h-[18.09px] md:w-auto md:h-auto shrink" />
         <img src="/games/deposite-icon/d3.svg" alt="deposit icon" className="w-[19.09px] h-[17.73px] md:w-auto md:h-auto shrink" />
@@ -130,7 +130,8 @@ const SvgIconWrapper = (src: string) => {
       {/* Button */}
       <button className="z-[3] flex h-[40px] w-[148px] flex-none items-center justify-center rounded-[8px] bg-[#FFC83D] transition-colors hover:bg-yellow-400">
         <span className="font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-[#1A1404]">
-          Deposit Now
+          <span className="md:hidden">Join</span>
+          <span className="hidden md:inline">Deposit Now</span>
         </span>
       </button>
 

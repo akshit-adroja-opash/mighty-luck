@@ -39,9 +39,11 @@ export default function HomePage() {
   });
 
   return (
-    <main className="flex w-full flex-none flex-col gap-4 md:gap-6 lg:gap-10">
-            <HeroBanner />
-            <DepositBanner />
+    <main className="flex w-full flex-none flex-col gap-[30px] md:gap-6 lg:gap-10">
+      <div className="flex w-full flex-col gap-[20px] md:gap-6 lg:gap-10">
+        <HeroBanner />
+        <DepositBanner />
+      </div>
 
             {/* Render dynamically sorted game categories */}
             {sortedSections.map(({ name, Component }) => (

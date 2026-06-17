@@ -47,7 +47,7 @@ export default function RootLayout({
               <div className="hidden lg:block flex-none">
                 <Sidebar />
               </div>
-              <div className="flex flex-1 min-w-0 flex-col px-0 lg:pl-[24px] lg:pr-0 pb-[75px] lg:pb-0 gap-[10px] sm:gap-[20px] lg:gap-[40px] overflow-hidden">
+              <div className="flex flex-1 min-w-0 flex-col px-0 lg:pl-[24px] lg:pr-0 pb-[75px] lg:pb-0 gap-[60px] lg:gap-[40px] overflow-hidden">
                 {children}
 
                 <div className="w-full">
