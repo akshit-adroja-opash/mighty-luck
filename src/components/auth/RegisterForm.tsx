@@ -81,13 +81,13 @@ export default function RegisterForm({ setView }: RegisterFormProps) {
   return (
     <form
       onSubmit={handleSubmit(onSubmit, onError)}
-      className="relative z-10 flex w-full max-w-[350px] mx-auto md:mx-0 flex-col items-center md:items-start gap-[32px] mt-[10px] md:mt-0"
+      className="relative z-10 flex w-full max-w-[374px] mx-auto md:mx-0 flex-col items-center md:items-start gap-[32px] md:mt-0"
     >
       {/* Top Container */}
       <div className="flex flex-col gap-[16px] w-full">
 
-        {/* Header with Logo */}
-        <div className="flex w-full items-center justify-center h-[25.54px]">
+        {/* Header with Logo (Desktop Only) */}
+        <div className="hidden md:flex w-full items-center justify-center h-[25.54px]">
           <Logo 
             className="gap-[4px]"
             iconClassName="w-[18px] h-[18px]"
@@ -95,8 +95,8 @@ export default function RegisterForm({ setView }: RegisterFormProps) {
           />
         </div>
 
-        {/* Tab Switcher */}
-        <div className="flex w-full h-[40px] items-center gap-2">
+        {/* Tab Switcher (Desktop Only) */}
+        <div className="hidden md:flex w-full h-[40px] items-center gap-2">
           <button
             type="button"
             onClick={() => { dispatch(setAuthModalView("register")); setView("register"); }}
@@ -117,31 +117,31 @@ export default function RegisterForm({ setView }: RegisterFormProps) {
         <div className="flex flex-col gap-[12px] w-full">
 
           {/* Username */}
-          <div className="relative flex h-[40px] w-full items-center rounded-[8px] bg-[#112F82] px-4">
+          <div className="relative flex h-[50px] w-full items-center rounded-[8px] bg-[#112F82] px-4">
             <input {...register("username")} type="text" placeholder="User name"
               className="w-full bg-transparent font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white outline-none border-none ring-0 focus:ring-0 placeholder:text-[#A5B8EF]" />
           </div>
 
           {/* First + Last Name */}
           <div className="flex w-full gap-[8px]">
-            <div className="relative flex h-[40px] flex-1 items-center rounded-[8px] bg-[#112F82] px-4">
+            <div className="relative flex h-[50px] flex-1 items-center rounded-[8px] bg-[#112F82] px-4">
               <input {...register("firstName")} type="text" placeholder="First Name"
                 className="w-full bg-transparent font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white outline-none border-none ring-0 focus:ring-0 placeholder:text-[#A5B8EF]" />
             </div>
-            <div className="relative flex h-[40px] flex-1 items-center rounded-[8px] bg-[#112F82] px-4">
+            <div className="relative flex h-[50px] flex-1 items-center rounded-[8px] bg-[#112F82] px-4">
               <input {...register("lastName")} type="text" placeholder="Last Name"
                 className="w-full bg-transparent font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white outline-none border-none ring-0 focus:ring-0 placeholder:text-[#A5B8EF]" />
             </div>
           </div>
 
           {/* Email */}
-          <div className="relative flex h-[40px] w-full items-center rounded-[8px] bg-[#112F82] px-4">
+          <div className="relative flex h-[50px] w-full items-center rounded-[8px] bg-[#112F82] px-4">
             <input {...register("email")} type="email" placeholder="Email"
               className="w-full bg-transparent font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white outline-none border-none ring-0 focus:ring-0 placeholder:text-[#A5B8EF]" />
           </div>
 
           {/* Password */}
-          <div className="relative flex h-[40px] w-full items-center justify-between rounded-[8px] bg-[#112F82] px-4">
+          <div className="relative flex h-[50px] w-full items-center justify-between rounded-[8px] bg-[#112F82] px-4">
             <input {...register("password")} type={showPassword ? "text" : "password"} placeholder="Password"
               className="w-full bg-transparent font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white outline-none border-none ring-0 focus:ring-0 placeholder:text-[#A5B8EF]" />
             <button type="button" onClick={() => setShowPassword(!showPassword)} className="text-[#A5B8EF] hover:text-white transition-colors cursor-pointer flex-none">
@@ -161,7 +161,7 @@ export default function RegisterForm({ setView }: RegisterFormProps) {
           <div className="flex w-full gap-[8px] relative">
             <div 
               onClick={() => setShowCountryCodeDropdown(!showCountryCodeDropdown)}
-              className="flex h-[40px] w-[121px] items-center gap-[10px] rounded-[8px] bg-[#112F82] px-[16px] cursor-pointer hover:bg-blue-800 transition-colors flex-none"
+              className="flex h-[50px] w-[121px] items-center gap-[10px] rounded-[8px] bg-[#112F82] px-[16px] cursor-pointer hover:bg-blue-800 transition-colors flex-none"
             >
               <span className={`fi fi-${selectedCountryCode.iso} fis !rounded-full !w-[20px] !h-[20px] overflow-hidden flex-none bg-cover bg-center`}></span>
               <span className="font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white flex-none w-[35px] whitespace-nowrap">
@@ -175,7 +175,7 @@ export default function RegisterForm({ setView }: RegisterFormProps) {
             </div>
 
             {showCountryCodeDropdown && (
-              <div className="absolute left-0 top-[48px] z-50 flex w-[121px] flex-col rounded-[8px] bg-[#112F82] border border-[#173EAD] overflow-y-auto shadow-2xl max-h-[130px] [&::-webkit-scrollbar]:w-[4px] [&::-webkit-scrollbar-thumb]:bg-[#1463FF] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent">
+              <div className="absolute left-0 top-[58px] z-50 flex w-[121px] flex-col rounded-[8px] bg-[#112F82] border border-[#173EAD] overflow-y-auto shadow-2xl max-h-[130px] [&::-webkit-scrollbar]:w-[4px] [&::-webkit-scrollbar-thumb]:bg-[#1463FF] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent">
                 {countryCodes.map((country, idx) => (
                   <button
                     key={idx}
@@ -192,7 +192,7 @@ export default function RegisterForm({ setView }: RegisterFormProps) {
                 ))}
               </div>
             )}
-            <div className="relative flex h-[40px] flex-1 items-center rounded-[8px] bg-[#112F82] px-4">
+            <div className="relative flex h-[50px] flex-1 items-center rounded-[8px] bg-[#112F82] px-4">
               <input {...register("phone")} type="text" placeholder="Phone Number"
                 className="w-full bg-transparent font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white outline-none border-none ring-0 focus:ring-0 placeholder:text-[#A5B8EF]" />
             </div>
@@ -201,28 +201,28 @@ export default function RegisterForm({ setView }: RegisterFormProps) {
         </div>
 
         {/* Terms */}
-        <p className="w-full font-manrope text-[10px] font-medium leading-[14px] text-justify tracking-[0.01em] text-[#BBCAF3]">
+        <p className="w-full font-manrope text-[10px] font-medium leading-[14px] text-center tracking-[0.01em] text-[#BBCAF3]">
           By clicking &ldquo;Join Now&rdquo; I confirm that I&rsquo;m over 18 years old and agree to Mighty Luck&rsquo;s T&amp;C along with the Privacy Policy
         </p>
 
       </div>
 
       {/* Bottom Container */}
-      <div className="flex flex-col items-center md:items-start gap-[12px] w-full">
+      <div className="flex flex-col items-center gap-[12px] w-full">
         <button
           type="submit"
           disabled={isLoading}
-          className="flex h-[50px] w-full items-center justify-center gap-[10px] rounded-[8px] bg-[#FFC83D] px-[30px] py-[10px] font-manrope text-[14px] font-bold tracking-[0.02em] text-[#1A1404] transition-all hover:bg-yellow-400 disabled:opacity-50 cursor-pointer"
+          className="flex h-[60px] w-full items-center justify-center gap-[10px] rounded-[8px] bg-[#FFC83D] px-[30px] py-[10px] font-manrope text-[16px] leading-[22px] font-bold tracking-[0.02em] text-[#1A1404] transition-all hover:bg-yellow-400 disabled:opacity-50 cursor-pointer"
         >
           {isLoading ? "Creating account..." : "Join with a 350% Bonus"}
         </button>
 
-        <div className="flex w-full items-center gap-2">
+        <div className="flex w-full items-center justify-center gap-2">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="8" cy="8" r="7.25" stroke="#7795E8" strokeWidth="1.5"/>
             <path d="M8 11V10M8 8.5C8.82843 8.5 9.5 7.82843 9.5 7C9.5 6.17157 8.82843 5.5 8 5.5C7.17157 5.5 6.5 6.17157 6.5 7" stroke="#7795E8" strokeWidth="1.5" strokeLinecap="round"/>
           </svg>
-          <p className="font-manrope text-[10px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8]">
+          <p className="font-manrope text-[12px] font-medium leading-[16px] tracking-[0.02em] text-[#7795E8]">
             Having problems? <a href="#" className="font-bold text-[#FFC83D] hover:underline">Contact support</a>
           </p>
         </div>

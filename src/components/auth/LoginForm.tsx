@@ -59,13 +59,13 @@ export default function LoginForm({ setView }: LoginFormProps) {
   return (
     <form
       onSubmit={handleSubmit(onSubmit, onError)}
-      className="relative z-10 flex w-full max-w-[350px] mx-auto md:mx-0 flex-col items-center md:items-start gap-[32px] mt-[10px] md:mt-0"
+      className="relative z-10 flex w-full max-w-[374px] mx-auto md:mx-0 flex-col items-center md:items-start gap-[32px] md:mt-0"
     >
       {/* Top Container */}
       <div className="flex flex-col gap-[16px] w-full">
 
-        {/* Header with Logo */}
-        <div className="flex w-full items-center justify-center h-[25.54px]">
+        {/* Header with Logo (Desktop Only) */}
+        <div className="hidden md:flex w-full items-center justify-center h-[25.54px]">
           <Logo 
             className="gap-[4px]"
             iconClassName="w-[18px] h-[18px]"
@@ -73,8 +73,8 @@ export default function LoginForm({ setView }: LoginFormProps) {
           />
         </div>
 
-        {/* Tab Switcher */}
-        <div className="flex w-full h-[40px] items-center gap-2">
+        {/* Tab Switcher (Desktop Only) */}
+        <div className="hidden md:flex w-full h-[40px] items-center gap-2">
           <button
             type="button"
             onClick={() => { dispatch(setAuthModalView("register")); setView("register"); }}
@@ -95,7 +95,7 @@ export default function LoginForm({ setView }: LoginFormProps) {
         <div className="flex flex-col gap-[12px] w-full">
 
           {/* Email */}
-          <div className="relative flex h-[40px] w-full items-center rounded-[8px] bg-[#112F82] px-4">
+          <div className="relative flex h-[50px] w-full items-center rounded-[8px] bg-[#112F82] px-4">
             <input
               {...register("email")}
               type="email"
@@ -105,7 +105,7 @@ export default function LoginForm({ setView }: LoginFormProps) {
           </div>
 
           {/* Password */}
-          <div className="relative flex h-[40px] w-full items-center justify-between rounded-[8px] bg-[#112F82] px-4">
+          <div className="relative flex h-[50px] w-full items-center justify-between rounded-[8px] bg-[#112F82] px-4">
             <input
               {...register("password")}
               type={showPassword ? "text" : "password"}
@@ -136,11 +136,11 @@ export default function LoginForm({ setView }: LoginFormProps) {
       </div>
 
       {/* Bottom Container */}
-      <div className="flex flex-col items-center md:items-start gap-[12px] w-full">
+      <div className="flex flex-col items-center gap-[12px] w-full">
         <button
           type="submit"
           disabled={isLoading}
-          className="flex h-[50px] w-full items-center justify-center gap-2 rounded-[8px] bg-[#1463FF] font-manrope text-[14px] font-bold tracking-[0.02em] text-white transition-all hover:bg-blue-600 disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer"
+          className="flex h-[60px] w-full items-center justify-center gap-2 rounded-[8px] bg-[#1463FF] font-manrope text-[16px] leading-[22px] font-bold tracking-[0.02em] text-white transition-all hover:bg-blue-600 disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer"
         >
           {isLoading ? (
             <>
@@ -153,12 +153,12 @@ export default function LoginForm({ setView }: LoginFormProps) {
           ) : "Log In"}
         </button>
 
-        <div className="flex w-full items-center gap-2">
+        <div className="flex w-full items-center justify-center gap-2">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="8" cy="8" r="7.25" stroke="#7795E8" strokeWidth="1.5"/>
             <path d="M8 11V10M8 8.5C8.82843 8.5 9.5 7.82843 9.5 7C9.5 6.17157 8.82843 5.5 8 5.5C7.17157 5.5 6.5 6.17157 6.5 7" stroke="#7795E8" strokeWidth="1.5" strokeLinecap="round"/>
           </svg>
-          <p className="font-manrope text-[10px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8]">
+          <p className="font-manrope text-[12px] font-medium leading-[16px] tracking-[0.02em] text-[#7795E8]">
             Having problems? <a href="#" className="font-bold text-[#FFC83D] hover:underline">Contact support</a>
           </p>
         </div>
