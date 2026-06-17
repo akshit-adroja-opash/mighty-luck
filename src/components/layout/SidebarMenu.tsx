@@ -24,23 +24,23 @@ export const menuItems = [
   {
     name: "VIP Program",
     icon: SvgIconWrapper("/games/side-icon/vip.svg"),
-    fontSize: "text-[14px]",
-    lineHeight: "leading-[19px]",
+    fontSize: "text-[16px]",
+    lineHeight: "leading-[22px]",
     fontWeight: "font-semibold",
   },
   {
     name: "Tournaments",
     icon: SvgIconWrapper("/games/side-icon/tour.svg"),
-    fontSize: "text-[14px]",
-    lineHeight: "leading-[19px]",
+    fontSize: "text-[16px]",
+    lineHeight: "leading-[22px]",
     fontWeight: "font-semibold",
   },
   {
     name: "Casino",
     icon: SvgIconWrapper("/games/side-icon/casino.svg"),
     isPrimary: true, // blue bg
-    fontSize: "text-[14px]",
-    lineHeight: "leading-[19px]",
+    fontSize: "text-[16px]",
+    lineHeight: "leading-[22px]",
     fontWeight: "font-bold",
     subItems: [
       { name: "All Games", icon: SvgIconWrapper("/games/side-icon/all.svg") },
@@ -54,15 +54,15 @@ export const menuItems = [
     name: "Live Casino",
     icon: SvgIconWrapper("/games/side-icon/live.svg"),
     isPrimary: true, // blue bg
-    fontSize: "text-[14px]",
-    lineHeight: "leading-[19px]",
+    fontSize: "text-[16px]",
+    lineHeight: "leading-[22px]",
     fontWeight: "font-bold",
   },
   {
     name: "Live Support",
     icon: SvgIconWrapper("/games/side-icon/live-support.svg"),
-    fontSize: "text-[14px]",
-    lineHeight: "leading-[19px]",
+    fontSize: "text-[16px]",
+    lineHeight: "leading-[22px]",
     fontWeight: "font-semibold",
   },
 ];
@@ -98,7 +98,7 @@ export default function SidebarMenu({ onItemClick, isCollapsed = false }: { onIt
                 }
               }}
               title={isCollapsed ? item.name : undefined}
-              className={`flex h-[44px] w-full items-center ${isCollapsed ? 'justify-center px-0' : 'justify-between px-[10px]'} rounded-[8px] py-0 transition-all cursor-pointer ${bgClass} ${textClass} ${hoverClass}`}
+              className={`flex h-[50px] w-full items-center ${isCollapsed ? 'justify-center px-0' : 'justify-between px-[10px]'} rounded-[8px] py-0 transition-all cursor-pointer ${bgClass} ${textClass} ${hoverClass}`}
             >
               <div className={`flex items-center ${isCollapsed ? 'justify-center w-full' : 'gap-[8px]'}`}>
                 <div className="flex-none flex items-center justify-center">
@@ -137,12 +137,12 @@ export default function SidebarMenu({ onItemClick, isCollapsed = false }: { onIt
                         }
                         if (onItemClick) onItemClick();
                       }}
-                      className={`flex items-center text-[#D2DCF7] transition-colors hover:text-white cursor-pointer w-full ${isCollapsed ? 'justify-center h-[24px]' : 'h-[20px] gap-[12px]'}`}
+                      className={`flex items-center text-[#D2DCF7] transition-colors hover:text-white cursor-pointer w-full ${isCollapsed ? 'justify-center h-[24px]' : 'h-[22px] gap-[12px]'}`}
                     >
                       <div className="flex h-[20px] w-[20px] items-center justify-center flex-none">
                         <SubIcon size={18} />
                       </div>
-                      {!isCollapsed && <span className="font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] whitespace-nowrap">{subItem.name}</span>}
+                      {!isCollapsed && <span className="font-manrope text-[16px] font-semibold leading-[22px] tracking-[0.02em] whitespace-nowrap">{subItem.name}</span>}
                     </button>
                   );
                 })}

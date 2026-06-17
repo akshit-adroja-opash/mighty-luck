@@ -183,14 +183,14 @@ export default function Header() {
 
       {/* Mobile Bottom Navigation */}
       <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden flex flex-row justify-between items-center px-5 py-[12px] h-[75px] bg-[#0C1F56] rounded-t-[16px]">
-        <button onClick={() => setIsMobileMenuOpen(true)} className="flex flex-col justify-center items-center gap-[2px] w-[39px] h-[51px] transition-colors hover:opacity-80">
+        <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="flex flex-col justify-center items-center gap-[2px] w-[39px] h-[51px] transition-colors hover:opacity-80">
           <div className="flex justify-center items-center w-[30px] h-[30px]">
-            <svg width="22" height="15" viewBox="0 0 22 15" fill="none" stroke="#D2DCF7" strokeWidth="2.75" xmlns="http://www.w3.org/2000/svg">
+            <svg width="22" height="15" viewBox="0 0 22 15" fill="none" stroke="#FFBF1F" strokeWidth="2.75" xmlns="http://www.w3.org/2000/svg">
               <path d="M2 2H12M2 7.5H12M2 13H12" strokeLinecap="round"/>
               <path d="M20 2L16 7.5L20 13" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </div>
-          <span className="font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] text-[#D2DCF7]">Menu</span>
+          <span className="font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] text-[#FFBF1F]">Menu</span>
         </button>
 
         <button className="flex flex-col justify-center items-center gap-[2px] w-[50px] h-[51px] transition-colors hover:opacity-80">
@@ -261,48 +261,13 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile Drawer Backdrop */}
+      {/* Mobile Full Screen Menu Overlay */}
       {isMobileMenuOpen && (
-        <>
-          <div
-            className="fixed inset-0 bg-black/60 z-40 lg:hidden"
-            onClick={() => setIsMobileMenuOpen(false)}
-          />
-          <div className="fixed top-0 left-0 h-full w-[280px] bg-[#0C1F56] z-50 lg:hidden flex flex-col transform transition-transform duration-300 translate-x-0 overflow-y-auto">
-            <div className="flex items-center justify-between p-4 border-b border-[#112F82]">
-              <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-2">
-                <img src="/images/layout/logo.svg" alt="Mighty Luck" className="flex-none w-[34px] h-[25px]" />
-                <span className="text-[18px] font-black uppercase tracking-wide text-white font-jost">
-                  MIGHTY <span style={{ background: "linear-gradient(90deg, #FFD85A 12%, #FFB800 86.68%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>LUCK</span>
-                </span>
-              </Link>
-              <button onClick={() => setIsMobileMenuOpen(false)} className="flex h-[44px] w-[44px] items-center justify-center rounded-full text-white hover:bg-[#112F82] transition-colors" aria-label="Close menu">
-                <X size={20} />
-              </button>
-            </div>
-
-            {/* Mobile Search */}
-            <div className="p-4">
-              <div className="flex h-[44px] w-full items-center rounded-[8px] bg-[#112F82] px-4 gap-3">
-                <Search size={16} className="text-[#BBCAF3] flex-none" />
-                <input type="text" placeholder="What are you looking for?" className="flex-1 bg-transparent font-manrope text-[14px] font-semibold text-[#BBCAF3] outline-none placeholder:text-[#BBCAF3]" />
-              </div>
-            </div>
-
-            {/* Mobile Nav Links */}
-            <nav className="flex flex-col gap-1 px-4 pb-4">
-              <SidebarMenu onItemClick={() => setIsMobileMenuOpen(false)} />
-            </nav>
-
-            {/* Mobile Auth at bottom */}
-            {!isAuthenticated && (
-              <div className="mt-auto p-4 flex flex-col gap-3 border-t border-[#112F82]">
-                <button onClick={() => { dispatch(setAuthModalView("login")); dispatch(openModal("auth")); setIsMobileMenuOpen(false); }} className="flex h-[44px] w-full items-center justify-center rounded-[8px] bg-[#1463FF] font-manrope text-[14px] font-bold text-white hover:bg-blue-600 transition-colors cursor-pointer">Login</button>
-                <button onClick={() => { dispatch(setAuthModalView("register")); dispatch(openModal("auth")); setIsMobileMenuOpen(false); }} className="flex h-[44px] w-full items-center justify-center rounded-[8px] bg-[#FFC83D] font-manrope text-[14px] font-bold text-[#1A1404] hover:bg-yellow-400 transition-colors cursor-pointer">Join Now</button>
-              </div>
-            )}
+        <div className="fixed left-0 right-0 top-[50px] bottom-[75px] bg-[#0C1F56] z-30 lg:hidden flex flex-col items-center overflow-y-auto px-5 py-5">
+          <div className="flex w-full max-w-[374px] flex-col gap-[16px]">
+            <SidebarMenu onItemClick={() => setIsMobileMenuOpen(false)} />
           </div>
-        </>
+        </div>
       )}
     </header>
   );
