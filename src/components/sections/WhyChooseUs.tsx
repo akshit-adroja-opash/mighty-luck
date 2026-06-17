@@ -18,11 +18,16 @@ const features = [
 export default function WhyChooseUs() {
   return (
     <section className="flex flex-col items-start gap-[14.81px] md:gap-[28px] w-full overflow-hidden">
-      <div className="flex items-center h-[30px] gap-[12px]">
-        <img src="/games/game-icons/why.svg" alt="Why Join" className="w-[30px] h-[30px] shrink-0 object-contain" />
-        <span className="font-['Jost'] text-[16px] md:text-[18px] lg:text-[20px] font-extrabold leading-[100%] tracking-[0.01em] text-white uppercase whitespace-nowrap">
-          WHY JOIN MIGHTY LUCK?
-        </span>
+      {/* Header */}
+      <div className="flex flex-row items-center justify-between w-full h-[23px] md:h-[30px]">
+        <div className="flex flex-row items-center gap-[7.2px] md:gap-[12px]">
+          <div className="w-[18px] h-[18px] md:w-[30px] md:h-[30px] flex items-center justify-center shrink-0">
+            <img src="/games/game-icons/why.svg" alt="Why Join" className="w-[18px] h-[18px] md:w-[30px] md:h-[30px] object-contain" />
+          </div>
+          <span className="font-jost text-[16px] md:text-[20px] font-extrabold leading-[23px] md:leading-[30px] tracking-[0.01em] text-white uppercase whitespace-nowrap">
+            WHY JOIN MIGHTY LUCK?
+          </span>
+        </div>
       </div>
 
       <div className="flex md:grid flex-row md:grid-cols-3 gap-[8.63px] md:gap-[12px] w-full overflow-x-auto md:overflow-visible no-scrollbar snap-x snap-mandatory">
