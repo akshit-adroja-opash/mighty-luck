@@ -43,24 +43,16 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 flex w-full justify-center bg-[#0C1F56]">
-      <div className="relative flex flex-row items-center justify-between w-full max-w-[1440px] mx-auto h-[60px] px-4 lg:px-6">
+      <div className="relative flex flex-row items-center justify-between w-full max-w-[1440px] mx-auto h-[50px] lg:h-[60px] px-5 lg:px-6">
 
         {/* Blue Glow */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-          <div className="absolute rounded-full bg-[#1463FF]" style={{ width: "143px", height: "143px", left: "114px", top: "37px", filter: "blur(25px)" }} />
+          <div className="hidden lg:block absolute rounded-full bg-[#1463FF]" style={{ width: "143px", height: "143px", left: "114px", top: "37px", filter: "blur(25px)" }} />
+          <div className="lg:hidden absolute rounded-full bg-[#1463FF]" style={{ width: "71.5px", height: "71.5px", left: "6px", top: "33px", filter: "blur(12.5px)" }} />
         </div>
 
         {/* Left: Hamburger (mobile) + Logo + Search */}
-        <div className="relative z-10 flex h-[40px] items-center flex-none gap-3 lg:gap-[51px]">
-
-          {/* Mobile hamburger */}
-          <button
-            className="flex lg:hidden h-[44px] w-[44px] items-center justify-center text-white transition-colors hover:opacity-80 cursor-pointer"
-            onClick={() => setIsMobileMenuOpen(true)}
-            aria-label="Open menu"
-          >
-            <Image src="/images/Vector.png" alt="Menu" width={21} height={14} />
-          </button>
+        <div className="relative z-10 flex h-[30px] lg:h-[40px] items-center flex-none gap-3 lg:gap-[51px]">
 
           {/* Desktop menu icon */}
           <button 
@@ -82,7 +74,7 @@ export default function Header() {
           {/* Logo */}
           <Logo 
             isLink 
-            className="h-[34.66px] gap-2 cursor-pointer flex-none" 
+            className="h-[30px] lg:h-[34.66px] gap-2 cursor-pointer flex-none" 
             iconClassName="-mt-1 w-[34px] h-[25px]" 
             textClassName="text-[20px] tracking-wide leading-[34.66px]" 
             hideTextOnMobile 
@@ -100,18 +92,18 @@ export default function Header() {
         </div>
 
         {/* Right: Auth */}
-        <div className="relative z-10 flex h-[40px] flex-none flex-row items-center justify-end gap-2 lg:gap-4">
+        <div className="relative z-10 flex h-[30px] lg:h-[40px] flex-none flex-row items-center justify-end gap-2 lg:gap-4">
           {isAuthenticated ? (
             <div className="flex flex-row items-center gap-2 lg:gap-4">
 
               {/* Balance + Deposit */}
-              <div className="flex h-[40px] flex-none flex-row items-center gap-1">
+              <div className="flex h-[30px] lg:h-[40px] flex-none flex-row items-center gap-1">
                 <div className="hidden md:flex h-[40px] w-[116px] flex-none flex-row items-center justify-center rounded-[8px] bg-[#112F82] px-4 lg:px-[30px] gap-[10px]">
                   <span className="flex-none font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-white">$105,98</span>
                 </div>
                 <button
                   onClick={() => dispatch(openModal("wallet"))}
-                  className="flex h-[40px] min-w-[44px] sm:w-[110px] flex-none flex-row items-center justify-center rounded-[8px] bg-[#FFC83D] transition-colors hover:opacity-90 cursor-pointer px-3 sm:px-4 gap-2"
+                  className="flex h-[30px] lg:h-[40px] min-w-[44px] sm:w-[110px] flex-none flex-row items-center justify-center rounded-[6px] lg:rounded-[8px] bg-[#FFC83D] transition-colors hover:opacity-90 cursor-pointer px-3 sm:px-4 gap-2"
                 >
                   <Wallet size={15} className="text-[#1A1404]" fill="#1A1404" />
                   <span className="hidden sm:inline font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-[#1A1404]">Deposit</span>
@@ -119,12 +111,12 @@ export default function Header() {
               </div>
 
               {/* Icons */}
-              <div className="flex h-[40px] items-center gap-2">
-                <button className="relative flex h-[40px] w-[40px] flex-none items-center justify-center rounded-[6px] bg-[#173EAD] transition-colors hover:opacity-90 cursor-pointer">
+              <div className="flex h-[30px] lg:h-[40px] items-center gap-2">
+                <button className="relative flex h-[30px] w-[30px] lg:h-[40px] lg:w-[40px] flex-none items-center justify-center rounded-[6px] bg-[#173EAD] transition-colors hover:opacity-90 cursor-pointer">
                   <Bell size={16} className="text-[#D2DCF7]" fill="#D2DCF7" />
-                  <span className="absolute flex rounded-full bg-[#FF0E0E]" style={{ width: "8px", height: "8px", left: "32px", top: "0px" }} />
+                  <span className="absolute flex rounded-full bg-[#FF0E0E]" style={{ width: "8px", height: "8px", left: "22px", top: "0px" }} />
                 </button>
-                <button className="relative flex h-[40px] w-[40px] flex-none items-center justify-center rounded-[6px] bg-[#173EAD] transition-colors hover:opacity-90 cursor-pointer">
+                <button className="relative flex h-[30px] w-[30px] lg:h-[40px] lg:w-[40px] flex-none items-center justify-center rounded-[6px] bg-[#173EAD] transition-colors hover:opacity-90 cursor-pointer">
                   <div 
                     className="w-[16px] h-[16px] bg-[#D2DCF7] flex-none"
                     style={{
@@ -138,7 +130,7 @@ export default function Header() {
                       WebkitMaskPosition: 'center'
                     }}
                   />
-                  <span className="absolute flex rounded-full bg-[#FF0E0E]" style={{ width: "8px", height: "8px", left: "32px", top: "0px" }} />
+                  <span className="absolute flex rounded-full bg-[#FF0E0E]" style={{ width: "8px", height: "8px", left: "22px", top: "0px" }} />
                 </button>
               </div>
 
@@ -146,7 +138,7 @@ export default function Header() {
               <div className="relative flex-none" ref={dropdownRef}>
                 <button
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                  className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border-2 border-transparent bg-[#173EAD] transition-colors hover:border-[#FFC83D] cursor-pointer"
+                  className="flex h-[30px] w-[30px] lg:h-[40px] lg:w-[40px] items-center justify-center overflow-hidden rounded-full border-2 border-transparent bg-[#173EAD] transition-colors hover:border-[#FFC83D] cursor-pointer"
                 >
                   <img
                     src={`https://ui-avatars.com/api/?name=${user?.name || "User"}&background=1463FF&color=fff&bold=true`}
@@ -171,22 +163,102 @@ export default function Header() {
               </div>
             </div>
           ) : (
-            <div className="flex h-[40px] items-center gap-2">
+            <div className="flex h-[30px] sm:h-[40px] items-center gap-[7.5px] sm:gap-[10px]">
               <button
                 onClick={() => { dispatch(setAuthModalView("login")); dispatch(openModal("auth")); }}
-                className="flex h-[40px] w-auto sm:w-[99px] flex-none items-center justify-center gap-[10px] rounded-[8px] bg-[#1463FF] px-3 py-[10px] font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-white whitespace-nowrap transition-colors hover:bg-blue-600 cursor-pointer"
+                className="flex h-[30px] sm:h-[40px] w-[74px] sm:w-[99px] flex-none items-center justify-center gap-[10px] rounded-[6px] sm:rounded-[8px] bg-[#1463FF] px-[22.5px] sm:px-[30px] py-[7.5px] sm:py-[10px] font-manrope text-[10.5px] sm:text-[14px] font-bold leading-[14px] sm:leading-[19px] tracking-[0.02em] text-white whitespace-nowrap transition-colors hover:bg-blue-600 cursor-pointer"
               >
                 Login
               </button>
               <button
                 onClick={() => { dispatch(setAuthModalView("register")); dispatch(openModal("auth")); }}
-                className="flex h-[40px] w-auto sm:w-[90px] flex-none items-center justify-center gap-[10px] rounded-[8px] bg-[#FFC83D] px-3 py-[10px] font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-[#1A1404] whitespace-nowrap transition-colors hover:bg-yellow-400 cursor-pointer"
+                className="flex h-[30px] sm:h-[40px] w-[67px] sm:w-[90px] flex-none items-center justify-center gap-[10px] rounded-[6px] sm:rounded-[8px] bg-[#FFC83D] px-[22.5px] sm:px-[30px] py-[7.5px] sm:py-[10px] font-manrope text-[10.5px] sm:text-[14px] font-bold leading-[14px] sm:leading-[19px] tracking-[0.02em] text-[#1A1404] whitespace-nowrap transition-colors hover:bg-yellow-400 cursor-pointer"
               >
                 Join
               </button>
             </div>
           )}
         </div>
+      </div>
+
+      {/* Mobile Bottom Navigation */}
+      <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden flex flex-row justify-between items-center px-5 py-[12px] h-[75px] bg-[#0C1F56] rounded-t-[16px]">
+        <button onClick={() => setIsMobileMenuOpen(true)} className="flex flex-col justify-center items-center gap-[2px] w-[39px] h-[51px] transition-colors hover:opacity-80">
+          <div className="flex justify-center items-center w-[30px] h-[30px]">
+            <svg width="22" height="15" viewBox="0 0 22 15" fill="none" stroke="#D2DCF7" strokeWidth="2.75" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 2H12M2 7.5H12M2 13H12" strokeLinecap="round"/>
+              <path d="M20 2L16 7.5L20 13" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+          <span className="font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] text-[#D2DCF7]">Menu</span>
+        </button>
+
+        <button className="flex flex-col justify-center items-center gap-[2px] w-[50px] h-[51px] transition-colors hover:opacity-80">
+          <div className="flex justify-center items-center w-[30px] h-[30px]">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D2DCF7" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+               <circle cx="11" cy="11" r="8"></circle>
+               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </div>
+          <span className="font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] text-[#D2DCF7]">Search</span>
+        </button>
+
+        <button className="flex flex-col justify-center items-center gap-[2px] w-[43px] h-[51px] transition-colors hover:opacity-80">
+          <div className="flex justify-center items-center w-[30px] h-[30px]">
+             <div 
+              className="w-[22px] h-[22px] bg-[#D2DCF7] flex-none"
+              style={{
+                maskImage: `url(/games/side-icon/pro.svg)`,
+                WebkitMaskImage: `url(/games/side-icon/pro.svg)`,
+                maskSize: 'contain',
+                WebkitMaskSize: 'contain',
+                maskRepeat: 'no-repeat',
+                WebkitMaskRepeat: 'no-repeat',
+                maskPosition: 'center',
+                WebkitMaskPosition: 'center'
+              }}
+            />
+          </div>
+          <span className="font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] text-[#D2DCF7]">Offers</span>
+        </button>
+
+        <button className="flex flex-col justify-center items-center gap-[2px] w-[30px] h-[51px] transition-colors hover:opacity-80">
+          <div className="flex justify-center items-center w-[30px] h-[30px]">
+            <div 
+              className="w-[24px] h-[23px] bg-[#D2DCF7] flex-none"
+              style={{
+                maskImage: `url(/games/side-icon/vip.svg)`,
+                WebkitMaskImage: `url(/games/side-icon/vip.svg)`,
+                maskSize: 'contain',
+                WebkitMaskSize: 'contain',
+                maskRepeat: 'no-repeat',
+                WebkitMaskRepeat: 'no-repeat',
+                maskPosition: 'center',
+                WebkitMaskPosition: 'center'
+              }}
+            />
+          </div>
+          <span className="font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] text-[#D2DCF7]">VIP</span>
+        </button>
+
+        <button className="flex flex-col justify-center items-center gap-[2px] w-[65px] h-[51px] transition-colors hover:opacity-80">
+          <div className="flex justify-center items-center w-[30px] h-[30px]">
+            <div 
+              className="w-[22px] h-[22px] bg-[#D2DCF7] flex-none"
+              style={{
+                maskImage: `url(/games/side-icon/tour.svg)`,
+                WebkitMaskImage: `url(/games/side-icon/tour.svg)`,
+                maskSize: 'contain',
+                WebkitMaskSize: 'contain',
+                maskRepeat: 'no-repeat',
+                WebkitMaskRepeat: 'no-repeat',
+                maskPosition: 'center',
+                WebkitMaskPosition: 'center'
+              }}
+            />
+          </div>
+          <span className="font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] text-[#D2DCF7]">Tourneys</span>
+        </button>
       </div>
 
       {/* Mobile Drawer Backdrop */}

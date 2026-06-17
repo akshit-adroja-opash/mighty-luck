@@ -27,32 +27,32 @@ export default function SectionHeader({
 }: SectionHeaderProps & { canScrollLeft?: boolean; canScrollRight?: boolean }) {
   return (
     /* w-[1136px] h-[30px] flex-row justify-between gap-[702px] */
-    <div className="flex min-h-[30px] w-full flex-none flex-row items-center justify-between gap-2 overflow-hidden">
+    <div className="flex min-h-[23px] md:min-h-[30px] w-full flex-none flex-row items-center justify-between gap-2 overflow-hidden">
 
       {/* Left group: w-auto h-[30px] flex-row gap-[12px] */}
-      <div className="flex min-h-[30px] flex-1 min-w-0 flex-row items-center gap-[12px]">
+      <div className="flex min-h-[23px] md:min-h-[30px] flex-1 min-w-0 flex-row items-center gap-[7.2px] md:gap-[12px]">
 
         {/* Icon container: w-[30px] h-[30px] centered */}
-        <div className={`flex h-[30px] w-[30px] flex-none items-center justify-center rounded-[2px] ${iconBg || "bg-[#FFC83D]"}`}>
+        <div className={`flex h-[18px] w-[18px] md:h-[30px] md:w-[30px] flex-none items-center justify-center rounded-[2px] ${iconBg || "bg-[#FFC83D]"} [&>img]:w-[18px] [&>img]:h-[18px] md:[&>img]:w-[30px] md:[&>img]:h-[30px] [&>svg]:w-[18px] [&>svg]:h-[18px] md:[&>svg]:w-[30px] md:[&>svg]:h-[30px]`}>
           {icon}
         </div>
 
         {/* Title: Jost 800 20px #FFFFFF letter-spacing 0.01em */}
         <h2
-          className="flex-1 min-w-0 truncate font-jost text-[20px] font-extrabold leading-[29px] tracking-[0.01em] text-white"
+          className="flex-1 min-w-0 truncate font-jost text-[16px] md:text-[20px] font-extrabold leading-[23px] md:leading-[29px] tracking-[0.01em] text-white"
         >
           {title}
         </h2>
       </div>
 
       {/* Right group */}
-      <div className="flex h-[30px] w-auto flex-none flex-row items-center justify-end gap-[12px]">
+      <div className="flex h-[23px] md:h-[30px] w-auto flex-none flex-row items-center justify-end gap-[12px]">
 
         {/* "View all": Manrope 600 12px #D2DCF7 */}
         {showViewAll && (
           <Link
             href={viewAllLink}
-            className="flex-none whitespace-nowrap font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#D2DCF7] hover:text-white transition-colors"
+            className="flex-none whitespace-nowrap font-manrope text-[12px] font-bold leading-[16px] tracking-[0.02em] text-[#FFBF1F] md:text-[#D2DCF7] hover:text-white transition-colors"
           >
             View all
           </Link>
@@ -60,7 +60,7 @@ export default function SectionHeader({
 
         {/* Pagination: w-[68px] h-[30px] flex-row gap-[8px] */}
         {showPagination && (
-          <div className="flex h-[30px] w-[68px] flex-none flex-row items-center gap-[8px]">
+          <div className="hidden md:flex h-[30px] w-[68px] flex-none flex-row items-center gap-[8px]">
 
             {/* Left arrow: bg-[#112F82] border-radius-4px */}
             <button

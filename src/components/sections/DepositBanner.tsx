@@ -90,29 +90,41 @@ const SvgIconWrapper = (src: string) => {
   }
 
   return (
-    <section className="relative isolate flex w-full flex-col sm:flex-row items-center justify-between gap-6 sm:gap-0 overflow-hidden rounded-[16px] bg-[#0C1F56] py-5 sm:py-0 px-5 sm:px-[40px] sm:h-[100px]">
+    <section className="relative isolate flex w-full flex-col md:flex-row items-center justify-between gap-[20px] md:gap-0 overflow-hidden rounded-[10px] md:rounded-[16px] bg-[#0C1F56] p-5 md:py-0 md:px-[40px] h-[165px] md:h-[100px]">
       
       {/* Background Blur */}
-      <div className="absolute left-1/2 top-[60px] z-[-1] h-[534px] w-[534px] -translate-x-1/2 rounded-full bg-[#1463FF] blur-[50px]" />
+      <div 
+        className="absolute left-1/2 top-[60px] z-[-1] h-[534px] w-[534px] -translate-x-1/2 rounded-full bg-[#1463FF] blur-[50px] hidden md:block" 
+      />
+      <div 
+        className="absolute z-[-1] rounded-full bg-[#1463FF] md:hidden"
+        style={{ 
+          width: "416px", 
+          height: "416px", 
+          left: "calc(50% - 208px)", 
+          top: "95px", 
+          filter: "blur(38.95px)" 
+        }}
+      />
 
       {/* Text */}
-      <h2 className="z-[1] flex-none text-center font-jost text-[20px] font-extrabold leading-[29px] text-white">
+      <h2 className="z-[1] flex-none text-center font-jost text-[18px] md:text-[20px] font-extrabold leading-[26px] md:leading-[29px] text-white w-[237px] md:w-auto">
         Want to play? Deposit Now
       </h2>
 
       {/* Crypto Logos */}
-      <div className="z-[2] flex flex-1 items-center justify-start lg:justify-center gap-[16px] lg:gap-[28px] text-white overflow-x-auto no-scrollbar w-full pb-2 sm:pb-0">
-        <img src="/games/deposite-icon/d1.svg" alt="deposit icon" className="shrink-0" />
-        <img src="/games/deposite-icon/d2.svg" alt="deposit icon" className="shrink-0" />
-        <img src="/games/deposite-icon/d3.svg" alt="deposit icon" className="shrink-0" />
-        <img src="/games/deposite-icon/d4.svg" alt="deposit icon" className="shrink-0" />
-        <img src="/games/deposite-icon/d5.svg" alt="deposit icon" className="shrink-0" />
-        <img src="/games/deposite-icon/d6.svg" alt="deposit icon" className="shrink-0" />
-        <img src="/games/deposite-icon/d7.svg" alt="deposit icon" className="shrink-0" />
-        <img src="/games/deposite-icon/d8.svg" alt="deposit icon" className="shrink-0" />
-        <img src="/games/deposite-icon/d9.svg" alt="deposit icon" className="shrink-0" />
-        <img src="/games/deposite-icon/d10.svg" alt="deposit icon" className="shrink-0" />
-        <img src="/games/deposite-icon/d11.svg" alt="deposit icon" className="shrink-0" />
+      <div className="z-[2] flex flex-row flex-nowrap items-center justify-between md:justify-center gap-[4px] md:gap-[28px] text-white w-full pb-0 flex-none md:flex-1">
+        <img src="/games/deposite-icon/d1.svg" alt="deposit icon" className="w-[13.38px] h-[18.39px] md:w-auto md:h-auto shrink" />
+        <img src="/games/deposite-icon/d2.svg" alt="deposit icon" className="w-[11.3px] h-[18.09px] md:w-auto md:h-auto shrink" />
+        <img src="/games/deposite-icon/d3.svg" alt="deposit icon" className="w-[19.09px] h-[17.73px] md:w-auto md:h-auto shrink" />
+        <img src="/games/deposite-icon/d4.svg" alt="deposit icon" className="w-[18.1px] h-[19.05px] md:w-auto md:h-auto shrink" />
+        <img src="/games/deposite-icon/d5.svg" alt="deposit icon" className="w-[21.4px] h-[17.7px] md:w-auto md:h-auto shrink" />
+        <img src="/games/deposite-icon/d6.svg" alt="deposit icon" className="w-[18.14px] h-[18.14px] md:w-auto md:h-auto shrink" />
+        <img src="/games/deposite-icon/d7.svg" alt="deposit icon" className="w-[15px] h-[16.36px] md:w-auto md:h-auto shrink" />
+        <img src="/games/deposite-icon/d8.svg" alt="deposit icon" className="w-[14.09px] h-[17.27px] md:w-auto md:h-auto shrink" />
+        <img src="/games/deposite-icon/d9.svg" alt="deposit icon" className="w-[17.09px] h-[18.56px] md:w-auto md:h-auto shrink" />
+        <img src="/games/deposite-icon/d10.svg" alt="deposit icon" className="w-[14.2px] h-[17.52px] md:w-auto md:h-auto shrink" />
+        <img src="/games/deposite-icon/d11.svg" alt="deposit icon" className="w-[19.89px] h-[17.52px] md:w-auto md:h-auto shrink" />
       </div>
 
       {/* Button */}

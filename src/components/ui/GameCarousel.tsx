@@ -29,7 +29,7 @@ export default function GameCarousel({ title, icon, iconBg = "bg-transparent", t
   };
 
   return (
-    <section className="flex w-full flex-none flex-col items-start gap-5 overflow-hidden">
+    <section className="flex w-full flex-none flex-col items-start gap-[12px] md:gap-5 overflow-hidden">
       <SectionHeader 
         title={title}
         titleWidth={titleWidth}
@@ -44,7 +44,7 @@ export default function GameCarousel({ title, icon, iconBg = "bg-transparent", t
       <div 
         ref={scrollRef}
         onScroll={checkScroll}
-        className="flex w-full gap-[12px] overflow-x-auto snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+        className="flex w-full gap-[8px] md:gap-[12px] overflow-x-auto snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
       >
         {children}
       </div>
