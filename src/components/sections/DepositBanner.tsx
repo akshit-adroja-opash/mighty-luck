@@ -55,7 +55,7 @@ const SvgIconWrapper = (src: string) => {
     ];
 
     return (
-      <div className="flex w-full items-center gap-[8px] h-[40px] md:h-[50px] overflow-x-auto md:overflow-x-visible no-scrollbar">
+      <div className="flex w-full items-center gap-[8px] h-[40px] lg:h-[50px] overflow-x-auto lg:overflow-x-visible no-scrollbar">
         {categories.map((category) => {
           const Icon = category.icon;
           const isActive = category.name === activeCategory;
@@ -64,7 +64,7 @@ const SvgIconWrapper = (src: string) => {
             <button
               key={category.name}
               onClick={() => dispatch(setActiveCategory(category.name))}
-              className={`flex h-[40px] md:h-[50px] flex-none md:flex-1 min-w-[106.6px] md:min-w-0 items-center justify-center gap-[6.4px] md:gap-[8px] rounded-[6px] px-[12.8px] md:px-[16px] py-[8px] md:py-[10px] transition-colors cursor-pointer ${
+              className={`flex h-[40px] lg:h-[50px] flex-none lg:flex-1 min-w-[106.6px] lg:min-w-0 items-center justify-center gap-[6.4px] lg:gap-[8px] rounded-[6px] px-[12.8px] lg:px-[16px] py-[8px] lg:py-[10px] transition-colors cursor-pointer ${
                 isActive
                   ? "bg-[#1463FF]"
                   : "bg-[#0C1F56] hover:bg-[#112F82]"
@@ -72,12 +72,12 @@ const SvgIconWrapper = (src: string) => {
             >
               <Icon 
                 size={16} 
-                className={`w-[16px] h-[16px] md:w-[20px] md:h-[20px] flex-none ${isActive ? "text-[#FFB800]" : "text-[#D2DCF7]"}`} 
+                className={`w-[16px] h-[16px] lg:w-[20px] lg:h-[20px] flex-none ${isActive ? "text-[#FFB800]" : "text-[#D2DCF7]"}`} 
                 fill={isActive ? "#FFB800" : "transparent"} 
                 isActive={isActive}
               />
               <span 
-                className={`font-manrope ${isLongName ? "text-[11.2px]" : "text-[12px]"} md:text-[14px] font-semibold leading-[16px] md:leading-[19px] tracking-[0.02em] whitespace-nowrap ${
+                className={`font-manrope ${isLongName ? "text-[11.2px]" : "text-[12px]"} lg:text-[14px] font-semibold leading-[16px] lg:leading-[19px] tracking-[0.02em] whitespace-nowrap ${
                   isActive ? "text-white font-bold" : "text-[#D2DCF7]"
                 }`}
               >
