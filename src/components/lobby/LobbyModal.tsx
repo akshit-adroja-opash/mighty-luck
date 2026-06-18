@@ -189,19 +189,19 @@ export default function LobbyModal() {
   return (
     <div
       onClick={handleBackdropClick}
-      className="fixed inset-0 top-[50px] bottom-[75px] md:bottom-0 md:top-0 z-[100] flex items-center justify-center bg-[#0C1F56] md:bg-black/60 md:backdrop-blur-sm p-0 md:p-4"
+      className="fixed inset-0 top-[50px] bottom-[75px] lg:bottom-0 lg:top-0 z-[100] flex items-center justify-center bg-[#0C1F56] lg:bg-black/60 lg:backdrop-blur-sm p-0 lg:p-4"
     >
-      <div className="relative flex flex-col lg:flex-row items-start bg-[#0C1F56] md:bg-[#091741] rounded-none md:rounded-[16px] lg:rounded-[20px] p-[20px] md:p-5 lg:p-[24px] gap-[20px] lg:gap-[20px] w-full max-w-[1056px] h-full md:h-auto md:max-h-[90dvh] lg:max-h-none lg:h-[636px] border-none md:border md:border-white/5 shadow-none md:shadow-2xl select-none animate-in fade-in zoom-in-95 duration-200 overflow-y-auto md:overflow-visible">
+      <div className="relative flex flex-col md:flex-row items-start bg-[#0C1F56] lg:bg-[#091741] rounded-none lg:rounded-[20px] p-[16px] md:p-[12px] lg:p-[24px] md:gap-[12px] lg:gap-[20px] w-full max-w-[1056px] h-full lg:h-[636px] border-none lg:border lg:border-white/5 shadow-none lg:shadow-2xl select-none animate-in fade-in zoom-in-95 duration-200 overflow-hidden">
         
         <button
           onClick={() => dispatch(closeModal("lobby"))}
-          className="absolute hidden md:flex -top-[44px] right-0 lg:-right-[44px] lg:top-0 w-[32px] h-[32px] items-center justify-center bg-transparent text-white hover:text-[#A5B8EF] transition-colors cursor-pointer z-[110]"
+          className="absolute hidden lg:flex -top-[44px] right-0 lg:-right-[44px] lg:top-0 w-[32px] h-[32px] items-center justify-center bg-transparent text-white hover:text-[#A5B8EF] transition-colors cursor-pointer z-[110]"
         >
           <CloseIcon />
         </button>
 
-        <div className="hidden lg:flex flex-col justify-center items-start gap-[12px] w-[180px] h-[588px] flex-none">
-          <div className="flex flex-row items-start p-[16px] gap-[10px] w-[180px] h-[200px] bg-[#0C1F56] rounded-[12px] flex-none">
+        <div className="hidden md:flex flex-col justify-start items-start gap-[12px] w-[180px] flex-none overflow-y-auto no-scrollbar h-full lg:h-[588px]">
+          <div className="flex flex-row items-start px-[16px] pb-[16px] pt-0 lg:p-[16px] gap-[10px] w-[180px] bg-[#0C1F56] rounded-[12px] flex-none">
             <div className="flex flex-col items-start gap-[8px] w-[148px] h-[168px] flex-grow">
               <SidebarBtn icon={navIcons.all} label="All Games" isActive={activeTab === "all"} onClick={() => { setActiveTab("all"); dispatch(setActiveCategory("Lobby")); }} />
               <SidebarBtn icon={navIcons.recent} label="Recently Played" isActive={activeTab === "recent"} onClick={() => { setActiveTab("recent"); toast.info("Showing recently played games."); }} />
@@ -211,7 +211,7 @@ export default function LobbyModal() {
           </div>
 
           {/* Box 2: Game Types — 180×376px */}
-          <div className="flex flex-row items-start p-[16px] gap-[10px] w-[180px] h-[376px] bg-[#0C1F56] rounded-[12px] flex-none">
+          <div className="flex flex-row items-start px-[16px] pb-[16px] pt-0 lg:p-[16px] gap-[10px] w-[180px] bg-[#0C1F56] rounded-[12px] flex-none">
             <div className="flex flex-col items-start gap-[8px] w-[148px] h-[344px] flex-grow">
               {categoryItems.map((c) => (
                 <SidebarBtn
@@ -228,7 +228,7 @@ export default function LobbyModal() {
         </div>
 
         {/* ── Right Content ── */}
-        <div className="flex flex-col items-start gap-6 lg:gap-[32px] w-full flex-1 min-w-0 overflow-y-auto lg:overflow-hidden min-h-0 lg:h-[543px]">
+        <div className="flex flex-col items-start gap-4 lg:gap-[32px] w-full flex-1 min-w-0 overflow-y-auto no-scrollbar min-h-0">
           
           {/* Top row: Search bar + Mobile Close Button */}
           <div className="flex flex-row items-center gap-2 w-full flex-none">
@@ -266,7 +266,7 @@ export default function LobbyModal() {
           </div>
 
           {/* ── MOBILE: Horizontal category tabs ── */}
-          <div className="flex lg:hidden flex-col gap-3 w-full flex-none">
+          <div className="flex md:hidden flex-col gap-3 w-full flex-none">
             <div className="flex flex-row items-center gap-2 w-full">
               <div className="flex flex-row gap-2 overflow-x-auto no-scrollbar flex-1">
               {navItems.map((item) => (
@@ -338,13 +338,26 @@ export default function LobbyModal() {
                   </span>
                 </div>
                 <div className="flex-1 overflow-y-auto no-scrollbar min-h-0">
-                  <div className="flex flex-row flex-wrap gap-[7.86px] lg:gap-3">
+                  {/* Mobile: 2-col (<414px) → 3-col (414px+) grid | Tablet: 4-col (md+) | Large: flex-wrap (unchanged) */}
+                  <div className="grid grid-cols-2 min-[414px]:grid-cols-3 md:grid-cols-4 gap-[7.86px] lg:hidden">
                     {filteredGames.map((game, index) => (
                       <GameCard 
                         key={index}
                         image={game.image} 
                         title={game.title} 
                         onClick={() => handleGameClick(game)}
+                        fluid
+                      />
+                    ))}
+                  </div>
+                  <div className="hidden lg:grid grid-cols-5 gap-3 w-full lg:max-w-[808px]">
+                    {filteredGames.map((game, index) => (
+                      <GameCard 
+                        key={index}
+                        image={game.image} 
+                        title={game.title} 
+                        onClick={() => handleGameClick(game)}
+                        fluid
                       />
                     ))}
                   </div>
@@ -363,10 +376,10 @@ export default function LobbyModal() {
             )
           ) : (
             /* ── Lobby Content (Normal view) — 856×452px ── */
-            <div className="flex flex-col items-start gap-6 lg:gap-[32px] w-full lg:w-[856px] lg:h-[452px] flex-1 lg:flex-none min-h-0">
+            <div className="flex flex-col items-start gap-6 lg:gap-[32px] w-full lg:max-w-[856px] lg:h-[452px] flex-1 lg:flex-none min-h-0">
               
               {/* Popular Games — 808×249px */}
-              <div className="flex flex-col gap-4 lg:gap-[20px] w-full lg:w-[808px] lg:h-[249px] flex-none">
+              <div className="flex flex-col gap-4 lg:gap-[20px] w-full lg:max-w-[808px] lg:h-[249px] flex-none">
                 <div className="flex flex-row items-center justify-between w-full h-[23px] lg:h-[29px] flex-none">
                   <div className="flex flex-row items-center gap-[7.2px] lg:gap-[8px]">
                     <div className="w-[18px] h-[18px] lg:w-[20px] lg:h-[20px] flex items-center justify-center text-[#FFBF1F]">
@@ -382,13 +395,14 @@ export default function LobbyModal() {
                 </div>
 
                 {/* Cards Row — 808×200px, gap 7.86px */}
-                <div className="flex flex-row items-center gap-[7.86px] lg:gap-[12px] w-full lg:w-[808px] h-[157.14px] lg:h-[200px] overflow-x-auto no-scrollbar flex-none">
+                <div className="flex flex-row items-center gap-[7.86px] lg:gap-[12px] w-full lg:max-w-[808px] h-[157.14px] md:h-auto lg:h-[200px] overflow-x-auto md:overflow-visible no-scrollbar flex-none">
                   {popularGames.map((game, index) => (
-                    <div key={index} className="flex-none">
+                    <div key={index} className="flex-none w-[119.43px] md:flex-1 md:min-w-0 md:w-auto lg:max-w-[152px]">
                       <GameCard 
                         image={game.image} 
                         title={game.title} 
                         onClick={() => handleGameClick(game)}
+                        fluid
                       />
                     </div>
                   ))}

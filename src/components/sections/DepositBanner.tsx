@@ -91,7 +91,7 @@ const SvgIconWrapper = (src: string) => {
   }
 
   return (
-    <section className="relative isolate flex w-full flex-col md:flex-row items-center justify-start md:justify-between gap-[20px] md:gap-0 overflow-hidden rounded-[10px] md:rounded-[16px] bg-[#0C1F56] p-[20px] md:py-0 md:px-[40px] h-[165px] md:h-[100px]">
+    <section className="relative isolate flex w-full flex-col md:flex-row items-center justify-start md:justify-between gap-[20px] md:gap-[16px] lg:gap-0 overflow-hidden rounded-[10px] md:rounded-[16px] bg-[#0C1F56] p-[20px] md:py-0 md:px-[24px] lg:px-[40px] h-[165px] md:h-[100px]">
       
       {/* Background Blur */}
       <div 
@@ -114,18 +114,18 @@ const SvgIconWrapper = (src: string) => {
       </h2>
 
       {/* Crypto Logos */}
-      <div className="z-[2] flex flex-row flex-wrap items-center justify-between md:justify-center gap-[12px] md:gap-[28px] text-white w-[334px] md:w-auto pb-0 flex-none md:flex-1 h-[19px] md:h-auto">
-        <img src="/games/deposite-icon/d1.svg" alt="deposit icon" className="w-[13.38px] h-[18.39px] md:w-auto md:h-auto shrink" />
-        <img src="/games/deposite-icon/d2.svg" alt="deposit icon" className="w-[11.3px] h-[18.09px] md:w-auto md:h-auto shrink" />
-        <img src="/games/deposite-icon/d3.svg" alt="deposit icon" className="w-[19.09px] h-[17.73px] md:w-auto md:h-auto shrink" />
-        <img src="/games/deposite-icon/d4.svg" alt="deposit icon" className="w-[18.1px] h-[19.05px] md:w-auto md:h-auto shrink" />
-        <img src="/games/deposite-icon/d5.svg" alt="deposit icon" className="w-[21.4px] h-[17.7px] md:w-auto md:h-auto shrink" />
-        <img src="/games/deposite-icon/d6.svg" alt="deposit icon" className="w-[18.14px] h-[18.14px] md:w-auto md:h-auto shrink" />
-        <img src="/games/deposite-icon/d7.svg" alt="deposit icon" className="w-[15px] h-[16.36px] md:w-auto md:h-auto shrink" />
-        <img src="/games/deposite-icon/d8.svg" alt="deposit icon" className="w-[14.09px] h-[17.27px] md:w-auto md:h-auto shrink" />
-        <img src="/games/deposite-icon/d9.svg" alt="deposit icon" className="w-[17.09px] h-[18.56px] md:w-auto md:h-auto shrink" />
-        <img src="/games/deposite-icon/d10.svg" alt="deposit icon" className="w-[14.2px] h-[17.52px] md:w-auto md:h-auto shrink" />
-        <img src="/games/deposite-icon/d11.svg" alt="deposit icon" className="w-[19.89px] h-[17.52px] md:w-auto md:h-auto shrink" />
+      <div className="z-[2] flex flex-row flex-wrap items-center justify-between md:justify-center gap-[12px] md:gap-[12px] lg:gap-[20px] xl:gap-[28px] text-white w-[334px] md:w-auto pb-0 flex-none md:flex-1 h-[19px] md:h-auto">
+        <img src="/games/deposite-icon/d1.svg" alt="deposit icon" className="w-[13.38px] h-[18.39px] lg:w-auto lg:h-auto shrink" />
+        <img src="/games/deposite-icon/d2.svg" alt="deposit icon" className="w-[11.3px] h-[18.09px] lg:w-auto lg:h-auto shrink" />
+        <img src="/games/deposite-icon/d3.svg" alt="deposit icon" className="w-[19.09px] h-[17.73px] lg:w-auto lg:h-auto shrink" />
+        <img src="/games/deposite-icon/d4.svg" alt="deposit icon" className="w-[18.1px] h-[19.05px] lg:w-auto lg:h-auto shrink" />
+        <img src="/games/deposite-icon/d5.svg" alt="deposit icon" className="w-[21.4px] h-[17.7px] lg:w-auto lg:h-auto shrink" />
+        <img src="/games/deposite-icon/d6.svg" alt="deposit icon" className="w-[18.14px] h-[18.14px] lg:w-auto lg:h-auto shrink" />
+        <img src="/games/deposite-icon/d7.svg" alt="deposit icon" className="w-[15px] h-[16.36px] lg:w-auto lg:h-auto shrink" />
+        <img src="/games/deposite-icon/d8.svg" alt="deposit icon" className="w-[14.09px] h-[17.27px] lg:w-auto lg:h-auto shrink" />
+        <img src="/games/deposite-icon/d9.svg" alt="deposit icon" className="w-[17.09px] h-[18.56px] lg:w-auto lg:h-auto shrink" />
+        <img src="/games/deposite-icon/d10.svg" alt="deposit icon" className="w-[14.2px] h-[17.52px] lg:w-auto lg:h-auto shrink" />
+        <img src="/games/deposite-icon/d11.svg" alt="deposit icon" className="w-[19.89px] h-[17.52px] lg:w-auto lg:h-auto shrink" />
       </div>
 
       {/* Button */}

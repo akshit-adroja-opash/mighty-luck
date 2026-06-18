@@ -10,10 +10,10 @@ export default function HeroBanner() {
           style={{ backgroundImage: `url('/images/layout/hero.jpg')`, backgroundPosition: 'left center' }}
         />
 
-        {/* Desktop Background Image */}
+        {/* Desktop Background Image — left-aligned */}
         <div
-          className="hidden lg:block absolute inset-0 z-0 h-full w-full bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url('/images/layout/hero.jpg')` }}
+          className="hidden lg:block absolute inset-0 z-0 h-full w-full bg-cover bg-no-repeat"
+          style={{ backgroundImage: `url('/images/layout/hero.jpg')`, backgroundPosition: 'left center' }}
         />
 
         {/* Mobile Background Image (Figma exact positioning) */}
@@ -35,13 +35,11 @@ export default function HeroBanner() {
         />
 
         {/* Ellipse 7 — mobile & desktop only, hidden at tablet */}
-        <div className="absolute -left-[50px] -top-[38px] md:hidden lg:block lg:-left-[161px] lg:-top-[102px] z-[1] h-[226px] w-[226px] lg:h-[575px] lg:w-[575px] rounded-full bg-[#03123C] lg:bg-[#06102B] opacity-100 blur-[29.26px] lg:blur-[75px]" />
+        <div className="absolute -left-[50px] -top-[38px] md:hidden lg:block lg:-left-[161px] lg:-top-[102px] z-[1] h-[226px] w-[226px] lg:h-[575px] lg:w-[575px] rounded-full bg-[#03123C] lg:bg-[#06102B] opacity-50 lg:opacity-50 blur-[29.26px] lg:blur-[75px]" />
 
         {/* Ellipse 8 — mobile & desktop only, hidden at tablet */}
-        <div className="absolute left-[501.42px] top-[130.53px] md:hidden lg:block lg:-right-[34px] lg:-bottom-[44px] lg:left-auto lg:top-auto z-[1] h-[62.14px] w-[62.14px] lg:h-[129px] lg:w-[129px] rounded-full bg-[#010A25] blur-[12.04px] lg:blur-[25px]" />
+        <div className="absolute left-[501.42px] top-[130.53px] md:hidden lg:block lg:-right-[34px] lg:-bottom-[44px] lg:left-auto lg:top-auto z-[1] h-[62.14px] w-[62.14px] lg:h-[129px] lg:w-[129px] rounded-full bg-[#010A25] opacity-50 lg:opacity-50 blur-[12.04px] lg:blur-[25px]" />
 
-        {/* Ellipse 9 — desktop only */}
-        <div className="hidden lg:block absolute left-[198px] top-[224px] z-[1] h-[194px] w-[194px] rounded-full bg-[#103686] blur-[25px]" />
 
         {/* Content Box */}
         <div className="absolute md:relative z-10 flex flex-col items-start gap-[16px] md:gap-[24px] left-[19.27px] top-[28.76px] md:translate-y-0 md:left-auto md:top-auto px-0 md:pl-[40px] md:pr-0 pt-0 md:pt-[80px] lg:pt-[101px] pb-0 md:pb-[40px] lg:pb-0 w-[220.13px] md:w-full md:max-w-[420px] lg:max-w-[497px] h-[112.47px] md:h-auto">
