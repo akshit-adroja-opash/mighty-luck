@@ -349,9 +349,11 @@ export default function WalletModal() {
       
       {/* Outer absolute position alignment box (dynamic height to avoid jumps) */}
       <div 
-        className="relative transition-all duration-300 w-full sm:w-[500px] overflow-y-auto sm:overflow-visible rounded-none sm:rounded-[16px] flex flex-col h-auto sm:h-[var(--modal-height)]" 
+        className={`relative transition-all duration-300 w-full sm:w-[500px] overflow-y-auto sm:overflow-visible rounded-none sm:rounded-[16px] flex flex-col ${
+          activeTab === 'deposit' && !isBtcSubmitted ? 'h-auto sm:h-[var(--modal-height)]' : 'h-[var(--modal-height)]'
+        }`}
         style={{ 
-          '--modal-height': modalHeight ? `${modalHeight}px` : undefined,
+          '--modal-height': modalHeight,
           transform: `translateY(${modalDragY}px)`,
           transition: isDraggingModal ? 'none' : 'transform 0.3s ease-out'
         } as React.CSSProperties}
@@ -399,8 +401,10 @@ export default function WalletModal() {
 
           {/* Inner Content Box */}
           <div 
-            className="relative z-20 flex flex-col items-start w-full sm:w-[460px] gap-[24px] transition-all duration-300 h-auto sm:h-[var(--inner-height)]"
-            style={{ '--inner-height': innerHeight ? `${innerHeight}px` : undefined } as React.CSSProperties}
+            className={`relative z-20 flex flex-col items-start w-full sm:w-[460px] gap-[24px] transition-all duration-300 ${
+              activeTab === 'deposit' && !isBtcSubmitted ? 'h-auto sm:h-[var(--inner-height)]' : 'h-[var(--inner-height)]'
+            }`}
+            style={{ '--inner-height': innerHeight } as React.CSSProperties}
           >
             
             {/* Header Title Block */}
@@ -442,8 +446,10 @@ export default function WalletModal() {
 
             {/* Tab container / Form content area */}
             <div 
-              className="flex flex-col items-start w-full sm:w-[460px] gap-[16px] transition-all duration-300 h-auto sm:h-[var(--tabs-content-height)]"
-              style={{ '--tabs-content-height': tabsContentHeight ? `${tabsContentHeight}px` : undefined } as React.CSSProperties}
+              className={`flex flex-col items-start w-full sm:w-[460px] gap-[16px] transition-all duration-300 ${
+                activeTab === 'deposit' && !isBtcSubmitted ? 'h-auto sm:h-[var(--tabs-content-height)]' : 'h-[var(--tabs-content-height)]'
+              }`}
+              style={{ '--tabs-content-height': tabsContentHeight } as React.CSSProperties}
             >
               
               {/* Tabs Switcher */}
@@ -474,10 +480,12 @@ export default function WalletModal() {
 
               {/* Tab View Container */}
               <div 
-                className={`flex flex-col items-start gap-[16px] w-full sm:w-[460px] bg-[#0C1F56] rounded-[16px] overflow-visible transition-all duration-300 h-auto sm:h-[var(--tab-view-height)] ${
+                className={`flex flex-col items-start gap-[16px] w-full sm:w-[460px] bg-[#0C1F56] rounded-[16px] overflow-visible transition-all duration-300 ${
+                  activeTab === 'deposit' && !isBtcSubmitted ? 'h-auto sm:h-[var(--tab-view-height)]' : 'h-[var(--tab-view-height)]'
+                } ${
                   isBtcSubmitted ? "p-[20px_16px]" : "p-[16px]"
                 }`}
-                style={{ '--tab-view-height': tabViewHeight ? `${tabViewHeight}px` : undefined } as React.CSSProperties}
+                style={{ '--tab-view-height': tabViewHeight } as React.CSSProperties}
               >
                 {activeTab === "deposit" ? (
                   isBtcSubmitted ? (
