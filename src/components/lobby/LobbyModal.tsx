@@ -260,13 +260,7 @@ export default function LobbyModal() {
               )}
             </div>
             
-            {/* Mobile Close Button */}
-            <button
-              onClick={() => dispatch(closeModal("lobby"))}
-              className="flex lg:hidden flex-none w-[32px] h-[32px] items-center justify-center bg-[#112F82] rounded-full text-white hover:bg-[#1463FF] transition-colors cursor-pointer"
-            >
-              <CloseIcon />
-            </button>
+            {/* Mobile Close Button Removed */}
           </div>
 
           {/* ── MOBILE: Horizontal category tabs ── */}
