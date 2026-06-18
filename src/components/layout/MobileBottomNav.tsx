@@ -10,9 +10,10 @@ interface MobileBottomNavProps {
 export default function MobileBottomNav({ isMobileMenuOpen, setIsMobileMenuOpen }: MobileBottomNavProps) {
   const dispatch = useDispatch();
   const isLobbyOpen = useSelector((state: RootState) => state.ui.modals?.lobby);
+  const isWalletOpen = useSelector((state: RootState) => state.ui.modals?.wallet);
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-[110] lg:hidden flex flex-row justify-between items-center px-5 py-[12px] h-[75px] bg-[#0C1F56] rounded-t-[16px] shadow-[0_-4px_20px_rgba(0,0,0,0.2)]">
+    <div className={`fixed bottom-0 left-0 right-0 z-[110] lg:hidden flex flex-row justify-between items-center px-5 py-[12px] h-[75px] bg-[#0C1F56] ${(!isLobbyOpen && !isMobileMenuOpen && !isWalletOpen) ? 'rounded-t-[16px]' : ''}`}>
       <button onClick={() => { if (isLobbyOpen) dispatch(closeModal("lobby")); setIsMobileMenuOpen(!isMobileMenuOpen); }} className="flex flex-col justify-center items-center gap-[2px] w-[39px] h-[51px] transition-colors hover:opacity-80">
         <div className="flex justify-center items-center w-[30px] h-[30px]">
           <svg width="22" height="15" viewBox="0 0 22 15" fill="none" stroke={isMobileMenuOpen ? "#FFBF1F" : "#D2DCF7"} strokeWidth="2.75" xmlns="http://www.w3.org/2000/svg">
@@ -28,6 +29,7 @@ export default function MobileBottomNav({ isMobileMenuOpen, setIsMobileMenuOpen 
           if (isLobbyOpen) {
             dispatch(closeModal("lobby"));
           } else {
+            if (isMobileMenuOpen) setIsMobileMenuOpen(false);
             dispatch(setActiveCategory("Lobby"));
             dispatch(openModal("lobby"));
           }
@@ -43,7 +45,7 @@ export default function MobileBottomNav({ isMobileMenuOpen, setIsMobileMenuOpen 
         <span className={`font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] ${isLobbyOpen ? "text-[#FFBF1F]" : "text-[#D2DCF7]"}`}>Search</span>
       </button>
 
-      <button onClick={() => { if (isLobbyOpen) dispatch(closeModal("lobby")); }} className="flex flex-col justify-center items-center gap-[2px] w-[43px] h-[51px] transition-colors hover:opacity-80">
+      <button onClick={() => { if (isLobbyOpen) dispatch(closeModal("lobby")); if (isMobileMenuOpen) setIsMobileMenuOpen(false); }} className="flex flex-col justify-center items-center gap-[2px] w-[43px] h-[51px] transition-colors hover:opacity-80">
         <div className="flex justify-center items-center w-[30px] h-[30px]">
            <div 
             className="w-[22px] h-[22px] bg-[#D2DCF7] flex-none"
@@ -62,7 +64,7 @@ export default function MobileBottomNav({ isMobileMenuOpen, setIsMobileMenuOpen 
         <span className="font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] text-[#D2DCF7]">Offers</span>
       </button>
 
-      <button onClick={() => { if (isLobbyOpen) dispatch(closeModal("lobby")); }} className="flex flex-col justify-center items-center gap-[2px] w-[30px] h-[51px] transition-colors hover:opacity-80">
+      <button onClick={() => { if (isLobbyOpen) dispatch(closeModal("lobby")); if (isMobileMenuOpen) setIsMobileMenuOpen(false); }} className="flex flex-col justify-center items-center gap-[2px] w-[30px] h-[51px] transition-colors hover:opacity-80">
         <div className="flex justify-center items-center w-[30px] h-[30px]">
           <div 
             className="w-[24px] h-[23px] bg-[#D2DCF7] flex-none"
@@ -81,7 +83,7 @@ export default function MobileBottomNav({ isMobileMenuOpen, setIsMobileMenuOpen 
         <span className="font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] text-[#D2DCF7]">VIP</span>
       </button>
 
-      <button onClick={() => { if (isLobbyOpen) dispatch(closeModal("lobby")); }} className="flex flex-col justify-center items-center gap-[2px] w-[65px] h-[51px] transition-colors hover:opacity-80">
+      <button onClick={() => { if (isLobbyOpen) dispatch(closeModal("lobby")); if (isMobileMenuOpen) setIsMobileMenuOpen(false); }} className="flex flex-col justify-center items-center gap-[2px] w-[65px] h-[51px] transition-colors hover:opacity-80">
         <div className="flex justify-center items-center w-[30px] h-[30px]">
           <div 
             className="w-[22px] h-[22px] bg-[#D2DCF7] flex-none"
