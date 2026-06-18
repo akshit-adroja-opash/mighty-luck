@@ -5,7 +5,7 @@ import Image from "next/image";
 import { X, Search, LogOut, Bell, Wallet, Users } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
-import { openModal, setAuthModalView, toggleSidebar } from "@/store/slices/uiSlice";
+import { openModal, setAuthModalView, toggleSidebar, setActiveCategory } from "@/store/slices/uiSlice";
 import { logout } from "@/store/slices/authSlice";
 import { useState, useRef, useEffect } from "react";
 import SidebarMenu from "./SidebarMenu";
@@ -193,7 +193,13 @@ export default function Header() {
           <span className={`font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] ${isMobileMenuOpen ? "text-[#FFBF1F]" : "text-[#D2DCF7]"}`}>Menu</span>
         </button>
 
-        <button className="flex flex-col justify-center items-center gap-[2px] w-[50px] h-[51px] transition-colors hover:opacity-80">
+        <button 
+          onClick={() => {
+            dispatch(setActiveCategory("Lobby"));
+            dispatch(openModal("lobby"));
+          }}
+          className="flex flex-col justify-center items-center gap-[2px] w-[50px] h-[51px] transition-colors hover:opacity-80"
+        >
           <div className="flex justify-center items-center w-[30px] h-[30px]">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D2DCF7" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                <circle cx="11" cy="11" r="8"></circle>
