@@ -1,11 +1,12 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Copy, QrCode, ArrowLeft } from "lucide-react";
+import { Copy, QrCode, ArrowLeft, Bell, Gift, Wallet as WalletIcon } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { closeModal } from "@/store/slices/uiSlice";
 import { toast } from "sonner";
+import Logo from "@/components/ui/Logo";
 
 // Custom SVG Icons for pixel-perfect match
 
@@ -63,6 +64,7 @@ const countryList = [
 export default function WalletModal() {
   const dispatch = useDispatch();
   const isOpen = useSelector((state: RootState) => state.ui.modals["wallet"]);
+  const { user } = useSelector((state: RootState) => state.auth);
 
   const [activeTab, setActiveTab] = useState<"deposit" | "bonuses" | "withdraw" | "transactions">("deposit");
   const [usdAmount, setUsdAmount] = useState<string>("100");
@@ -308,11 +310,51 @@ export default function WalletModal() {
   ];
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-[#091741] sm:bg-[#0C1733]/70 sm:backdrop-blur-[8px] sm:p-4">
+    <div className="fixed inset-0 z-[100] flex flex-col items-center justify-end sm:justify-center bg-[#0C1F56] sm:bg-[#0C1733]/70 sm:backdrop-blur-[8px] sm:p-4">
       
+      {/* Mobile Navbar (Matches Header) */}
+      <div className="flex sm:hidden flex-row justify-between items-center px-[20px] py-[10px] w-full h-[50px] bg-[#0C1F56] flex-none absolute top-0 left-0 overflow-hidden">
+        {/* Glow */}
+        <div className="absolute w-[71.5px] h-[71.5px] left-[6px] top-[32px] bg-[#1463FF] blur-[12.5px] z-0" />
+        
+        {/* Content */}
+        <div className="flex flex-row justify-between items-center w-full z-10">
+          <div className="w-[44px] h-[30px] relative flex-none flex items-center">
+            <Logo hideTextOnMobile className="h-[30px] w-full" iconClassName="w-[33.94px] h-[24.75px] m-0" />
+          </div>
+          
+          <div className="flex flex-row justify-end items-center gap-[16px] flex-none">
+            <div className="flex flex-row items-center gap-[4px] h-[30px]">
+              <div className="flex flex-row justify-center items-center px-[20px] py-[8px] gap-[7.5px] h-[30px] bg-[#112F82] rounded-[6px]">
+                <span className="font-manrope font-bold text-[10.5px] leading-[14px] tracking-[0.02em] text-white">
+                  $105,98
+                </span>
+              </div>
+              <div className="flex flex-row justify-center items-center p-[8px] w-[30px] h-[30px] bg-[#FFC83D] rounded-[6px]">
+                <WalletIcon className="w-[14px] h-[14px] text-[#1A1404] flex-none" fill="#1A1404" />
+              </div>
+            </div>
+            
+            <div className="flex flex-row items-center gap-[8px] h-[30px]">
+              <div className="flex flex-row justify-center items-center p-[7.5px_9px] w-[30px] h-[30px] bg-[#173EAD] rounded-[6px] relative">
+                <Bell size={14} className="text-[#D2DCF7]" fill="#D2DCF7" />
+                <div className="absolute w-[8px] h-[8px] left-[22px] top-0 bg-[#FF0E0E] rounded-[50px] flex items-center justify-center border-[1.5px] border-[#173EAD]" />
+              </div>
+              <div className="flex flex-row justify-center items-center p-[7.5px_9px] w-[30px] h-[30px] bg-[#173EAD] rounded-[6px] relative">
+                <Gift size={14} className="text-[#D2DCF7]" fill="#D2DCF7" />
+                <div className="absolute w-[8px] h-[8px] left-[22px] top-0 bg-[#FF0E0E] rounded-[50px] flex items-center justify-center border-[1.5px] border-[#173EAD]" />
+              </div>
+              <div className="w-[30px] h-[30px] rounded-full overflow-hidden bg-[#173EAD] flex items-center justify-center">
+                <img src="/images/avatar.png" alt="Avatar" className="w-[30px] h-[30px] rounded-full object-cover" onError={(e) => (e.currentTarget.src = `https://ui-avatars.com/api/?name=${user?.name || "User"}&background=1463FF&color=fff&bold=true`)} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Outer absolute position alignment box (dynamic height to avoid jumps) */}
       <div 
-        className="relative transition-all duration-300 w-full sm:w-[500px] min-h-[100dvh] sm:min-h-0 sm:max-h-none overflow-y-auto sm:overflow-visible rounded-none sm:rounded-[16px] flex flex-col" 
+        className="relative transition-all duration-300 w-full sm:w-[500px] mt-[80px] sm:mt-0 overflow-y-auto sm:overflow-visible rounded-none sm:rounded-[16px] flex flex-col" 
         style={{ 
           height: typeof window !== "undefined" && window.innerWidth < 640 ? undefined : modalHeight 
         }}
@@ -333,36 +375,39 @@ export default function WalletModal() {
 
         {/* Outer Modal Container */}
         <div 
-          className="relative flex flex-col items-center bg-[#091741] rounded-none sm:rounded-[16px] w-full flex-1 min-h-[100dvh] sm:min-h-0 shadow-none sm:shadow-2xl isolation-isolate transition-all duration-300"
+          className="relative flex flex-col items-center bg-[#091741] rounded-[30px_30px_0px_0px] sm:rounded-[16px] w-full shadow-none sm:shadow-2xl isolation-isolate transition-all duration-300"
           style={{
-            padding: typeof window !== "undefined" && window.innerWidth < 640 ? "24px 16px 24px" : "24px 20px 32px",
-            gap: "24px",
+            padding: typeof window !== "undefined" && window.innerWidth < 640 ? "16px 20px 40px" : "24px 20px 32px",
+            gap: typeof window !== "undefined" && window.innerWidth < 640 ? "16px" : "24px",
           }}
         >
           
           {/* Accent Glow Container (clips the glow to the card boundaries) */}
-          <div className="absolute inset-0 rounded-[16px] overflow-hidden pointer-events-none z-0">
+          <div className="absolute inset-0 rounded-[30px_30px_0px_0px] sm:rounded-[16px] overflow-hidden pointer-events-none z-0">
             <div 
               className="absolute rounded-full bg-[#1463FF]"
               style={{
-                width: "173px",
-                height: "173px",
-                left: "calc(50% - 173px/2 + 0.5px)",
-                top: isBtcSubmitted ? "-126px" : "-145px",
+                width: typeof window !== "undefined" && window.innerWidth < 640 ? "174px" : "173px",
+                height: typeof window !== "undefined" && window.innerWidth < 640 ? "176px" : "173px",
+                left: typeof window !== "undefined" && window.innerWidth < 640 ? "calc(50% - 174px/2 - 165px)" : "calc(50% - 173px/2 + 0.5px)",
+                top: typeof window !== "undefined" && window.innerWidth < 640 ? "-125px" : "-145px",
                 filter: "blur(40px)",
-                opacity: 0.8,
+                opacity: 1,
               }}
             />
           </div>
 
+          {/* Bottom Sheet Handle (Mobile Only) */}
+          <div className="w-[70px] h-[6px] bg-[#112F82] rounded-[100px] flex-none z-10 block sm:hidden" />
+
           {/* Inner Content Box */}
           <div 
-            className="relative z-20 flex flex-col items-start w-full sm:w-[460px] gap-[24px] transition-all duration-300 flex-1 sm:flex-none min-h-0"
+            className="relative z-20 flex flex-col items-start w-full sm:w-[460px] gap-[24px] transition-all duration-300"
             style={{ height: typeof window !== "undefined" && window.innerWidth < 640 ? undefined : innerHeight }}
           >
             
             {/* Header Title Block */}
-            <div className="flex flex-row justify-center items-start w-full sm:w-[460px] h-[29px] gap-[12px] relative">
+            <div className="flex flex-row justify-start sm:justify-center items-center w-[374px] sm:w-[460px] h-[29px] gap-[12px] relative">
               {/* Back Button for CC Payment step */}
               {paymentMethod === "cc" && ccStep === "payment" && (
                 <button
@@ -400,7 +445,7 @@ export default function WalletModal() {
 
             {/* Tab container / Form content area */}
             <div 
-              className="flex flex-col items-start w-full sm:w-[460px] gap-[16px] transition-all duration-300 flex-1 sm:flex-none min-h-0 w-full"
+              className="flex flex-col items-start w-full sm:w-[460px] gap-[16px] transition-all duration-300"
               style={{ height: typeof window !== "undefined" && window.innerWidth < 640 ? undefined : tabsContentHeight }}
             >
               
@@ -418,7 +463,7 @@ export default function WalletModal() {
                     <button
                       key={tab}
                       onClick={() => setActiveTab(tab)}
-                      className={`flex items-center justify-center flex-none rounded-[6px] h-[30px] w-[109px] px-[16px] py-[10px] gap-[8px] transition-all cursor-pointer ${
+                      className={`flex items-center justify-center flex-none rounded-[6px] h-[30px] w-[87.5px] sm:w-[109px] px-[2px] sm:px-[16px] transition-all cursor-pointer ${
                         isActive 
                           ? "bg-[#1463FF]" 
                           : "bg-[#112F82]"
@@ -428,7 +473,7 @@ export default function WalletModal() {
                         isActive 
                           ? "text-white font-bold" 
                           : "text-[#A5B8EF] font-semibold"
-                      } ${labelWidths[tab]}`}>
+                      }`}>
                         {tab.charAt(0).toUpperCase() + tab.slice(1)}
                       </span>
                     </button>
@@ -438,7 +483,7 @@ export default function WalletModal() {
 
               {/* Tab View Container */}
               <div 
-                className="flex flex-col items-start gap-[16px] w-full sm:w-[460px] bg-[#0C1F56] rounded-[16px] border border-[#173EAD]/30 overflow-visible transition-all duration-300 flex-1 sm:flex-none min-h-0"
+                className="flex flex-col items-start gap-[16px] w-full sm:w-[460px] bg-[#0C1F56] rounded-[16px] border border-[#173EAD]/30 overflow-visible transition-all duration-300"
                 style={{ 
                   height: typeof window !== "undefined" && window.innerWidth < 640 ? undefined : tabViewHeight,
                   padding: isBtcSubmitted ? "20px 16px" : "16px"
@@ -530,15 +575,15 @@ export default function WalletModal() {
                     <>
                     {/* Step 1: Select a Bonus */}
                     <div className="relative flex flex-col gap-[8px] w-full sm:w-[428px] h-auto sm:h-[64px] flex-none">
-                      <span className="font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#BBCAF3] w-[97px] h-[16px]">
-                        1.Select a Bonus
+                      <span className="font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#BBCAF3] w-auto h-[16px]">
+                        Select a Bonus
                       </span>
                       <div 
                         onClick={() => {
                           setShowBonusDropdown(!showBonusDropdown);
                           setShowPaymentDropdown(false);
                         }}
-                        className={`flex items-center justify-between bg-[#112F82] rounded-[8px] w-full sm:w-[428px] h-[44px] sm:h-[40px] px-[16px] py-[10px] gap-[12px] cursor-pointer hover:bg-[#153bb0] transition-colors border ${
+                        className={`flex items-center justify-between bg-[#112F82] rounded-[8px] w-full sm:w-[428px] h-[50px] sm:h-[40px] px-[16px] py-[10px] gap-[12px] cursor-pointer hover:bg-[#153bb0] transition-colors border ${
                           showBonusDropdown ? "border-[#1463FF]" : "border-transparent"
                         }`}
                       >
@@ -678,8 +723,8 @@ export default function WalletModal() {
 
                     {/* Step 2: Select Payment Method */}
                     <div className="relative flex flex-col gap-[8px] w-full sm:w-[428px] h-auto sm:h-[64px] flex-none">
-                      <span className="font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#BBCAF3] w-full sm:w-[163px] h-[16px]">
-                        2.Select payment method
+                      <span className="font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#BBCAF3] w-auto h-[16px]">
+                        Select a payment method
                       </span>
                       
                       {/* Trigger */}
@@ -688,7 +733,7 @@ export default function WalletModal() {
                           setShowPaymentDropdown(!showPaymentDropdown);
                           setShowBonusDropdown(false);
                         }}
-                        className={`flex items-center justify-between bg-[#112F82] rounded-[8px] w-full sm:w-[428px] h-[44px] sm:h-[40px] px-[16px] py-[10px] gap-[12px] cursor-pointer hover:bg-[#153bb0] transition-colors border ${
+                        className={`flex items-center justify-between bg-[#112F82] rounded-[8px] w-full sm:w-[428px] h-[50px] sm:h-[40px] px-[16px] py-[10px] gap-[12px] cursor-pointer hover:bg-[#153bb0] transition-colors border ${
                           showPaymentDropdown ? "border-[#1463FF]" : "border-transparent"
                         }`}
                       >
@@ -709,15 +754,17 @@ export default function WalletModal() {
                             </>
                           ) : (
                             <>
-                              <div className="flex items-center gap-[2px] w-[42px] h-[20px] flex-none">
-                                <img src="/images/icons/visa.svg" alt="Credit Card" className="w-[42px] h-[20px]" />
-                              </div>
-                              <div className="flex items-center gap-[8px] w-full sm:w-[288px] h-[19px]">
-                                <span className="font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-white w-auto whitespace-nowrap flex-none">
-                                  Credit Card
-                                </span>
-                                <span className="font-manrope text-[11px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] w-auto whitespace-nowrap flex-none hidden sm:block">
-                                  (Min. $30 - Max. $2,500)
+                              <div className="flex flex-col sm:flex-row sm:items-center justify-center sm:justify-start items-start gap-[2px] sm:gap-[8px] w-full sm:w-[338px] h-[36px] sm:h-[20px]">
+                                <div className="flex flex-row items-center gap-[8px] w-auto h-[20px]">
+                                  <div className="flex items-center gap-[2px] w-[42px] h-[20px] flex-none">
+                                    <img src="/images/icons/visa.svg" alt="Credit Card" className="w-[42px] h-[20px]" />
+                                  </div>
+                                  <span className="font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-white w-auto whitespace-nowrap flex-none">
+                                    Credit Card
+                                  </span>
+                                </div>
+                                <span className="font-manrope text-[10px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] w-auto flex-none sm:ml-1">
+                                  (Min. Deposit $30 - Max. Deposit $2,500)
                                 </span>
                               </div>
                             </>
@@ -770,17 +817,22 @@ export default function WalletModal() {
                           </span>
 
                           {/* Warning Info */}
-                          <div className="flex items-start gap-[8px] w-full sm:w-[428px] h-[28px]">
-                            <WarningIcon />
-                            <p className="font-manrope text-[11px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] w-full sm:w-[408px] h-[28px]">
+                          <div className="flex items-start gap-[8px] w-full sm:w-[342px] h-[28px] flex-none">
+                            <div className="w-[12px] h-[12px] flex items-center justify-center flex-none mt-[2px] relative">
+                              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 12C9.31371 12 12 9.31371 12 6C12 2.68629 9.31371 0 6 0C2.68629 0 0 2.68629 0 6C0 9.31371 2.68629 12 6 12Z" fill="#7795E8"/>
+                                <path d="M6 3C5.72386 3 5.5 3.22386 5.5 3.5C5.5 3.77614 5.72386 4 6 4C6.27614 4 6.5 3.77614 6.5 3.5C6.5 3.22386 6.27614 3 6 3ZM5.5 5.5V9H6.5V5.5H5.5Z" fill="#091741"/>
+                              </svg>
+                            </div>
+                            <span className="font-manrope text-[10px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] w-full sm:w-[322px] h-[28px]">
                               Please fill up your address details before completing your deposit. This information is required for credit card deposits.
-                            </p>
+                            </span>
                           </div>
 
                           {/* Address Inputs Block */}
                           <div className="flex flex-col gap-[12px] w-full sm:w-[428px] h-auto sm:h-[144px]">
                             {/* Street */}
-                            <div className="flex items-center bg-[#112F82] rounded-[8px] w-full sm:w-[428px] h-[44px] sm:h-[40px] px-[16px] py-[10px] gap-[12px]">
+                            <div className="flex items-center bg-[#112F82] rounded-[8px] w-full sm:w-[428px] h-[50px] sm:h-[40px] px-[16px] py-[10px] gap-[12px]">
                               <input 
                                 type="text" 
                                 placeholder="Street" 
@@ -791,36 +843,36 @@ export default function WalletModal() {
                             </div>
 
                             {/* City & Postal Code */}
-                            <div className="flex flex-col sm:flex-row items-center gap-[8px] w-full sm:w-[428px] h-auto sm:h-[40px]">
-                              <div className="flex items-center bg-[#112F82] rounded-[8px] w-full sm:w-[210px] h-[44px] sm:h-[40px] px-[16px] py-[10px] gap-[12px]">
+                            <div className="flex flex-row items-center gap-[8px] w-full sm:w-[428px] h-[50px] sm:h-[40px]">
+                              <div className="flex items-center bg-[#112F82] rounded-[8px] w-full sm:w-[210px] h-[50px] sm:h-[40px] px-[16px] py-[10px] gap-[12px]">
                                 <input 
                                   type="text" 
                                   placeholder="City" 
                                   value={city}
                                   onChange={(e) => setCity(e.target.value)}
-                                  className="w-full sm:w-[178px] h-[19px] bg-transparent font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white outline-none placeholder:text-[#A5B8EF]"
+                                  className="w-full h-[19px] bg-transparent font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white outline-none placeholder:text-[#A5B8EF]"
                                 />
                               </div>
-                              <div className="flex items-center bg-[#112F82] rounded-[8px] w-full sm:w-[210px] h-[44px] sm:h-[40px] px-[16px] py-[10px] gap-[12px]">
+                              <div className="flex items-center bg-[#112F82] rounded-[8px] w-full sm:w-[210px] h-[50px] sm:h-[40px] px-[16px] py-[10px] gap-[12px]">
                                 <input 
                                   type="text" 
                                   placeholder="Postal Code" 
                                   value={postalCode}
                                   onChange={(e) => setPostalCode(e.target.value)}
-                                  className="w-full sm:w-[178px] h-[19px] bg-transparent font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white outline-none placeholder:text-[#A5B8EF]"
+                                  className="w-full h-[19px] bg-transparent font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white outline-none placeholder:text-[#A5B8EF]"
                                 />
                               </div>
                             </div>
 
                             {/* State & Country */}
-                            <div className="flex flex-col sm:flex-row items-center gap-[8px] w-full sm:w-[428px] h-auto sm:h-[40px] relative">
-                              <div className="flex items-center bg-[#112F82] rounded-[8px] w-full sm:w-[210px] h-[44px] sm:h-[40px] px-[16px] py-[10px] gap-[12px]">
+                            <div className="flex flex-row items-center gap-[8px] w-full sm:w-[428px] h-[50px] sm:h-[40px] relative">
+                              <div className="flex items-center bg-[#112F82] rounded-[8px] w-full sm:w-[210px] h-[50px] sm:h-[40px] px-[16px] py-[10px] gap-[12px]">
                                 <input 
                                   type="text" 
                                   placeholder="State" 
                                   value={stateName}
                                   onChange={(e) => setStateName(e.target.value)}
-                                  className="w-full sm:w-[178px] h-[19px] bg-transparent font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white outline-none placeholder:text-[#A5B8EF]"
+                                  className="w-full h-[19px] bg-transparent font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white outline-none placeholder:text-[#A5B8EF]"
                                 />
                               </div>
                               
@@ -829,23 +881,23 @@ export default function WalletModal() {
                                   setShowCountryDropdown(!showCountryDropdown);
                                   setShowBonusDropdown(false);
                                 }}
-                                className="flex items-center justify-between bg-[#112F82] rounded-[8px] w-full sm:w-[210px] h-[44px] sm:h-[40px] px-[16px] py-[10px] gap-[10px] cursor-pointer hover:bg-[#153bb0] transition-colors"
+                                className="flex items-center justify-between bg-[#112F82] rounded-[8px] w-full sm:w-[210px] h-[50px] sm:h-[40px] px-[16px] py-[10px] gap-[10px] cursor-pointer hover:bg-[#153bb0] transition-colors"
                               >
                                 <div className="flex items-center gap-[8px]">
                                   <span 
                                     className={`fi fi-${countryList.find(c => c.name === selectedCountry)?.iso || "us"} fis !rounded-full !w-[20px] !h-[20px] overflow-hidden flex-none bg-cover bg-center`}
                                   ></span>
-                                  <span className="font-manrope text-[12px] font-bold leading-[16px] tracking-[0.02em] text-white w-full sm:w-[124px] h-[16px] flex items-center">
+                                  <span className="font-manrope text-[12px] font-bold leading-[16px] tracking-[0.02em] text-white truncate max-w-[80px] sm:max-w-[124px] h-[16px] flex items-center">
                                     {selectedCountry}
                                   </span>
                                 </div>
-                                <div className="flex items-center justify-between w-[14px] h-[14px]">
+                                <div className="flex items-center justify-between w-[14px] h-[14px] flex-none">
                                   <ArrowIcon color="#A5B8EF" />
                                 </div>
                               </div>
 
                               {showCountryDropdown && (
-                                <div className="absolute right-0 top-[48px] z-50 flex w-full sm:w-[210px] flex-col rounded-[8px] bg-[#112F82] border border-[#173EAD] overflow-y-auto max-h-[130px] shadow-2xl [&::-webkit-scrollbar]:w-[4px] [&::-webkit-scrollbar-thumb]:bg-[#1463FF] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent">
+                                <div className="absolute right-0 top-[58px] z-50 flex w-full sm:w-[210px] flex-col rounded-[8px] bg-[#112F82] border border-[#173EAD] overflow-y-auto max-h-[130px] shadow-2xl [&::-webkit-scrollbar]:w-[4px] [&::-webkit-scrollbar-thumb]:bg-[#1463FF] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent">
                                   {countryList.map((country) => (
                                     <button
                                       key={country.name}
@@ -1267,14 +1319,14 @@ export default function WalletModal() {
           {activeTab === "deposit" && (
             <div 
               className="flex flex-col items-center gap-[12px] w-full sm:w-[460px] flex-none z-10"
-              style={{ height: isBtcSubmitted ? "66px" : "50px" }}
+              style={{ height: isBtcSubmitted ? "66px" : (typeof window !== "undefined" && window.innerWidth < 640 ? "60px" : "50px") }}
             >
               <button
                 onClick={handleActionClick}
-                className={`flex items-center justify-center rounded-[8px] bg-[#FFC83D] font-manrope font-bold tracking-[0.02em] text-[#1A1404] transition-all hover:bg-yellow-400 cursor-pointer ${
+                className={`flex flex-row items-center justify-center px-[30px] py-[10px] gap-[10px] rounded-[8px] bg-[#FFC83D] font-manrope font-bold tracking-[0.02em] text-[#1A1404] transition-all hover:bg-[#FFC83D]/90 cursor-pointer ${
                   isBtcSubmitted 
-                    ? "w-full sm:w-[350px] h-[40px] text-[14px]" 
-                    : "w-full sm:w-[300px] h-[50px] text-[14px]"
+                    ? "w-full sm:w-[350px] h-[40px] text-[14px] leading-[19px]" 
+                    : "w-full sm:w-[300px] h-[60px] sm:h-[50px] text-[16px] sm:text-[14px] leading-[22px] sm:leading-[19px]"
                 }`}
               >
                 <span className="text-center truncate">
