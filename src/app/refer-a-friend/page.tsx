@@ -157,8 +157,7 @@ export default function ReferAFriendPage() {
                       </div>
                       <button className="flex flex-row justify-center items-center px-[30px] lg:px-[10px] gap-[10px] w-full lg:w-[122px] h-[50px] lg:h-[40px] bg-[#FFC83D] rounded-[8px] transition-opacity hover:opacity-90 flex-none">
                         <span className="font-manrope text-[16px] lg:text-[14px] font-bold leading-[22px] lg:leading-[19px] tracking-[0.02em] text-[#1A1404] whitespace-nowrap">
-                          <span className="lg:hidden">Join</span>
-                          <span className="hidden lg:inline">Send Invite</span>
+                          Send Invite
                         </span>
                       </button>
                     </div>
