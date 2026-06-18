@@ -46,7 +46,7 @@ const baseCollections: CollectionItem[] = [
     mobileWidthClass: "w-[182px]",
     mobileTextWidthClass: "w-[107.6px]",
     mobileTextSizeClass: "text-[12px]",
-    bgColorClass: "bg-[#173EAD]",
+    bgColorClass: "bg-[#0C1F56]",
   },
   {
     name: "ANIMALS",
