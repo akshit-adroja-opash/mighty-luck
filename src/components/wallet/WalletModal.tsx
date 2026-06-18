@@ -349,12 +349,12 @@ export default function WalletModal() {
       
       {/* Outer absolute position alignment box (dynamic height to avoid jumps) */}
       <div 
-        className="relative transition-all duration-300 w-full sm:w-[500px] overflow-y-auto sm:overflow-visible rounded-none sm:rounded-[16px] flex flex-col" 
+        className="relative transition-all duration-300 w-full sm:w-[500px] overflow-y-auto sm:overflow-visible rounded-none sm:rounded-[16px] flex flex-col h-auto sm:h-[var(--modal-height)]" 
         style={{ 
-          height: typeof window !== "undefined" && window.innerWidth < 640 ? undefined : modalHeight,
+          '--modal-height': modalHeight ? `${modalHeight}px` : undefined,
           transform: `translateY(${modalDragY}px)`,
           transition: isDraggingModal ? 'none' : 'transform 0.3s ease-out'
-        }}
+        } as React.CSSProperties}
       >
         
         {/* Close Button - positioned outside the card on the right */}
@@ -372,25 +372,13 @@ export default function WalletModal() {
 
         {/* Outer Modal Container */}
         <div 
-          className="relative flex flex-col items-center bg-[#091741] rounded-[30px_30px_0px_0px] sm:rounded-[16px] w-full shadow-none sm:shadow-2xl isolation-isolate transition-all duration-300"
-          style={{
-            padding: typeof window !== "undefined" && window.innerWidth < 640 ? "16px 20px 40px" : "24px 20px 32px",
-            gap: typeof window !== "undefined" && window.innerWidth < 640 ? "16px" : "24px",
-          }}
+          className="relative flex flex-col items-center bg-[#091741] rounded-[30px_30px_0px_0px] sm:rounded-[16px] w-full shadow-none sm:shadow-2xl isolation-isolate transition-all duration-300 p-[16px_20px_40px] sm:p-[24px_20px_32px] gap-[16px] sm:gap-[24px]"
         >
           
           {/* Accent Glow Container (clips the glow to the card boundaries) */}
           <div className="absolute inset-0 rounded-[30px_30px_0px_0px] sm:rounded-[16px] overflow-hidden pointer-events-none z-0">
             <div 
-              className="absolute rounded-full bg-[#1463FF]"
-              style={{
-                width: typeof window !== "undefined" && window.innerWidth < 640 ? "174px" : "173px",
-                height: typeof window !== "undefined" && window.innerWidth < 640 ? "176px" : "173px",
-                left: typeof window !== "undefined" && window.innerWidth < 640 ? "calc(50% - 174px/2 - 165px)" : "calc(50% - 173px/2 + 0.5px)",
-                top: typeof window !== "undefined" && window.innerWidth < 640 ? "-125px" : "-145px",
-                filter: "blur(40px)",
-                opacity: 1,
-              }}
+              className="absolute rounded-full bg-[#1463FF] blur-[40px] opacity-100 w-[174px] sm:w-[173px] h-[176px] sm:h-[173px] left-[calc(50%-174px/2-165px)] sm:left-[calc(50%-173px/2+0.5px)] top-[-125px] sm:top-[-145px]"
             />
           </div>
 
@@ -411,8 +399,8 @@ export default function WalletModal() {
 
           {/* Inner Content Box */}
           <div 
-            className="relative z-20 flex flex-col items-start w-full sm:w-[460px] gap-[24px] transition-all duration-300"
-            style={{ height: typeof window !== "undefined" && window.innerWidth < 640 ? undefined : innerHeight }}
+            className="relative z-20 flex flex-col items-start w-full sm:w-[460px] gap-[24px] transition-all duration-300 h-auto sm:h-[var(--inner-height)]"
+            style={{ '--inner-height': innerHeight ? `${innerHeight}px` : undefined } as React.CSSProperties}
           >
             
             {/* Header Title Block */}
@@ -454,8 +442,8 @@ export default function WalletModal() {
 
             {/* Tab container / Form content area */}
             <div 
-              className="flex flex-col items-start w-full sm:w-[460px] gap-[16px] transition-all duration-300"
-              style={{ height: typeof window !== "undefined" && window.innerWidth < 640 ? undefined : tabsContentHeight }}
+              className="flex flex-col items-start w-full sm:w-[460px] gap-[16px] transition-all duration-300 h-auto sm:h-[var(--tabs-content-height)]"
+              style={{ '--tabs-content-height': tabsContentHeight ? `${tabsContentHeight}px` : undefined } as React.CSSProperties}
             >
               
               {/* Tabs Switcher */}
@@ -486,12 +474,10 @@ export default function WalletModal() {
 
               {/* Tab View Container */}
               <div 
-                className={`flex flex-col items-start gap-[16px] w-full sm:w-[460px] bg-[#0C1F56] rounded-[16px] overflow-visible transition-all duration-300 ${
+                className={`flex flex-col items-start gap-[16px] w-full sm:w-[460px] bg-[#0C1F56] rounded-[16px] overflow-visible transition-all duration-300 h-auto sm:h-[var(--tab-view-height)] ${
                   isBtcSubmitted ? "p-[20px_16px]" : "p-[16px]"
                 }`}
-                style={{ 
-                  height: typeof window !== "undefined" && window.innerWidth < 640 ? undefined : tabViewHeight
-                }}
+                style={{ '--tab-view-height': tabViewHeight ? `${tabViewHeight}px` : undefined } as React.CSSProperties}
               >
                 {activeTab === "deposit" ? (
                   isBtcSubmitted ? (
