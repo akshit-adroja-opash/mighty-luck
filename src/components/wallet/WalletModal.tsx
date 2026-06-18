@@ -326,7 +326,7 @@ export default function WalletModal() {
             setIsBtcSubmitted(false);
             dispatch(closeModal("wallet"));
           }}
-          className="absolute right-4 sm:-right-[36px] top-4 sm:top-0 z-50 flex h-8 w-8 sm:h-6 sm:w-6 items-center justify-center rounded-full bg-[#112F82] sm:bg-transparent text-white hover:text-[#FFC83D] transition-colors cursor-pointer"
+          className="absolute right-4 sm:-right-[36px] top-4 sm:top-0 z-50 hidden sm:flex h-8 w-8 sm:h-6 sm:w-6 items-center justify-center rounded-full bg-[#112F82] sm:bg-transparent text-white hover:text-[#FFC83D] transition-colors cursor-pointer"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
