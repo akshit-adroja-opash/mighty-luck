@@ -1,6 +1,6 @@
 export default function HeroBanner() {
   return (
-    <div className="flex flex-col items-center gap-[8px] w-full">
+    <div className="flex flex-col items-center gap-[8px] md:gap-[20px] w-full">
       {/* Main Banner */}
       <div className="relative isolate h-[170px] md:h-auto md:min-h-[356px] w-full overflow-hidden rounded-[10px] md:rounded-[20px] pb-0 bg-[#0C1F56] md:bg-transparent">
         
@@ -45,16 +45,15 @@ export default function HeroBanner() {
 
           <button className="flex h-[34.55px] md:h-[40px] w-[95px] md:w-auto md:min-w-[110px] flex-none flex-row items-center justify-center gap-[8.64px] md:gap-[10px] rounded-[6px] md:rounded-[8px] bg-[#FFBF1F] px-[20.73px] md:px-[24px] py-[8.64px] md:py-[10px] transition-colors hover:bg-yellow-400 mt-auto md:mt-0">
             <span className="whitespace-nowrap font-manrope text-[12.09px] md:text-[14px] font-bold leading-[17px] md:leading-[19px] tracking-[0.02em] text-[#1A1404]">
-              <span className="md:hidden">Join</span>
-              <span className="hidden md:inline">Join Now</span>
+              <span>Join</span>
             </span>
           </button>
 
         </div>
       </div>
 
-      {/* Pagination Dots (Mobile Only) */}
-      <div className="flex flex-col items-center w-full h-[6px] md:hidden">
+      {/* Pagination Dots */}
+      <div className="flex flex-col items-center w-full h-[6px]">
         <div className="flex flex-row justify-center items-center gap-[8px] w-[40px] h-[6px]">
           <div className="w-[12px] h-[6px] bg-[#D2DCF7] rounded-[150px]"></div>
           <div className="w-[6px] h-[6px] bg-[#D2DCF7] rounded-[150px]"></div>
