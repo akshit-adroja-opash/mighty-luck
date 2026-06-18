@@ -455,24 +455,24 @@ export default function WalletModal() {
                     /* Bitcoin Blockchain Pending Confirmation View */
                     <div className="flex flex-col gap-[16px] w-full sm:w-[428px] flex-none">
                       {/* Top Info Text */}
-                      <div className="flex flex-row items-center gap-[8px] w-full sm:w-[428px] h-[38px]">
+                      <div className="flex flex-row items-center justify-center gap-[8px] w-full sm:w-[428px] h-[38px]">
                         <span className="font-manrope text-[14px] font-semibold leading-[19px] text-center tracking-[0.02em] text-[#A5B8EF] w-full sm:w-[428px] h-[38px] flex items-center justify-center">
                           Your transaction in progress and pending confirmation from the blockchain.
                         </span>
                       </div>
 
                       {/* Confirmation Progress (3 icons) */}
-                      <div className="flex flex-row justify-center items-center gap-[10px] w-full sm:w-[428px] h-auto sm:h-[120px] flex-none order-1 align-self-stretch">
-                        <div className="flex flex-row items-center w-full sm:w-[120px] h-[40px] p-0 flex-none">
+                      <div className="flex flex-row justify-center items-center gap-[10px] w-full sm:w-[428px] h-[120px] flex-none">
+                        <div className="flex flex-row items-center w-[150px] sm:w-[150px] h-[50px] sm:h-[50px] p-0 flex-none">
                           {/* Frame 2 - Lit Confirmation 1 */}
-                          <div className="relative w-[40px] h-[40px] flex-none">
+                          <div className="relative w-[50px] h-[50px] flex-none">
                             <svg 
                               style={{
                                 position: "absolute",
-                                width: "28.66px",
-                                height: "20.9px",
-                                left: "calc(50% - 28.66px/2 + 0.5px)",
-                                top: "calc(50% - 20.9px/2 - 0.22px)",
+                                width: "35.83px",
+                                height: "26.13px",
+                                left: "calc(50% - 35.83px/2 + 0.63px)",
+                                top: "calc(50% - 26.13px/2 - 0.27px)",
                               }}
                               viewBox="0 0 28.66 20.9" 
                               fill="none" 
@@ -483,14 +483,14 @@ export default function WalletModal() {
                             </svg>
                           </div>
                           {/* Frame 5 - Lit Confirmation 2 */}
-                          <div className="relative w-[40px] h-[40px] flex-none">
+                          <div className="relative w-[50px] h-[50px] flex-none">
                             <svg 
                               style={{
                                 position: "absolute",
-                                width: "28.66px",
-                                height: "20.9px",
-                                left: "calc(50% - 28.66px/2 + 0.5px)",
-                                top: "calc(50% - 20.9px/2 - 0.22px)",
+                                width: "35.83px",
+                                height: "26.13px",
+                                left: "calc(50% - 35.83px/2 + 0.63px)",
+                                top: "calc(50% - 26.13px/2 - 0.27px)",
                               }}
                               viewBox="0 0 28.66 20.9" 
                               fill="none" 
@@ -501,14 +501,14 @@ export default function WalletModal() {
                             </svg>
                           </div>
                           {/* Frame 4 - Unlit Confirmation 3 */}
-                          <div className="relative w-[40px] h-[40px] flex-none">
+                          <div className="relative w-[50px] h-[50px] flex-none">
                             <svg 
                               style={{
                                 position: "absolute",
-                                width: "28.66px",
-                                height: "20.9px",
-                                left: "calc(50% - 28.66px/2 + 0.5px)",
-                                top: "calc(50% - 20.9px/2 - 0.22px)",
+                                width: "35.83px",
+                                height: "26.13px",
+                                left: "calc(50% - 35.83px/2 + 0.63px)",
+                                top: "calc(50% - 26.13px/2 - 0.27px)",
                               }}
                               viewBox="0 0 28.66 20.9" 
                               fill="none" 
@@ -522,13 +522,16 @@ export default function WalletModal() {
                       </div>
 
                       {/* Bottom Info Text with custom yellow click here */}
-                      <div className="flex flex-row items-center gap-[8px] w-full sm:w-[428px] h-auto sm:h-[57px]">
-                        <span className="font-manrope text-[14px] font-semibold leading-[19px] text-center tracking-[0.02em] text-[#A5B8EF] w-full sm:w-[428px] h-auto sm:h-[57px] flex items-center justify-center flex-wrap">
-                          1 confirmation is required for deposits to be credited. Want to know how many confirmations this transaction has? Please{" "}
-                          <span className="text-[#FFC83D] font-bold cursor-pointer hover:underline inline ml-1" onClick={() => toast.info("Checking transaction confirmations on blockchain explorer...")}>
-                            click here
+                      <div className="flex flex-row items-center justify-center gap-[8px] w-full sm:w-[428px] h-[95px] sm:h-[57px]">
+                        <span className="font-manrope text-[14px] font-semibold leading-[19px] text-center tracking-[0.02em] text-[#A5B8EF] w-full sm:w-[428px] h-[95px] sm:h-[57px] flex flex-col items-center justify-center">
+                          <span className="w-full text-center">1 confirmation is required for deposits to be credited.</span>
+                          <span className="w-full text-center">
+                            Want to know how many confirmations this transaction has? Please{" "}
+                            <span className="text-[#FFC83D] font-bold cursor-pointer hover:underline inline ml-1" onClick={() => toast.info("Checking transaction confirmations on blockchain explorer...")}>
+                              click here
+                            </span>
+                            .
                           </span>
-                          .
                         </span>
                       </div>
                     </div>
@@ -1284,13 +1287,13 @@ export default function WalletModal() {
           {activeTab === "deposit" && (
             <div 
               className="flex flex-col items-center gap-[12px] w-full sm:w-[460px] flex-none z-10"
-              style={{ height: isBtcSubmitted ? "66px" : (typeof window !== "undefined" && window.innerWidth < 640 ? "60px" : "50px") }}
+              style={{ height: isBtcSubmitted ? (typeof window !== "undefined" && window.innerWidth < 640 ? "88px" : "66px") : (typeof window !== "undefined" && window.innerWidth < 640 ? "60px" : "50px") }}
             >
               <button
                 onClick={handleActionClick}
                 className={`flex flex-row items-center justify-center px-[30px] py-[10px] gap-[10px] rounded-[8px] bg-[#FFC83D] font-manrope font-bold tracking-[0.02em] text-[#1A1404] transition-all hover:bg-[#FFC83D]/90 cursor-pointer ${
                   isBtcSubmitted 
-                    ? "w-full sm:w-[350px] h-[40px] text-[14px] leading-[19px]" 
+                    ? "w-full sm:w-[350px] h-[60px] sm:h-[40px] text-[16px] sm:text-[14px] leading-[22px] sm:leading-[19px]" 
                     : "w-full sm:w-[300px] h-[60px] sm:h-[50px] text-[16px] sm:text-[14px] leading-[22px] sm:leading-[19px]"
                 }`}
               >
@@ -1300,7 +1303,7 @@ export default function WalletModal() {
               </button>
 
               {isBtcSubmitted && (
-                <div className="flex flex-row justify-center items-center gap-[8px] w-full sm:w-[460px] h-[14px]">
+                <div className="flex flex-row justify-center items-center gap-[8px] w-full sm:w-[460px] h-[16px] sm:h-[14px]">
                   <div className="w-[12px] h-[12px] flex items-center justify-center text-[#7795E8]">
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <circle cx="6" cy="6" r="5" stroke="#7795E8" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -1308,7 +1311,7 @@ export default function WalletModal() {
                       <circle cx="6" cy="8.5" r="0.6" fill="#7795E8"/>
                     </svg>
                   </div>
-                  <span className="font-manrope text-[10px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8]">
+                  <span className="font-manrope text-[12px] sm:text-[10px] font-medium leading-[16px] sm:leading-[14px] tracking-[0.02em] text-[#7795E8]">
                     Having problems? <span className="text-[#FFC83D] cursor-pointer hover:underline inline ml-1" onClick={() => toast.info("Connecting to live support...")}>Contact support</span>
                   </span>
                 </div>
