@@ -228,15 +228,15 @@ export default function LobbyModal() {
         </div>
 
         {/* ── Right Content ── */}
-        <div className="flex flex-col items-start gap-6 lg:gap-[40px] w-full flex-1 min-w-0 overflow-y-auto lg:overflow-hidden min-h-0 lg:h-[532px]">
+        <div className="flex flex-col items-start gap-6 lg:gap-[32px] w-full flex-1 min-w-0 overflow-y-auto lg:overflow-hidden min-h-0 lg:h-[543px]">
           
           {/* Top row: Search bar + Mobile Close Button */}
           <div className="flex flex-row items-center gap-2 w-full flex-none">
             {/* Search bar */}
-            <div className={`flex flex-row items-center justify-between rounded-[8px] flex-1 transition-all duration-300 ${
+            <div className={`flex flex-row items-center justify-between flex-1 transition-all duration-300 ${
               searchQuery 
-                ? "px-[20px] pr-[10px] py-[10px] h-[50px] bg-[#112F82] border border-[#1463FF]" 
-                : "px-[20px] py-[10px] h-[50px] bg-[#112F82] border border-transparent"
+                ? "px-[20px] pr-[10px] py-[10px] h-[50px] bg-[#112F82] border border-[#1463FF] rounded-[12px]" 
+                : "px-[20px] py-[10px] h-[50px] bg-[#112F82] border border-transparent rounded-[8px]"
             }`}>
               <div className="flex flex-row items-center gap-[10px] flex-grow min-w-0">
                 <div className="w-[16px] h-[16px] flex items-center justify-center flex-none text-[#BBCAF3]">
@@ -253,9 +253,11 @@ export default function LobbyModal() {
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery("")}
-                  className="flex items-center justify-center w-[24px] h-[24px] lg:w-[28px] lg:h-[28px] bg-[#1463FF] rounded-[6px] text-white flex-none"
+                  className="flex flex-row justify-center items-center px-[16px] py-[10px] gap-[8px] w-[64px] h-[30px] bg-[#1463FF] rounded-[6px] flex-none transition-colors hover:bg-[#1463FF]/80"
                 >
-                  <CloseIcon />
+                  <span className="font-manrope font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-white">
+                    Clear
+                  </span>
                 </button>
               )}
             </div>
@@ -336,16 +338,14 @@ export default function LobbyModal() {
                   </span>
                 </div>
                 <div className="flex-1 overflow-y-auto no-scrollbar min-h-0">
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+                  <div className="flex flex-row flex-wrap gap-[7.86px] lg:gap-3">
                     {filteredGames.map((game, index) => (
-                      <div key={index} className="w-full">
-                        <GameCard 
-                          image={game.image} 
-                          title={game.title} 
-                          onClick={() => handleGameClick(game)}
-                          fluid
-                        />
-                      </div>
+                      <GameCard 
+                        key={index}
+                        image={game.image} 
+                        title={game.title} 
+                        onClick={() => handleGameClick(game)}
+                      />
                     ))}
                   </div>
                 </div>
@@ -381,8 +381,8 @@ export default function LobbyModal() {
                   </span>
                 </div>
 
-                {/* Cards Row — 808×200px, gap 12px */}
-                <div className="flex flex-row items-center gap-[8px] lg:gap-[12px] w-full lg:w-[808px] h-[160px] lg:h-[200px] overflow-x-auto no-scrollbar flex-none">
+                {/* Cards Row — 808×200px, gap 7.86px */}
+                <div className="flex flex-row items-center gap-[7.86px] lg:gap-[12px] w-full lg:w-[808px] h-[157.14px] lg:h-[200px] overflow-x-auto no-scrollbar flex-none">
                   {popularGames.map((game, index) => (
                     <div key={index} className="flex-none">
                       <GameCard 
