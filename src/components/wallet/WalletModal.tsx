@@ -1098,16 +1098,16 @@ export default function WalletModal() {
                 )
               ) : activeTab === "bonuses" ? (
                 /* Custom Bonuses View */
-                <div className="flex flex-col items-start gap-[16px] w-full sm:w-[428px] h-auto sm:h-[331px] flex-none">
+                <div className="flex flex-col items-start gap-[16px] w-full sm:w-[428px] h-[373px] sm:h-[331px] flex-none">
                   
                   {/* Promo Code Input Block */}
-                  <div className="flex flex-col gap-[8px] w-full sm:w-[428px] h-auto sm:h-[64px] flex-none">
-                    <span className="font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#A5B8EF] w-full h-auto">
+                  <div className="flex flex-col gap-[8px] w-full sm:w-[428px] h-[74px] sm:h-[64px] flex-none">
+                    <span className="font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#BBCAF3] w-[236px] h-[16px]">
                       If you have a Bonus Code — enter it here
                     </span>
-                    <div className="flex flex-row items-start gap-[8px] w-full sm:w-[428px] h-[40px]">
+                    <div className="flex flex-row items-start gap-[8px] w-full sm:w-[428px] h-[50px] sm:h-[40px]">
                       {/* Input Box wrapper */}
-                      <div className="flex flex-row items-center bg-[#112F82] rounded-[8px] px-[16px] py-[10px] gap-[12px] flex-1 sm:flex-none sm:w-[311px] h-[40px] min-w-0 justify-between">
+                      <div className="flex flex-row items-center bg-[#112F82] rounded-[8px] px-[16px] py-[10px] gap-[12px] flex-1 sm:flex-none sm:w-[311px] h-[50px] sm:h-[40px] min-w-0 justify-between">
                         <input 
                           type="text" 
                           placeholder="Promo Code" 
@@ -1147,7 +1147,7 @@ export default function WalletModal() {
                             }
                           }
                         }}
-                        className="flex flex-row justify-center items-center bg-[#FFC83D] hover:bg-[#ebd048] rounded-[8px] px-[30px] py-[10px] gap-[10px] w-[109px] h-[40px] flex-none transition-colors cursor-pointer"
+                        className="flex flex-row justify-center items-center bg-[#FFC83D] hover:bg-[#ebd048] rounded-[8px] px-[30px] py-[10px] gap-[10px] w-[100px] sm:w-[109px] h-[50px] sm:h-[40px] flex-none transition-colors cursor-pointer"
                       >
                         <span className="font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] text-[#1A1404] select-none">
                           {isPromoApplied ? "Cancel" : "Apply"}
@@ -1157,15 +1157,15 @@ export default function WalletModal() {
                   </div>
 
                   {/* Available Bonuses Slider Block */}
-                  <div className="flex flex-col gap-[12px] w-full sm:w-[428px] h-auto sm:h-[251px] flex-none relative">
-                    <span className="font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#BBCAF3] w-full h-auto">
+                  <div className="flex flex-col gap-[12px] w-full sm:w-[428px] h-[251px] sm:h-[251px] flex-none relative">
+                    <span className="font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#BBCAF3] w-[151px] h-[16px] flex-none">
                       Available bonuses for you
                     </span>
 
                     {/* Slider Window */}
                     <div 
                       ref={bonusSliderRef}
-                      className="w-full sm:w-[428px] h-auto sm:h-[205px] overflow-x-auto snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] cursor-grab active:cursor-grabbing"
+                      className="w-full sm:w-[428px] h-[205px] sm:h-[205px] flex-none overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] cursor-grab active:cursor-grabbing"
                       onMouseDown={onBonusMouseDown}
                       onMouseMove={onBonusMouseMove}
                       onMouseUp={onBonusMouseUpOrLeave}
@@ -1173,27 +1173,27 @@ export default function WalletModal() {
                       onScroll={onBonusScroll}
                     >
                       <div 
-                        className="flex flex-row gap-[8px] h-auto sm:h-[205px] w-max"
+                        className="flex flex-row gap-[8px] h-[205px] sm:h-[205px] w-max flex-none"
                       >
                         {availableBonuses.map((bonus, idx) => (
                           <div 
                             key={idx}
-                            className="flex flex-col justify-center items-start bg-[#112F82] rounded-[12px] p-[20px] gap-[12px] w-[300px] sm:w-[300px] h-auto sm:h-[205px] flex-none snap-start select-none"
+                            className="flex flex-col justify-start items-start bg-[#112F82] rounded-[12px] p-[20px] gap-[12px] w-[300px] sm:w-[300px] h-[205px] sm:h-[205px] flex-none snap-start select-none overflow-hidden"
                           >
                             {/* Title */}
-                            <span className="font-jost font-bold text-[14px] leading-[20px] tracking-[0.02em] text-white w-full sm:w-[260px] h-[20px] truncate">
+                            <span className="block font-jost font-bold text-[14px] leading-[20px] tracking-[0.02em] text-white w-full sm:w-[260px] h-[20px] flex-none truncate">
                               {bonus.title}
                             </span>
 
                             {/* Spec Grid */}
-                            <div className="flex flex-col gap-[9px] w-full sm:w-[260px] h-[81px]">
+                            <div className="flex flex-col gap-[9px] w-full sm:w-[260px] h-[81px] flex-none">
                               {/* Row 1 */}
                               <div className="flex flex-row gap-[12px] w-full sm:w-[260px] h-[36px]">
                                 <div className="flex flex-col gap-[2px] w-full sm:w-[124px] h-[36px] flex-grow">
                                   <span className="font-manrope font-medium text-[10px] leading-[14px] tracking-[0.02em] text-[#BBCAF3]">
                                     Min. Deposit
                                   </span>
-                                  <span className="font-jost font-bold text-[14px] leading-[20px] tracking-[0.02em] text-white">
+                                  <span className="font-jost font-bold text-[14px] leading-[20px] tracking-[0.02em] text-white truncate">
                                     {bonus.minDeposit}
                                   </span>
                                 </div>
@@ -1201,7 +1201,7 @@ export default function WalletModal() {
                                   <span className="font-manrope font-medium text-[10px] leading-[14px] tracking-[0.02em] text-[#BBCAF3]">
                                     Max. Cashout
                                   </span>
-                                  <span className="font-jost font-bold text-[14px] leading-[20px] tracking-[0.02em] text-white">
+                                  <span className="font-jost font-bold text-[14px] leading-[20px] tracking-[0.02em] text-white truncate">
                                     {bonus.maxCashout}
                                   </span>
                                 </div>
@@ -1212,7 +1212,7 @@ export default function WalletModal() {
                                   <span className="font-manrope font-medium text-[10px] leading-[14px] tracking-[0.02em] text-[#BBCAF3]">
                                     Max. Amount
                                   </span>
-                                  <span className="font-jost font-bold text-[14px] leading-[20px] tracking-[0.02em] text-white">
+                                  <span className="font-jost font-bold text-[14px] leading-[20px] tracking-[0.02em] text-white truncate">
                                     {bonus.maxAmount}
                                   </span>
                                 </div>
@@ -1220,7 +1220,7 @@ export default function WalletModal() {
                                   <span className="font-manrope font-medium text-[10px] leading-[14px] tracking-[0.02em] text-[#BBCAF3]">
                                     Wager (dep. + bonus)
                                   </span>
-                                  <span className="font-jost font-bold text-[14px] leading-[20px] tracking-[0.02em] text-white">
+                                  <span className="font-jost font-bold text-[14px] leading-[20px] tracking-[0.02em] text-white truncate">
                                     {bonus.wager}
                                   </span>
                                 </div>
@@ -1244,7 +1244,7 @@ export default function WalletModal() {
 
                     {/* Pagination Indicator dots */}
                     <div className="flex flex-col items-center w-full sm:w-[428px] h-[6px] flex-none">
-                      <div className="flex flex-row justify-center items-center gap-[4px] w-[32px] h-[6px]">
+                      <div className="flex flex-row justify-center items-center gap-[8px] w-[40px] h-[6px] flex-none">
                         {availableBonuses.map((_, idx) => {
                           const isSlideActive = idx === bonusSlideIndex;
                           return (
@@ -1252,8 +1252,8 @@ export default function WalletModal() {
                               key={idx}
                               type="button"
                               onClick={() => scrollToBonusIndex(idx)}
-                              className={`h-[6px] rounded-[150px] transition-all cursor-pointer ${
-                                isSlideActive ? "w-[12px] bg-[#BBCAF3]" : "w-[6px] bg-[#BBCAF3]/50"
+                              className={`h-[6px] rounded-[150px] transition-all cursor-pointer flex-none ${
+                                isSlideActive ? "w-[12px] bg-[#D2DCF7]" : "w-[6px] bg-[#D2DCF7]/50"
                               }`}
                             />
                           );
