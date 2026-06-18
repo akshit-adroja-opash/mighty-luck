@@ -20,45 +20,45 @@ export default function SeoContent() {
         }`}
       >
         {/* Content Blocks Container */}
-        <div className="flex w-full flex-col items-center gap-8">
+        <div className="flex w-full flex-col items-center gap-[24px] lg:gap-8">
 
           {/* Block 1 */}
-          <div className="flex w-full max-w-[800px] flex-none flex-col items-start gap-6">
+          <div className="flex w-full max-w-[800px] flex-none flex-col items-start gap-[16px] lg:gap-6">
             <h2 className="w-full font-jost text-[22px] md:text-[32px] font-bold leading-[120%] tracking-[-0.02em] text-white">
               Play the Best Crypto Casino Games Online at Mighty Luck — Fast, Fair and Secure
             </h2>
             <div className="flex w-full flex-col gap-[26px]">
-              <p className="w-full font-manrope text-[16px] font-medium leading-[160%] text-[#D2DCF7] text-justify md:text-left">
+              <p className="w-full font-manrope text-[16px] font-medium leading-[160%] text-[#D2DCF7] text-left">
                 Step into a next-generation gaming experience where every spin, bet, and hand is powered by blockchain technology. At Mighty Luck Casino, you can explore more than 9,000 crypto casino games across slots, table games, live dealer games, and crash-style favorites. As one of the top crypto casinos online, Mighty Luck gives players instant withdrawals, enhanced privacy, and a secure gambling environment without the friction of traditional payment methods.
               </p>
-              <p className="w-full font-manrope text-[16px] font-medium leading-[160%] text-[#D2DCF7] text-justify md:text-left">
+              <p className="w-full font-manrope text-[16px] font-medium leading-[160%] text-[#D2DCF7] text-left">
                 Whether you're here to play table games, explore Bitcoin casino games, or try the latest provably fair slots, Mighty Luck delivers one of the most complete online casino experiences available today.
               </p>
-              <p className="w-full font-manrope text-[16px] font-medium leading-[160%] text-[#D2DCF7] text-justify md:text-left">
+              <p className="w-full font-manrope text-[16px] font-medium leading-[160%] text-[#D2DCF7] text-left">
                 Ready to play games and win real crypto?
               </p>
-              <p className="w-full font-manrope text-[16px] font-medium leading-[160%] text-[#D2DCF7] text-justify md:text-left">
+              <p className="w-full font-manrope text-[16px] font-medium leading-[160%] text-[#D2DCF7] text-left">
                 Start playing crypto casino games at Mighty Luck Casino
               </p>
             </div>
           </div>
 
           {/* Block 2 */}
-          <div className="flex w-full max-w-[800px] flex-none flex-col items-start gap-4 z-10">
+          <div className="flex w-full max-w-[800px] flex-none flex-col items-start gap-[12px] lg:gap-4 z-10">
             <h3 className="w-full font-jost text-[18px] md:text-[24px] font-bold leading-[26px] md:leading-[35px] text-white">
               Why Mighty Luck Is the Ultimate Place to Play Crypto Casino Games
             </h3>
-            <p className="w-full font-manrope text-[16px] font-medium leading-[160%] text-[#D2DCF7] text-justify md:text-left">
+            <p className="w-full font-manrope text-[16px] font-medium leading-[160%] text-[#D2DCF7] text-left">
               Mighty Luck Casino offers the perfect blend of crypto gambling convenience, online casino entertainment, and world-class security. Compared to traditional online casinos, Mighty Luck delivers significantly faster payouts, more generous bonuses, and an unmatched selection of various games.
             </p>
           </div>
 
           {/* Block 3 */}
-          <div className="flex w-full max-w-[800px] flex-none flex-col items-start gap-4 z-20">
+          <div className="flex w-full max-w-[800px] flex-none flex-col items-start gap-[12px] lg:gap-4 z-20">
             <h3 className="w-full font-jost text-[18px] md:text-[24px] font-bold leading-[26px] md:leading-[35px] text-white">
               Massive Game Variety
             </h3>
-            <p className="w-full font-manrope text-[16px] font-medium leading-[160%] text-[#D2DCF7] text-justify md:text-left">
+            <p className="w-full font-manrope text-[16px] font-medium leading-[160%] text-[#D2DCF7] text-left">
               With more than 9,000 casino games, Mighty Luck outshines many crypto casinos and traditional casinos alike. You'll find slots, table games, live dealer experiences, and much more.
             </p>
           </div>

@@ -13,7 +13,7 @@ export default function ReferAFriendPage() {
   };
 
   return (
-    <main className="flex w-full flex-none flex-col gap-[60px] lg:gap-[40px] pb-20">
+    <main className="flex w-full flex-none flex-col gap-[30px] lg:gap-[40px] pb-0 lg:pb-20">
 
             {/* HERO BANNER SECTION */}
             <section 
@@ -218,7 +218,7 @@ export default function ReferAFriendPage() {
             </section>
 
             {/* 3 STATS CARDS */}
-            <section className="flex flex-col lg:flex-row gap-[12px] w-full">
+            <section className="flex flex-col lg:flex-row gap-[8px] lg:gap-[12px] w-full">
               <div className="flex flex-col items-center justify-center p-[24px] gap-[8px] flex-none w-full lg:flex-1 h-[130px] lg:h-auto bg-[#0C1F56] rounded-[16px]">
                 <span className="font-jost text-[40px] font-extrabold text-white leading-[58px] tracking-[0.01em]">$2.5 K</span>
                 <span className="font-manrope text-[16px] font-semibold text-[#A5B8EF] text-center">Claim By the Most Active Referrer</span>
@@ -321,14 +321,14 @@ export default function ReferAFriendPage() {
             </section>
 
             {/* HOW REFERRAL PROGRAM WORKS */}
-            <section className="flex flex-col gap-[32px] w-full">
-              <div className="flex flex-row items-center gap-[12px]">
-                <div className="w-[30px] h-[30px] relative flex-none">
+            <section className="flex flex-col gap-[12px] lg:gap-[32px] w-full">
+              <div className="flex flex-row items-center gap-[7px] lg:gap-[12px]">
+                <div className="w-[18px] h-[18px] lg:w-[30px] lg:h-[30px] relative flex-none">
                   <Image src="/images/referral/how-referral.svg" alt="How Referral Works" fill className="object-contain" />
                 </div>
-                <h3 className="font-jost text-[16px] lg:text-[20px] font-extrabold text-white uppercase tracking-[0.01em]">HOW REFERRAL PROGRAM WORKS</h3>
+                <h3 className="font-jost text-[16px] leading-[23px] lg:text-[20px] lg:leading-[29px] font-extrabold text-white uppercase tracking-[0.01em]">HOW REFERRAL PROGRAM WORKS</h3>
               </div>
-              <div className="flex flex-col lg:flex-row gap-[16px] lg:gap-[12px] w-full">
+              <div className="flex flex-col lg:flex-row gap-[12px] w-full">
                 <div className="relative flex-none w-full lg:flex-1 rounded-[16px] overflow-hidden aspect-[374/220] lg:aspect-[370/220]">
                   <Image src="/games/refrels/r1.png" alt="Step 1" fill className="object-cover" />
                 </div>
@@ -342,31 +342,31 @@ export default function ReferAFriendPage() {
             </section>
 
             {/* FAQs */}
-            <section className="flex flex-col gap-[20px] w-full mt-0 lg:mt-[20px]">
-              <div className="flex flex-row items-center gap-[12px]">
-                <div className="w-[30px] h-[30px] relative flex-none">
+            <section className="flex flex-col gap-[15px] lg:gap-[32px] w-full mt-0 lg:mt-[20px]">
+              <div className="flex flex-row items-center gap-[7px] lg:gap-[12px]">
+                <div className="w-[18px] h-[18px] lg:w-[30px] lg:h-[30px] relative flex-none">
                   <Image src="/images/referral/invite-friends.svg" alt="FAQs" fill className="object-contain" />
                 </div>
-                <h3 className="font-jost text-[20px] font-extrabold text-white uppercase tracking-[0.01em]">FAQs</h3>
+                <h3 className="font-jost text-[16px] leading-[23px] lg:text-[20px] lg:leading-[29px] font-extrabold text-white uppercase tracking-[0.01em]">FAQs</h3>
               </div>
               <div className="flex flex-col gap-[16px]">
                 {/* Active FAQ Item */}
-                <div className="flex flex-col p-[24px_20px] sm:p-[32px_40px] gap-[16px] w-full bg-[#0C1F56] rounded-[8px]">
+                <div className="flex flex-col p-[32px_40px] gap-[16px] w-full bg-[#0C1F56] rounded-[8px]">
                   <div className="flex flex-row justify-between items-center cursor-pointer">
-                    <h4 className="font-jost text-[16px] sm:text-[20px] font-extrabold text-white">How do I invite a friend?</h4>
+                    <h4 className="font-jost text-[20px] leading-[29px] font-extrabold text-white">How do I invite a friend?</h4>
                     <Minus size={20} className="text-white shrink-0" />
                   </div>
-                  <p className="font-manrope text-[14px] sm:text-[16px] font-medium text-[#A5B8EF] leading-[160%]">
+                  <p className="font-manrope text-[16px] font-medium text-[#A5B8EF] leading-[160%]">
                     In order to participate in the Refer A Friend campaign, as a referrer you need to have an active account at Mighty Luck and have at least $50 (or currency equivalent) deposited. Multiple deposits can be summed up in order to meet the minimum deposit requirement.
                   </p>
                 </div>
                 {/* Inactive FAQ Items */}
-                <div className="flex flex-row justify-between items-center p-[24px_20px] sm:p-[32px_40px] w-full min-h-[80px] sm:h-[100px] bg-[#0C1F56] rounded-[8px] cursor-pointer hover:bg-[#112F82] transition-colors">
-                  <h4 className="font-jost text-[16px] sm:text-[20px] font-extrabold text-white">How do I invite a friend?</h4>
+                <div className="flex flex-row justify-between items-center p-[32px_40px] w-full h-[100px] bg-[#0C1F56] rounded-[8px] cursor-pointer hover:bg-[#112F82] transition-colors">
+                  <h4 className="font-jost text-[20px] leading-[29px] font-extrabold text-white">How do I invite a friend?</h4>
                   <Plus size={20} className="text-white shrink-0" />
                 </div>
-                <div className="flex flex-row justify-between items-center p-[24px_20px] sm:p-[32px_40px] w-full min-h-[80px] sm:h-[100px] bg-[#0C1F56] rounded-[8px] cursor-pointer hover:bg-[#112F82] transition-colors">
-                  <h4 className="font-jost text-[16px] sm:text-[20px] font-extrabold text-white">How do I invite a friend?</h4>
+                <div className="flex flex-row justify-between items-center p-[32px_40px] w-full h-[100px] bg-[#0C1F56] rounded-[8px] cursor-pointer hover:bg-[#112F82] transition-colors">
+                  <h4 className="font-jost text-[20px] leading-[29px] font-extrabold text-white">How do I invite a friend?</h4>
                   <Plus size={20} className="text-white shrink-0" />
                 </div>
               </div>
