@@ -1,0 +1,104 @@
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/store";
+import { openModal, closeModal, setActiveCategory } from "@/store/slices/uiSlice";
+
+interface MobileBottomNavProps {
+  isMobileMenuOpen: boolean;
+  setIsMobileMenuOpen: (open: boolean) => void;
+}
+
+export default function MobileBottomNav({ isMobileMenuOpen, setIsMobileMenuOpen }: MobileBottomNavProps) {
+  const dispatch = useDispatch();
+  const isLobbyOpen = useSelector((state: RootState) => state.ui.modals?.lobby);
+
+  return (
+    <div className="fixed bottom-0 left-0 right-0 z-[110] lg:hidden flex flex-row justify-between items-center px-5 py-[12px] h-[75px] bg-[#0C1F56] rounded-t-[16px] shadow-[0_-4px_20px_rgba(0,0,0,0.2)]">
+      <button onClick={() => { if (isLobbyOpen) dispatch(closeModal("lobby")); setIsMobileMenuOpen(!isMobileMenuOpen); }} className="flex flex-col justify-center items-center gap-[2px] w-[39px] h-[51px] transition-colors hover:opacity-80">
+        <div className="flex justify-center items-center w-[30px] h-[30px]">
+          <svg width="22" height="15" viewBox="0 0 22 15" fill="none" stroke={isMobileMenuOpen ? "#FFBF1F" : "#D2DCF7"} strokeWidth="2.75" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 2H12M2 7.5H12M2 13H12" strokeLinecap="round"/>
+            <path d="M20 2L16 7.5L20 13" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </div>
+        <span className={`font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] ${isMobileMenuOpen ? "text-[#FFBF1F]" : "text-[#D2DCF7]"}`}>Menu</span>
+      </button>
+
+      <button 
+        onClick={() => {
+          if (isLobbyOpen) {
+            dispatch(closeModal("lobby"));
+          } else {
+            dispatch(setActiveCategory("Lobby"));
+            dispatch(openModal("lobby"));
+          }
+        }}
+        className="flex flex-col justify-center items-center gap-[2px] w-[50px] h-[51px] transition-colors hover:opacity-80"
+      >
+        <div className="flex justify-center items-center w-[30px] h-[30px]">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={isLobbyOpen ? "#FFBF1F" : "#D2DCF7"} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+             <circle cx="11" cy="11" r="8"></circle>
+             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </div>
+        <span className={`font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] ${isLobbyOpen ? "text-[#FFBF1F]" : "text-[#D2DCF7]"}`}>Search</span>
+      </button>
+
+      <button onClick={() => { if (isLobbyOpen) dispatch(closeModal("lobby")); }} className="flex flex-col justify-center items-center gap-[2px] w-[43px] h-[51px] transition-colors hover:opacity-80">
+        <div className="flex justify-center items-center w-[30px] h-[30px]">
+           <div 
+            className="w-[22px] h-[22px] bg-[#D2DCF7] flex-none"
+            style={{
+              maskImage: `url(/games/side-icon/pro.svg)`,
+              WebkitMaskImage: `url(/games/side-icon/pro.svg)`,
+              maskSize: 'contain',
+              WebkitMaskSize: 'contain',
+              maskRepeat: 'no-repeat',
+              WebkitMaskRepeat: 'no-repeat',
+              maskPosition: 'center',
+              WebkitMaskPosition: 'center'
+            }}
+          />
+        </div>
+        <span className="font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] text-[#D2DCF7]">Offers</span>
+      </button>
+
+      <button onClick={() => { if (isLobbyOpen) dispatch(closeModal("lobby")); }} className="flex flex-col justify-center items-center gap-[2px] w-[30px] h-[51px] transition-colors hover:opacity-80">
+        <div className="flex justify-center items-center w-[30px] h-[30px]">
+          <div 
+            className="w-[24px] h-[23px] bg-[#D2DCF7] flex-none"
+            style={{
+              maskImage: `url(/games/side-icon/vip.svg)`,
+              WebkitMaskImage: `url(/games/side-icon/vip.svg)`,
+              maskSize: 'contain',
+              WebkitMaskSize: 'contain',
+              maskRepeat: 'no-repeat',
+              WebkitMaskRepeat: 'no-repeat',
+              maskPosition: 'center',
+              WebkitMaskPosition: 'center'
+            }}
+          />
+        </div>
+        <span className="font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] text-[#D2DCF7]">VIP</span>
+      </button>
+
+      <button onClick={() => { if (isLobbyOpen) dispatch(closeModal("lobby")); }} className="flex flex-col justify-center items-center gap-[2px] w-[65px] h-[51px] transition-colors hover:opacity-80">
+        <div className="flex justify-center items-center w-[30px] h-[30px]">
+          <div 
+            className="w-[22px] h-[22px] bg-[#D2DCF7] flex-none"
+            style={{
+              maskImage: `url(/games/side-icon/tour.svg)`,
+              WebkitMaskImage: `url(/games/side-icon/tour.svg)`,
+              maskSize: 'contain',
+              WebkitMaskSize: 'contain',
+              maskRepeat: 'no-repeat',
+              WebkitMaskRepeat: 'no-repeat',
+              maskPosition: 'center',
+              WebkitMaskPosition: 'center'
+            }}
+          />
+        </div>
+        <span className="font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] text-[#D2DCF7]">Tourneys</span>
+      </button>
+    </div>
+  );
+}

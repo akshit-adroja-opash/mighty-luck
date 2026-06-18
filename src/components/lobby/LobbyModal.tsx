@@ -189,26 +189,18 @@ export default function LobbyModal() {
   return (
     <div
       onClick={handleBackdropClick}
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-[#091741] md:bg-black/60 md:backdrop-blur-sm p-0 md:p-4"
+      className="fixed inset-0 top-[50px] bottom-[75px] md:bottom-0 md:top-0 z-[100] flex items-center justify-center bg-[#0C1F56] md:bg-black/60 md:backdrop-blur-sm p-0 md:p-4"
     >
-      {/* Modal Container */}
-      <div className="relative flex flex-col lg:flex-row items-start bg-[#091741] rounded-none md:rounded-[16px] lg:rounded-[20px] p-4 md:p-5 lg:p-[24px] gap-4 lg:gap-[20px] w-full max-w-[1056px] h-[100dvh] md:h-auto max-h-[100dvh] md:max-h-[90dvh] lg:max-h-none lg:h-[636px] border-none md:border md:border-white/5 shadow-none md:shadow-2xl select-none animate-in fade-in zoom-in-95 duration-200 overflow-y-auto md:overflow-visible">
+      <div className="relative flex flex-col lg:flex-row items-start bg-[#0C1F56] md:bg-[#091741] rounded-none md:rounded-[16px] lg:rounded-[20px] p-[20px] md:p-5 lg:p-[24px] gap-[20px] lg:gap-[20px] w-full max-w-[1056px] h-full md:h-auto md:max-h-[90dvh] lg:max-h-none lg:h-[636px] border-none md:border md:border-white/5 shadow-none md:shadow-2xl select-none animate-in fade-in zoom-in-95 duration-200 overflow-y-auto md:overflow-visible">
         
-        {/* Close button */}
-        {/* Close button (Desktop) */}
         <button
           onClick={() => dispatch(closeModal("lobby"))}
-          className="absolute hidden lg:flex -top-[44px] right-0 lg:-right-[44px] lg:top-0 w-[32px] h-[32px] items-center justify-center bg-transparent text-white hover:text-[#A5B8EF] transition-colors cursor-pointer z-[110]"
+          className="absolute hidden md:flex -top-[44px] right-0 lg:-right-[44px] lg:top-0 w-[32px] h-[32px] items-center justify-center bg-transparent text-white hover:text-[#A5B8EF] transition-colors cursor-pointer z-[110]"
         >
           <CloseIcon />
         </button>
 
-
-
-        {/* ── DESKTOP: Left Sidebar ── */}
         <div className="hidden lg:flex flex-col justify-center items-start gap-[12px] w-[180px] h-[588px] flex-none">
-          
-          {/* Box 1: Nav Options — 180×200px */}
           <div className="flex flex-row items-start p-[16px] gap-[10px] w-[180px] h-[200px] bg-[#0C1F56] rounded-[12px] flex-none">
             <div className="flex flex-col items-start gap-[8px] w-[148px] h-[168px] flex-grow">
               <SidebarBtn icon={navIcons.all} label="All Games" isActive={activeTab === "all"} onClick={() => { setActiveTab("all"); dispatch(setActiveCategory("Lobby")); }} />
@@ -243,8 +235,8 @@ export default function LobbyModal() {
             {/* Search bar */}
             <div className={`flex flex-row items-center justify-between rounded-[8px] flex-1 transition-all duration-300 ${
               searchQuery 
-                ? "px-4 lg:px-[20px] pr-[10px] py-[10px] h-[44px] lg:h-[50px] bg-[#112F82] border border-[#1463FF]" 
-                : "px-4 lg:px-[20px] py-[10px] h-[40px] bg-[#112F82] border border-transparent"
+                ? "px-[20px] pr-[10px] py-[10px] h-[50px] bg-[#112F82] border border-[#1463FF]" 
+                : "px-[20px] py-[10px] h-[50px] bg-[#112F82] border border-transparent"
             }`}>
               <div className="flex flex-row items-center gap-[10px] flex-grow min-w-0">
                 <div className="w-[16px] h-[16px] flex items-center justify-center flex-none text-[#BBCAF3]">
@@ -255,7 +247,7 @@ export default function LobbyModal() {
                   placeholder="What are you looking for?"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-transparent outline-none font-manrope text-[12px] lg:text-[14px] font-semibold tracking-[0.02em] text-white placeholder:text-[#BBCAF3]"
+                  className="w-full bg-transparent outline-none font-manrope text-[16px] lg:text-[14px] font-semibold tracking-[0.02em] text-white placeholder:text-[#BBCAF3] placeholder:font-semibold placeholder:text-[16px] lg:placeholder:text-[14px]"
                 />
               </div>
               {searchQuery && (
@@ -289,21 +281,21 @@ export default function LobbyModal() {
                     if (item.key === "all") dispatch(setActiveCategory("Lobby"));
                     else toast.info(`Showing ${item.label.toLowerCase()}.`);
                   }}
-                  className={`flex-none flex items-center gap-1.5 px-3 py-[6px] rounded-[8px] transition-all cursor-pointer whitespace-nowrap ${
+                  className={`flex-none flex items-center gap-[8px] px-[10px] py-[10px] h-[40px] rounded-[8px] transition-all cursor-pointer whitespace-nowrap ${
                     activeTab === item.key ? "bg-[#1463FF] text-white" : "bg-[#112F82] text-[#A5B8EF]"
                   }`}
                 >
-                  <div className="flex w-[14px] h-[14px] justify-center items-center">
+                  <div className="flex w-[16px] h-[16px] justify-center items-center">
                     {navIcons[item.key]}
                   </div>
-                  <span className="font-manrope text-[11px] font-semibold tracking-[0.02em]">
+                  <span className="font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em]">
                     {item.label}
                   </span>
                 </button>
               ))}
               <button
                 onClick={() => setShowMobileCategories(!showMobileCategories)}
-                className={`flex-none px-3 py-[6px] rounded-[8px] font-manrope text-[11px] font-semibold tracking-[0.02em] transition-all cursor-pointer whitespace-nowrap ${
+                className={`flex-none px-[10px] py-[10px] h-[40px] rounded-[8px] font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] transition-all cursor-pointer whitespace-nowrap ${
                   showMobileCategories ? "bg-[#FFC83D] text-black" : "bg-[#112F82] text-[#A5B8EF]"
                 }`}
               >
@@ -381,17 +373,22 @@ export default function LobbyModal() {
               
               {/* Popular Games — 808×249px */}
               <div className="flex flex-col gap-4 lg:gap-[20px] w-full lg:w-[808px] lg:h-[249px] flex-none">
-                <div className="flex flex-row items-center gap-[8px] h-[29px] flex-none">
-                  <div className="w-[20px] h-[20px] flex items-center justify-center text-[#FFBF1F]">
-                    <MaskIcon src="/games/side-icon/popular.svg" />
+                <div className="flex flex-row items-center justify-between w-full h-[23px] lg:h-[29px] flex-none">
+                  <div className="flex flex-row items-center gap-[7.2px] lg:gap-[8px]">
+                    <div className="w-[18px] h-[18px] lg:w-[20px] lg:h-[20px] flex items-center justify-center text-[#FFBF1F]">
+                      <MaskIcon src="/games/side-icon/popular.svg" />
+                    </div>
+                    <span className="font-jost font-extrabold text-[16px] lg:text-[20px] leading-[23px] lg:leading-[29px] tracking-[0.01em] uppercase text-white select-none">
+                      Popular Games
+                    </span>
                   </div>
-                  <span className="font-jost font-extrabold text-[18px] lg:text-[20px] leading-[29px] tracking-[0.01em] uppercase text-white select-none">
-                    Popular Games
+                  <span className="font-manrope font-bold text-[12px] leading-[16px] tracking-[0.02em] text-[#FFBF1F] cursor-pointer hover:opacity-80">
+                    View all
                   </span>
                 </div>
 
                 {/* Cards Row — 808×200px, gap 12px */}
-                <div className="flex flex-row items-center gap-3 lg:gap-[12px] w-full lg:w-[808px] lg:h-[200px] overflow-x-auto no-scrollbar flex-none">
+                <div className="flex flex-row items-center gap-[8px] lg:gap-[12px] w-full lg:w-[808px] h-[160px] lg:h-[200px] overflow-x-auto no-scrollbar flex-none">
                   {popularGames.map((game, index) => (
                     <div key={index} className="flex-none">
                       <GameCard 
@@ -406,12 +403,17 @@ export default function LobbyModal() {
 
               {/* Game Providers — 856×171px */}
               <div className="flex flex-col gap-4 lg:gap-[20px] w-full lg:w-[856px] lg:h-[171px] flex-none">
-                <div className="flex flex-row items-center gap-[8px] h-[29px] flex-none">
-                  <div className="w-[20px] h-[20px] flex items-center justify-center text-[#FFC83D]">
-                    <MaskIcon src="/games/side-icon/game-p.svg" />
+                <div className="flex flex-row items-center justify-between w-full h-[23px] lg:h-[29px] flex-none">
+                  <div className="flex flex-row items-center gap-[7.2px] lg:gap-[8px]">
+                    <div className="w-[18px] h-[18px] lg:w-[20px] lg:h-[20px] flex items-center justify-center text-[#FFC83D]">
+                      <MaskIcon src="/games/side-icon/game-p.svg" />
+                    </div>
+                    <span className="font-jost font-extrabold text-[16px] lg:text-[20px] leading-[23px] lg:leading-[29px] tracking-[0.01em] uppercase text-white select-none">
+                      Game Providers
+                    </span>
                   </div>
-                  <span className="font-jost font-extrabold text-[18px] lg:text-[20px] leading-[29px] tracking-[0.01em] uppercase text-white select-none">
-                    Game Providers
+                  <span className="font-manrope font-bold text-[12px] leading-[16px] tracking-[0.02em] text-[#FFBF1F] cursor-pointer hover:opacity-80">
+                    View all
                   </span>
                 </div>
 
@@ -420,7 +422,7 @@ export default function LobbyModal() {
                   <div
                     ref={providersRef}
                     onScroll={handleScroll}
-                    className="flex flex-row items-center gap-3 lg:gap-[12px] w-full lg:w-[856px] lg:h-[100px] overflow-x-auto no-scrollbar snap-x snap-mandatory flex-none"
+                    className="flex flex-row items-center gap-[8px] lg:gap-[12px] w-full lg:w-[856px] lg:h-[100px] overflow-x-auto no-scrollbar snap-x snap-mandatory flex-none"
                   >
                     {providers.map((p, index) => (
                       <div
@@ -430,9 +432,9 @@ export default function LobbyModal() {
                           dispatch(closeModal("lobby"));
                           toast.success(`Selected provider ${p.name}`);
                         }}
-                        className="group flex flex-col justify-center items-center p-[12px] px-[20px] lg:px-[24px] gap-[8px] w-[130px] lg:w-[152px] h-[90px] lg:h-[100px] bg-[#0C1F56] hover:bg-[#112f82]/50 rounded-[12px] flex-none cursor-pointer transition-all snap-start"
+                        className="group flex flex-col justify-center items-center p-[7.2px] px-[14.4px] lg:p-[12px] lg:px-[24px] gap-[4.8px] lg:gap-[8px] w-[88px] lg:w-[152px] h-[60px] lg:h-[100px] bg-[#112F82] lg:bg-[#0C1F56] hover:bg-[#112f82]/50 rounded-[8px] lg:rounded-[12px] flex-none cursor-pointer transition-all snap-start"
                       >
-                        <div className="flex h-[36px] lg:h-[40px] w-[70px] lg:w-[80px] flex-none items-center justify-center">
+                        <div className="flex h-[24px] lg:h-[40px] w-[48px] lg:w-[80px] flex-none items-center justify-center">
                           {p.logo ? (
                             <img src={p.logo} alt={p.name} className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform" />
                           ) : (
@@ -442,7 +444,7 @@ export default function LobbyModal() {
                           )}
                         </div>
                         <div className="flex items-center justify-center flex-none">
-                          <span className="font-manrope text-[10px] font-semibold leading-[14px] text-center text-[#FFC83D]">
+                          <span className="font-manrope text-[8px] lg:text-[10px] font-semibold leading-[11px] lg:leading-[14px] text-center text-[#FFC83D]">
                             {p.games} Games
                           </span>
                         </div>
