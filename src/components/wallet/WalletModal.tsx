@@ -586,11 +586,11 @@ export default function WalletModal() {
                       {/* Bonus Dropdown Options */}
                       {showBonusDropdown && (
                         <div 
-                          className="absolute left-0 top-[68px] z-50 flex w-full sm:w-[428px] flex-col rounded-[8px] border border-[#1463FF] bg-[#112F82] overflow-hidden shadow-2xl"
-                          style={{ height: "232px" }}
+                          className="absolute left-0 top-[80px] z-50 flex w-full sm:w-[428px] flex-col rounded-[8px] border border-[#1463FF] bg-[#112F82] overflow-hidden shadow-2xl"
+                          style={{ height: "244px" }}
                         >
                           {/* Header */}
-                          <div className="flex flex-row items-center h-[44px] sm:h-[40px] px-[16px] py-[10px] bg-[#112F82] border-b border-[#173EAD]/50 flex-none">
+                          <div className="flex flex-row items-center h-[40px] px-[16px] py-[10px] bg-[#112F82] flex-none">
                             <span className="font-manrope text-[12px] font-bold leading-[16px] tracking-[0.02em] text-white">
                               Choose one bonus on next deposits
                             </span>
@@ -634,11 +634,11 @@ export default function WalletModal() {
                                     setSelectedBonus(option.name);
                                     setShowBonusDropdown(false);
                                   }}
-                                  className={`flex flex-row items-center px-[16px] py-[10px] gap-[12px] w-full text-left cursor-pointer transition-all ${
+                                  className={`flex flex-row items-center px-[16px] py-[10px] gap-[12px] w-full text-left cursor-pointer transition-all flex-none ${
                                     isActive 
                                       ? "bg-[#1463FF]" 
                                       : "bg-[#112F82] hover:bg-[#173EAD]"
-                                  } ${option.hasSub ? "h-[52px]" : "h-[36px]"} ${
+                                  } ${option.hasSub ? "h-[55px]" : "h-[39px]"} ${
                                     isLast ? "rounded-b-[8px]" : ""
                                   }`}
                                 >
@@ -661,7 +661,7 @@ export default function WalletModal() {
 
                                   {/* Text container */}
                                   <div className="flex flex-col justify-center items-start gap-[2px]">
-                                    <span className={`font-manrope text-[12px] font-bold leading-[16px] tracking-[0.02em] ${
+                                    <span className={`font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] ${
                                       isActive ? "text-white" : "text-[#A5B8EF]"
                                     }`}>
                                       {option.name}
