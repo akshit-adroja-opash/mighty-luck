@@ -888,13 +888,13 @@ export default function WalletModal() {
                               Select an amount
                             </span>
                             
-                            <div className="flex flex-row items-center w-full sm:w-[428px] h-[40px] gap-[8px]">
+                            <div className="flex flex-row items-center w-full sm:w-[428px] h-[50px] sm:h-[40px] gap-[8px]">
                               {["20", "30", "100"].map((opt) => (
                                 <button
                                   key={opt}
                                   type="button"
                                   onClick={() => setSelectedAmountOption(opt as any)}
-                                  className={`flex items-center justify-center rounded-[8px] h-[40px] w-[101px] px-[16px] py-[10px] gap-[8px] transition-all cursor-pointer flex-grow ${
+                                  className={`flex items-center justify-center rounded-[8px] h-[50px] sm:h-[40px] w-full sm:w-[101px] px-[16px] py-[10px] gap-[8px] transition-all cursor-pointer flex-1 sm:flex-grow ${
                                     selectedAmountOption === opt
                                       ? "bg-[#173EAD] border-2 border-[#1463FF]"
                                       : "bg-[#112F82]"
@@ -911,7 +911,7 @@ export default function WalletModal() {
                               {/* Custom amount */}
                               <div
                                 onClick={() => setSelectedAmountOption("custom")}
-                                className={`flex items-center justify-center rounded-[8px] h-[40px] w-[101px] px-[16px] py-[10px] gap-[8px] transition-all cursor-pointer flex-grow ${
+                                className={`flex items-center justify-center rounded-[8px] h-[50px] sm:h-[40px] w-full sm:w-[101px] px-[16px] py-[10px] gap-[8px] transition-all cursor-pointer flex-1 sm:flex-grow ${
                                   selectedAmountOption === "custom"
                                     ? "bg-[#173EAD] border-2 border-[#1463FF]"
                                     : "bg-[#112F82]"
@@ -923,11 +923,11 @@ export default function WalletModal() {
                                     value={customAmount}
                                     onChange={(e) => setCustomAmount(e.target.value)}
                                     placeholder="Amount"
-                                    className="w-[68px] h-[19px] bg-transparent text-center text-white font-manrope text-[14px] font-bold outline-none placeholder:text-[#A5B8EF]/60"
+                                    className="w-full sm:w-[68px] h-[19px] bg-transparent text-center text-white font-manrope text-[14px] font-bold outline-none placeholder:text-[#A5B8EF]/60"
                                     autoFocus
                                   />
                                 ) : (
-                                  <span className="font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-[#A5B8EF] w-[68px] text-center">
+                                  <span className="font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-[#A5B8EF] w-full sm:w-[68px] text-center">
                                     Custom...
                                   </span>
                                 )}
@@ -936,17 +936,17 @@ export default function WalletModal() {
                           </div>
 
                           {/* Step 4: Enter payment details */}
-                          <div className="flex flex-col gap-[12px] w-full sm:w-[428px] h-auto sm:h-[146px] flex-none">
+                          <div className="flex flex-col gap-[12px] w-full sm:w-[428px] h-auto flex-none">
                             <span className="font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#BBCAF3] w-full h-auto">
                               Enter your payment details
                             </span>
 
-                            <div className="flex flex-col gap-[12px] w-full sm:w-[428px] h-auto sm:h-[92px]">
+                            <div className="flex flex-col gap-[8px] w-full sm:w-[428px] h-auto">
                               {/* Card Number */}
-                              <div className="flex items-center bg-[#112F82] rounded-[8px] w-full sm:w-[428px] h-[44px] sm:h-[40px] px-[16px] py-[10px] gap-[12px]">
+                              <div className="flex items-center bg-[#112F82] rounded-[8px] w-full sm:w-[428px] h-[50px] sm:h-[40px] px-[16px] py-[10px] gap-[12px]">
                                 <input 
                                   type="text" 
-                                  placeholder="Card Number" 
+                                  placeholder="Credit Card Number" 
                                   value={cardNumber}
                                   onChange={(e) => setCardNumber(e.target.value)}
                                   className="w-full sm:w-[396px] h-[19px] bg-transparent font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white outline-none placeholder:text-[#A5B8EF]"
@@ -954,20 +954,20 @@ export default function WalletModal() {
                               </div>
 
                               {/* Expiry & CVC */}
-                              <div className="flex flex-col sm:flex-row items-center gap-[8px] w-full sm:w-[428px] h-auto sm:h-[40px]">
-                                <div className="flex items-center bg-[#112F82] rounded-[8px] w-full sm:w-[210px] h-[44px] sm:h-[40px] px-[16px] py-[10px] gap-[12px]">
+                              <div className="flex flex-row items-center gap-[8px] w-full sm:w-[428px] h-[50px] sm:h-[40px]">
+                                <div className="flex items-center bg-[#112F82] rounded-[8px] flex-1 sm:w-[210px] h-[50px] sm:h-[40px] px-[16px] py-[10px] gap-[12px]">
                                   <input 
                                     type="text" 
-                                    placeholder="Expiry Date (MM/YY)" 
+                                    placeholder="Exp." 
                                     value={cardExpiry}
                                     onChange={(e) => setCardExpiry(e.target.value)}
                                     className="w-full sm:w-[178px] h-[19px] bg-transparent font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white outline-none placeholder:text-[#A5B8EF]"
                                   />
                                 </div>
-                                <div className="flex items-center bg-[#112F82] rounded-[8px] w-full sm:w-[210px] h-[44px] sm:h-[40px] px-[16px] py-[10px] gap-[12px]">
+                                <div className="flex items-center bg-[#112F82] rounded-[8px] flex-1 sm:w-[210px] h-[50px] sm:h-[40px] px-[16px] py-[10px] gap-[12px]">
                                   <input 
                                     type="text" 
-                                    placeholder="CVC" 
+                                    placeholder="CCV" 
                                     value={cardCVC}
                                     onChange={(e) => setCardCVC(e.target.value)}
                                     className="w-full sm:w-[178px] h-[19px] bg-transparent font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white outline-none placeholder:text-[#A5B8EF]"
@@ -977,12 +977,16 @@ export default function WalletModal() {
                             </div>
 
                             {/* Warning Message Row */}
-                            <div className="flex items-center gap-[8px] w-full sm:w-[428px] h-[14px]">
-                              <div className="w-[12px] h-[12px] bg-[#7795E8] rounded-full flex items-center justify-center text-[#0C1F56] text-[8px] font-bold">
-                                !
+                            <div className="flex items-start gap-[8px] w-full sm:w-[428px] h-auto">
+                              <div className="w-[12px] h-[12px] relative flex-none pt-0.5">
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <circle cx="6" cy="6" r="5" stroke="#7795E8" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                                  <path d="M6 8V6" stroke="#7795E8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                  <path d="M6 4.2H6.005" stroke="#7795E8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                </svg>
                               </div>
-                              <span className="font-manrope text-[10px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] w-full sm:w-[408px] h-[14px] truncate">
-                                A 2.5% processing fee applies to credit card deposits. Funds are credited instantly.
+                              <span className="font-manrope text-[10px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] w-full sm:w-[408px]">
+                                Warning message about fees or anything else relevant at this stage.
                               </span>
                             </div>
                           </div>
