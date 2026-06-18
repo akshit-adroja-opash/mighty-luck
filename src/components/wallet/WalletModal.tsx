@@ -310,51 +310,11 @@ export default function WalletModal() {
   ];
 
   return (
-    <div className="fixed inset-0 z-[100] flex flex-col items-center justify-end sm:justify-center bg-[#0C1F56] sm:bg-[#0C1733]/70 sm:backdrop-blur-[8px] sm:p-4">
+    <div className="fixed top-[50px] sm:top-0 inset-x-0 bottom-0 z-[100] flex flex-col items-center justify-end sm:justify-center bg-[#0C1F56] sm:bg-[#0C1733]/70 sm:backdrop-blur-[8px] sm:p-4">
       
-      {/* Mobile Navbar (Matches Header) */}
-      <div className="flex sm:hidden flex-row justify-between items-center px-[20px] py-[10px] w-full h-[50px] bg-[#0C1F56] flex-none absolute top-0 left-0 overflow-hidden">
-        {/* Glow */}
-        <div className="absolute w-[71.5px] h-[71.5px] left-[6px] top-[32px] bg-[#1463FF] blur-[12.5px] z-0" />
-        
-        {/* Content */}
-        <div className="flex flex-row justify-between items-center w-full z-10">
-          <div className="w-[44px] h-[30px] relative flex-none flex items-center">
-            <Logo hideTextOnMobile className="h-[30px] w-full" iconClassName="w-[33.94px] h-[24.75px] m-0" />
-          </div>
-          
-          <div className="flex flex-row justify-end items-center gap-[16px] flex-none">
-            <div className="flex flex-row items-center gap-[4px] h-[30px]">
-              <div className="flex flex-row justify-center items-center px-[20px] py-[8px] gap-[7.5px] h-[30px] bg-[#112F82] rounded-[6px]">
-                <span className="font-manrope font-bold text-[10.5px] leading-[14px] tracking-[0.02em] text-white">
-                  $105,98
-                </span>
-              </div>
-              <div className="flex flex-row justify-center items-center p-[8px] w-[30px] h-[30px] bg-[#FFC83D] rounded-[6px]">
-                <WalletIcon className="w-[14px] h-[14px] text-[#1A1404] flex-none" fill="#1A1404" />
-              </div>
-            </div>
-            
-            <div className="flex flex-row items-center gap-[8px] h-[30px]">
-              <div className="flex flex-row justify-center items-center p-[7.5px_9px] w-[30px] h-[30px] bg-[#173EAD] rounded-[6px] relative">
-                <Bell size={14} className="text-[#D2DCF7]" fill="#D2DCF7" />
-                <div className="absolute w-[8px] h-[8px] left-[22px] top-0 bg-[#FF0E0E] rounded-[50px] flex items-center justify-center border-[1.5px] border-[#173EAD]" />
-              </div>
-              <div className="flex flex-row justify-center items-center p-[7.5px_9px] w-[30px] h-[30px] bg-[#173EAD] rounded-[6px] relative">
-                <Gift size={14} className="text-[#D2DCF7]" fill="#D2DCF7" />
-                <div className="absolute w-[8px] h-[8px] left-[22px] top-0 bg-[#FF0E0E] rounded-[50px] flex items-center justify-center border-[1.5px] border-[#173EAD]" />
-              </div>
-              <div className="w-[30px] h-[30px] rounded-full overflow-hidden bg-[#173EAD] flex items-center justify-center">
-                <img src="/images/avatar.png" alt="Avatar" className="w-[30px] h-[30px] rounded-full object-cover" onError={(e) => (e.currentTarget.src = `https://ui-avatars.com/api/?name=${user?.name || "User"}&background=1463FF&color=fff&bold=true`)} />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Outer absolute position alignment box (dynamic height to avoid jumps) */}
       <div 
-        className="relative transition-all duration-300 w-full sm:w-[500px] mt-[80px] sm:mt-0 overflow-y-auto sm:overflow-visible rounded-none sm:rounded-[16px] flex flex-col" 
+        className="relative transition-all duration-300 w-full sm:w-[500px] overflow-y-auto sm:overflow-visible rounded-none sm:rounded-[16px] flex flex-col" 
         style={{ 
           height: typeof window !== "undefined" && window.innerWidth < 640 ? undefined : modalHeight 
         }}
@@ -483,10 +443,11 @@ export default function WalletModal() {
 
               {/* Tab View Container */}
               <div 
-                className="flex flex-col items-start gap-[16px] w-full sm:w-[460px] bg-[#0C1F56] rounded-[16px] border border-[#173EAD]/30 overflow-visible transition-all duration-300"
+                className={`flex flex-col items-start gap-[16px] w-full sm:w-[460px] bg-[#0C1F56] rounded-[16px] overflow-visible transition-all duration-300 ${
+                  isBtcSubmitted ? "p-[20px_16px]" : "p-[16px]"
+                }`}
                 style={{ 
-                  height: typeof window !== "undefined" && window.innerWidth < 640 ? undefined : tabViewHeight,
-                  padding: isBtcSubmitted ? "20px 16px" : "16px"
+                  height: typeof window !== "undefined" && window.innerWidth < 640 ? undefined : tabViewHeight
                 }}
               >
                 {activeTab === "deposit" ? (
@@ -747,8 +708,8 @@ export default function WalletModal() {
                                 <span className="font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-white w-auto whitespace-nowrap flex-none">
                                   Bitcoin
                                 </span>
-                                <span className="font-manrope text-[11px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] w-auto whitespace-nowrap flex-none">
-                                  (Min. $10)
+                                <span className="font-manrope text-[10px] sm:text-[11px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] w-auto whitespace-nowrap flex-none">
+                                  (Min. Deposit $10)
                                 </span>
                               </div>
                             </>
@@ -1033,14 +994,14 @@ export default function WalletModal() {
                         
                         {/* Warning row */}
                         <div className="flex items-start gap-[8px] w-full sm:w-[428px]">
-                          <div className="flex-none pt-0.5 text-[#A06BC0]">
+                          <div className="flex-none pt-0.5 text-[#7795E8]">
                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <circle cx="6" cy="6" r="5" stroke="#A06BC0" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                              <path d="M6 8V6" stroke="#A06BC0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                              <path d="M6 4.2H6.005" stroke="#A06BC0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                              <circle cx="6" cy="6" r="5" stroke="#7795E8" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                              <path d="M6 8V6" stroke="#7795E8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                              <path d="M6 4.2H6.005" stroke="#7795E8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>
                           </div>
-                          <p className="font-manrope text-[10px] font-medium leading-[14px] tracking-[0.02em] text-[#A06BC0]">
+                          <p className="font-manrope text-[10px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8]">
                             Only deposit BC via the Bitcoin network. Deposit of other assets or from other networks will be lost.
                           </p>
                         </div>
@@ -1050,11 +1011,11 @@ export default function WalletModal() {
                           <span className="font-manrope text-[12px] font-semibold tracking-[0.02em] text-[#BBCAF3] w-full h-auto">
                             3.Calculate the amount you want to deposit
                           </span>
-                          <div className="flex flex-col sm:flex-row items-center gap-[8px] w-full sm:w-[428px] h-auto sm:h-[40px]">
+                          <div className="flex flex-row items-center justify-center sm:justify-start gap-[8px] w-full sm:w-[428px] h-[50px] sm:h-[40px]">
                             
                             {/* USD input */}
-                            <div className="flex items-center gap-[12px] bg-[#112F82] rounded-[8px] w-full sm:w-[186px] h-[44px] sm:h-[40px] px-[16px] py-[10px]">
-                              <div className="flex items-center gap-[8px] w-full sm:w-[154px] h-[19px]">
+                            <div className="flex items-center gap-[12px] bg-[#112F82] rounded-[8px] w-[138px] sm:w-[186px] h-[50px] sm:h-[40px] px-[16px] py-[10px]">
+                              <div className="flex items-center gap-[8px] w-full h-[19px]">
                                 <div className="w-[16px] h-[16px] relative flex-none">
                                   <img src="/images/icons/doller.svg" alt="USD" className="w-[16px] h-[16px] absolute left-0 top-0" />
                                 </div>
@@ -1062,13 +1023,13 @@ export default function WalletModal() {
                                   type="text" 
                                   value={usdAmount}
                                   onChange={(e) => handleUsdChange(e.target.value)}
-                                  className="w-full sm:w-[130px] h-[19px] bg-transparent font-manrope text-[12px] font-bold leading-[19px] tracking-[0.02em] text-white outline-none p-0"
+                                  className="w-full h-[19px] bg-transparent font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-white outline-none p-0"
                                 />
                               </div>
                             </div>
 
                             {/* Swap Icon */}
-                            <div className="flex flex-none items-center justify-center bg-[#112F82] rounded-[8px] w-[40px] h-[40px]">
+                            <div className="flex flex-none items-center justify-center bg-[#1463FF] rounded-[8px] w-[50px] sm:w-[40px] h-[50px] sm:h-[40px]">
                               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 {/* Top arrow (left to right) */}
                                 <path d="M10.5 2.5L13 5L10.5 7.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -1080,8 +1041,8 @@ export default function WalletModal() {
                             </div>
 
                             {/* BTC input */}
-                            <div className="flex items-center gap-[12px] bg-[#112F82] rounded-[8px] w-full sm:w-[186px] h-[44px] sm:h-[40px] px-[16px] py-[10px]">
-                              <div className="flex items-center gap-[8px] w-full sm:w-[154px] h-[19px]">
+                            <div className="flex items-center gap-[12px] bg-[#112F82] rounded-[8px] w-[138px] sm:w-[186px] h-[50px] sm:h-[40px] px-[16px] py-[10px]">
+                              <div className="flex items-center gap-[8px] w-full h-[19px]">
                                 <div className="w-[16px] h-[16px] relative flex-none">
                                   <img src="/images/icons/bitcoin.svg" alt="BTC" className="w-[16px] h-[16px] absolute left-0 top-0" />
                                 </div>
@@ -1089,7 +1050,7 @@ export default function WalletModal() {
                                   type="text" 
                                   value={btcAmount}
                                   onChange={(e) => handleBtcChange(e.target.value)}
-                                  className="w-full sm:w-[130px] h-[19px] bg-transparent font-manrope text-[12px] font-bold leading-[19px] tracking-[0.02em] text-white outline-none p-0"
+                                  className="w-full h-[19px] bg-transparent font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-white outline-none p-0"
                                 />
                               </div>
                             </div>
