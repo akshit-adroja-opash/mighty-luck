@@ -23,7 +23,7 @@ export default function Footer() {
     <footer className="flex w-full flex-none flex-col gap-[40px] md:gap-[48px] items-center lg:items-start overflow-hidden">
 
       {/* Top Section */}
-      <div className="flex w-[374px] md:w-full flex-col lg:flex-row justify-between items-center lg:items-start gap-[40px] lg:gap-[49px]">
+      <div className="flex w-full md:max-w-full flex-col lg:flex-row justify-between items-center lg:items-start gap-[40px] lg:gap-[49px]">
 
         {/* Logo & Copyright */}
         <div className="flex flex-col items-center lg:items-start mx-auto lg:mx-0 gap-[16px] flex-none w-[213px] h-[81px]">
@@ -33,13 +33,13 @@ export default function Footer() {
             iconClassName="h-[24px] w-[32px]"
             textClassName="text-[15px] tracking-widest text-center w-full"
           />
-          <p className="font-manrope text-[11px] font-semibold leading-[15px] tracking-[0.01em] text-[#D2DCF7] text-center lg:text-left w-[213px] flex-none">
+          <p className="font-manrope text-[11px] font-semibold leading-[15px] tracking-[0.01em] text-[#D2DCF7] text-center lg:text-left w-full flex-none">
             @ 2026 Mighty Luck. All rights reserved.
           </p>
         </div>
 
         {/* Mobile Accordion */}
-        <div className="flex lg:hidden w-[374px] flex-col items-start gap-[20px]">
+        <div className="flex lg:hidden w-full flex-col items-start gap-[20px]">
           {columns.map((col, idx) => {
             const isOpen = openAccordion === idx;
             return (
@@ -53,7 +53,7 @@ export default function Footer() {
                   <span className="font-jost text-[16px] font-bold leading-[23px] tracking-[0.02em] text-white uppercase text-left">
                     {col.title}
                   </span>
-                  <div className="flex flex-col items-center justify-center w-[24px] h-[24px]">
+                  <div className="flex flex-col items-center justify-center w-[24px] h-[24px] flex-none">
                     <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg" className={`transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}>
                       <path d="M1 1L6 6L11 1" stroke="#A5B8EF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
@@ -103,7 +103,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Section */}
-      <div className="flex w-[374px] md:w-full flex-col lg:flex-row justify-between items-start lg:items-center border-t border-[#112F82] pt-[60px] md:pt-8 gap-[20px] md:gap-6">
+      <div className="flex w-full md:max-w-full flex-col lg:flex-row justify-between items-start lg:items-center border-t border-[#112F82] pt-[60px] md:pt-8 gap-[20px] md:gap-6">
 
         {/* Legal Text */}
         <p className="w-full lg:max-w-[445px] text-left lg:text-justify font-manrope text-[10px] font-semibold leading-[14px] tracking-[0.01em] text-[#D2DCF7]">
