@@ -123,6 +123,41 @@ export default function WalletModal() {
     setIsDraggingBonus(false);
   };
 
+  // Mobile drag-to-close modal state
+  const [modalDragY, setModalDragY] = useState(0);
+  const [isDraggingModal, setIsDraggingModal] = useState(false);
+  const [modalStartY, setModalStartY] = useState(0);
+
+  const handleModalTouchStart = (e: React.TouchEvent | React.MouseEvent) => {
+    if (typeof window !== "undefined" && window.innerWidth >= 640) return;
+    setIsDraggingModal(true);
+    const clientY = 'touches' in e ? e.touches[0].clientY : (e as React.MouseEvent).clientY;
+    setModalStartY(clientY);
+  };
+
+  const handleModalTouchMove = (e: React.TouchEvent | React.MouseEvent) => {
+    if (!isDraggingModal) return;
+    const clientY = 'touches' in e ? e.touches[0].clientY : (e as React.MouseEvent).clientY;
+    const deltaY = clientY - modalStartY;
+    if (deltaY > 0) {
+      setModalDragY(deltaY);
+    }
+  };
+
+  const handleModalTouchEnd = () => {
+    if (!isDraggingModal) return;
+    setIsDraggingModal(false);
+    if (modalDragY > 100) {
+      // Threshold passed, close modal
+      setIsBtcSubmitted(false);
+      dispatch(closeModal("wallet"));
+      setTimeout(() => setModalDragY(0), 300); // reset after transition
+    } else {
+      // Snap back
+      setModalDragY(0);
+    }
+  };
+
   const currentIndexRef = useRef(bonusSlideIndex);
   useEffect(() => {
     currentIndexRef.current = bonusSlideIndex;
@@ -316,7 +351,9 @@ export default function WalletModal() {
       <div 
         className="relative transition-all duration-300 w-full sm:w-[500px] overflow-y-auto sm:overflow-visible rounded-none sm:rounded-[16px] flex flex-col" 
         style={{ 
-          height: typeof window !== "undefined" && window.innerWidth < 640 ? undefined : modalHeight 
+          height: typeof window !== "undefined" && window.innerWidth < 640 ? undefined : modalHeight,
+          transform: `translateY(${modalDragY}px)`,
+          transition: isDraggingModal ? 'none' : 'transform 0.3s ease-out'
         }}
       >
         
@@ -357,8 +394,20 @@ export default function WalletModal() {
             />
           </div>
 
+          {/* Mobile Drag-to-Close Hit Area */}
+          <div 
+            className="absolute top-0 inset-x-0 h-[48px] z-50 sm:hidden cursor-grab active:cursor-grabbing"
+            onTouchStart={handleModalTouchStart}
+            onTouchMove={handleModalTouchMove}
+            onTouchEnd={handleModalTouchEnd}
+            onMouseDown={handleModalTouchStart}
+            onMouseMove={handleModalTouchMove}
+            onMouseUp={handleModalTouchEnd}
+            onMouseLeave={handleModalTouchEnd}
+          />
+
           {/* Bottom Sheet Handle (Mobile Only) */}
-          <div className="w-[70px] h-[6px] bg-[#112F82] rounded-[100px] flex-none z-10 block sm:hidden" />
+          <div className="w-[70px] h-[6px] bg-[#112F82] rounded-[100px] flex-none z-10 block sm:hidden pointer-events-none" />
 
           {/* Inner Content Box */}
           <div 
