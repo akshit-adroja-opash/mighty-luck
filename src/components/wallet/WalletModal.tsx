@@ -462,17 +462,11 @@ export default function WalletModal() {
               <div className="flex flex-row items-center w-full sm:w-[460px] h-[30px] gap-[8px] overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                 {(["deposit", "bonuses", "withdraw", "transactions"] as const).map((tab) => {
                   const isActive = activeTab === tab;
-                  const labelWidths = {
-                    deposit: "w-[47px]",
-                    bonuses: "w-[52px]",
-                    withdraw: "w-[57px]",
-                    transactions: "w-[78px]",
-                  };
                   return (
                     <button
                       key={tab}
                       onClick={() => setActiveTab(tab)}
-                      className={`flex items-center justify-center flex-none rounded-[6px] h-[30px] w-[87.5px] sm:w-[109px] px-[2px] sm:px-[16px] transition-all cursor-pointer ${
+                      className={`flex items-center justify-center flex-1 sm:flex-none rounded-[6px] h-[30px] sm:w-[109px] px-[2px] sm:px-[16px] transition-all cursor-pointer ${
                         isActive 
                           ? "bg-[#1463FF]" 
                           : "bg-[#112F82]"
@@ -600,7 +594,7 @@ export default function WalletModal() {
                           showBonusDropdown ? "border-[#1463FF]" : "border-transparent"
                         }`}
                       >
-                        <div className="flex items-center gap-[8px] w-full sm:w-[370px] h-[19px]">
+                        <div className="flex items-center gap-[8px] flex-1 min-w-0 sm:w-[370px] h-[19px]">
                           <div className="w-[16px] h-[16px] relative flex-none">
                             <div 
                               className="w-[16px] h-[16px] absolute left-0 top-0 bg-[#FFC83D]"
@@ -626,11 +620,11 @@ export default function WalletModal() {
                               }}
                             />
                           </div>
-                          <span className="font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-white truncate w-full sm:w-[245px] h-[19px]">
+                          <span className="font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-white truncate flex-1 min-w-0 h-[19px]">
                             {selectedBonus}
                           </span>
                         </div>
-                        <div className="flex items-center justify-between w-[14px] h-[14px]">
+                        <div className="flex items-center justify-between w-[14px] h-[14px] flex-none">
                           <ArrowIcon color="#A5B8EF" />
                         </div>
                       </div>
@@ -750,25 +744,25 @@ export default function WalletModal() {
                           showPaymentDropdown ? "border-[#1463FF]" : "border-transparent"
                         }`}
                       >
-                        <div className="flex items-center gap-[8px] w-full sm:w-[370px] h-[20px]">
+                        <div className="flex items-center gap-[8px] flex-1 min-w-0 sm:w-[370px] h-[20px]">
                           {paymentMethod === "btc" ? (
                             <>
                               <div className="w-[16px] h-[16px] relative flex-none">
                                 <img src="/images/icons/bitcoin.svg" alt="Bitcoin" className="w-[16px] h-[16px] absolute left-0 top-0" />
                               </div>
-                              <div className="flex items-center gap-[8px] w-full sm:w-[346px] h-[19px]">
+                              <div className="flex items-center gap-[8px] flex-1 min-w-0 sm:w-[346px] h-[19px]">
                                 <span className="font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-white w-auto whitespace-nowrap flex-none">
                                   Bitcoin
                                 </span>
-                                <span className="font-manrope text-[10px] sm:text-[11px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] w-auto whitespace-nowrap flex-none">
+                                <span className="font-manrope text-[10px] sm:text-[11px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] w-auto whitespace-nowrap flex-none truncate">
                                   (Min. Deposit $10)
                                 </span>
                               </div>
                             </>
                           ) : (
                             <>
-                              <div className="flex flex-col sm:flex-row sm:items-center justify-center sm:justify-start items-start gap-[2px] sm:gap-[8px] w-full sm:w-[338px] h-[36px] sm:h-[20px]">
-                                <div className="flex flex-row items-center gap-[8px] w-auto h-[20px]">
+                              <div className="flex flex-col sm:flex-row sm:items-center justify-center sm:justify-start items-start gap-[2px] sm:gap-[8px] flex-1 min-w-0 sm:w-[338px] h-[36px] sm:h-[20px]">
+                                <div className="flex flex-row items-center gap-[8px] w-auto h-[20px] flex-none">
                                   <div className="flex items-center gap-[2px] w-[42px] h-[20px] flex-none">
                                     <img src="/images/icons/visa.svg" alt="Credit Card" className="w-[42px] h-[20px]" />
                                   </div>
@@ -776,14 +770,14 @@ export default function WalletModal() {
                                     Credit Card
                                   </span>
                                 </div>
-                                <span className="font-manrope text-[10px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] w-auto flex-none sm:ml-1">
+                                <span className="font-manrope text-[10px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] flex-1 min-w-0 truncate sm:ml-1">
                                   (Min. Deposit $30 - Max. Deposit $2,500)
                                 </span>
                               </div>
                             </>
                           )}
                         </div>
-                        <div className="flex items-center justify-between w-[14px] h-[14px]">
+                        <div className="flex items-center justify-between w-[14px] h-[14px] flex-none">
                           <ArrowIcon color="#A5B8EF" />
                         </div>
                       </div>
@@ -830,14 +824,14 @@ export default function WalletModal() {
                           </span>
 
                           {/* Warning Info */}
-                          <div className="flex items-start gap-[8px] w-full sm:w-[342px] h-[28px] flex-none">
+                          <div className="flex items-start gap-[8px] w-full sm:w-[342px] h-auto sm:h-[28px] flex-none">
                             <div className="w-[12px] h-[12px] flex items-center justify-center flex-none mt-[2px] relative">
                               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M6 12C9.31371 12 12 9.31371 12 6C12 2.68629 9.31371 0 6 0C2.68629 0 0 2.68629 0 6C0 9.31371 2.68629 12 6 12Z" fill="#7795E8"/>
                                 <path d="M6 3C5.72386 3 5.5 3.22386 5.5 3.5C5.5 3.77614 5.72386 4 6 4C6.27614 4 6.5 3.77614 6.5 3.5C6.5 3.22386 6.27614 3 6 3ZM5.5 5.5V9H6.5V5.5H5.5Z" fill="#091741"/>
                               </svg>
                             </div>
-                            <span className="font-manrope text-[10px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] w-full sm:w-[322px] h-[28px]">
+                            <span className="font-manrope text-[10px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] flex-1 sm:w-[322px] h-auto sm:h-[28px]">
                               Please fill up your address details before completing your deposit. This information is required for credit card deposits.
                             </span>
                           </div>
@@ -857,7 +851,7 @@ export default function WalletModal() {
 
                             {/* City & Postal Code */}
                             <div className="flex flex-row items-center gap-[8px] w-full sm:w-[428px] h-[50px] sm:h-[40px]">
-                              <div className="flex items-center bg-[#112F82] rounded-[8px] w-full sm:w-[210px] h-[50px] sm:h-[40px] px-[16px] py-[10px] gap-[12px]">
+                              <div className="flex items-center bg-[#112F82] rounded-[8px] flex-1 sm:flex-none sm:w-[210px] h-[50px] sm:h-[40px] px-[16px] py-[10px] gap-[12px]">
                                 <input 
                                   type="text" 
                                   placeholder="City" 
@@ -866,7 +860,7 @@ export default function WalletModal() {
                                   className="w-full h-[19px] bg-transparent font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white outline-none placeholder:text-[#A5B8EF]"
                                 />
                               </div>
-                              <div className="flex items-center bg-[#112F82] rounded-[8px] w-full sm:w-[210px] h-[50px] sm:h-[40px] px-[16px] py-[10px] gap-[12px]">
+                              <div className="flex items-center bg-[#112F82] rounded-[8px] flex-1 sm:flex-none sm:w-[210px] h-[50px] sm:h-[40px] px-[16px] py-[10px] gap-[12px]">
                                 <input 
                                   type="text" 
                                   placeholder="Postal Code" 
@@ -879,7 +873,7 @@ export default function WalletModal() {
 
                             {/* State & Country */}
                             <div className="flex flex-row items-center gap-[8px] w-full sm:w-[428px] h-[50px] sm:h-[40px] relative">
-                              <div className="flex items-center bg-[#112F82] rounded-[8px] w-full sm:w-[210px] h-[50px] sm:h-[40px] px-[16px] py-[10px] gap-[12px]">
+                              <div className="flex items-center bg-[#112F82] rounded-[8px] flex-1 sm:flex-none sm:w-[210px] h-[50px] sm:h-[40px] px-[16px] py-[10px] gap-[12px]">
                                 <input 
                                   type="text" 
                                   placeholder="State" 
@@ -894,13 +888,13 @@ export default function WalletModal() {
                                   setShowCountryDropdown(!showCountryDropdown);
                                   setShowBonusDropdown(false);
                                 }}
-                                className="flex items-center justify-between bg-[#112F82] rounded-[8px] w-full sm:w-[210px] h-[50px] sm:h-[40px] px-[16px] py-[10px] gap-[10px] cursor-pointer hover:bg-[#153bb0] transition-colors"
+                                className="flex items-center justify-between bg-[#112F82] rounded-[8px] flex-1 sm:flex-none sm:w-[210px] h-[50px] sm:h-[40px] px-[16px] py-[10px] gap-[10px] cursor-pointer hover:bg-[#153bb0] transition-colors"
                               >
-                                <div className="flex items-center gap-[8px]">
+                                <div className="flex items-center gap-[8px] flex-1 min-w-0">
                                   <span 
                                     className={`fi fi-${countryList.find(c => c.name === selectedCountry)?.iso || "us"} fis !rounded-full !w-[20px] !h-[20px] overflow-hidden flex-none bg-cover bg-center`}
                                   ></span>
-                                  <span className="font-manrope text-[12px] font-bold leading-[16px] tracking-[0.02em] text-white truncate max-w-[80px] sm:max-w-[124px] h-[16px] flex items-center">
+                                  <span className="font-manrope text-[12px] font-bold leading-[16px] tracking-[0.02em] text-white truncate flex-1 min-w-0 h-[16px] flex items-center">
                                     {selectedCountry}
                                   </span>
                                 </div>
