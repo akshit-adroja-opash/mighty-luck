@@ -26,7 +26,12 @@ const SearchIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
 );
 const CloseIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="4" y1="6" x2="20" y2="6"/>
+    <line x1="4" y1="12" x2="14" y2="12"/>
+    <line x1="4" y1="18" x2="20" y2="18"/>
+    <polyline points="18 9 15 12 18 15"/>
+  </svg>
 );
 
 /* ── Sidebar nav items with icons ── */
@@ -261,8 +266,13 @@ export default function LobbyModal() {
                 </button>
               )}
             </div>
-            
-            {/* Mobile Close Button Removed */}
+            {/* Mobile Close Button */}
+            <button
+              onClick={() => dispatch(closeModal("lobby"))}
+              className="flex md:hidden items-center justify-center w-[50px] h-[50px] bg-[#112F82] rounded-[8px] text-[#A5B8EF] hover:text-white flex-none cursor-pointer"
+            >
+              <CloseIcon />
+            </button>
           </div>
 
           {/* ── MOBILE: Horizontal category tabs ── */}
