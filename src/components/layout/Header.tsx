@@ -152,7 +152,15 @@ export default function Header() {
                         <p className="text-sm font-bold text-white truncate">{user?.name || "Player"}</p>
                         <p className="text-xs text-[#BBCAF3] truncate">{user?.email || "player@example.com"}</p>
                       </div>
-                      <Link href="/refer-a-friend" onClick={() => setIsDropdownOpen(false)} className="flex w-full items-center gap-2 px-4 py-3 text-sm font-semibold text-[#BBCAF3] transition-colors hover:bg-[#173EAD] hover:text-white cursor-pointer">
+                      <Link 
+                        href="/refer-a-friend" 
+                        onClick={() => {
+                          setIsDropdownOpen(false);
+                          setIsMobileMenuOpen(false);
+                          dispatch(closeModal("lobby"));
+                        }} 
+                        className="flex w-full items-center gap-2 px-4 py-3 text-sm font-semibold text-[#BBCAF3] transition-colors hover:bg-[#173EAD] hover:text-white cursor-pointer"
+                      >
                         <Users size={16} /> Refer a Friend
                       </Link>
                       <button onClick={handleLogout} className="flex w-full items-center gap-2 px-4 py-3 text-sm font-semibold text-[#BBCAF3] transition-colors hover:bg-[#173EAD] hover:text-white cursor-pointer">
