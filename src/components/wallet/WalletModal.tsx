@@ -824,14 +824,14 @@ export default function WalletModal() {
                           </span>
 
                           {/* Warning Info */}
-                          <div className="flex items-start gap-[8px] w-full sm:w-[342px] h-auto sm:h-[28px] flex-none">
-                            <div className="w-[12px] h-[12px] flex items-center justify-center flex-none mt-[2px] relative">
-                              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <div className="flex flex-row items-start gap-[8px] w-full sm:w-[428px] h-auto sm:h-[28px] p-0 flex-none">
+                            <div className="w-[12px] h-[12px] flex-none relative">
+                              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute left-0 top-0">
                                 <path d="M6 12C9.31371 12 12 9.31371 12 6C12 2.68629 9.31371 0 6 0C2.68629 0 0 2.68629 0 6C0 9.31371 2.68629 12 6 12Z" fill="#7795E8"/>
                                 <path d="M6 3C5.72386 3 5.5 3.22386 5.5 3.5C5.5 3.77614 5.72386 4 6 4C6.27614 4 6.5 3.77614 6.5 3.5C6.5 3.22386 6.27614 3 6 3ZM5.5 5.5V9H6.5V5.5H5.5Z" fill="#091741"/>
                               </svg>
                             </div>
-                            <span className="font-manrope text-[10px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] flex-1 sm:w-[322px] h-auto sm:h-[28px]">
+                            <span className="font-manrope text-[10px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] flex-1 sm:w-[408px] h-auto sm:h-[28px]">
                               Please fill up your address details before completing your deposit. This information is required for credit card deposits.
                             </span>
                           </div>
@@ -1043,17 +1043,17 @@ export default function WalletModal() {
                       <div className="flex flex-col gap-[16px] w-full sm:w-[428px] flex-none">
                         
                         {/* Warning row */}
-                        <div className="flex items-start gap-[8px] w-full sm:w-[428px]">
-                          <div className="flex-none pt-0.5 text-[#7795E8]">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <div className="flex flex-row items-start gap-[8px] w-full sm:w-[428px] h-auto sm:h-[28px] p-0 flex-none">
+                          <div className="w-[12px] h-[12px] flex-none relative">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute left-0 top-0">
                               <circle cx="6" cy="6" r="5" stroke="#7795E8" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
                               <path d="M6 8V6" stroke="#7795E8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                               <path d="M6 4.2H6.005" stroke="#7795E8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>
                           </div>
-                          <p className="font-manrope text-[10px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8]">
+                          <span className="font-manrope text-[10px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] flex-1 sm:w-[408px] h-auto sm:h-[28px]">
                             Only deposit BC via the Bitcoin network. Deposit of other assets or from other networks will be lost.
-                          </p>
+                          </span>
                         </div>
 
                         {/* Calculate amount */}
