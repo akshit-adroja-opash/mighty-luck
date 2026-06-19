@@ -198,7 +198,7 @@ export default function Header() {
       {/* Mobile Full Screen Menu Overlay */}
       {isMobileMenuOpen && (
         <div className="fixed left-0 right-0 top-[50px] bottom-[75px] bg-[#0C1F56] z-30 lg:hidden flex flex-col items-center overflow-y-auto px-5 py-5">
-          <div className="flex w-full max-w-[374px] md:max-w-[480px] flex-col gap-[16px]">
+          <div className="flex w-full max-w-[374px] md:max-w-[640px] flex-col gap-[16px]">
             <SidebarMenu onItemClick={() => setIsMobileMenuOpen(false)} />
           </div>
         </div>
