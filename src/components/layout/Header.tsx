@@ -43,7 +43,7 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 flex w-full justify-center bg-[#0C1F56]">
+    <header className="sticky top-0 z-[120] flex w-full justify-center bg-[#0C1F56]">
       <div className="relative flex flex-row items-center justify-between w-full max-w-[1440px] mx-auto h-[50px] lg:h-[60px] px-5 lg:px-6">
 
         {/* Blue Glow */}
@@ -93,7 +93,7 @@ export default function Header() {
         </div>
 
         {/* Right: Auth */}
-        <div className="relative z-10 flex h-[30px] lg:h-[40px] flex-none flex-row items-center justify-end gap-2 lg:gap-4">
+        <div className="relative z-40 flex h-[30px] lg:h-[40px] flex-none flex-row items-center justify-end gap-2 lg:gap-4">
           {isAuthenticated ? (
             <div className="flex flex-row items-center gap-[16px] lg:gap-4">
 

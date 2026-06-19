@@ -144,14 +144,26 @@ export default function WalletModal() {
     }
   };
 
+  const closeModalSmoothly = () => {
+    if (typeof window !== "undefined" && window.innerWidth < 640) {
+      setModalDragY(window.innerHeight || 1000);
+      setTimeout(() => {
+        setIsBtcSubmitted(false);
+        dispatch(closeModal("wallet"));
+        setModalDragY(0);
+      }, 300);
+    } else {
+      setIsBtcSubmitted(false);
+      dispatch(closeModal("wallet"));
+    }
+  };
+
   const handleModalTouchEnd = () => {
     if (!isDraggingModal) return;
     setIsDraggingModal(false);
-    if (modalDragY > 100) {
-      // Threshold passed, close modal
-      setIsBtcSubmitted(false);
-      dispatch(closeModal("wallet"));
-      setTimeout(() => setModalDragY(0), 300); // reset after transition
+    if (modalDragY > 50) {
+      // Threshold passed, close modal smoothly
+      closeModalSmoothly();
     } else {
       // Snap back
       setModalDragY(0);
@@ -345,13 +357,11 @@ export default function WalletModal() {
   ];
 
   return (
-    <div className="fixed top-[50px] sm:top-0 inset-x-0 bottom-0 z-[100] flex flex-col items-center justify-end sm:justify-center bg-[#0C1F56] sm:bg-[#0C1733]/70 sm:backdrop-blur-[8px] sm:p-4">
+    <div className="fixed top-[50px] sm:top-0 inset-x-0 bottom-0 z-[100] flex flex-col items-center justify-start sm:justify-center bg-[#0C1F56] sm:bg-[#0C1733]/70 sm:backdrop-blur-[8px] sm:p-4 overflow-y-auto">
       
       {/* Outer absolute position alignment box (dynamic height to avoid jumps) */}
       <div 
-        className={`relative transition-all duration-300 w-full sm:w-[500px] overflow-y-auto sm:overflow-visible rounded-none sm:rounded-[16px] flex flex-col ${
-          activeTab === 'deposit' && !isBtcSubmitted ? 'h-auto sm:h-[var(--modal-height)]' : 'h-[var(--modal-height)]'
-        }`}
+        className={`relative transition-all duration-300 w-full sm:w-[500px] overflow-y-auto sm:overflow-visible rounded-none sm:rounded-[16px] flex flex-col mt-auto sm:mt-0 pb-[10px] sm:pb-0 h-auto sm:h-[var(--modal-height)]`}
         style={{ 
           '--modal-height': modalHeight,
           transform: `translateY(${modalDragY}px)`,
@@ -361,10 +371,7 @@ export default function WalletModal() {
         
         {/* Close Button - positioned outside the card on the right */}
         <button
-          onClick={() => {
-            setIsBtcSubmitted(false);
-            dispatch(closeModal("wallet"));
-          }}
+          onClick={closeModalSmoothly}
           className="absolute right-4 sm:-right-[36px] top-4 sm:top-0 z-50 hidden sm:flex h-8 w-8 sm:h-6 sm:w-6 items-center justify-center rounded-full bg-[#112F82] sm:bg-transparent text-white hover:text-[#FFC83D] transition-colors cursor-pointer"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -374,7 +381,7 @@ export default function WalletModal() {
 
         {/* Outer Modal Container */}
         <div 
-          className="relative flex flex-col items-center bg-[#091741] rounded-[30px_30px_0px_0px] sm:rounded-[16px] w-full shadow-none sm:shadow-2xl isolation-isolate transition-all duration-300 p-[16px_20px_40px] sm:p-[24px_20px_32px] gap-[16px] sm:gap-[24px]"
+          className="relative flex flex-col items-center bg-[#091741] rounded-[30px_30px_0px_0px] sm:rounded-[16px] w-full shadow-none sm:shadow-2xl isolation-isolate transition-all duration-300 p-[16px_20px_24px] sm:p-[24px_20px_32px] gap-[16px] sm:gap-[24px]"
         >
           
           {/* Accent Glow Container (clips the glow to the card boundaries) */}
@@ -386,7 +393,7 @@ export default function WalletModal() {
 
           {/* Mobile Drag-to-Close Hit Area */}
           <div 
-            className="absolute top-0 inset-x-0 h-[48px] z-50 sm:hidden cursor-grab active:cursor-grabbing"
+            className="absolute top-0 inset-x-0 h-[48px] z-50 sm:hidden cursor-pointer"
             onTouchStart={handleModalTouchStart}
             onTouchMove={handleModalTouchMove}
             onTouchEnd={handleModalTouchEnd}
@@ -394,6 +401,11 @@ export default function WalletModal() {
             onMouseMove={handleModalTouchMove}
             onMouseUp={handleModalTouchEnd}
             onMouseLeave={handleModalTouchEnd}
+            onClick={() => {
+              if (modalDragY < 10) {
+                closeModalSmoothly();
+              }
+            }}
           />
 
           {/* Bottom Sheet Handle (Mobile Only) */}
@@ -401,9 +413,7 @@ export default function WalletModal() {
 
           {/* Inner Content Box */}
           <div 
-            className={`relative z-20 flex flex-col items-start w-full sm:w-[460px] gap-[24px] transition-all duration-300 ${
-              activeTab === 'deposit' && !isBtcSubmitted ? 'h-auto sm:h-[var(--inner-height)]' : 'h-[var(--inner-height)]'
-            }`}
+            className={`relative z-20 flex flex-col items-start w-full sm:w-[460px] gap-[24px] transition-all duration-300 h-auto sm:h-[var(--inner-height)]`}
             style={{ '--inner-height': innerHeight } as React.CSSProperties}
           >
             
@@ -446,9 +456,7 @@ export default function WalletModal() {
 
             {/* Tab container / Form content area */}
             <div 
-              className={`flex flex-col items-start w-full sm:w-[460px] gap-[16px] transition-all duration-300 ${
-                activeTab === 'deposit' && !isBtcSubmitted ? 'h-auto sm:h-[var(--tabs-content-height)]' : 'h-[var(--tabs-content-height)]'
-              }`}
+              className={`flex flex-col items-start w-full sm:w-[460px] gap-[16px] transition-all duration-300 h-auto sm:h-[var(--tabs-content-height)]`}
               style={{ '--tabs-content-height': tabsContentHeight } as React.CSSProperties}
             >
               
@@ -480,9 +488,7 @@ export default function WalletModal() {
 
               {/* Tab View Container */}
               <div 
-                className={`flex flex-col items-start gap-[16px] w-full sm:w-[460px] bg-[#0C1F56] rounded-[16px] overflow-visible transition-all duration-300 ${
-                  activeTab === 'deposit' && !isBtcSubmitted ? 'h-auto sm:h-[var(--tab-view-height)]' : 'h-[var(--tab-view-height)]'
-                } ${
+                className={`flex flex-col items-start gap-[16px] w-full sm:w-[460px] bg-[#0C1F56] rounded-[16px] overflow-visible transition-all duration-300 h-auto sm:h-[var(--tab-view-height)] ${
                   isBtcSubmitted ? "p-[20px_16px]" : "p-[16px]"
                 }`}
                 style={{ '--tab-view-height': tabViewHeight } as React.CSSProperties}
@@ -1135,7 +1141,7 @@ export default function WalletModal() {
                 )
               ) : activeTab === "bonuses" ? (
                 /* Custom Bonuses View */
-                <div className="flex flex-col items-start gap-[16px] w-full sm:w-[428px] h-[373px] sm:h-[331px] flex-none">
+                <div className="flex flex-col items-start gap-[16px] w-full sm:w-[428px] h-auto sm:h-[331px] flex-none">
                   
                   {/* Promo Code Input Block */}
                   <div className="flex flex-col gap-[8px] w-full sm:w-[428px] h-[74px] sm:h-[64px] flex-none">
@@ -1303,7 +1309,7 @@ export default function WalletModal() {
                 </div>
               ) : (
                 /* Empty states for other tabs (Withdraw, Transactions) */
-                <div className="flex flex-col items-center justify-center gap-4 w-full sm:w-[428px] h-full sm:h-full flex-1">
+                <div className="flex flex-col items-center justify-center gap-[16px] w-full sm:w-[428px] h-[331px] flex-none">
                   <span className="text-4xl">🛠️</span>
                   <p className="font-manrope text-[16px] font-bold text-white uppercase tracking-[0.02em]">
                     {activeTab} Feature
