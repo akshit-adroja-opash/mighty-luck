@@ -55,7 +55,7 @@ const SvgIconWrapper = (src: string) => {
     ];
 
     return (
-      <div className="flex w-full items-center gap-[8px] h-[40px] lg:h-[50px] overflow-x-auto lg:overflow-x-visible no-scrollbar">
+      <div className="flex w-full items-center gap-[8px] h-[40px] lg:h-[50px] overflow-x-auto xl:overflow-x-visible no-scrollbar">
         {categories.map((category) => {
           const Icon = category.icon;
           const isActive = category.name === activeCategory;
@@ -64,7 +64,7 @@ const SvgIconWrapper = (src: string) => {
             <button
               key={category.name}
               onClick={() => dispatch(setActiveCategory(category.name))}
-              className={`flex h-[40px] lg:h-[50px] flex-none lg:flex-1 min-w-[106.6px] lg:min-w-0 items-center justify-center gap-[6.4px] lg:gap-[8px] rounded-[6px] px-[12.8px] lg:px-[16px] py-[8px] lg:py-[10px] transition-colors cursor-pointer ${
+              className={`flex h-[40px] lg:h-[50px] flex-none xl:flex-1 min-w-[106.6px] xl:min-w-0 items-center justify-center gap-[6.4px] lg:gap-[8px] rounded-[6px] px-[12.8px] lg:px-[16px] py-[8px] lg:py-[10px] transition-colors cursor-pointer ${
                 isActive
                   ? "bg-[#1463FF]"
                   : "bg-[#0C1F56] hover:bg-[#112F82]"
