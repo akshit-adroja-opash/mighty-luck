@@ -87,14 +87,14 @@ export default function Header() {
               dispatch(openModal("lobby"));
               dispatch(setActiveCategory("Lobby"));
             }}
-            className="hidden lg:flex h-[40px] w-[280px] flex-none flex-row items-center rounded-[8px] bg-[#112F82] px-5 py-[10px] gap-[10px] cursor-pointer hover:bg-[#173EAD] transition-colors"
+            className="hidden lg:flex h-[40px] w-[180px] xl:w-[280px] flex-none flex-row items-center rounded-[8px] bg-[#112F82] px-3 xl:px-5 py-[10px] gap-[8px] xl:gap-[10px] cursor-pointer hover:bg-[#173EAD] transition-colors"
           >
             <Search size={16} className="text-white flex-none pointer-events-none" />
             <input
               type="text"
               readOnly
               placeholder="What are you looking for?"
-              className="flex-1 bg-transparent font-manrope text-[14px] font-semibold leading-[19px] text-[#BBCAF3] outline-none placeholder:text-[#BBCAF3] cursor-pointer"
+              className="flex-1 min-w-0 bg-transparent font-manrope text-[12px] xl:text-[14px] font-semibold leading-[19px] text-[#BBCAF3] outline-none placeholder:text-[#BBCAF3] cursor-pointer text-ellipsis overflow-hidden whitespace-nowrap"
             />
           </div>
         </div>

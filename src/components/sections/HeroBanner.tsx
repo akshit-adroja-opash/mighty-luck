@@ -37,8 +37,8 @@ export default function HeroBanner() {
         {/* Ellipse 7 — mobile & desktop only, hidden at tablet */}
         <div className="absolute -left-[50px] -top-[38px] md:hidden lg:block lg:-left-[161px] lg:-top-[102px] z-[1] h-[226px] w-[226px] lg:h-[575px] lg:w-[575px] rounded-full bg-[#03123C] lg:bg-[#06102B] opacity-50 lg:opacity-50 blur-[29.26px] lg:blur-[75px]" />
 
-        {/* Ellipse 8 — mobile & desktop only, hidden at tablet */}
-        <div className="absolute left-[501.42px] top-[130.53px] md:hidden lg:block lg:-right-[34px] lg:-bottom-[44px] lg:left-auto lg:top-auto z-[1] h-[62.14px] w-[62.14px] lg:h-[129px] lg:w-[129px] rounded-full bg-[#010A25] opacity-50 lg:opacity-50 blur-[12.04px] lg:blur-[25px]" />
+        {/* Ellipse 8 — black shadow bottom right */}
+        <div className="absolute left-[501.42px] top-[130.53px] md:left-auto md:top-auto md:-right-[20px] md:-bottom-[20px] lg:-right-[34px] lg:-bottom-[44px] z-[1] h-[62.14px] w-[62.14px] md:h-[100px] md:w-[100px] lg:h-[129px] lg:w-[129px] rounded-full bg-[#010A25] opacity-50 md:opacity-50 lg:opacity-50 blur-[12.04px] md:blur-[20px] lg:blur-[25px]" />
 
 
         {/* Content Box */}

@@ -33,10 +33,10 @@ export default function ReferAFriendPage() {
 
             {/* HERO BANNER SECTION */}
             <section 
-              className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 w-full items-start gap-[20px] lg:gap-[24px] lg:p-[32px_40px] rounded-[16px] lg:overflow-hidden bg-transparent lg:bg-[#2A0B3E]"
+              className="relative grid grid-cols-1 md:grid-cols-2 xl:grid-cols-12 w-full items-start gap-[20px] xl:gap-[24px] xl:p-[32px_40px] rounded-[16px] xl:overflow-hidden bg-transparent xl:bg-[#2A0B3E]"
             >
               {/* Desktop Background */}
-              <div className="hidden lg:block absolute inset-0 z-0">
+              <div className="hidden xl:block absolute inset-0 z-0">
                 <Image 
                   src="/games/refrels/refer.png" 
                   alt="Refer A Friend" 
@@ -51,41 +51,41 @@ export default function ReferAFriendPage() {
               </div>
 
               {/* Mobile Banner Image & Text */}
-              <div className="relative lg:hidden w-full h-[170px] rounded-[10px] overflow-hidden flex-none md:col-span-2">
-                <div className="absolute w-[547.18px] h-[170.03px] left-[calc(50%_-_547.18px/2_+_71.59px)] top-[calc(50%_-_170.03px/2_+_0.02px)]">
-                  <Image src="/games/refrels/refer.png" alt="Refer A Friend" fill className="object-cover object-center" priority />
+              <div className="relative xl:hidden w-full h-[170px] md:h-[260px] lg:h-[280px] bg-[#0C1F56] rounded-[10px] overflow-hidden flex-none md:col-span-2">
+                <div className="absolute w-[547.18px] h-[170.03px] left-[calc(50%_-_547.18px/2_+_71.59px)] top-[calc(50%_-_170.03px/2_+_0.02px)] md:w-full md:h-full md:left-0 md:top-0 md:inset-0">
+                  <Image src="/games/refrels/refer.png" alt="Refer A Friend" fill className="object-cover object-center md:object-[80%_center] lg:object-[60%_center]" priority />
                 </div>
-                <div className="absolute w-[226px] h-[226px] left-[-74px] top-[-43px] bg-[#03123C] blur-[29.26px] z-0 pointer-events-none" />
-                <div className="absolute w-[62.14px] h-[62.14px] left-[501.42px] top-[130.53px] bg-[#010A25] blur-[12.04px] z-0 pointer-events-none" />
-                <div className="absolute left-[19.27px] top-[calc(50%_-_61.93px/2_+_0.74px)] flex flex-col gap-[1.93px] z-10 w-[220.13px]">
-                  <span className="font-jost text-[14px] font-medium leading-[20px] text-white">Get <span className="text-[#FFC83D]">PAID</span> every time</span>
-                  <h1 className="font-jost text-[20px] font-extrabold leading-[20px] text-white uppercase">YOUR FRIEND<br />PLAYS!</h1>
+                <div className="absolute w-[226px] h-[226px] md:w-[400px] md:h-[400px] left-[-74px] md:left-[-100px] top-[-43px] md:top-[-80px] bg-[#03123C] blur-[29.26px] md:blur-[60px] z-0 pointer-events-none" />
+                <div className="absolute w-[62.14px] h-[62.14px] left-[501.42px] top-[130.53px] md:left-auto md:top-auto md:-right-[20px] md:-bottom-[20px] lg:-right-[34px] lg:-bottom-[44px] md:w-[100px] md:h-[100px] lg:w-[129px] lg:h-[129px] bg-[#010A25] opacity-50 md:opacity-50 lg:opacity-50 blur-[12.04px] md:blur-[20px] lg:blur-[25px] z-[1] pointer-events-none" />
+                <div className="absolute left-[19.27px] md:left-[40px] lg:left-[60px] top-[calc(50%_-_61.93px/2_+_0.74px)] md:top-1/2 md:-translate-y-1/2 flex flex-col gap-[1.93px] md:gap-[8px] z-10 w-[220.13px] md:w-[400px]">
+                  <span className="font-jost text-[14px] md:text-[24px] font-medium leading-[20px] md:leading-[34px] text-white">Get <span className="text-[#FFC83D]">PAID</span> every time</span>
+                  <h1 className="font-jost text-[20px] md:text-[40px] font-extrabold leading-[20px] md:leading-[44px] text-white uppercase">YOUR FRIEND<br className="md:hidden" /> PLAYS!</h1>
                 </div>
               </div>
 
               {/* Desktop Banner Text */}
-              <div className="relative z-10 hidden lg:flex w-full lg:w-[457px] flex-none flex-col gap-[4px] text-left mt-0 lg:col-span-7 lg:self-center">
+              <div className="relative z-10 hidden xl:flex w-full xl:w-[457px] flex-none flex-col gap-[4px] text-left mt-0 xl:col-span-7 xl:self-center">
                 <span className="font-jost text-[28px] font-medium leading-[40px] text-white">Get <span className="text-[#FFC83D]">PAID</span> every time</span>
                 <h1 className="font-jost text-[48px] font-extrabold leading-[100%] text-white">YOUR FRIEND PLAYS!</h1>
               </div>
 
               {/* Right side calculator */}
-              <div className="flex flex-col items-center p-[20px] gap-[24px] w-full lg:w-[430px] h-auto lg:h-[345px] bg-[#0C1F56] lg:bg-[#091741] rounded-[16px] overflow-hidden relative isolation-isolate flex-none md:col-span-1 lg:col-span-5 lg:ml-auto md:h-full justify-between">
+              <div className="flex flex-col items-center p-[20px] gap-[24px] w-full xl:w-[430px] h-auto xl:h-[345px] bg-[#0C1F56] xl:bg-[#091741] rounded-[16px] overflow-hidden relative isolation-isolate flex-none md:col-span-1 xl:col-span-5 xl:ml-auto md:h-full justify-between">
                 {/* Background Glow */}
                 <div className="absolute top-[-127px] left-[calc(50%_-_173px/2_-_0.5px)] w-[173px] h-[173px] bg-[#1463FF] blur-[40px] rounded-full z-0 pointer-events-none" />
                 
                 {/* Inner Content Wrapper */}
-                <div className="flex flex-col items-start w-full lg:w-[390px] h-auto lg:h-[305px] gap-[12px] z-10 flex-none relative">
+                <div className="flex flex-col items-start w-full xl:w-[390px] h-auto xl:h-[305px] gap-[12px] z-10 flex-none relative">
                   
                   {/* Header Title */}
-                  <div className="flex flex-row justify-center items-start w-full h-auto lg:h-[58px] gap-[12px] flex-none">
-                    <h2 className="w-full max-w-[300px] text-center font-jost text-[18px] lg:text-[20px] font-extrabold leading-[26px] lg:leading-[29px] tracking-[0.01em] text-white">
+                  <div className="flex flex-row justify-center items-start w-full h-auto xl:h-[58px] gap-[12px] flex-none">
+                    <h2 className="w-full max-w-[300px] text-center font-jost text-[18px] xl:text-[20px] font-extrabold leading-[26px] xl:leading-[29px] tracking-[0.01em] text-white">
                       How much can you earn with Mighty Luck?
                     </h2>
                   </div>
 
                   {/* Bottom Form Frame */}
-                  <div className="flex flex-col items-start w-full h-auto lg:h-[235px] gap-[16px] flex-none">
+                  <div className="flex flex-col items-start w-full h-auto xl:h-[235px] gap-[16px] flex-none">
                     
                     {/* Slider Block */}
                     <div className="flex flex-col items-start w-full h-[64px] gap-[8px] flex-none">
@@ -140,14 +140,14 @@ export default function ReferAFriendPage() {
                     </div>
 
                     {/* Earnings Result Block */}
-                    <div className="flex flex-col items-start w-full h-auto lg:h-[99px] gap-[8px] flex-none">
+                    <div className="flex flex-col items-start w-full h-auto xl:h-[99px] gap-[8px] flex-none">
                       <div className="flex flex-col items-start w-full h-[60px] gap-[12px] flex-1">
                         <div className="flex flex-row items-center justify-center p-[10px_16px] gap-[12px] w-full h-[60px] bg-[#112F82] rounded-[8px] flex-none">
-                          <div className="flex flex-row items-center justify-center gap-[4px] lg:gap-[8px] w-full h-[33px] flex-1">
-                            <span className="font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-white w-auto lg:w-[164px] h-[19px] flex-none">
+                          <div className="flex flex-row items-center justify-center gap-[4px] xl:gap-[8px] w-full h-[33px] flex-1">
+                            <span className="font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-white w-auto xl:w-[164px] h-[19px] flex-none">
                               Your monthly earnings:
                             </span>
-                            <span className="font-manrope text-[24px] font-bold leading-[33px] tracking-[0.02em] text-white w-auto lg:w-[61px] h-[33px] flex-none">
+                            <span className="font-manrope text-[24px] font-bold leading-[33px] tracking-[0.02em] text-white w-auto xl:w-[61px] h-[33px] flex-none">
                               ${calculateEarnings(sliderValue)}
                             </span>
                           </div>
@@ -159,8 +159,8 @@ export default function ReferAFriendPage() {
                     </div>
 
                     {/* Invite Input Block */}
-                    <div className="flex flex-col lg:flex-row items-start w-full h-auto lg:h-[40px] gap-[8px] flex-none">
-                      <div className="flex flex-row items-center p-[10px_16px] gap-[12px] w-full lg:w-[260px] h-[50px] lg:h-[40px] bg-[#112F82] rounded-[8px] flex-none">
+                    <div className="flex flex-col xl:flex-row items-start w-full h-auto xl:h-[40px] gap-[8px] flex-none">
+                      <div className="flex flex-row items-center p-[10px_16px] gap-[12px] w-full xl:w-[260px] h-[50px] xl:h-[40px] bg-[#112F82] rounded-[8px] flex-none">
                         <input 
                           type="email" 
                           placeholder="Enter email address" 
@@ -169,8 +169,8 @@ export default function ReferAFriendPage() {
                           className="flex-1 bg-transparent border-none outline-none font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white placeholder-[#7795E8] h-[19px]"
                         />
                       </div>
-                      <button className="flex flex-row justify-center items-center px-[30px] lg:px-[10px] gap-[10px] w-full lg:w-[122px] h-[50px] lg:h-[40px] bg-[#FFC83D] rounded-[8px] transition-opacity hover:opacity-90 flex-none">
-                        <span className="font-manrope text-[16px] lg:text-[14px] font-bold leading-[22px] lg:leading-[19px] tracking-[0.02em] text-[#1A1404] whitespace-nowrap">
+                      <button className="flex flex-row justify-center items-center px-[30px] xl:px-[10px] gap-[10px] w-full xl:w-[122px] h-[50px] xl:h-[40px] bg-[#FFC83D] rounded-[8px] transition-opacity hover:opacity-90 flex-none">
+                        <span className="font-manrope text-[16px] xl:text-[14px] font-bold leading-[22px] xl:leading-[19px] tracking-[0.02em] text-[#1A1404] whitespace-nowrap">
                           Send Invite
                         </span>
                       </button>
@@ -181,10 +181,10 @@ export default function ReferAFriendPage() {
               </div>
 
               {/* Stats Bar */}
-              <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center p-[20px_24px] w-full lg:max-w-[1056px] h-auto lg:h-[104px] bg-[#0C1F56] lg:bg-[#091741] rounded-[16px] gap-[12px] lg:gap-[8px] mt-0 lg:mt-auto mx-auto md:col-span-1 lg:col-span-12 md:h-full">
-                <div className="flex flex-col flex-none w-full lg:flex-1 gap-[8px]">
+              <div className="relative z-10 flex flex-col xl:flex-row items-stretch xl:items-center justify-between p-[20px_24px] w-full xl:max-w-[1056px] h-auto xl:h-[104px] bg-[#0C1F56] xl:bg-[#091741] rounded-[16px] gap-[12px] xl:gap-[8px] mt-0 xl:mt-auto mx-auto md:col-span-1 xl:col-span-12 md:h-full">
+                <div className="flex flex-col flex-none w-full xl:flex-1 gap-[8px]">
                   <span className="font-manrope text-[12px] font-semibold text-[#BBCAF3]">Total Referrals</span>
-                  <div className="flex flex-row items-center p-[10px_16px] gap-[12px] bg-[#112F82] rounded-[8px] h-[50px] lg:h-[40px]">
+                  <div className="flex flex-row items-center p-[10px_16px] gap-[12px] bg-[#112F82] rounded-[8px] h-[50px] xl:h-[40px]">
                     <div className="flex items-center justify-center w-[20px] h-[20px] shrink-0">
                       <div className="w-[19.96px] h-[20px] bg-[#FFC83D]" style={{ maskImage: "url(/images/icons/doller.svg)", maskSize: "contain", WebkitMaskImage: "url(/images/icons/doller.svg)", WebkitMaskSize: "contain" }} />
                     </div>
@@ -192,9 +192,9 @@ export default function ReferAFriendPage() {
                   </div>
                 </div>
 
-                <div className="flex flex-col flex-none w-full lg:flex-1 gap-[8px]">
+                <div className="flex flex-col flex-none w-full xl:flex-1 gap-[8px]">
                   <span className="font-manrope text-[12px] font-semibold text-[#BBCAF3]">Total Deposits</span>
-                  <div className="flex flex-row items-center p-[10px_16px] gap-[12px] bg-[#112F82] rounded-[8px] h-[50px] lg:h-[40px]">
+                  <div className="flex flex-row items-center p-[10px_16px] gap-[12px] bg-[#112F82] rounded-[8px] h-[50px] xl:h-[40px]">
                     <div className="flex items-center justify-center w-[20px] h-[20px] shrink-0">
                       <div className="w-[19.96px] h-[20px] bg-[#FFC83D]" style={{ maskImage: "url(/images/icons/doller.svg)", maskSize: "contain", WebkitMaskImage: "url(/images/icons/doller.svg)", WebkitMaskSize: "contain" }} />
                     </div>
@@ -202,9 +202,9 @@ export default function ReferAFriendPage() {
                   </div>
                 </div>
 
-                <div className="flex flex-col flex-none w-full lg:flex-1 gap-[8px]">
+                <div className="flex flex-col flex-none w-full xl:flex-1 gap-[8px]">
                   <span className="font-manrope text-[12px] font-semibold text-[#BBCAF3]">Total Earnings</span>
-                  <div className="flex flex-row items-center p-[10px_16px] gap-[12px] bg-[#112F82] rounded-[8px] h-[50px] lg:h-[40px]">
+                  <div className="flex flex-row items-center p-[10px_16px] gap-[12px] bg-[#112F82] rounded-[8px] h-[50px] xl:h-[40px]">
                     <div className="flex items-center justify-center w-[20px] h-[20px] shrink-0">
                       <div className="w-[19.96px] h-[20px] bg-[#FFC83D]" style={{ maskImage: "url(/images/icons/doller.svg)", maskSize: "contain", WebkitMaskImage: "url(/images/icons/doller.svg)", WebkitMaskSize: "contain" }} />
                     </div>
@@ -212,9 +212,9 @@ export default function ReferAFriendPage() {
                   </div>
                 </div>
 
-                <div className="flex flex-col flex-none w-full lg:flex-1 gap-[8px]">
+                <div className="flex flex-col flex-none w-full xl:flex-1 gap-[8px]">
                   <span className="font-manrope text-[12px] font-semibold text-[#BBCAF3]">Pending Income</span>
-                  <div className="flex flex-row items-center justify-between py-[10px] pl-[16px] pr-[10px] bg-[#112F82] rounded-[8px] h-[50px] lg:h-[40px]">
+                  <div className="flex flex-row items-center justify-between py-[10px] pl-[16px] pr-[10px] bg-[#112F82] rounded-[8px] h-[50px] xl:h-[40px]">
                     <div className="flex flex-row items-center gap-[8px]">
                       <div className="flex items-center justify-center w-[20px] h-[20px] shrink-0">
                         <div className="w-[19.96px] h-[20px] bg-[#FFC83D]" style={{ maskImage: "url(/images/icons/doller.svg)", maskSize: "contain", WebkitMaskImage: "url(/images/icons/doller.svg)", WebkitMaskSize: "contain" }} />
