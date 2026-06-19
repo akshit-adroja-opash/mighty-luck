@@ -154,19 +154,15 @@ export default function Header() {
                         <p className="text-sm font-bold text-white truncate">{user?.name || "Player"}</p>
                         <p className="text-xs text-[#BBCAF3] truncate">{user?.email || "player@example.com"}</p>
                       </div>
-                      <Link 
-                        href="/refer-a-friend" 
+                      <button 
                         onClick={() => {
                           setIsDropdownOpen(false);
-                          setIsMobileMenuOpen(false);
-                          dispatch(closeModal("lobby"));
-                        }} 
-                        className="flex w-full items-center gap-2 px-4 py-3 text-sm font-semibold text-[#BBCAF3] transition-colors hover:bg-[#173EAD] hover:text-white cursor-pointer"
+                          dispatch(logout());
+                        }}
+                        className="flex w-full items-center gap-2 px-4 py-3 text-sm font-semibold text-[#FF0E0E] hover:bg-[#173EAD] transition-colors cursor-pointer"
                       >
-                        <Users size={16} /> Refer a Friend
-                      </Link>
-                      <button onClick={handleLogout} className="flex w-full items-center gap-2 px-4 py-3 text-sm font-semibold text-[#BBCAF3] transition-colors hover:bg-[#173EAD] hover:text-white cursor-pointer">
-                        <LogOut size={16} /> Logout
+                        <LogOut size={16} />
+                        Logout
                       </button>
                     </div>
                   )}

@@ -3,6 +3,7 @@
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
 import { openModal, setActiveCategory } from "@/store/slices/uiSlice";
 
 const SvgIconWrapper = (src: string) => {
@@ -16,6 +17,7 @@ const SvgIconWrapper = (src: string) => {
 export const menuItems = [
   {
     name: "Promotions",
+    href: "/refer-a-friend",
     icon: SvgIconWrapper("/games/side-icon/pro.svg"),
     fontSize: "text-[16px]",
     lineHeight: "leading-[22px]",
@@ -69,6 +71,7 @@ export const menuItems = [
 
 export default function SidebarMenu({ onItemClick, isCollapsed = false }: { onItemClick?: () => void, isCollapsed?: boolean }) {
   const dispatch = useDispatch();
+  const router = useRouter();
   const [openMenus, setOpenMenus] = useState<Record<string, boolean>>({
     Casino: true, // Keep Casino open by default
   });
@@ -91,6 +94,11 @@ export default function SidebarMenu({ onItemClick, isCollapsed = false }: { onIt
           <div key={item.name} className={`flex w-full flex-col ${isOpen && item.subItems ? 'rounded-[8px] bg-[#112F82]' : ''}`}>
             <button
               onClick={() => {
+                if ('href' in item && item.href) {
+                  router.push(item.href as string);
+                  if (onItemClick) onItemClick();
+                  return;
+                }
                 if (item.subItems) {
                   toggleMenu(item.name);
                 } else if (onItemClick) {
