@@ -82,12 +82,19 @@ export default function Header() {
           />
 
           {/* Search Bar — desktop only */}
-          <div className="hidden lg:flex h-[40px] w-[280px] flex-none flex-row items-center rounded-[8px] bg-[#112F82] px-5 py-[10px] gap-[10px]">
-            <Search size={16} className="text-white flex-none" />
+          <div 
+            onClick={() => {
+              dispatch(openModal("lobby"));
+              dispatch(setActiveCategory("Lobby"));
+            }}
+            className="hidden lg:flex h-[40px] w-[280px] flex-none flex-row items-center rounded-[8px] bg-[#112F82] px-5 py-[10px] gap-[10px] cursor-pointer hover:bg-[#173EAD] transition-colors"
+          >
+            <Search size={16} className="text-white flex-none pointer-events-none" />
             <input
               type="text"
+              readOnly
               placeholder="What are you looking for?"
-              className="flex-1 bg-transparent font-manrope text-[14px] font-semibold leading-[19px] text-[#BBCAF3] outline-none placeholder:text-[#BBCAF3]"
+              className="flex-1 bg-transparent font-manrope text-[14px] font-semibold leading-[19px] text-[#BBCAF3] outline-none placeholder:text-[#BBCAF3] cursor-pointer"
             />
           </div>
         </div>
