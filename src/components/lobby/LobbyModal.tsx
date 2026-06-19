@@ -26,12 +26,7 @@ const SearchIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
 );
 const CloseIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <line x1="4" y1="6" x2="20" y2="6"/>
-    <line x1="4" y1="12" x2="14" y2="12"/>
-    <line x1="4" y1="18" x2="20" y2="18"/>
-    <polyline points="18 9 15 12 18 15"/>
-  </svg>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
 );
 
 /* ── Sidebar nav items with icons ── */
@@ -235,30 +230,30 @@ export default function LobbyModal() {
         {/* ── Right Content ── */}
         <div className="flex flex-col items-start gap-4 lg:gap-[32px] w-full flex-1 min-w-0 overflow-y-auto no-scrollbar min-h-0">
           
-          {/* Top row: Search bar + Mobile Close Button */}
-          <div className="flex flex-row items-center gap-2 w-full flex-none">
+          {/* Top row: Search bar */}
+          <div className="flex w-full flex-none">
             {/* Search bar */}
-            <div className={`flex flex-row items-center justify-between flex-1 transition-all duration-300 ${
+            <div className={`flex flex-row items-center justify-between w-full transition-all duration-300 ${
               searchQuery 
                 ? "px-[20px] pr-[10px] py-[10px] h-[50px] bg-[#112F82] border border-[#1463FF] rounded-[12px]" 
                 : "px-[20px] py-[10px] h-[50px] bg-[#112F82] border border-transparent rounded-[8px]"
             }`}>
-              <div className="flex flex-row items-center gap-[10px] flex-grow min-w-0">
+              <div className="flex flex-row items-center gap-[10px] flex-grow min-w-0 h-[22px]">
                 <div className="w-[16px] h-[16px] flex items-center justify-center flex-none text-[#BBCAF3]">
                   <SearchIcon />
                 </div>
                 <input
                   type="text"
-                  placeholder="What are you looking for?"
+                  placeholder="Start typing a game name"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-transparent outline-none font-manrope text-[16px] lg:text-[14px] font-semibold tracking-[0.02em] text-white placeholder:text-[#BBCAF3] placeholder:font-semibold placeholder:text-[16px] lg:placeholder:text-[14px]"
+                  className="w-full h-full bg-transparent outline-none font-manrope font-semibold text-[16px] leading-[22px] text-white placeholder:text-[#BBCAF3] lg:text-[14px] lg:leading-[19px] lg:placeholder:text-[14px]"
                 />
               </div>
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery("")}
-                  className="flex flex-row justify-center items-center px-[16px] py-[10px] gap-[8px] w-[64px] h-[30px] bg-[#1463FF] rounded-[6px] flex-none transition-colors hover:bg-[#1463FF]/80"
+                  className="flex flex-row justify-center items-center px-[16px] py-[10px] gap-[8px] w-[64px] h-[30px] bg-[#1463FF] rounded-[6px] flex-none transition-colors hover:bg-[#1463FF]/80 ml-[10px]"
                 >
                   <span className="font-manrope font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-white">
                     Clear
@@ -266,13 +261,6 @@ export default function LobbyModal() {
                 </button>
               )}
             </div>
-            {/* Mobile Close Button */}
-            <button
-              onClick={() => dispatch(closeModal("lobby"))}
-              className="flex md:hidden items-center justify-center w-[50px] h-[50px] bg-[#112F82] rounded-[8px] text-[#A5B8EF] hover:text-white flex-none cursor-pointer"
-            >
-              <CloseIcon />
-            </button>
           </div>
 
           {/* ── MOBILE: Horizontal category tabs ── */}
