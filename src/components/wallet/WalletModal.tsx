@@ -1079,15 +1079,11 @@ export default function WalletModal() {
                             </div>
 
                             {/* Swap Icon */}
-                            <div className="flex flex-none items-center justify-center bg-[#1463FF] rounded-[8px] w-[50px] sm:w-[40px] h-[50px] sm:h-[40px]">
-                              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                {/* Top arrow (left to right) */}
-                                <path d="M10.5 2.5L13 5L10.5 7.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                                <path d="M0.5 5H13" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                                {/* Bottom arrow (right to left) */}
-                                <path d="M3.5 11.5L1 9L3.5 6.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                                <path d="M13.5 9H1" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                              </svg>
+                            <div className="flex flex-col flex-none justify-center items-center p-0 gap-[2px] w-[40px] h-[40px] bg-[#1463FF] rounded-[8px]">
+                              {/* Top arrow (pointing right) */}
+                              <img src="/games/side-icon/swap.svg" alt="swap right" className="w-[14px] h-[8px] scale-x-[-1]" />
+                              {/* Bottom arrow (pointing left) */}
+                              <img src="/games/side-icon/swap.svg" alt="swap left" className="w-[14px] h-[8px]" />
                             </div>
 
                             {/* BTC input */}
