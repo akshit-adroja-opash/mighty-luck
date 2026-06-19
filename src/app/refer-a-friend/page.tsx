@@ -249,7 +249,7 @@ export default function ReferAFriendPage() {
             <section className="flex flex-col lg:flex-row gap-[12px] w-full">
               {/* WHAT YOU GET */}
               <div className="flex flex-col p-[32px_40px] gap-[24px] flex-1 bg-[#0C1F56] rounded-[16px] relative overflow-hidden isolation-isolate">
-                <div className="absolute top-[-87px] lg:top-[-97px] left-[calc(50%_-_182px/2_-_187px)] md:left-[-60px] lg:left-[calc(50%_-_182px/2_-_241px)] w-[182px] h-[182px] bg-[#57FF3D] blur-[60px] rounded-full z-0 pointer-events-none" />
+                <div className="absolute top-[-87px] lg:top-[-97px] left-[-60px] lg:left-[-50px] w-[182px] h-[182px] bg-[#57FF3D] blur-[60px] rounded-full z-0 pointer-events-none" />
                 <h3 className="font-jost text-[20px] font-extrabold text-white leading-[29px] uppercase tracking-[0.01em] z-10">WHAT YOU GET</h3>
                 <div className="flex flex-col gap-[20px] z-10">
                   <div className="flex flex-row gap-[16px]">
@@ -291,7 +291,7 @@ export default function ReferAFriendPage() {
 
               {/* WHAT YOUR FRIEND GETS */}
               <div className="flex flex-col p-[32px_40px] gap-[24px] flex-1 bg-[#0C1F56] rounded-[16px] relative overflow-hidden isolation-isolate">
-                <div className="absolute top-[-87px] lg:top-[-97px] left-[calc(50%_-_182px/2_-_167px)] md:left-[-60px] lg:left-[calc(50%_-_182px/2_-_241px)] w-[182px] h-[182px] bg-[#1463FF] blur-[60px] rounded-full z-0 pointer-events-none" />
+                <div className="absolute top-[-87px] lg:top-[-97px] left-[-60px] lg:left-[-50px] w-[182px] h-[182px] bg-[#1463FF] blur-[60px] rounded-full z-0 pointer-events-none" />
                 <h3 className="font-jost text-[20px] font-extrabold text-white leading-[29px] uppercase tracking-[0.01em] z-10">WHAT YOUR FRIEND GETS</h3>
                 <div className="flex flex-col gap-[20px] z-10">
                   <div className="flex flex-row gap-[16px]">
