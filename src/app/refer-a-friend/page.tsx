@@ -7,6 +7,22 @@ import { Plus, Minus } from "lucide-react";
 export default function ReferAFriendPage() {
   const [sliderValue, setSliderValue] = useState(5);
   const [email, setEmail] = useState("");
+  const [activeFaq, setActiveFaq] = useState<number | null>(0);
+  
+  const faqs = [
+    {
+      question: "How do I invite a friend?",
+      answer: "In order to participate in the Refer A Friend campaign, as a referrer you need to have an active account at Mighty Luck and have at least $50 (or currency equivalent) deposited. Multiple deposits can be summed up in order to meet the minimum deposit requirement."
+    },
+    {
+      question: "When will I receive my earnings?",
+      answer: "Your earnings are credited automatically and instantly as soon as your referred friend's deposit is successfully completed. There is no waiting period!"
+    },
+    {
+      question: "Is there a limit to how many friends I can invite?",
+      answer: "No, there is absolutely no limit! You can invite as many friends as you want and earn a percentage from every deposit they make."
+    }
+  ];
   
   const calculateEarnings = (friends: number) => {
     return friends * 50;
@@ -17,7 +33,7 @@ export default function ReferAFriendPage() {
 
             {/* HERO BANNER SECTION */}
             <section 
-              className="relative flex w-full flex-col items-start gap-[20px] lg:gap-[24px] lg:p-[32px_40px] rounded-[16px] lg:overflow-hidden bg-transparent lg:bg-[#2A0B3E]"
+              className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 w-full items-start gap-[20px] lg:gap-[24px] lg:p-[32px_40px] rounded-[16px] lg:overflow-hidden bg-transparent lg:bg-[#2A0B3E]"
             >
               {/* Desktop Background */}
               <div className="hidden lg:block absolute inset-0 z-0">
@@ -35,7 +51,7 @@ export default function ReferAFriendPage() {
               </div>
 
               {/* Mobile Banner Image & Text */}
-              <div className="relative lg:hidden w-full h-[170px] rounded-[10px] overflow-hidden flex-none">
+              <div className="relative lg:hidden w-full h-[170px] rounded-[10px] overflow-hidden flex-none md:col-span-2">
                 <div className="absolute w-[547.18px] h-[170.03px] left-[calc(50%_-_547.18px/2_+_71.59px)] top-[calc(50%_-_170.03px/2_+_0.02px)]">
                   <Image src="/games/refrels/refer.png" alt="Refer A Friend" fill className="object-cover object-center" priority />
                 </div>
@@ -47,25 +63,23 @@ export default function ReferAFriendPage() {
                 </div>
               </div>
 
-              {/* DESKTOP ROW: Text + Calculator */}
-              <div className="relative z-10 flex w-full lg:max-w-[1056px] flex-col lg:flex-row justify-between items-center min-h-[345px] gap-[20px] lg:gap-[24px] mt-0 mx-auto">
-                {/* Desktop Banner Text */}
-                <div className="relative z-10 hidden lg:flex w-[457px] flex-none flex-col gap-[4px] text-left mt-0">
-                  <span className="font-jost text-[28px] font-medium leading-[40px] text-white">Get <span className="text-[#FFC83D]">PAID</span> every time</span>
-                  <h1 className="font-jost text-[48px] font-extrabold leading-[100%] text-white">YOUR FRIEND PLAYS!</h1>
-                </div>
+              {/* Desktop Banner Text */}
+              <div className="relative z-10 hidden lg:flex w-full lg:w-[457px] flex-none flex-col gap-[4px] text-left mt-0 lg:col-span-7 lg:self-center">
+                <span className="font-jost text-[28px] font-medium leading-[40px] text-white">Get <span className="text-[#FFC83D]">PAID</span> every time</span>
+                <h1 className="font-jost text-[48px] font-extrabold leading-[100%] text-white">YOUR FRIEND PLAYS!</h1>
+              </div>
 
               {/* Right side calculator */}
-              <div className="flex flex-col items-center p-[20px] gap-[24px] w-full lg:w-[430px] h-auto lg:h-[345px] bg-[#0C1F56] lg:bg-[#091741] rounded-[16px] overflow-hidden relative isolation-isolate flex-none">
+              <div className="flex flex-col items-center p-[20px] gap-[24px] w-full lg:w-[430px] h-auto lg:h-[345px] bg-[#0C1F56] lg:bg-[#091741] rounded-[16px] overflow-hidden relative isolation-isolate flex-none md:col-span-1 lg:col-span-5 lg:ml-auto md:h-full justify-between">
                 {/* Background Glow */}
                 <div className="absolute top-[-127px] left-[calc(50%_-_173px/2_-_0.5px)] w-[173px] h-[173px] bg-[#1463FF] blur-[40px] rounded-full z-0 pointer-events-none" />
                 
                 {/* Inner Content Wrapper */}
-                <div className="flex flex-col items-start w-full sm:w-[390px] lg:w-[390px] h-auto lg:h-[305px] gap-[12px] z-10 flex-none relative">
+                <div className="flex flex-col items-start w-full lg:w-[390px] h-auto lg:h-[305px] gap-[12px] z-10 flex-none relative">
                   
                   {/* Header Title */}
                   <div className="flex flex-row justify-center items-start w-full h-auto lg:h-[58px] gap-[12px] flex-none">
-                    <h2 className="w-[300px] text-center font-jost text-[18px] lg:text-[20px] font-extrabold leading-[26px] lg:leading-[29px] tracking-[0.01em] text-white">
+                    <h2 className="w-full max-w-[300px] text-center font-jost text-[18px] lg:text-[20px] font-extrabold leading-[26px] lg:leading-[29px] tracking-[0.01em] text-white">
                       How much can you earn with Mighty Luck?
                     </h2>
                   </div>
@@ -129,7 +143,7 @@ export default function ReferAFriendPage() {
                     <div className="flex flex-col items-start w-full h-auto lg:h-[99px] gap-[8px] flex-none">
                       <div className="flex flex-col items-start w-full h-[60px] gap-[12px] flex-1">
                         <div className="flex flex-row items-center justify-center p-[10px_16px] gap-[12px] w-full h-[60px] bg-[#112F82] rounded-[8px] flex-none">
-                          <div className="flex flex-row items-center justify-center gap-[8px] w-full lg:w-[358px] h-[33px] flex-1">
+                          <div className="flex flex-row items-center justify-center gap-[4px] lg:gap-[8px] w-full h-[33px] flex-1">
                             <span className="font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-white w-auto lg:w-[164px] h-[19px] flex-none">
                               Your monthly earnings:
                             </span>
@@ -165,10 +179,9 @@ export default function ReferAFriendPage() {
                   </div>
                 </div>
               </div>
-            </div>
 
               {/* Stats Bar */}
-              <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center p-[20px_24px] w-full lg:max-w-[1056px] h-auto lg:h-[104px] bg-[#0C1F56] lg:bg-[#091741] rounded-[16px] gap-[12px] lg:gap-[8px] mt-0 lg:mt-auto mx-auto">
+              <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center p-[20px_24px] w-full lg:max-w-[1056px] h-auto lg:h-[104px] bg-[#0C1F56] lg:bg-[#091741] rounded-[16px] gap-[12px] lg:gap-[8px] mt-0 lg:mt-auto mx-auto md:col-span-1 lg:col-span-12 md:h-full">
                 <div className="flex flex-col flex-none w-full lg:flex-1 gap-[8px]">
                   <span className="font-manrope text-[12px] font-semibold text-[#BBCAF3]">Total Referrals</span>
                   <div className="flex flex-row items-center p-[10px_16px] gap-[12px] bg-[#112F82] rounded-[8px] h-[50px] lg:h-[40px]">
@@ -236,7 +249,7 @@ export default function ReferAFriendPage() {
             <section className="flex flex-col lg:flex-row gap-[12px] w-full">
               {/* WHAT YOU GET */}
               <div className="flex flex-col p-[32px_40px] gap-[24px] flex-1 bg-[#0C1F56] rounded-[16px] relative overflow-hidden isolation-isolate">
-                <div className="absolute top-[-87px] lg:top-[-97px] left-[calc(50%_-_182px/2_-_187px)] lg:left-[calc(50%_-_182px/2_-_241px)] w-[182px] h-[182px] bg-[#57FF3D] blur-[60px] rounded-full z-0 pointer-events-none" />
+                <div className="absolute top-[-87px] lg:top-[-97px] left-[calc(50%_-_182px/2_-_187px)] md:left-[-60px] lg:left-[calc(50%_-_182px/2_-_241px)] w-[182px] h-[182px] bg-[#57FF3D] blur-[60px] rounded-full z-0 pointer-events-none" />
                 <h3 className="font-jost text-[20px] font-extrabold text-white leading-[29px] uppercase tracking-[0.01em] z-10">WHAT YOU GET</h3>
                 <div className="flex flex-col gap-[20px] z-10">
                   <div className="flex flex-row gap-[16px]">
@@ -278,7 +291,7 @@ export default function ReferAFriendPage() {
 
               {/* WHAT YOUR FRIEND GETS */}
               <div className="flex flex-col p-[32px_40px] gap-[24px] flex-1 bg-[#0C1F56] rounded-[16px] relative overflow-hidden isolation-isolate">
-                <div className="absolute top-[-87px] lg:top-[-97px] left-[calc(50%_-_182px/2_-_167px)] lg:left-[calc(50%_-_182px/2_-_241px)] w-[182px] h-[182px] bg-[#1463FF] blur-[60px] rounded-full z-0 pointer-events-none" />
+                <div className="absolute top-[-87px] lg:top-[-97px] left-[calc(50%_-_182px/2_-_167px)] md:left-[-60px] lg:left-[calc(50%_-_182px/2_-_241px)] w-[182px] h-[182px] bg-[#1463FF] blur-[60px] rounded-full z-0 pointer-events-none" />
                 <h3 className="font-jost text-[20px] font-extrabold text-white leading-[29px] uppercase tracking-[0.01em] z-10">WHAT YOUR FRIEND GETS</h3>
                 <div className="flex flex-col gap-[20px] z-10">
                   <div className="flex flex-row gap-[16px]">
@@ -349,25 +362,23 @@ export default function ReferAFriendPage() {
                 <h3 className="font-jost text-[16px] leading-[23px] lg:text-[20px] lg:leading-[29px] font-extrabold text-white uppercase tracking-[0.01em]">FAQs</h3>
               </div>
               <div className="flex flex-col gap-[16px]">
-                {/* Active FAQ Item */}
-                <div className="flex flex-col p-[32px_40px] gap-[16px] w-full bg-[#0C1F56] rounded-[8px]">
-                  <div className="flex flex-row justify-between items-center cursor-pointer">
-                    <h4 className="font-jost text-[20px] leading-[29px] font-extrabold text-white">How do I invite a friend?</h4>
-                    <Minus size={20} className="text-white shrink-0" />
+                {faqs.map((faq, idx) => (
+                  <div 
+                    key={idx}
+                    className={`flex flex-col p-[32px_40px] w-full bg-[#0C1F56] rounded-[8px] transition-all duration-300 ${activeFaq === idx ? 'gap-[16px]' : 'min-h-[100px] cursor-pointer hover:bg-[#112F82] justify-center'}`}
+                    onClick={() => setActiveFaq(activeFaq === idx ? null : idx)}
+                  >
+                    <div className="flex flex-row justify-between items-center cursor-pointer">
+                      <h4 className="font-jost text-[20px] leading-[29px] font-extrabold text-white">{faq.question}</h4>
+                      {activeFaq === idx ? <Minus size={20} className="text-white shrink-0" /> : <Plus size={20} className="text-white shrink-0" />}
+                    </div>
+                    {activeFaq === idx && (
+                      <p className="font-manrope text-[16px] font-medium text-[#A5B8EF] leading-[160%]">
+                        {faq.answer}
+                      </p>
+                    )}
                   </div>
-                  <p className="font-manrope text-[16px] font-medium text-[#A5B8EF] leading-[160%]">
-                    In order to participate in the Refer A Friend campaign, as a referrer you need to have an active account at Mighty Luck and have at least $50 (or currency equivalent) deposited. Multiple deposits can be summed up in order to meet the minimum deposit requirement.
-                  </p>
-                </div>
-                {/* Inactive FAQ Items */}
-                <div className="flex flex-row justify-between items-center p-[32px_40px] w-full h-[100px] bg-[#0C1F56] rounded-[8px] cursor-pointer hover:bg-[#112F82] transition-colors">
-                  <h4 className="font-jost text-[20px] leading-[29px] font-extrabold text-white">How do I invite a friend?</h4>
-                  <Plus size={20} className="text-white shrink-0" />
-                </div>
-                <div className="flex flex-row justify-between items-center p-[32px_40px] w-full h-[100px] bg-[#0C1F56] rounded-[8px] cursor-pointer hover:bg-[#112F82] transition-colors">
-                  <h4 className="font-jost text-[20px] leading-[29px] font-extrabold text-white">How do I invite a friend?</h4>
-                  <Plus size={20} className="text-white shrink-0" />
-                </div>
+                ))}
               </div>
             </section>
 
