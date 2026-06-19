@@ -754,8 +754,8 @@ export default function WalletModal() {
                                 <span className="font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-white w-auto whitespace-nowrap flex-none">
                                   Bitcoin
                                 </span>
-                                <span className="font-manrope text-[10px] sm:text-[11px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] w-auto whitespace-nowrap flex-none truncate">
-                                  (Min. Deposit $10)
+                                <span className="font-manrope text-[11px] sm:text-[12px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] w-auto whitespace-nowrap flex-none truncate">
+                                  (Min. $10)
                                 </span>
                               </div>
                             </>
@@ -770,8 +770,8 @@ export default function WalletModal() {
                                     Credit Card
                                   </span>
                                 </div>
-                                <span className="font-manrope text-[10px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] flex-1 min-w-0 truncate sm:ml-1">
-                                  (Min. Deposit $30 - Max. Deposit $2,500)
+                                <span className="font-manrope text-[11px] sm:text-[12px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] flex-1 min-w-0 truncate sm:ml-1">
+                                  (Min. $30 - Max. $2,500)
                                 </span>
                               </div>
                             </>
@@ -831,7 +831,7 @@ export default function WalletModal() {
                                 <path d="M6 3C5.72386 3 5.5 3.22386 5.5 3.5C5.5 3.77614 5.72386 4 6 4C6.27614 4 6.5 3.77614 6.5 3.5C6.5 3.22386 6.27614 3 6 3ZM5.5 5.5V9H6.5V5.5H5.5Z" fill="#091741"/>
                               </svg>
                             </div>
-                            <span className="font-manrope text-[10px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] flex-1 sm:w-[408px] h-auto sm:h-[28px]">
+                            <span className="font-manrope text-[11px] font-medium leading-[16px] tracking-[0.02em] text-[#7795E8] flex-1 sm:w-[408px] h-auto sm:h-[28px]">
                               Please fill up your address details before completing your deposit. This information is required for credit card deposits.
                             </span>
                           </div>
@@ -1051,7 +1051,7 @@ export default function WalletModal() {
                               <path d="M6 4.2H6.005" stroke="#7795E8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>
                           </div>
-                          <span className="font-manrope text-[10px] font-medium leading-[14px] tracking-[0.02em] text-[#7795E8] flex-1 sm:w-[408px] h-auto sm:h-[28px]">
+                          <span className="font-manrope text-[11px] font-medium leading-[16px] tracking-[0.02em] text-[#7795E8] flex-1 sm:w-[408px] h-auto sm:h-[28px]">
                             Only deposit BC via the Bitcoin network. Deposit of other assets or from other networks will be lost.
                           </span>
                         </div>
