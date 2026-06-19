@@ -22,7 +22,7 @@ export default function AuthModal() {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 w-full h-full min-h-[100dvh] bg-[#091741] md:bg-[#0C1733]/70 md:backdrop-blur-[8px] flex items-start md:items-center justify-center z-[100] mx-auto overflow-y-auto md:py-8">
+    <div className="fixed inset-0 w-full h-full min-h-[100dvh] bg-[#091741] md:bg-[#0C1733]/70 md:backdrop-blur-[8px] flex items-start md:items-center justify-center z-[130] md:z-[100] mx-auto overflow-y-auto md:py-8">
       {/* Mobile Layout Container */}
       <div className="flex md:hidden flex-col w-full min-h-[100dvh] relative">
         
