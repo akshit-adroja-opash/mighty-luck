@@ -357,7 +357,7 @@ export default function WalletModal() {
   ];
 
   return (
-    <div className="fixed top-[50px] sm:top-0 inset-x-0 bottom-0 z-[100] flex flex-col items-center justify-start sm:justify-center bg-[#0C1F56] sm:bg-[#0C1733]/70 sm:backdrop-blur-[8px] sm:p-4 overflow-y-auto">
+    <div className="fixed top-[50px] sm:top-0 inset-x-0 bottom-0 z-[130] flex flex-col items-center justify-start sm:justify-center bg-[#0C1F56] sm:bg-[#0C1733]/70 sm:backdrop-blur-[8px] sm:p-4 overflow-y-auto">
       
       {/* Outer absolute position alignment box (dynamic height to avoid jumps) */}
       <div 
