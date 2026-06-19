@@ -16,10 +16,7 @@ export default function MobileBottomNav({ isMobileMenuOpen, setIsMobileMenuOpen 
     <div className={`fixed bottom-0 left-0 right-0 z-[110] lg:hidden flex flex-row justify-between items-center px-5 py-[12px] h-[75px] bg-[#0C1F56] ${(!isLobbyOpen && !isMobileMenuOpen && !isWalletOpen) ? 'rounded-t-[16px]' : ''}`}>
       <button onClick={() => { if (isLobbyOpen) dispatch(closeModal("lobby")); setIsMobileMenuOpen(!isMobileMenuOpen); }} className="flex flex-col justify-center items-center gap-[2px] w-[39px] h-[51px] transition-colors hover:opacity-80">
         <div className="flex justify-center items-center w-[30px] h-[30px]">
-          <svg width="22" height="15" viewBox="0 0 22 15" fill="none" stroke={isMobileMenuOpen ? "#FFBF1F" : "#D2DCF7"} strokeWidth="2.75" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2 2H12M2 7.5H12M2 13H12" strokeLinecap="round"/>
-            <path d="M20 2L16 7.5L20 13" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+          <img src="/images/Vector.png" alt="Menu" style={{ width: "20.57px", height: "13.71px" }} className="transition-opacity hover:opacity-80" />
         </div>
         <span className={`font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] ${isMobileMenuOpen ? "text-[#FFBF1F]" : "text-[#D2DCF7]"}`}>Menu</span>
       </button>
