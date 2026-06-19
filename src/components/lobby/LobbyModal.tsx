@@ -75,7 +75,23 @@ export default function LobbyModal() {
   const [activeTab, setActiveTab] = useState<"all" | "recent" | "favorites" | "new">("all");
   const [activePage, setActivePage] = useState(0);
   const [showMobileCategories, setShowMobileCategories] = useState(false);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
   const providersRef = React.useRef<HTMLDivElement>(null);
+
+  // Initialize scroll states on mount or resize
+  React.useEffect(() => {
+    const checkScroll = () => {
+      if (providersRef.current) {
+        const { scrollLeft, scrollWidth, clientWidth } = providersRef.current;
+        setCanScrollLeft(scrollLeft > 0);
+        setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 1);
+      }
+    };
+    checkScroll();
+    window.addEventListener("resize", checkScroll);
+    return () => window.removeEventListener("resize", checkScroll);
+  }, []);
 
   React.useEffect(() => {
     if (isOpen) {
@@ -89,6 +105,9 @@ export default function LobbyModal() {
   const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
     const target = e.currentTarget;
     const maxScroll = target.scrollWidth - target.clientWidth;
+    setCanScrollLeft(target.scrollLeft > 0);
+    setCanScrollRight(target.scrollLeft < maxScroll - 1);
+    
     if (maxScroll <= 0) return;
     const percentage = target.scrollLeft / maxScroll;
     const page = Math.min(2, Math.max(0, Math.round(percentage * 2)));
@@ -103,6 +122,17 @@ export default function LobbyModal() {
     target.scrollTo({ left: scrollToX, behavior: "smooth" });
     setActivePage(pageIndex);
   };
+
+  const scrollProviders = (direction: "left" | "right") => {
+    if (providersRef.current) {
+      const scrollAmount = providersRef.current.clientWidth * 0.8;
+      providersRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
+
 
   if (!isOpen) return null;
 
@@ -407,8 +437,8 @@ export default function LobbyModal() {
                 </div>
               </div>
 
-              {/* Game Providers — 856×171px */}
-              <div className="flex flex-col gap-4 lg:gap-[20px] w-full lg:w-[856px] lg:h-[171px] flex-none">
+              {/* Game Providers — 808×171px */}
+              <div className="flex flex-col gap-4 lg:gap-[20px] w-full lg:max-w-[808px] lg:h-[171px] flex-none">
                 <div className="flex flex-row items-center justify-between w-full h-[23px] lg:h-[29px] flex-none">
                   <div className="flex flex-row items-center gap-[7.2px] lg:gap-[8px]">
                     <div className="w-[18px] h-[18px] lg:w-[20px] lg:h-[20px] flex items-center justify-center text-[#FFC83D]">
@@ -418,17 +448,36 @@ export default function LobbyModal() {
                       Game Providers
                     </span>
                   </div>
-                  <span className="font-manrope font-bold text-[12px] leading-[16px] tracking-[0.02em] text-[#FFBF1F] cursor-pointer hover:opacity-80">
-                    View all
-                  </span>
+                  <div className="hidden md:flex h-[30px] w-[68px] flex-none flex-row items-center justify-end gap-[8px]">
+                    <button
+                      onClick={() => scrollProviders("left")}
+                      disabled={!canScrollLeft}
+                      className={`flex h-[30px] w-[30px] flex-none flex-col items-center justify-center rounded-[4px] bg-[#112F82] transition-opacity ${canScrollLeft ? "opacity-100 hover:opacity-80 active:scale-95 cursor-pointer" : "opacity-40 cursor-default"}`}
+                      aria-label="Previous"
+                    >
+                      <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 9L1 5L5 1" stroke="white" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </button>
+                    <button
+                      onClick={() => scrollProviders("right")}
+                      disabled={!canScrollRight}
+                      className={`flex h-[30px] w-[30px] flex-none flex-col items-center justify-center rounded-[4px] bg-[#112F82] transition-opacity ${canScrollRight ? "opacity-100 hover:opacity-80 active:scale-95 cursor-pointer" : "opacity-40 cursor-default"}`}
+                      aria-label="Next"
+                    >
+                      <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 9L5 5L1 1" stroke="white" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </button>
+                  </div>
                 </div>
 
                 {/* Provider cards - scrollable */}
-                <div className="flex flex-col gap-[16px] w-full lg:w-[856px] lg:h-[122px] flex-none">
+                <div className="flex flex-col gap-[16px] w-full lg:max-w-[808px] lg:h-[122px] flex-none">
                   <div
                     ref={providersRef}
                     onScroll={handleScroll}
-                    className="flex flex-row items-center gap-[8px] lg:gap-[12px] w-full lg:w-[856px] lg:h-[100px] overflow-x-auto no-scrollbar snap-x snap-mandatory flex-none"
+                    className="flex flex-row items-center gap-[8px] lg:gap-[12px] w-full lg:max-w-[808px] lg:h-[100px] overflow-x-auto no-scrollbar snap-x snap-mandatory flex-none"
                   >
                     {providers.map((p, index) => (
                       <div
