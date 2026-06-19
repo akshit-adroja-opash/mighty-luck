@@ -36,13 +36,13 @@ export default function AuthModal() {
           <div className="flex flex-row items-center gap-[8px] flex-1 h-[50px]">
             <button
               onClick={() => { dispatch(setAuthModalView("register")); setView("register"); }}
-              className={`flex justify-center items-center px-[30px] py-[10px] gap-[10px] flex-1 h-[50px] rounded-[8px] ${view === 'register' ? 'bg-[#FFC83D] text-[#000000]' : 'bg-[#1463FF] text-[#FFFFFF]'} font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] cursor-pointer transition-colors`}
+              className={`flex justify-center items-center px-[10px] sm:px-[30px] py-[10px] gap-[10px] flex-1 h-[50px] rounded-[8px] ${view === 'register' ? 'bg-[#FFC83D] text-[#000000]' : 'bg-[#1463FF] text-[#FFFFFF]'} font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] whitespace-nowrap cursor-pointer transition-colors`}
             >
               Join Now
             </button>
             <button
               onClick={() => { dispatch(setAuthModalView("login")); setView("login"); }}
-              className={`flex justify-center items-center px-[30px] py-[10px] gap-[10px] flex-1 h-[50px] rounded-[8px] ${view === 'login' ? 'bg-[#FFC83D] text-[#000000]' : 'bg-[#1463FF] text-[#FFFFFF]'} font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] cursor-pointer transition-colors`}
+              className={`flex justify-center items-center px-[10px] sm:px-[30px] py-[10px] gap-[10px] flex-1 h-[50px] rounded-[8px] ${view === 'login' ? 'bg-[#FFC83D] text-[#000000]' : 'bg-[#1463FF] text-[#FFFFFF]'} font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] whitespace-nowrap cursor-pointer transition-colors`}
             >
               Log In
             </button>
