@@ -29,7 +29,7 @@ export default function ReferAFriendPage() {
   };
 
   return (
-    <main className="flex w-full flex-none flex-col gap-[30px] lg:gap-[40px] pb-0 lg:pb-20">
+    <main className="flex w-full flex-none flex-col gap-[30px] lg:gap-[40px]">
 
             {/* HERO BANNER SECTION */}
             <section 
