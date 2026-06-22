@@ -190,6 +190,7 @@ export default function LobbyModal() {
   const handleCategoryClick = (categoryName: string) => {
     dispatch(setActiveCategory(categoryName));
     setActiveTab("" as any); // Clear top tabs selection
+    dispatch(closeModal("lobby"));
   };
 
   const handleGameClick = (game: { title: string; image: string }) => {
