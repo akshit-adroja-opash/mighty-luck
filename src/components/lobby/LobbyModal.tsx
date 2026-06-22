@@ -261,18 +261,8 @@ export default function LobbyModal() {
         {/* ── Right Content ── */}
         <div className="flex flex-col items-start gap-4 lg:gap-[32px] w-full flex-1 min-w-0 overflow-y-auto no-scrollbar min-h-0">
           
-          {/* Mobile Close Button (above search bar) */}
-          <div className="flex lg:hidden w-full justify-end flex-none -mb-2">
-            <button
-              onClick={() => dispatch(closeModal("lobby"))}
-              className="w-[32px] h-[32px] flex items-center justify-center text-[#A5B8EF] hover:text-white transition-colors cursor-pointer"
-            >
-              <CloseIcon />
-            </button>
-          </div>
-
-          {/* Top row: Search bar */}
-          <div className="flex w-full flex-none">
+          {/* Top row: Search bar & Mobile Close */}
+          <div className="flex w-full flex-none items-center gap-[12px]">
             {/* Search bar */}
             <div className={`flex flex-row items-center justify-between w-full transition-all duration-300 ${
               searchQuery 
@@ -302,6 +292,14 @@ export default function LobbyModal() {
                 </button>
               )}
             </div>
+
+            {/* Mobile Close Button */}
+            <button
+              onClick={() => dispatch(closeModal("lobby"))}
+              className="flex lg:hidden w-[50px] h-[50px] bg-[#112F82] rounded-[8px] flex-none items-center justify-center text-[#A5B8EF] hover:text-white transition-colors cursor-pointer"
+            >
+              <CloseIcon />
+            </button>
           </div>
 
           {/* ── MOBILE: Horizontal category tabs ── */}
