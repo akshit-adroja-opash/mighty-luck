@@ -260,6 +260,16 @@ export default function LobbyModal() {
         {/* ── Right Content ── */}
         <div className="flex flex-col items-start gap-4 lg:gap-[32px] w-full flex-1 min-w-0 overflow-y-auto no-scrollbar min-h-0">
           
+          {/* Mobile Close Button (above search bar) */}
+          <div className="flex lg:hidden w-full justify-end flex-none -mb-2">
+            <button
+              onClick={() => dispatch(closeModal("lobby"))}
+              className="w-[32px] h-[32px] flex items-center justify-center text-[#A5B8EF] hover:text-white transition-colors cursor-pointer"
+            >
+              <CloseIcon />
+            </button>
+          </div>
+
           {/* Top row: Search bar */}
           <div className="flex w-full flex-none">
             {/* Search bar */}
