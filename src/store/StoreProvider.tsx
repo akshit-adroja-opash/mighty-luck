@@ -19,15 +19,25 @@ function StateSync({ children }: { children: ReactNode }) {
       }
     }
 
-    // 2. Subscribe to store changes to persist auth state
+    // 2. Subscribe to store changes to persist auth state and handle body scroll lock
     const unsubscribe = store.subscribe(() => {
       const state = store.getState();
+      
+      // Auth sync
       if (state.auth.isAuthenticated && state.auth.token && state.auth.user) {
         localStorage.setItem("auth_token", state.auth.token);
         localStorage.setItem("auth_user", JSON.stringify(state.auth.user));
       } else {
         localStorage.removeItem("auth_token");
         localStorage.removeItem("auth_user");
+      }
+
+      // Scroll lock sync for modals
+      const anyModalOpen = Object.values(state.ui.modals || {}).some(Boolean);
+      if (anyModalOpen) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "";
       }
     });
 
