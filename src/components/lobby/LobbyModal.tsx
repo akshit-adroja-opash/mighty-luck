@@ -230,7 +230,7 @@ export default function LobbyModal() {
           <CloseIcon />
         </button>
 
-        <div className="hidden md:flex flex-col justify-start items-start gap-[12px] w-[180px] flex-none overflow-y-auto no-scrollbar h-full lg:h-[588px]">
+        <div className="hidden md:flex flex-col justify-start items-start gap-[12px] w-[180px] flex-none overflow-y-auto no-scrollbar h-full lg:h-[588px] md:mt-[40px] lg:mt-0">
           <div className="flex flex-row items-start px-[16px] pb-[16px] pt-0 lg:p-[16px] gap-[10px] w-[180px] bg-[#0C1F56] rounded-[12px] flex-none">
             <div className="flex flex-col items-start gap-[8px] w-[148px] h-[168px] flex-grow">
               <SidebarBtn icon={navIcons.all} label="All Games" isActive={activeTab === "all"} onClick={() => { setActiveTab("all"); dispatch(setActiveCategory("Lobby")); }} />
@@ -497,19 +497,19 @@ export default function LobbyModal() {
                           dispatch(closeModal("lobby"));
                           toast.success(`Selected provider ${p.name}`);
                         }}
-                        className="group flex flex-col justify-center items-center p-[7.2px] px-[14.4px] lg:p-[12px] lg:px-[24px] gap-[4.8px] lg:gap-[8px] w-[88px] lg:w-[152px] h-[60px] lg:h-[100px] bg-[#112F82] lg:bg-[#0C1F56] hover:bg-[#112f82]/50 rounded-[8px] lg:rounded-[12px] flex-none cursor-pointer transition-all snap-start"
+                        className="group flex flex-col justify-center items-center p-[8px] px-[12px] lg:p-[12px] lg:px-[24px] gap-[6px] lg:gap-[8px] w-[116px] lg:w-[152px] h-[72px] lg:h-[100px] bg-[#112F82] lg:bg-[#0C1F56] hover:bg-[#112f82]/50 rounded-[8px] lg:rounded-[12px] flex-none cursor-pointer transition-all snap-start"
                       >
-                        <div className="flex h-[24px] lg:h-[40px] w-[48px] lg:w-[80px] flex-none items-center justify-center">
+                        <div className="flex h-[28px] lg:h-[40px] w-[56px] lg:w-[80px] flex-none items-center justify-center">
                           {p.logo ? (
                             <img src={p.logo} alt={p.name} className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform" />
                           ) : (
-                            <span className="text-center text-[11px] lg:text-[12px] font-extrabold uppercase leading-tight tracking-wider text-white select-none group-hover:scale-105 transition-transform">
+                            <span className="text-center text-[12px] lg:text-[12px] font-extrabold uppercase leading-tight tracking-wider text-white select-none group-hover:scale-105 transition-transform">
                               {p.name}
                             </span>
                           )}
                         </div>
                         <div className="flex items-center justify-center flex-none">
-                          <span className="font-manrope text-[8px] lg:text-[10px] font-semibold leading-[11px] lg:leading-[14px] text-center text-[#FFC83D]">
+                          <span className="font-manrope text-[10px] lg:text-[10px] font-semibold leading-[14px] lg:leading-[14px] text-center text-[#FFC83D]">
                             {p.games} Games
                           </span>
                         </div>
