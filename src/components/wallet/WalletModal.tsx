@@ -190,8 +190,11 @@ export default function WalletModal() {
         const direction = e.deltaY > 0 ? 1 : -1;
         const nextIndex = Math.max(0, currentIndexRef.current + direction);
         
+        const card = slider.children[0]?.children[0] as HTMLElement;
+        const cardWidth = card ? card.offsetWidth + 8 : 308;
+        
         isWheelScrolling = true;
-        slider.scrollTo({ left: nextIndex * 312, behavior: 'smooth' });
+        slider.scrollTo({ left: nextIndex * cardWidth, behavior: 'smooth' });
         
         setTimeout(() => {
           isWheelScrolling = false;
@@ -205,15 +208,20 @@ export default function WalletModal() {
 
   const onBonusScroll = () => {
     if (!bonusSliderRef.current) return;
-    const scrollLeft = bonusSliderRef.current.scrollLeft;
-    // Card width is 300px + 12px gap = 312px
-    const index = Math.round(scrollLeft / 312);
+    const slider = bonusSliderRef.current;
+    const scrollLeft = slider.scrollLeft;
+    const card = slider.children[0]?.children[0] as HTMLElement;
+    const cardWidth = card ? card.offsetWidth + 8 : 308;
+    const index = Math.round(scrollLeft / cardWidth);
     setBonusSlideIndex(index);
   };
 
   const scrollToBonusIndex = (idx: number) => {
     if (!bonusSliderRef.current) return;
-    bonusSliderRef.current.scrollTo({ left: idx * 312, behavior: 'smooth' });
+    const slider = bonusSliderRef.current;
+    const card = slider.children[0]?.children[0] as HTMLElement;
+    const cardWidth = card ? card.offsetWidth + 8 : 308;
+    slider.scrollTo({ left: idx * cardWidth, behavior: 'smooth' });
   };
 
   // Promo code states
@@ -1217,7 +1225,7 @@ export default function WalletModal() {
                         {availableBonuses.map((bonus, idx) => (
                           <div 
                             key={idx}
-                            className="flex flex-col justify-start items-start bg-[#112F82] rounded-[12px] p-[20px] gap-[12px] w-[300px] sm:w-[300px] h-[205px] sm:h-[205px] flex-none snap-start select-none overflow-hidden"
+                            className="flex flex-col justify-start items-start bg-[#112F82] rounded-[12px] p-[20px] gap-[12px] w-[calc(100vw-72px)] min-[372px]:w-[300px] sm:w-[300px] h-[205px] sm:h-[205px] flex-none snap-start select-none overflow-hidden"
                           >
                             {/* Title */}
                             <span className="block font-jost font-bold text-[14px] leading-[20px] tracking-[0.02em] text-white w-full sm:w-[260px] h-[20px] flex-none truncate">
