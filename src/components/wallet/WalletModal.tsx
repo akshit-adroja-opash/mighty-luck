@@ -369,7 +369,7 @@ export default function WalletModal() {
       
       {/* Outer absolute position alignment box (dynamic height to avoid jumps) */}
       <div 
-        className={`relative transition-all duration-300 w-full sm:w-[500px] overflow-y-auto sm:overflow-visible rounded-none sm:rounded-[16px] flex flex-col mt-auto sm:mt-0 pb-[10px] sm:pb-0 h-auto sm:h-[var(--modal-height)]`}
+        className={`relative transition-all duration-300 w-full sm:w-[500px] overflow-y-auto sm:overflow-visible rounded-none sm:rounded-[16px] flex flex-col mt-auto sm:mt-0 pb-0 sm:pb-0 h-auto sm:h-[var(--modal-height)]`}
         style={{ 
           '--modal-height': modalHeight,
           transform: `translateY(${modalDragY}px)`,
@@ -389,7 +389,7 @@ export default function WalletModal() {
 
         {/* Outer Modal Container */}
         <div 
-          className="relative flex flex-col items-center bg-[#091741] rounded-[30px_30px_0px_0px] sm:rounded-[16px] w-full shadow-none sm:shadow-2xl isolation-isolate transition-all duration-300 p-[16px_20px_90px] sm:p-[24px_20px_32px] gap-[16px] sm:gap-[24px]"
+          className="relative flex flex-col items-center bg-[#091741] rounded-[30px_30px_0px_0px] sm:rounded-[16px] w-full shadow-none sm:shadow-2xl isolation-isolate transition-all duration-300 p-[16px_20px_40px] sm:p-[24px_20px_32px] gap-[16px] sm:gap-[24px]"
         >
           
           {/* Accent Glow Container (clips the glow to the card boundaries) */}
