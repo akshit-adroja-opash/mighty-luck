@@ -5,10 +5,6 @@ import { RootState } from "@/store";
 import { setActiveCategory } from "@/store/slices/uiSlice";
 import {
   CircleDollarSign,
-  Zap,
-  Home,
-  Cherry,
-  Rocket,
   Gamepad2,
   Dices,
   Library
@@ -44,7 +40,7 @@ const SvgIconWrapper = (src: string) => {
 
 // ... inside the component
     const categories = [
-      { name: "Lobby", icon: ({ size, className, fill }: any) => <Home size={size} className={className} fill={fill} /> },
+      { name: "Lobby", icon: SvgIconWrapper("/games/game-icons/lobby.svg") },
       { name: "Slots", icon: SvgIconWrapper("/games/game-icons/slot.svg") },
       { name: "Originals", icon: SvgIconWrapper("/games/game-icons/originals.svg") },
       { name: "Crash Games", icon: SvgIconWrapper("/games/game-icons/crash.svg") },
