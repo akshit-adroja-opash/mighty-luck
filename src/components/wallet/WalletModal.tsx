@@ -323,26 +323,27 @@ export default function WalletModal() {
 
   // Dynamic sizing based on active tab, payment method, CC step, and BTC submitted state
   const isFixedSizeTab = activeTab === "bonuses" || activeTab === "withdraw" || activeTab === "transactions";
+  const showSubmittedState = isBtcSubmitted && activeTab === "deposit";
 
-  const modalHeight = isBtcSubmitted 
+  const modalHeight = showSubmittedState 
     ? "532px" 
     : (isFixedSizeTab
         ? "518px"
         : (paymentMethod === "btc" ? "604px" : (ccStep === "address" ? "633px" : "647px")));
     
-  const innerHeight = isBtcSubmitted 
+  const innerHeight = showSubmittedState 
     ? "386px" 
     : (isFixedSizeTab
         ? "462px"
         : (paymentMethod === "btc" ? "474px" : (ccStep === "address" ? "503px" : "517px")));
     
-  const tabViewHeight = isBtcSubmitted 
+  const tabViewHeight = showSubmittedState 
     ? "287px" 
     : (isFixedSizeTab
         ? "363px"
         : (paymentMethod === "btc" ? "376px" : (ccStep === "address" ? "404px" : "418px")));
 
-  const tabsContentHeight = isBtcSubmitted 
+  const tabsContentHeight = showSubmittedState 
     ? "333px" 
     : (isFixedSizeTab
         ? "409px"
@@ -514,7 +515,7 @@ export default function WalletModal() {
               {/* Tab View Container */}
               <div 
                 className={`flex flex-col items-start gap-[16px] w-full sm:w-[460px] bg-[#0C1F56] rounded-[16px] overflow-visible transition-all duration-300 h-auto sm:h-[var(--tab-view-height)] ${
-                  isBtcSubmitted ? "p-[20px_16px]" : "p-[16px]"
+                  showSubmittedState ? "p-[20px_16px]" : "p-[16px]"
                 }`}
                 style={{ '--tab-view-height': tabViewHeight } as React.CSSProperties}
               >
@@ -1317,7 +1318,7 @@ export default function WalletModal() {
 
                     {/* Pagination Indicator dots */}
                     <div className="flex flex-col items-center w-full sm:w-[428px] h-[6px] flex-none">
-                      <div className="flex flex-row justify-center items-center gap-[8px] w-[40px] h-[6px] flex-none">
+                      <div className="flex flex-row justify-center items-center gap-[4px] w-[32px] h-[6px] flex-none">
                         {availableBonuses.map((_, idx) => {
                           const isSlideActive = idx === bonusSlideIndex;
                           return (
@@ -1326,7 +1327,7 @@ export default function WalletModal() {
                               type="button"
                               onClick={() => scrollToBonusIndex(idx)}
                               className={`h-[6px] rounded-[150px] transition-all cursor-pointer flex-none ${
-                                isSlideActive ? "w-[12px] bg-[#D2DCF7]" : "w-[6px] bg-[#D2DCF7]/50"
+                                isSlideActive ? "w-[12px] bg-[#BBCAF3]" : "w-[6px] bg-[#BBCAF3]"
                               }`}
                             />
                           );
