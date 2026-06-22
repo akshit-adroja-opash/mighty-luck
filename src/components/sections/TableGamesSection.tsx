@@ -1,11 +1,13 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import GameCard from "@/components/ui/GameCard";
 import GameCarousel from "@/components/ui/GameCarousel";
 
 const tableGames = Array.from({ length: 20 }, (_, i) => `/games/table/table-${(i % 8) + 1}.png`);
 
 export default function TableGamesSection() {
+  const router = useRouter();
   return (
     <GameCarousel
       title="TABLE GAMES (51)"
@@ -16,6 +18,7 @@ export default function TableGamesSection() {
             <GameCard
               image={image}
               title={`Table Game ${index + 1}`}
+              onClick={() => router.push(`/games/table-${(index % 8) + 1}`)}
             />
           </div>
         ))}
