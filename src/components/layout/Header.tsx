@@ -9,6 +9,7 @@ import { openModal, setAuthModalView, toggleSidebar, setActiveCategory, closeMod
 import { logout } from "@/store/slices/authSlice";
 import { useState, useRef, useEffect } from "react";
 import SidebarMenu from "./SidebarMenu";
+import TopPromoCards from "@/components/sections/TopPromoCards";
 import Logo from "@/components/ui/Logo";
 import MobileBottomNav from "./MobileBottomNav";
 
@@ -194,7 +195,10 @@ export default function Header() {
       {/* Mobile Full Screen Menu Overlay */}
       {isMobileMenuOpen && (
         <div className="fixed left-0 right-0 top-[50px] bottom-[64px] bg-[#0C1F56] z-30 lg:hidden flex flex-col items-center overflow-y-auto px-5 py-5">
-          <div className="flex w-full max-w-[374px] md:max-w-[640px] flex-col gap-[16px]">
+          <div className="flex w-full max-w-[374px] md:max-w-[640px] flex-col gap-[16px] pb-[40px]">
+            <div className="flex w-full justify-center">
+              <TopPromoCards />
+            </div>
             <SidebarMenu onItemClick={() => setIsMobileMenuOpen(false)} />
           </div>
         </div>
