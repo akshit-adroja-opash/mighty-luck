@@ -81,6 +81,23 @@ export default function WalletModal() {
   // CC wizard step: 'address' or 'payment'
   const [ccStep, setCcStep] = useState<"address" | "payment">("address");
   const [isBtcSubmitted, setIsBtcSubmitted] = useState(false);
+  const [loadingStep, setLoadingStep] = useState(0);
+
+  useEffect(() => {
+    if (isBtcSubmitted) {
+      setLoadingStep(0);
+      const interval = setInterval(() => {
+        setLoadingStep((prev) => {
+          if (prev >= 3) {
+            clearInterval(interval);
+            return 3;
+          }
+          return prev + 1;
+        });
+      }, 500);
+      return () => clearInterval(interval);
+    }
+  }, [isBtcSubmitted]);
 
   // Address Form states
   const [street, setStreet] = useState("");
@@ -514,59 +531,56 @@ export default function WalletModal() {
 
                       {/* Confirmation Progress (3 icons) */}
                       <div className="flex flex-row justify-center items-center gap-[10px] w-full sm:w-[428px] h-[120px] flex-none">
-                        <div className="flex flex-row items-center w-[150px] sm:w-[150px] h-[50px] sm:h-[50px] p-0 flex-none">
-                          {/* Frame 2 - Lit Confirmation 1 */}
-                          <div className="relative w-[50px] h-[50px] flex-none">
+                        <div className="flex flex-row items-center w-[120px] sm:w-[120px] h-[40px] sm:h-[40px] p-0 flex-none gap-0">
+                          {/* Frame 1 - Confirmation 1 */}
+                          <div className={`relative w-[40px] h-[40px] flex-none transition-all duration-300 ${loadingStep >= 1 ? "opacity-100 scale-100" : "opacity-50 scale-95"}`}>
                             <svg 
                               style={{
                                 position: "absolute",
-                                width: "35.83px",
-                                height: "26.13px",
-                                left: "calc(50% - 35.83px/2 + 0.63px)",
-                                top: "calc(50% - 26.13px/2 - 0.27px)",
+                                width: "40px",
+                                height: "40px",
+                                left: "0px",
+                                top: "0px",
                               }}
-                              viewBox="0 0 28.66 20.9" 
+                              viewBox="0 0 40 40" 
                               fill="none" 
                               xmlns="http://www.w3.org/2000/svg"
                             >
-                              <path d="M4.66 20.9L24.0 20.9L28.66 7.5L19.16 12.0L14.33 0.0L9.5 12.0L0.0 7.5L4.66 20.9Z" fill="#A5B8EF" />
-                              <path d="M16.5 5.5L11.5 12.5H14.5L12.0 18.5L17.5 11.0H14.5L16.5 5.5Z" fill="#FFFFFF" />
+                              <path d="M34.1442 15.5991L26.603 18.6697C26.372 18.7644 26.1086 18.6743 25.9815 18.4595L20.9332 9.58048C20.7368 9.24547 20.247 9.2524 20.0622 9.59435L14.769 18.4826C14.6465 18.709 14.3693 18.806 14.1313 18.7044L6.86964 15.5991C6.47687 15.4305 6.06792 15.8025 6.195 16.2091L10.4878 29.8799C10.5525 30.0878 10.7465 30.2311 10.966 30.2311L29.3432 30.2357C29.5534 30.2357 29.7406 30.104 29.8145 29.9076L34.805 16.2345C34.9529 15.8256 34.5486 15.4351 34.1466 15.5991H34.1442ZM23.5717 22.2278L19.9813 28.5814C19.9305 28.6715 19.7965 28.6369 19.7919 28.5352L19.6463 24.6884H18.3917V24.6745C18.3594 24.6791 18.3271 24.6884 18.2924 24.6884H15.6885C15.6123 24.6884 15.5638 24.6052 15.5984 24.5382L19.4684 17.3689C19.6047 17.1333 19.8542 16.99 20.1246 16.99H22.7284C22.8047 16.99 22.8532 17.0732 22.8185 17.1402L20.1523 22.0776H23.4816C23.5602 22.0776 23.6087 22.1608 23.5694 22.2301L23.5717 22.2278Z" fill={loadingStep >= 1 ? "#A5B8EF" : "#112F82"} className="transition-colors duration-300" />
                             </svg>
                           </div>
-                          {/* Frame 5 - Lit Confirmation 2 */}
-                          <div className="relative w-[50px] h-[50px] flex-none">
+                          {/* Frame 2 - Confirmation 2 */}
+                          <div className={`relative w-[40px] h-[40px] flex-none transition-all duration-300 ${loadingStep >= 2 ? "opacity-100 scale-100" : "opacity-50 scale-95"}`}>
                             <svg 
                               style={{
                                 position: "absolute",
-                                width: "35.83px",
-                                height: "26.13px",
-                                left: "calc(50% - 35.83px/2 + 0.63px)",
-                                top: "calc(50% - 26.13px/2 - 0.27px)",
+                                width: "40px",
+                                height: "40px",
+                                left: "0px",
+                                top: "0px",
                               }}
-                              viewBox="0 0 28.66 20.9" 
+                              viewBox="0 0 40 40" 
                               fill="none" 
                               xmlns="http://www.w3.org/2000/svg"
                             >
-                              <path d="M4.66 20.9L24.0 20.9L28.66 7.5L19.16 12.0L14.33 0.0L9.5 12.0L0.0 7.5L4.66 20.9Z" fill="#A5B8EF" />
-                              <path d="M16.5 5.5L11.5 12.5H14.5L12.0 18.5L17.5 11.0H14.5L16.5 5.5Z" fill="#FFFFFF" />
+                              <path d="M34.1442 15.5991L26.603 18.6697C26.372 18.7644 26.1086 18.6743 25.9815 18.4595L20.9332 9.58048C20.7368 9.24547 20.247 9.2524 20.0622 9.59435L14.769 18.4826C14.6465 18.709 14.3693 18.806 14.1313 18.7044L6.86964 15.5991C6.47687 15.4305 6.06792 15.8025 6.195 16.2091L10.4878 29.8799C10.5525 30.0878 10.7465 30.2311 10.966 30.2311L29.3432 30.2357C29.5534 30.2357 29.7406 30.104 29.8145 29.9076L34.805 16.2345C34.9529 15.8256 34.5486 15.4351 34.1466 15.5991H34.1442ZM23.5717 22.2278L19.9813 28.5814C19.9305 28.6715 19.7965 28.6369 19.7919 28.5352L19.6463 24.6884H18.3917V24.6745C18.3594 24.6791 18.3271 24.6884 18.2924 24.6884H15.6885C15.6123 24.6884 15.5638 24.6052 15.5984 24.5382L19.4684 17.3689C19.6047 17.1333 19.8542 16.99 20.1246 16.99H22.7284C22.8047 16.99 22.8532 17.0732 22.8185 17.1402L20.1523 22.0776H23.4816C23.5602 22.0776 23.6087 22.1608 23.5694 22.2301L23.5717 22.2278Z" fill={loadingStep >= 2 ? "#A5B8EF" : "#112F82"} className="transition-colors duration-300" />
                             </svg>
                           </div>
-                          {/* Frame 4 - Unlit Confirmation 3 */}
-                          <div className="relative w-[50px] h-[50px] flex-none">
+                          {/* Frame 3 - Confirmation 3 */}
+                          <div className={`relative w-[40px] h-[40px] flex-none transition-all duration-300 ${loadingStep >= 3 ? "opacity-100 scale-100" : "opacity-50 scale-95"}`}>
                             <svg 
                               style={{
                                 position: "absolute",
-                                width: "35.83px",
-                                height: "26.13px",
-                                left: "calc(50% - 35.83px/2 + 0.63px)",
-                                top: "calc(50% - 26.13px/2 - 0.27px)",
+                                width: "40px",
+                                height: "40px",
+                                left: "0px",
+                                top: "0px",
                               }}
-                              viewBox="0 0 28.66 20.9" 
+                              viewBox="0 0 40 40" 
                               fill="none" 
                               xmlns="http://www.w3.org/2000/svg"
                             >
-                              <path d="M4.66 20.9L24.0 20.9L28.66 7.5L19.16 12.0L14.33 0.0L9.5 12.0L0.0 7.5L4.66 20.9Z" fill="#112F82" />
-                              <path d="M16.5 5.5L11.5 12.5H14.5L12.0 18.5L17.5 11.0H14.5L16.5 5.5Z" fill="#FFFFFF" />
+                              <path d="M34.1442 15.5991L26.603 18.6697C26.372 18.7644 26.1086 18.6743 25.9815 18.4595L20.9332 9.58048C20.7368 9.24547 20.247 9.2524 20.0622 9.59435L14.769 18.4826C14.6465 18.709 14.3693 18.806 14.1313 18.7044L6.86964 15.5991C6.47687 15.4305 6.06792 15.8025 6.195 16.2091L10.4878 29.8799C10.5525 30.0878 10.7465 30.2311 10.966 30.2311L29.3432 30.2357C29.5534 30.2357 29.7406 30.104 29.8145 29.9076L34.805 16.2345C34.9529 15.8256 34.5486 15.4351 34.1466 15.5991H34.1442ZM23.5717 22.2278L19.9813 28.5814C19.9305 28.6715 19.7965 28.6369 19.7919 28.5352L19.6463 24.6884H18.3917V24.6745C18.3594 24.6791 18.3271 24.6884 18.2924 24.6884H15.6885C15.6123 24.6884 15.5638 24.6052 15.5984 24.5382L19.4684 17.3689C19.6047 17.1333 19.8542 16.99 20.1246 16.99H22.7284C22.8047 16.99 22.8532 17.0732 22.8185 17.1402L20.1523 22.0776H23.4816C23.5602 22.0776 23.6087 22.1608 23.5694 22.2301L23.5717 22.2278Z" fill={loadingStep >= 3 ? "#A5B8EF" : "#112F82"} className="transition-colors duration-300" />
                             </svg>
                           </div>
                         </div>
