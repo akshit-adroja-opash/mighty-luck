@@ -508,7 +508,7 @@ export default function LobbyModal() {
                           )}
                         </div>
                         <div className="flex items-center justify-center flex-none">
-                          <span className="font-manrope text-[10px] lg:text-[10px] font-semibold leading-[14px] lg:leading-[14px] text-center text-[#FFC83D]">
+                          <span className="font-manrope text-[11px] lg:text-[12px] font-semibold leading-[15px] lg:leading-[16px] text-center text-[#FFC83D]">
                             {p.games} Games
                           </span>
                         </div>

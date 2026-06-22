@@ -27,8 +27,8 @@ function ProviderCard({ name, games, logo }: ProviderCardProps) {
       </div>
 
       {/* Games label */}
-      <div className="flex h-[11px] md:h-[14px] w-[59.2px] md:w-[104px] flex-none items-center justify-center">
-        <span className="w-[43px] md:w-[53px] text-center font-manrope text-[8px] md:text-[10px] font-semibold leading-[11px] md:leading-[14px] text-[#FFC83D]">
+      <div className="flex h-[11px] md:h-[16px] w-full flex-none items-center justify-center">
+        <span className="text-center font-manrope text-[9px] md:text-[12px] font-semibold leading-[11px] md:leading-[16px] text-[#FFC83D]">
           {games} Games
         </span>
       </div>
