@@ -16,7 +16,20 @@ export default function MobileBottomNav({ isMobileMenuOpen, setIsMobileMenuOpen 
     <div className={`fixed bottom-0 left-0 right-0 z-[110] lg:hidden flex flex-row justify-between items-center px-5 py-[10px] h-[64px] bg-[#0C1F56] ${(!isLobbyOpen && !isMobileMenuOpen && !isWalletOpen) ? 'rounded-t-[16px]' : ''}`}>
       <button onClick={() => { if (isLobbyOpen) dispatch(closeModal("lobby")); setIsMobileMenuOpen(!isMobileMenuOpen); }} className="flex flex-col justify-center items-center gap-[2px] w-[39px] h-[44px] transition-colors hover:opacity-80">
         <div className="flex justify-center items-center w-[24px] h-[24px]">
-          <img src="/images/Vector.png" alt="Menu" style={{ width: "16px", height: "10.67px" }} className="transition-opacity hover:opacity-80" />
+          <div 
+            className={`flex-none transition-colors hover:opacity-80 ${isMobileMenuOpen ? "bg-[#FFBF1F]" : "bg-[#D2DCF7]"}`}
+            style={{
+              width: "16px", height: "10.67px",
+              maskImage: `url(/images/Vector.png)`,
+              WebkitMaskImage: `url(/images/Vector.png)`,
+              maskSize: 'contain',
+              WebkitMaskSize: 'contain',
+              maskRepeat: 'no-repeat',
+              WebkitMaskRepeat: 'no-repeat',
+              maskPosition: 'center',
+              WebkitMaskPosition: 'center'
+            }}
+          />
         </div>
         <span className={`font-manrope font-bold text-[11px] leading-[15px] tracking-[0.02em] ${isMobileMenuOpen ? "text-[#FFBF1F]" : "text-[#D2DCF7]"}`}>Menu</span>
       </button>

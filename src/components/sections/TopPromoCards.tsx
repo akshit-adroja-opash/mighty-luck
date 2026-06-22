@@ -16,7 +16,7 @@ export default function TopPromoCards() {
         
       </div>
 
-      {/* ── DESKTOP EXACT PIXEL MODEL (New SVGs) ── */}
+      {/* ── DESKTOP EXACT PIXEL MODEL (New SVGs) ── */}  
       <div className="hidden lg:flex w-[200px] flex-none flex-col items-start gap-[8px]">
         
         {/* Top Two Cards Row */}
