@@ -85,7 +85,6 @@ export default function WalletModal() {
 
   useEffect(() => {
     if (isBtcSubmitted) {
-      setLoadingStep(0);
       const interval = setInterval(() => {
         setLoadingStep((prev) => {
           if (prev >= 3) {
@@ -314,6 +313,7 @@ export default function WalletModal() {
       }
     } else {
       // BTC deposit
+      setLoadingStep(0);
       setIsBtcSubmitted(true);
       toast.success("Deposit transaction submitted! Awaiting block confirmation.");
     }
@@ -530,59 +530,42 @@ export default function WalletModal() {
                         </span>
                       </div>
 
-                      {/* Confirmation Progress (3 icons) */}
+                      {/* Confirmation Progress Ring */}
                       <div className="flex flex-row justify-center items-center gap-[10px] w-full sm:w-[428px] h-[120px] flex-none">
-                        <div className="flex flex-row items-center w-[120px] sm:w-[120px] h-[40px] sm:h-[40px] p-0 flex-none gap-0">
-                          {/* Frame 1 - Confirmation 1 */}
-                          <div className={`relative w-[40px] h-[40px] flex-none transition-all duration-300 ${loadingStep >= 1 ? "opacity-100 scale-100" : "opacity-50 scale-95"}`}>
-                            <svg 
-                              style={{
-                                position: "absolute",
-                                width: "40px",
-                                height: "40px",
-                                left: "0px",
-                                top: "0px",
-                              }}
-                              viewBox="0 0 40 40" 
-                              fill="none" 
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path d="M34.1442 15.5991L26.603 18.6697C26.372 18.7644 26.1086 18.6743 25.9815 18.4595L20.9332 9.58048C20.7368 9.24547 20.247 9.2524 20.0622 9.59435L14.769 18.4826C14.6465 18.709 14.3693 18.806 14.1313 18.7044L6.86964 15.5991C6.47687 15.4305 6.06792 15.8025 6.195 16.2091L10.4878 29.8799C10.5525 30.0878 10.7465 30.2311 10.966 30.2311L29.3432 30.2357C29.5534 30.2357 29.7406 30.104 29.8145 29.9076L34.805 16.2345C34.9529 15.8256 34.5486 15.4351 34.1466 15.5991H34.1442ZM23.5717 22.2278L19.9813 28.5814C19.9305 28.6715 19.7965 28.6369 19.7919 28.5352L19.6463 24.6884H18.3917V24.6745C18.3594 24.6791 18.3271 24.6884 18.2924 24.6884H15.6885C15.6123 24.6884 15.5638 24.6052 15.5984 24.5382L19.4684 17.3689C19.6047 17.1333 19.8542 16.99 20.1246 16.99H22.7284C22.8047 16.99 22.8532 17.0732 22.8185 17.1402L20.1523 22.0776H23.4816C23.5602 22.0776 23.6087 22.1608 23.5694 22.2301L23.5717 22.2278Z" fill={loadingStep >= 1 ? "#A5B8EF" : "#112F82"} className="transition-colors duration-300" />
-                            </svg>
-                          </div>
-                          {/* Frame 2 - Confirmation 2 */}
-                          <div className={`relative w-[40px] h-[40px] flex-none transition-all duration-300 ${loadingStep >= 2 ? "opacity-100 scale-100" : "opacity-50 scale-95"}`}>
-                            <svg 
-                              style={{
-                                position: "absolute",
-                                width: "40px",
-                                height: "40px",
-                                left: "0px",
-                                top: "0px",
-                              }}
-                              viewBox="0 0 40 40" 
-                              fill="none" 
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path d="M34.1442 15.5991L26.603 18.6697C26.372 18.7644 26.1086 18.6743 25.9815 18.4595L20.9332 9.58048C20.7368 9.24547 20.247 9.2524 20.0622 9.59435L14.769 18.4826C14.6465 18.709 14.3693 18.806 14.1313 18.7044L6.86964 15.5991C6.47687 15.4305 6.06792 15.8025 6.195 16.2091L10.4878 29.8799C10.5525 30.0878 10.7465 30.2311 10.966 30.2311L29.3432 30.2357C29.5534 30.2357 29.7406 30.104 29.8145 29.9076L34.805 16.2345C34.9529 15.8256 34.5486 15.4351 34.1466 15.5991H34.1442ZM23.5717 22.2278L19.9813 28.5814C19.9305 28.6715 19.7965 28.6369 19.7919 28.5352L19.6463 24.6884H18.3917V24.6745C18.3594 24.6791 18.3271 24.6884 18.2924 24.6884H15.6885C15.6123 24.6884 15.5638 24.6052 15.5984 24.5382L19.4684 17.3689C19.6047 17.1333 19.8542 16.99 20.1246 16.99H22.7284C22.8047 16.99 22.8532 17.0732 22.8185 17.1402L20.1523 22.0776H23.4816C23.5602 22.0776 23.6087 22.1608 23.5694 22.2301L23.5717 22.2278Z" fill={loadingStep >= 2 ? "#A5B8EF" : "#112F82"} className="transition-colors duration-300" />
-                            </svg>
-                          </div>
-                          {/* Frame 3 - Confirmation 3 */}
-                          <div className={`relative w-[40px] h-[40px] flex-none transition-all duration-300 ${loadingStep >= 3 ? "opacity-100 scale-100" : "opacity-50 scale-95"}`}>
-                            <svg 
-                              style={{
-                                position: "absolute",
-                                width: "40px",
-                                height: "40px",
-                                left: "0px",
-                                top: "0px",
-                              }}
-                              viewBox="0 0 40 40" 
-                              fill="none" 
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path d="M34.1442 15.5991L26.603 18.6697C26.372 18.7644 26.1086 18.6743 25.9815 18.4595L20.9332 9.58048C20.7368 9.24547 20.247 9.2524 20.0622 9.59435L14.769 18.4826C14.6465 18.709 14.3693 18.806 14.1313 18.7044L6.86964 15.5991C6.47687 15.4305 6.06792 15.8025 6.195 16.2091L10.4878 29.8799C10.5525 30.0878 10.7465 30.2311 10.966 30.2311L29.3432 30.2357C29.5534 30.2357 29.7406 30.104 29.8145 29.9076L34.805 16.2345C34.9529 15.8256 34.5486 15.4351 34.1466 15.5991H34.1442ZM23.5717 22.2278L19.9813 28.5814C19.9305 28.6715 19.7965 28.6369 19.7919 28.5352L19.6463 24.6884H18.3917V24.6745C18.3594 24.6791 18.3271 24.6884 18.2924 24.6884H15.6885C15.6123 24.6884 15.5638 24.6052 15.5984 24.5382L19.4684 17.3689C19.6047 17.1333 19.8542 16.99 20.1246 16.99H22.7284C22.8047 16.99 22.8532 17.0732 22.8185 17.1402L20.1523 22.0776H23.4816C23.5602 22.0776 23.6087 22.1608 23.5694 22.2301L23.5717 22.2278Z" fill={loadingStep >= 3 ? "#A5B8EF" : "#112F82"} className="transition-colors duration-300" />
-                            </svg>
+                        <div className="relative w-[120px] h-[120px] flex-none flex items-center justify-center">
+                          {/* Background Ring */}
+                          <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 120 120">
+                            <style>{`
+                              @keyframes fillRingSmooth {
+                                0% { stroke-dashoffset: 351.86; }
+                                100% { stroke-dashoffset: 0; }
+                              }
+                            `}</style>
+                            <circle
+                              cx="60"
+                              cy="60"
+                              r="56"
+                              fill="none"
+                              stroke="#112F82"
+                              strokeWidth="4"
+                            />
+                            {/* Animated Yellow Ring */}
+                            <circle
+                              cx="60"
+                              cy="60"
+                              r="56"
+                              fill="none"
+                              stroke="#FFC83D"
+                              strokeWidth="4"
+                              strokeLinecap="round"
+                              strokeDasharray="351.86"
+                              style={{ animation: 'fillRingSmooth 1.5s linear forwards' }}
+                            />
+                          </svg>
+                          
+                          {/* Logo */}
+                          <div className="relative w-[54px] h-[40px] flex items-center justify-center">
+                            <img src="/images/layout/logo.svg" alt="Mighty Luck" className="w-full h-full object-contain" />
                           </div>
                         </div>
                       </div>
@@ -1365,7 +1348,10 @@ export default function WalletModal() {
             >
               <button
                 onClick={handleActionClick}
-                className={`flex flex-row items-center justify-center px-[30px] py-[10px] gap-[10px] rounded-[8px] bg-[#FFC83D] font-manrope font-bold tracking-[0.02em] text-[#1A1404] transition-all hover:bg-[#FFC83D]/90 cursor-pointer ${
+                disabled={isBtcSubmitted && loadingStep < 3}
+                className={`flex flex-row items-center justify-center px-[30px] py-[10px] gap-[10px] rounded-[8px] bg-[#FFC83D] font-manrope font-bold tracking-[0.02em] text-[#1A1404] transition-all ${
+                  isBtcSubmitted && loadingStep < 3 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#FFC83D]/90 cursor-pointer'
+                } ${
                   isBtcSubmitted 
                     ? "w-full sm:w-[350px] h-[60px] sm:h-[40px] text-[16px] sm:text-[14px] leading-[22px] sm:leading-[19px]" 
                     : "w-full sm:w-[300px] h-[60px] sm:h-[50px] text-[16px] sm:text-[14px] leading-[22px] sm:leading-[19px]"
