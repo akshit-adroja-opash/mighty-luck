@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
-import { closeModal, openModal, setActiveCategory, setSelectedGame } from "@/store/slices/uiSlice";
+import { closeModal, setActiveCategory, setSelectedGame } from "@/store/slices/uiSlice";
 import GameCard from "@/components/ui/GameCard";
 import { toast } from "sonner";
 import { Heart, Star, LayoutGrid, User, CircleDot, Square } from "lucide-react";
@@ -68,6 +69,7 @@ const categoryItems = [
 
 export default function LobbyModal() {
   const dispatch = useDispatch();
+  const router = useRouter();
   const isOpen = useSelector((state: RootState) => state.ui.modals.lobby);
   const activeCategory = useSelector((state: RootState) => state.ui.activeCategory);
 
@@ -195,7 +197,9 @@ export default function LobbyModal() {
 
   const handleGameClick = (game: { title: string; image: string }) => {
     dispatch(setSelectedGame(game));
-    dispatch(openModal("gamePlay"));
+    dispatch(closeModal("lobby"));
+    const gameId = game.image.split("/").pop()?.replace(".png", "") || "slot-1";
+    router.push(`/games/${gameId}`);
   };
 
   const handleBackdropClick = (e: React.MouseEvent) => {
