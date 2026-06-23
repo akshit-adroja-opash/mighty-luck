@@ -197,23 +197,21 @@ export default function GamePage() {
                 </div>
 
                 {/* Right: View all + arrows */}
-                <div className="flex w-auto h-[30px] flex-none flex-row items-center gap-[20px]">
-                  <span className="whitespace-nowrap cursor-pointer font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#D6BBE7] transition-colors hover:text-white">
+                <div className="flex w-auto h-[30px] flex-none flex-row items-center gap-[12px]">
+                  <span className="whitespace-nowrap cursor-pointer font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#D2DCF7] transition-colors hover:text-white">
                     View all
                   </span>
                   <div className="flex w-auto h-[30px] flex-row items-center gap-[8px]">
                     <button
                       onClick={scrollLeft}
-                      className="flex h-[30px] w-[30px] flex-none cursor-pointer items-center justify-center rounded-[4px] hover:opacity-100 transition-opacity"
-                      style={{ background: "#40105C", opacity: 0.4 }}
+                      className="flex h-[30px] w-[30px] flex-none cursor-pointer items-center justify-center rounded-[4px] hover:opacity-100 transition-opacity bg-[#112F82] opacity-40"
                       aria-label="Previous"
                     >
                       <ChevronLeft size={12} color="white" />
                     </button>
                     <button
                       onClick={scrollRight}
-                      className="flex h-[30px] w-[30px] flex-none cursor-pointer items-center justify-center rounded-[4px] hover:opacity-80 transition-opacity"
-                      style={{ background: "#40105C" }}
+                      className="flex h-[30px] w-[30px] flex-none cursor-pointer items-center justify-center rounded-[4px] hover:opacity-80 transition-opacity bg-[#112F82]"
                       aria-label="Next"
                     >
                       <ChevronRight size={12} color="white" />
