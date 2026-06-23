@@ -444,7 +444,7 @@ export default function WalletModal() {
           >
             
             {/* Header Title Block */}
-            <div className="flex flex-row justify-start sm:justify-center items-center w-[374px] sm:w-[460px] h-[29px] gap-[12px] relative">
+            <div className="flex flex-row justify-start sm:justify-center items-center w-full sm:w-[460px] h-[29px] gap-[12px] relative">
               {/* Back Button for CC Payment step */}
               {paymentMethod === "cc" && ccStep === "payment" && (
                 <button
@@ -487,7 +487,7 @@ export default function WalletModal() {
             >
               
               {/* Tabs Switcher */}
-              <div className="flex flex-row items-center w-full sm:w-[460px] h-[30px] gap-[8px] overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+              <div className="flex flex-row items-center w-full sm:w-[460px] h-[30px] gap-[4px] sm:gap-[8px] overflow-hidden">
                 {(["deposit", "bonuses", "withdraw", "transactions"] as const).map((tab) => {
                   const isActive = activeTab === tab;
                   return (
@@ -500,7 +500,7 @@ export default function WalletModal() {
                           : "bg-[#112F82]"
                       }`}
                     >
-                      <span className={`font-manrope text-[12px] leading-[16px] tracking-[0.02em] text-center flex items-center justify-center ${
+                      <span className={`font-manrope text-[11px] sm:text-[12px] leading-[16px] tracking-[0.02em] text-center whitespace-nowrap flex items-center justify-center ${
                         isActive 
                           ? "text-white font-bold" 
                           : "text-[#A5B8EF] font-semibold"
