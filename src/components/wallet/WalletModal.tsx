@@ -407,7 +407,7 @@ export default function WalletModal() {
 
         {/* Outer Modal Container */}
         <div 
-          className="relative flex flex-col items-center bg-[#091741] rounded-[30px_30px_0px_0px] sm:rounded-[16px] w-full shadow-none sm:shadow-2xl isolation-isolate transition-all duration-300 p-[16px_20px_40px] sm:p-[24px_20px_32px] gap-[16px] sm:gap-[24px]"
+          className="relative flex flex-col items-center bg-[#091741] rounded-[30px_30px_0px_0px] sm:rounded-[16px] w-full shadow-none sm:shadow-2xl isolation-isolate transition-all duration-300 pt-[16px] px-[20px] pb-0 sm:p-[24px_20px_32px] gap-[16px] sm:gap-[24px]"
         >
           
           {/* Accent Glow Container (clips the glow to the card boundaries) */}
@@ -890,39 +890,41 @@ export default function WalletModal() {
                             </div>
 
                             {/* State & Country */}
-                            <div className="flex flex-row items-center gap-[8px] w-full sm:w-[428px] h-[50px] sm:h-[40px] relative">
-                              <div className="flex items-center bg-[#112F82] rounded-[8px] flex-1 min-w-0 sm:flex-none sm:w-[210px] h-[50px] sm:h-[40px] px-[16px] py-[10px] gap-[12px]">
-                                <input 
-                                  type="text" 
-                                  placeholder="State" 
-                                  value={stateName}
-                                  onChange={(e) => setStateName(e.target.value)}
-                                  className="w-full min-w-0 h-[19px] bg-transparent font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white outline-none placeholder:text-[#A5B8EF]"
-                                />
-                              </div>
-                              
-                              <div 
-                                onClick={() => {
-                                  setShowCountryDropdown(!showCountryDropdown);
-                                  setShowBonusDropdown(false);
-                                }}
-                                className="flex items-center justify-between bg-[#112F82] rounded-[8px] flex-1 min-w-0 sm:flex-none sm:w-[210px] h-[50px] sm:h-[40px] px-[16px] py-[10px] gap-[10px] cursor-pointer hover:bg-[#153bb0] transition-colors"
-                              >
-                                <div className="flex items-center gap-[8px] flex-1 min-w-0">
-                                  <span 
-                                    className={`fi fi-${countryList.find(c => c.name === selectedCountry)?.iso || "us"} fis !rounded-full !w-[20px] !h-[20px] overflow-hidden flex-none bg-cover bg-center`}
-                                  ></span>
-                                  <span className="font-manrope text-[12px] font-bold leading-[16px] tracking-[0.02em] text-white truncate flex-1 min-w-0 h-[16px] flex items-center">
-                                    {selectedCountry}
-                                  </span>
+                            <div className="flex flex-col gap-[8px] w-full sm:w-[428px] relative">
+                              <div className="flex flex-row items-center gap-[8px] w-full h-[50px] sm:h-[40px]">
+                                <div className="flex items-center bg-[#112F82] rounded-[8px] flex-1 min-w-0 sm:flex-none sm:w-[210px] h-[50px] sm:h-[40px] px-[16px] py-[10px] gap-[12px]">
+                                  <input 
+                                    type="text" 
+                                    placeholder="State" 
+                                    value={stateName}
+                                    onChange={(e) => setStateName(e.target.value)}
+                                    className="w-full min-w-0 h-[19px] bg-transparent font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-white outline-none placeholder:text-[#A5B8EF]"
+                                  />
                                 </div>
-                                <div className="flex items-center justify-between w-[14px] h-[14px] flex-none">
-                                  <ArrowIcon color="#A5B8EF" />
+                                
+                                <div 
+                                  onClick={() => {
+                                    setShowCountryDropdown(!showCountryDropdown);
+                                    setShowBonusDropdown(false);
+                                  }}
+                                  className="flex items-center justify-between bg-[#112F82] rounded-[8px] flex-1 min-w-0 sm:flex-none sm:w-[210px] h-[50px] sm:h-[40px] px-[16px] py-[10px] gap-[10px] cursor-pointer hover:bg-[#153bb0] transition-colors"
+                                >
+                                  <div className="flex items-center gap-[8px] flex-1 min-w-0">
+                                    <span 
+                                      className={`fi fi-${countryList.find(c => c.name === selectedCountry)?.iso || "us"} fis !rounded-full !w-[20px] !h-[20px] overflow-hidden flex-none bg-cover bg-center`}
+                                    ></span>
+                                    <span className="font-manrope text-[12px] font-bold leading-[16px] tracking-[0.02em] text-white truncate flex-1 min-w-0 h-[16px] flex items-center">
+                                      {selectedCountry}
+                                    </span>
+                                  </div>
+                                  <div className="flex items-center justify-between w-[14px] h-[14px] flex-none">
+                                    <ArrowIcon color="#A5B8EF" />
+                                  </div>
                                 </div>
                               </div>
 
                               {showCountryDropdown && (
-                                <div className="absolute right-0 top-[58px] z-50 flex w-full sm:w-[210px] flex-col rounded-[8px] bg-[#112F82] border border-[#173EAD] overflow-y-auto max-h-[130px] shadow-2xl [&::-webkit-scrollbar]:w-[4px] [&::-webkit-scrollbar-thumb]:bg-[#1463FF] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent">
+                                <div className="static sm:absolute sm:right-0 sm:top-[48px] z-50 flex w-full sm:w-[210px] flex-col rounded-[8px] bg-[#112F82] border border-[#173EAD] overflow-y-auto max-h-[130px] shadow-2xl [&::-webkit-scrollbar]:w-[4px] [&::-webkit-scrollbar-thumb]:bg-[#1463FF] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent mt-[4px] sm:mt-0">
                                   {countryList.map((country) => (
                                     <button
                                       key={country.name}
@@ -1343,8 +1345,8 @@ export default function WalletModal() {
           {/* Bottom Complete Button & Help Container */}
           {activeTab === "deposit" && (
             <div 
-              className="flex flex-col items-center gap-[12px] w-full sm:w-[460px] flex-none z-10"
-              style={{ height: isBtcSubmitted ? (typeof window !== "undefined" && window.innerWidth < 640 ? "88px" : "66px") : (typeof window !== "undefined" && window.innerWidth < 640 ? "60px" : "50px") }}
+              className="sticky sm:static bottom-0 flex flex-col items-center gap-[12px] w-[calc(100%+40px)] sm:w-[460px] flex-none z-[100] sm:z-10 bg-[#091741] sm:bg-transparent pb-[16px] sm:pb-0 pt-[16px] sm:pt-0 sm:mb-0 -mx-[20px] sm:mx-0 px-[20px] sm:px-0 border-t border-[#112F82] sm:border-transparent shadow-[0_-10px_30px_rgba(9,23,65,0.8)] sm:shadow-none"
+              style={{ height: isBtcSubmitted ? (typeof window !== "undefined" && window.innerWidth < 640 ? "auto" : "66px") : (typeof window !== "undefined" && window.innerWidth < 640 ? "auto" : "50px") }}
             >
               <button
                 onClick={handleActionClick}
