@@ -20,12 +20,12 @@ const originals = Array.from({ length: 14 }, (_, i) => ({
   uid: `original-${i}`,
 }));
 
-export default function OriginalsSection() {
+export default function OriginalsSection({ title = "ORIGINALS (14)" }: { title?: string }) {
   const router = useRouter();
 
   return (
     <GameCarousel
-      title="ORIGINALS (14)"
+      title={title}
       icon={<img src="/games/game-icons/originals.svg" alt="Originals" className="w-[30px] h-[30px]" />}
     >
         {originals.map((game) => (

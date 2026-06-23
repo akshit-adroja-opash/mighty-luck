@@ -15,9 +15,11 @@ import CrashGamesSection from "@/components/sections/CrashGamesSection";
 import ProvidersSection from "@/components/sections/ProvidersSection";
 import TableGamesSection from "@/components/sections/TableGamesSection";
 import BonusBuysSection from "@/components/sections/BonusBuysSection";
-import CollectionsSection from "@/components/sections/CollectionsSection";
+import CollectionsSection, { CollectionCard, collections } from "@/components/sections/CollectionsSection";
 import RecentWinners from "@/components/sections/RecentWinners";
 import GameCard from "@/components/ui/GameCard";
+import GameCarousel from "@/components/ui/GameCarousel";
+import { ProviderCard, providers } from "@/components/sections/ProvidersSection";
 
 const allGamesDatabase = [
   { image: "/games/slots/slot-2.png", title: "SWEET BONANZA SUPER SCATTER", category: "Slots" },
@@ -41,6 +43,21 @@ const allGamesDatabase = [
   { image: "/games/table/table-2.png", title: "LIVE BACCARAT", category: "Baccarat" },
   { image: "/games/table/table-1.png", title: "BLACKJACK VIP", category: "Blackjack" },
 ];
+
+const getCategoryIcon = (category: string) => {
+  switch (category) {
+    case "Slots": return "/games/game-icons/slot.svg";
+    case "Originals": return "/games/game-icons/originals.svg";
+    case "Crash Games": return "/games/game-icons/crash.svg";
+    case "Table Games": return "/games/game-icons/table.svg";
+    case "Bonus Buys": return "/games/game-icons/bonus.svg";
+    case "All Games": return "/games/side-icon/all.svg";
+    case "New Games": return "/games/side-icon/new.svg";
+    case "Popular Games": return "/games/side-icon/popular.svg";
+    case "Live Casino": return "/games/side-icon/live.svg";
+    default: return "/games/game-icons/slot.svg"; // Fallback
+  }
+};
 
 export default function HomePage() {
   const activeCategory = useSelector((state: RootState) => state.ui.activeCategory);
@@ -77,23 +94,38 @@ export default function HomePage() {
         </div>
         
         <div className="flex flex-col gap-5 w-full">
-          <h2 className="font-jost font-extrabold text-[20px] md:text-[24px] uppercase text-white tracking-[0.01em] px-2 md:px-0">
-            {activeCategory} GAMES
-          </h2>
-          <div className="grid grid-cols-2 min-[414px]:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-[8px] md:gap-3 lg:gap-[12px] px-2 md:px-0">
-            {displayGames.map((game, index) => (
-              <GameCard 
-                key={index}
-                image={game.image} 
-                title={game.title} 
-                onClick={() => {
-                  dispatch(setSelectedGame(game));
-                  dispatch(openModal("gamePlay"));
-                }}
-                fluid
-              />
-            ))}
-          </div>
+          {(() => {
+            const SectionComponent = sections.find(s => s.name === activeCategory)?.Component;
+            if (SectionComponent) {
+              let customTitle = `${activeCategory.toUpperCase()} GAMES`;
+              if (activeCategory === "Providers") customTitle = "GAME PROVIDERS";
+              if (activeCategory === "Collection") customTitle = "COLLECTIONS";
+              if (activeCategory === "Crash Games") customTitle = "CRASH GAMES";
+              if (activeCategory === "Table Games") customTitle = "TABLE GAMES";
+
+              return <SectionComponent title={customTitle} />;
+            }
+
+            return (
+              <GameCarousel
+                title={`${activeCategory.toUpperCase()} GAMES`}
+                icon={<img src={getCategoryIcon(activeCategory)} alt={activeCategory} className="w-[18px] h-[18px] md:w-[30px] md:h-[30px]" />}
+              >
+                {displayGames.map((game, index) => (
+                  <div key={index} className="flex-none snap-start">
+                    <GameCard 
+                      image={game.image} 
+                      title={game.title} 
+                      onClick={() => {
+                        dispatch(setSelectedGame(game));
+                        dispatch(openModal("gamePlay"));
+                      }}
+                    />
+                  </div>
+                ))}
+              </GameCarousel>
+            );
+          })()}
         </div>
 
         <RecentWinners />  

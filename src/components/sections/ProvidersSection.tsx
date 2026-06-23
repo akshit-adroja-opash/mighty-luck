@@ -9,7 +9,7 @@ interface ProviderCardProps {
   logo?: string;
 }
 
-function ProviderCard({ name, games, logo }: ProviderCardProps) {
+export function ProviderCard({ name, games, logo }: ProviderCardProps) {
   return (
     <div
       className="group flex h-[60px] md:h-[100px] w-[88px] md:w-[152px] flex-none cursor-pointer flex-col items-center justify-center gap-[4.8px] md:gap-[8px] rounded-[8px] md:rounded-[12px] bg-[#0C1F56] px-[14.4px] md:px-[24px] py-[7.2px] md:py-[12px] transition-colors hover:bg-[#173EAD]"
@@ -37,7 +37,7 @@ function ProviderCard({ name, games, logo }: ProviderCardProps) {
 }
 
 /* Providers list — matches Figma order */
-const providers = [
+export const providers = [
   { name: "Belatra",        games: 226, logo: "/games/providers/g1.png" },
   { name: "BGaming",        games: 226, logo: "/games/providers/g2.png" },
   { name: "TaDa Gaming",    games: 226, logo: "/games/providers/g3.png" },
@@ -51,11 +51,11 @@ const providers = [
 /* Extend to 20 items for the scroll row */
 const topProviders = Array.from({ length: 20 }, (_, i) => providers[i % providers.length]);
 
-export default function ProvidersSection() {
+export default function ProvidersSection({ title = "GAME PROVIDERS (34)" }: { title?: string }) {
   return (
     <div className="flex flex-col gap-[12px] md:gap-5 w-full flex-none overflow-hidden">
       <GameCarousel
-        title="GAME PROVIDERS (34)"
+        title={title}
         titleWidth="237px"
         icon={<img src="/games/game-icons/game.svg" alt="Game Providers" className="w-[18px] h-[18px] md:w-[30px] md:h-[30px]" />}
       >

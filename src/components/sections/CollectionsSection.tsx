@@ -82,38 +82,44 @@ const baseCollections: CollectionItem[] = [
   },
 ];
 
-// Replicate collections array to match the requested 17 items count
-const collections = Array.from(
+export const collections = Array.from(
   { length: 17 },
   (_, i) => baseCollections[i % baseCollections.length]
 );
 
-export default function CollectionsSection() {
+export function CollectionCard({ item }: { item: CollectionItem }) {
+  return (
+    <div
+      className={`group relative flex h-[60px] md:h-[100px] w-full md:w-[316px] flex-shrink-0 cursor-pointer items-center gap-[7.2px] md:gap-[12px] rounded-[8px] md:rounded-[12px] ${item.bgColorClass} p-[7.2px_14.4px_7.2px_7.2px] md:p-[12px_24px_12px_12px] transition-colors duration-300 hover:bg-[#173EAD]`}
+    >
+      {/* Left decorative frame - Image contains the box design */}
+      <img 
+        src={item.image} 
+        alt={item.name} 
+        className="h-[45.6px] w-[45.6px] md:h-[76px] md:w-[76px] flex-shrink-0 rounded-[4.8px] md:rounded-[8px] object-cover select-none pointer-events-none" 
+      />
+
+      {/* Collection Title */}
+      <div className="flex flex-1 items-center justify-center h-[17px] md:h-[32px]">
+        <h3 className={`${item.mobileTextWidthClass} md:w-full text-center font-jost ${item.mobileTextSizeClass} md:text-[22px] font-extrabold leading-[17px] md:leading-[32px] tracking-[0.01em] text-white select-none whitespace-nowrap uppercase`}>
+          {item.name}
+        </h3>
+      </div>
+    </div>
+  );
+}
+
+export default function CollectionsSection({ title = "COLLECTIONS (17)" }: { title?: string }) {
   return (
     <div className="flex flex-col gap-[12px] md:gap-[20px] w-full flex-none overflow-hidden">
       <GameCarousel
-        title="COLLECTIONS (17)"
+        title={title}
         titleWidth="189px"
         icon={<img src="/games/game-icons/collections.svg" alt="Collections" className="w-[18px] h-[18px] md:w-[30px] md:h-[30px]" />}
       >
         {collections.map((item, index) => (
-          <div
-            key={index}
-            className={`group relative flex h-[60px] md:h-[100px] ${item.mobileWidthClass} md:w-[316px] flex-shrink-0 cursor-pointer items-center gap-[7.2px] md:gap-[12px] rounded-[8px] md:rounded-[12px] ${item.bgColorClass} p-[7.2px_14.4px_7.2px_7.2px] md:p-[12px_24px_12px_12px] transition-colors duration-300 hover:bg-[#173EAD] snap-start`}
-          >
-            {/* Left decorative frame - Image contains the box design */}
-            <img 
-              src={item.image} 
-              alt={item.name} 
-              className="h-[45.6px] w-[45.6px] md:h-[76px] md:w-[76px] flex-shrink-0 rounded-[4.8px] md:rounded-[8px] object-cover select-none pointer-events-none" 
-            />
-
-            {/* Collection Title */}
-            <div className="flex flex-1 items-center justify-center h-[17px] md:h-[32px]">
-              <h3 className={`${item.mobileTextWidthClass} md:w-full text-center font-jost ${item.mobileTextSizeClass} md:text-[22px] font-extrabold leading-[17px] md:leading-[32px] tracking-[0.01em] text-white select-none whitespace-nowrap uppercase`}>
-                {item.name}
-              </h3>
-            </div>
+          <div key={index} className={`flex-shrink-0 snap-start ${item.mobileWidthClass} md:w-[316px]`}>
+            <CollectionCard item={item} />
           </div>
         ))}
       </GameCarousel>

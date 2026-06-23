@@ -6,12 +6,12 @@ import GameCarousel from "@/components/ui/GameCarousel";
 
 const games = Array.from({ length: 20 }, (_, i) => `/games/slots/slot-${(i % 7) + 1}.png`);
 
-export default function SlotsSection() {
+export default function SlotsSection({ title = "SLOTS (1,487)" }: { title?: string }) {
   const router = useRouter();
 
   return (
     <GameCarousel
-      title="SLOTS (1,487)"
+      title={title}
       icon={<img src="/games/game-icons/slot.svg" alt="Slots" className="w-[18px] h-[18px] md:w-[30px] md:h-[30px]" />}
     >
         {games.map((game, index) => (
