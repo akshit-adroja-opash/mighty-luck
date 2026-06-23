@@ -138,7 +138,7 @@ export default function GamePage() {
                   <BGamingLogo />
 
                   {/* Divider */}
-                  <div className="hidden lg:block h-[33px] w-px flex-none bg-white/60" />
+                  <div className="h-[20px] lg:h-[33px] w-px flex-none bg-white/60" />
 
                   {/* Game title */}
                   <div className="flex w-auto flex-none flex-row items-center justify-start lg:gap-[10px]">
