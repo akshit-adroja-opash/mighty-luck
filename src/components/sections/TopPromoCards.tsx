@@ -1,18 +1,20 @@
 export default function TopPromoCards() {
   return (
-    <div className="flex h-auto lg:h-[134px] w-full lg:w-[232px] flex-none flex-col items-start gap-[10px] rounded-none lg:rounded-[16px] bg-transparent lg:bg-[#0C1F56] p-0 lg:p-[16px]">
+    <div className="flex h-auto lg:h-[134px] w-full max-w-[374px] mx-auto md:max-w-full lg:max-w-none lg:mx-0 lg:w-[232px] flex-none flex-col items-start gap-[10px] rounded-none lg:rounded-[16px] bg-transparent lg:bg-[#0C1F56] p-0 lg:p-[16px]">
       
       {/* ── MOBILE RESPONSIVE MODEL (Proportional SVGs) ── */}
-      <div className="flex lg:hidden w-full flex-none flex-col items-start gap-[8px]">
+      <div className="flex lg:hidden w-full flex-none flex-col md:flex-row md:items-center gap-[8px]">
         
         {/* Top Two Cards Row */}
-        <div className="flex w-full h-auto flex-none flex-row items-center gap-[8px]">
-          <img src="/games/sider/friends.svg" alt="Refer A Friend" className="w-[calc(50%-4px)] h-auto flex-none cursor-pointer hover:opacity-90 transition-opacity" />
-          <img src="/games/sider/vip.svg" alt="VIP Transfer" className="w-[calc(50%-4px)] h-auto flex-none cursor-pointer hover:opacity-90 transition-opacity" />
+        <div className="flex w-full md:flex-[11] h-auto flex-none flex-row items-center gap-[8px]">
+          <img src="/games/sider/friends.svg" alt="Refer A Friend" className="flex-1 min-w-0 h-auto cursor-pointer hover:opacity-90 transition-opacity" />
+          <img src="/games/sider/vip.svg" alt="VIP Transfer" className="flex-1 min-w-0 h-auto cursor-pointer hover:opacity-90 transition-opacity" />
         </div>
 
         {/* Winter Rush */}
-        <img src="/games/sider/winter.svg" alt="Winter Rush" className="w-full h-auto flex-none cursor-pointer hover:opacity-90 transition-opacity" />
+        <div className="flex w-full md:flex-[10] h-auto flex-none items-center">
+          <img src="/games/sider/winter.svg" alt="Winter Rush" className="w-full h-auto flex-none cursor-pointer hover:opacity-90 transition-opacity" />
+        </div>
         
       </div>
 
