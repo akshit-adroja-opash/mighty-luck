@@ -464,6 +464,9 @@ export default function LobbyModal() {
                       Game Providers
                     </span>
                   </div>
+                  <span className="md:hidden font-manrope font-bold text-[12px] leading-[16px] tracking-[0.02em] text-[#FFBF1F] cursor-pointer hover:opacity-80">
+                    View all
+                  </span>
                   <div className="hidden md:flex h-[30px] w-[68px] flex-none flex-row items-center justify-end gap-[8px]">
                     <button
                       onClick={() => scrollProviders("left")}
