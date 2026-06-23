@@ -20,8 +20,8 @@ export default function MobileBottomNav({ isMobileMenuOpen, setIsMobileMenuOpen 
             className={`flex-none transition-colors hover:opacity-80 ${isMobileMenuOpen ? "bg-[#FFBF1F]" : "bg-[#D2DCF7]"}`}
             style={{
               width: "16px", height: "10.67px",
-              maskImage: `url(/images/Vector.png)`,
-              WebkitMaskImage: `url(/images/Vector.png)`,
+              maskImage: `url(/images/Menu.png)`,
+              WebkitMaskImage: `url(/images/Menu.png)`,
               maskSize: 'contain',
               WebkitMaskSize: 'contain',
               maskRepeat: 'no-repeat',
