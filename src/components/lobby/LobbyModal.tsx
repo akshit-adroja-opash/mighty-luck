@@ -282,7 +282,7 @@ export default function LobbyModal() {
                   placeholder="Start typing a game name"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full h-full bg-transparent outline-none font-manrope font-semibold text-[16px] leading-[22px] text-white placeholder:text-[#BBCAF3] lg:text-[14px] lg:leading-[19px] lg:placeholder:text-[14px]"
+                  className="w-full h-full bg-transparent outline-none font-manrope font-semibold text-[14px] leading-[19px] text-white placeholder:text-[#BBCAF3] placeholder:text-[14px]"
                 />
               </div>
               {searchQuery && (
