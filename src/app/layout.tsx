@@ -28,8 +28,11 @@ const manropeFont = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Mighty Luck Casino",
+  title: "Mighty Luck",
   description: "Play the Best Crypto Casino Games Online at Mighty Luck",
+  icons: {
+    icon: "/images/layout/logo.svg",
+  },
 };
 
 export default function RootLayout({
