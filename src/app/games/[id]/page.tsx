@@ -5,6 +5,10 @@ import { useState, useRef } from "react";
 import Image from "next/image";
 import GameCard from "@/components/ui/GameCard";
 import { Heart, ChevronLeft, ChevronRight, Play } from "lucide-react";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "@/store";
+import { openModal } from "@/store/slices/uiSlice";
+import React from "react";
 
 /* ─────────────────────────────────────────────
    Mock game database (replace with real API)
@@ -82,6 +86,20 @@ export default function GamePage() {
   const [isRealPlay, setIsRealPlay] = useState(true);
   const [isFavorite, setIsFavorite] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    if (!isAuthenticated) {
+      router.push("/");
+      dispatch(openModal("auth"));
+    }
+  }, [isAuthenticated, router, dispatch]);
+
+  if (!isAuthenticated) {
+    return null; // Or a loading spinner, to prevent flash of content
+  }
 
   const scrollLeft  = () => scrollRef.current?.scrollBy({ left: -328, behavior: "smooth" });
   const scrollRight = () => scrollRef.current?.scrollBy({ left: 328,  behavior: "smooth" });

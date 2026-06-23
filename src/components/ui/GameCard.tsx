@@ -1,5 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import { Play, Heart } from "lucide-react";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "@/store";
+import { openModal } from "@/store/slices/uiSlice";
 
 interface GameCardProps {
   image: string;
@@ -14,9 +19,20 @@ export default function GameCard({
   onClick,
   fluid = false,
 }: GameCardProps) {
+  const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    if (!isAuthenticated) {
+      dispatch(openModal("auth"));
+    } else {
+      if (onClick) onClick();
+    }
+  };
+
   return (
     <div 
-      onClick={onClick}
+      onClick={handleClick}
       className={`group relative cursor-pointer overflow-hidden rounded-[9.43px] md:rounded-[12px] ${
         fluid 
           ? "w-full aspect-[152/200] h-auto" 
