@@ -1,0 +1,88 @@
+
+       summary               unimported v1.31.0 (next)
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+       unresolved imports  : 0
+       unused dependencies : 15
+       unimported files    : 51
+
+
+─────┬──────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+     │ 15 unused dependencies
+─────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   1 │ @hookform/resolvers
+   2 │ @reduxjs/toolkit
+   3 │ @tanstack/react-query
+   4 │ axios
+   5 │ bcryptjs
+   6 │ clsx
+   7 │ flag-icons
+   8 │ framer-motion
+   9 │ jsonwebtoken
+  10 │ lightningcss
+  11 │ lucide-react
+  12 │ mongoose
+  13 │ next-themes
+  14 │ sonner
+  15 │ zod
+─────┴──────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+─────┬──────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+     │ 51 unimported files
+─────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   1 │ D:\mighty-luck\src\app\api\auth\login\route.ts
+   2 │ D:\mighty-luck\src\app\api\auth\register\route.ts
+   3 │ D:\mighty-luck\src\app\games\[id]\page.tsx
+   4 │ D:\mighty-luck\src\app\layout.tsx
+   5 │ D:\mighty-luck\src\app\page.tsx
+   6 │ D:\mighty-luck\src\app\refer-a-friend\page.tsx
+   7 │ D:\mighty-luck\src\components\auth\AuthModal.tsx
+   8 │ D:\mighty-luck\src\components\auth\LoginForm.tsx
+   9 │ D:\mighty-luck\src\components\auth\RegisterForm.tsx
+  10 │ D:\mighty-luck\src\components\game\GamePlayModal.tsx
+  11 │ D:\mighty-luck\src\components\layout\Container.tsx
+  12 │ D:\mighty-luck\src\components\layout\Footer.tsx
+  13 │ D:\mighty-luck\src\components\layout\Header.tsx
+  14 │ D:\mighty-luck\src\components\layout\MobileBottomNav.tsx
+  15 │ D:\mighty-luck\src\components\layout\Sidebar.tsx
+  16 │ D:\mighty-luck\src\components\layout\SidebarMenu.tsx
+  17 │ D:\mighty-luck\src\components\lobby\LobbyModal.tsx
+  18 │ D:\mighty-luck\src\components\sections\BonusBuysSection.tsx
+  19 │ D:\mighty-luck\src\components\sections\CollectionsSection.tsx
+  20 │ D:\mighty-luck\src\components\sections\CrashGamesSection.tsx
+  21 │ D:\mighty-luck\src\components\sections\CryptoBanner.tsx
+  22 │ D:\mighty-luck\src\components\sections\DepositBanner.tsx
+  23 │ D:\mighty-luck\src\components\sections\GamesSection.tsx
+  24 │ D:\mighty-luck\src\components\sections\HeroBanner.tsx
+  25 │ D:\mighty-luck\src\components\sections\OriginalsSection.tsx
+  26 │ D:\mighty-luck\src\components\sections\PromotionsSection.tsx
+  27 │ D:\mighty-luck\src\components\sections\ProvidersSection.tsx
+  28 │ D:\mighty-luck\src\components\sections\RecentWinners.tsx
+  29 │ D:\mighty-luck\src\components\sections\SeoContent.tsx
+  30 │ D:\mighty-luck\src\components\sections\SlotsSection.tsx
+  31 │ D:\mighty-luck\src\components\sections\TableGamesSection.tsx
+  32 │ D:\mighty-luck\src\components\sections\TopPromoCards.tsx
+  33 │ D:\mighty-luck\src\components\sections\WhyChooseUs.tsx
+  34 │ D:\mighty-luck\src\components\ui\Button.tsx
+  35 │ D:\mighty-luck\src\components\ui\Card.tsx
+  36 │ D:\mighty-luck\src\components\ui\GameCard.tsx
+  37 │ D:\mighty-luck\src\components\ui\GameCarousel.tsx
+  38 │ D:\mighty-luck\src\components\ui\Logo.tsx
+  39 │ D:\mighty-luck\src\components\ui\SectionHeader.tsx
+  40 │ D:\mighty-luck\src\components\wallet\WalletModal.tsx
+  41 │ D:\mighty-luck\src\data\games.ts
+  42 │ D:\mighty-luck\src\hooks\useScrollState.ts
+  43 │ D:\mighty-luck\src\lib\db.ts
+  44 │ D:\mighty-luck\src\lib\utils.ts
+  45 │ D:\mighty-luck\src\models\User.ts
+  46 │ D:\mighty-luck\src\store\hooks.ts
+  47 │ D:\mighty-luck\src\store\index.ts
+  48 │ D:\mighty-luck\src\store\slices\authSlice.ts
+  49 │ D:\mighty-luck\src\store\slices\gameSlice.ts
+  50 │ D:\mighty-luck\src\store\slices\uiSlice.ts
+  51 │ D:\mighty-luck\src\store\StoreProvider.tsx
+─────┴──────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+       Inspect the results and run npx unimported -u to update ignore lists
