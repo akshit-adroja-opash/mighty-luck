@@ -407,7 +407,7 @@ export default function WalletModal() {
 
         {/* Outer Modal Container */}
         <div 
-          className="relative flex flex-col items-center bg-[#091741] rounded-[30px_30px_0px_0px] sm:rounded-[16px] w-full shadow-none sm:shadow-2xl isolation-isolate transition-all duration-300 pt-[16px] px-[20px] pb-0 sm:p-[24px_20px_32px] gap-[16px] sm:gap-[24px]"
+          className={`relative flex flex-col items-center bg-[#091741] rounded-[30px_30px_0px_0px] sm:rounded-[16px] w-full shadow-none sm:shadow-2xl isolation-isolate transition-all duration-300 pt-[16px] px-[20px] ${activeTab === 'deposit' ? 'pb-0' : 'pb-[40px]'} sm:p-[24px_20px_32px] gap-[16px] sm:gap-[24px]`}
         >
           
           {/* Accent Glow Container (clips the glow to the card boundaries) */}
