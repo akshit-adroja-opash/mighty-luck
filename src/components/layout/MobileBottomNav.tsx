@@ -21,7 +21,7 @@ export default function MobileBottomNav({ isMobileMenuOpen, setIsMobileMenuOpen 
           <div 
             className={`flex-none transition-colors hover:opacity-80 ${isMobileMenuOpen ? "bg-[#FFBF1F]" : "bg-[#D2DCF7]"}`}
             style={{
-              width: "16px", height: "10.67px",
+              width: "18px", height: "18px",
               maskImage: `url(/images/Menu.svg)`,
               WebkitMaskImage: `url(/images/Menu.svg)`,
               maskSize: 'contain',
