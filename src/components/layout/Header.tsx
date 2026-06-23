@@ -44,7 +44,7 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-[120] flex w-full justify-center bg-[#0C1F56]">
+    <header className="sticky top-0 z-[140] sm:z-[120] flex w-full justify-center bg-[#0C1F56]">
       <div className="relative flex flex-row items-center justify-between w-full max-w-[1440px] mx-auto h-[50px] lg:h-[60px] px-5 lg:px-6">
 
         {/* Blue Glow */}
