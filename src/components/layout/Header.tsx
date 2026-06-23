@@ -98,8 +98,15 @@ export default function Header() {
 
               {/* Balance + Deposit */}
               <div className="flex h-[30px] lg:h-[40px] flex-none flex-row items-center gap-1 lg:gap-[10px]">
-                <div className="flex h-[30px] w-[82px] lg:h-[40px] lg:w-[116px] flex-none flex-row items-center justify-center rounded-[6px] lg:rounded-[8px] bg-[#112F82] px-[20px] lg:px-[30px] py-[8px] lg:py-0 gap-[7.5px] lg:gap-[10px]">
-                  <span className="flex-none font-manrope text-[10.5px] lg:text-[14px] font-bold leading-[14px] lg:leading-[19px] tracking-[0.02em] text-white">$105,98</span>
+                <div 
+                  onClick={() => {
+                    dispatch(closeModal("lobby"));
+                    setIsMobileMenuOpen(false);
+                    dispatch(openModal("wallet"));
+                  }}
+                  className="flex h-[30px] w-[82px] lg:h-[40px] lg:w-[116px] flex-none flex-row items-center justify-center rounded-[6px] lg:rounded-[8px] bg-[#112F82] px-[20px] lg:px-[30px] py-[8px] lg:py-0 gap-[7.5px] lg:gap-[10px] cursor-pointer hover:bg-[#173EAD] transition-colors"
+                >
+                  <span className="flex-none font-manrope text-[10.5px] lg:text-[14px] font-bold leading-[14px] lg:leading-[19px] tracking-[0.02em] text-white select-none">$105,98</span>
                 </div>
                 <button
                   onClick={() => {
