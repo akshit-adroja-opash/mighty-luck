@@ -13,7 +13,7 @@ export default function MobileBottomNav({ isMobileMenuOpen, setIsMobileMenuOpen 
   const isWalletOpen = useSelector((state: RootState) => state.ui.modals?.wallet);
 
   if (isWalletOpen) return null;
-
+// hi
   return (
     <div className={`fixed bottom-0 left-0 right-0 z-[110] lg:hidden flex flex-row justify-between items-center px-5 py-[10px] h-[64px] bg-[#0C1F56] ${(!isLobbyOpen && !isMobileMenuOpen) ? 'rounded-t-[16px]' : ''}`}>
       <button onClick={() => { if (isLobbyOpen) dispatch(closeModal("lobby")); setIsMobileMenuOpen(!isMobileMenuOpen); }} className="flex flex-col justify-center items-center gap-[2px] w-[39px] h-[44px] transition-colors hover:opacity-80">
