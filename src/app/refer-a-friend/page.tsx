@@ -253,11 +253,8 @@ export default function ReferAFriendPage() {
                 <h3 className="font-jost text-[20px] font-extrabold text-white leading-[29px] uppercase tracking-[0.01em] z-10">WHAT YOU GET</h3>
                 <div className="flex flex-col gap-[20px] z-10">
                   <div className="flex flex-row gap-[16px]">
-                    <div className="w-[20px] h-[20px] flex items-center justify-center shrink-0 relative">
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fillRule="evenodd" clipRule="evenodd" d="M10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10C20 15.5228 15.5228 20 10 20ZM10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18Z" fill="#57FF3D"/>
-                        <path d="M11 4H9L6 11H9L9 16L14 9H11L11 4Z" fill="#57FF3D"/>
-                      </svg>
+                    <div className="w-[24px] h-[24px] flex items-center justify-center shrink-0 relative">
+                      <div className="w-full h-full bg-[#57FF3D]" style={{ maskImage: "url(/games/refer-friends/db.svg)", maskSize: "contain", WebkitMaskImage: "url(/games/refer-friends/db.svg)", WebkitMaskSize: "contain", maskRepeat: "no-repeat", WebkitMaskRepeat: "no-repeat", maskPosition: "center", WebkitMaskPosition: "center" }} />
                     </div>
                     <div className="flex flex-col gap-[4px]">
                       <span className="font-manrope text-[16px] font-bold text-white leading-[22px]">Lifetime earnings from each deposit</span>
@@ -265,10 +262,8 @@ export default function ReferAFriendPage() {
                     </div>
                   </div>
                   <div className="flex flex-row gap-[16px]">
-                    <div className="w-[20px] h-[20px] flex items-center justify-center shrink-0">
-                      <svg width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M13.92 8H7.92V0L0 12H6V20L13.92 8Z" fill="#57FF3D"/>
-                      </svg>
+                    <div className="w-[24px] h-[24px] flex items-center justify-center shrink-0">
+                      <div className="w-full h-full bg-[#57FF3D]" style={{ maskImage: "url(/games/refer-friends/power.svg)", maskSize: "contain", WebkitMaskImage: "url(/games/refer-friends/power.svg)", WebkitMaskSize: "contain", maskRepeat: "no-repeat", WebkitMaskRepeat: "no-repeat", maskPosition: "center", WebkitMaskPosition: "center" }} />
                     </div>
                     <div className="flex flex-col gap-[4px]">
                       <span className="font-manrope text-[16px] font-bold text-white leading-[22px]">Instant crediting</span>
@@ -276,10 +271,8 @@ export default function ReferAFriendPage() {
                     </div>
                   </div>
                   <div className="flex flex-row gap-[16px]">
-                    <div className="w-[20px] h-[20px] flex items-center justify-center shrink-0 relative">
-                      <svg width="20" height="10" viewBox="0 0 20 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fillRule="evenodd" clipRule="evenodd" d="M14.5 10C16.9853 10 19 7.98528 19 5.5C19 3.01472 16.9853 1 14.5 1C12.7938 1 11.3093 1.94723 10.5332 3.39999L10.0003 4.39768L9.46743 3.39999C8.6913 1.94723 7.20686 1 5.5 1C3.01472 1 1 3.01472 1 5.5C1 7.98528 3.01472 10 5.5 10C7.20686 10 8.6913 9.05277 9.46743 7.60001L10.0003 6.60232L10.5332 7.60001C11.3093 9.05277 12.7938 10 14.5 10ZM5.5 3C6.46276 3 7.32367 3.51351 7.76011 4.33038L8.5323 5.7761L7.76011 7.22182C7.32367 8.03869 6.46276 8.55221 5.5 8.55221C3.73243 8.55221 2.3 7.11978 2.3 5.35221C2.3 3.58464 3.73243 2.15221 5.5 2.15221V3ZM14.5 3C16.2676 3 17.7 4.43243 17.7 6.20001C17.7 7.96758 16.2676 9.4 14.5 9.4C13.5372 9.4 12.6763 8.88649 12.2399 8.06962L11.4677 6.6239L12.2399 5.17818C12.6763 4.36131 13.5372 3.84779 14.5 3.84779V3Z" fill="#57FF3D"/>
-                      </svg>
+                    <div className="w-[24px] h-[24px] flex items-center justify-center shrink-0 relative">
+                      <div className="w-full h-full bg-[#57FF3D]" style={{ maskImage: "url(/games/refer-friends/loop.svg)", maskSize: "contain", WebkitMaskImage: "url(/games/refer-friends/loop.svg)", WebkitMaskSize: "contain", maskRepeat: "no-repeat", WebkitMaskRepeat: "no-repeat", maskPosition: "center", WebkitMaskPosition: "center" }} />
                     </div>
                     <div className="flex flex-col gap-[4px]">
                       <span className="font-manrope text-[16px] font-bold text-white leading-[22px]">No limits for earnings</span>
@@ -295,11 +288,8 @@ export default function ReferAFriendPage() {
                 <h3 className="font-jost text-[20px] font-extrabold text-white leading-[29px] uppercase tracking-[0.01em] z-10">WHAT YOUR FRIEND GETS</h3>
                 <div className="flex flex-col gap-[20px] z-10">
                   <div className="flex flex-row gap-[16px]">
-                    <div className="w-[20px] h-[20px] flex items-center justify-center shrink-0 relative">
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fillRule="evenodd" clipRule="evenodd" d="M10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10C20 15.5228 15.5228 20 10 20ZM10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18Z" fill="#1463FF"/>
-                        <path d="M11 4H9L6 11H9L9 16L14 9H11L11 4Z" fill="#1463FF"/>
-                      </svg>
+                    <div className="w-[24px] h-[24px] flex items-center justify-center shrink-0 relative">
+                      <div className="w-full h-full bg-[#1463FF]" style={{ maskImage: "url(/games/refer-friends/db.svg)", maskSize: "contain", WebkitMaskImage: "url(/games/refer-friends/db.svg)", WebkitMaskSize: "contain", maskRepeat: "no-repeat", WebkitMaskRepeat: "no-repeat", maskPosition: "center", WebkitMaskPosition: "center" }} />
                     </div>
                     <div className="flex flex-col gap-[4px]">
                       <span className="font-manrope text-[16px] font-bold text-white leading-[22px]">Lifetime earnings from each deposit</span>
@@ -307,10 +297,8 @@ export default function ReferAFriendPage() {
                     </div>
                   </div>
                   <div className="flex flex-row gap-[16px]">
-                    <div className="w-[20px] h-[20px] flex items-center justify-center shrink-0">
-                      <svg width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M13.92 8H7.92V0L0 12H6V20L13.92 8Z" fill="#1463FF"/>
-                      </svg>
+                    <div className="w-[24px] h-[24px] flex items-center justify-center shrink-0">
+                      <div className="w-full h-full bg-[#1463FF]" style={{ maskImage: "url(/games/refer-friends/power.svg)", maskSize: "contain", WebkitMaskImage: "url(/games/refer-friends/power.svg)", WebkitMaskSize: "contain", maskRepeat: "no-repeat", WebkitMaskRepeat: "no-repeat", maskPosition: "center", WebkitMaskPosition: "center" }} />
                     </div>
                     <div className="flex flex-col gap-[4px]">
                       <span className="font-manrope text-[16px] font-bold text-white leading-[22px]">Instant crediting</span>
@@ -318,10 +306,8 @@ export default function ReferAFriendPage() {
                     </div>
                   </div>
                   <div className="flex flex-row gap-[16px]">
-                    <div className="w-[20px] h-[20px] flex items-center justify-center shrink-0 relative">
-                      <svg width="20" height="10" viewBox="0 0 20 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fillRule="evenodd" clipRule="evenodd" d="M14.5 10C16.9853 10 19 7.98528 19 5.5C19 3.01472 16.9853 1 14.5 1C12.7938 1 11.3093 1.94723 10.5332 3.39999L10.0003 4.39768L9.46743 3.39999C8.6913 1.94723 7.20686 1 5.5 1C3.01472 1 1 3.01472 1 5.5C1 7.98528 3.01472 10 5.5 10C7.20686 10 8.6913 9.05277 9.46743 7.60001L10.0003 6.60232L10.5332 7.60001C11.3093 9.05277 12.7938 10 14.5 10ZM5.5 3C6.46276 3 7.32367 3.51351 7.76011 4.33038L8.5323 5.7761L7.76011 7.22182C7.32367 8.03869 6.46276 8.55221 5.5 8.55221C3.73243 8.55221 2.3 7.11978 2.3 5.35221C2.3 3.58464 3.73243 2.15221 5.5 2.15221V3ZM14.5 3C16.2676 3 17.7 4.43243 17.7 6.20001C17.7 7.96758 16.2676 9.4 14.5 9.4C13.5372 9.4 12.6763 8.88649 12.2399 8.06962L11.4677 6.6239L12.2399 5.17818C12.6763 4.36131 13.5372 3.84779 14.5 3.84779V3Z" fill="#1463FF"/>
-                      </svg>
+                    <div className="w-[24px] h-[24px] flex items-center justify-center shrink-0 relative">
+                      <div className="w-full h-full bg-[#1463FF]" style={{ maskImage: "url(/games/refer-friends/loop.svg)", maskSize: "contain", WebkitMaskImage: "url(/games/refer-friends/loop.svg)", WebkitMaskSize: "contain", maskRepeat: "no-repeat", WebkitMaskRepeat: "no-repeat", maskPosition: "center", WebkitMaskPosition: "center" }} />
                     </div>
                     <div className="flex flex-col gap-[4px]">
                       <span className="font-manrope text-[16px] font-bold text-white leading-[22px]">No limits for earnings</span>
