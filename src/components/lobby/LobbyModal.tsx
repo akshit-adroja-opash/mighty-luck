@@ -72,6 +72,7 @@ export default function LobbyModal() {
   const router = useRouter();
   const isOpen = useSelector((state: RootState) => state.ui.modals.lobby);
   const activeCategory = useSelector((state: RootState) => state.ui.activeCategory);
+  const favorites = useSelector((state: RootState) => state.game.favorites);
 
   const [searchQuery, setSearchQuery] = useState("");
   const [activeTab, setActiveTab] = useState<"all" | "recent" | "favorites" | "new">("all");
@@ -168,15 +169,17 @@ export default function LobbyModal() {
     { image: "/games/table/table-2.png", title: "LIVE BACCARAT", category: "Baccarat" },
     { image: "/games/table/table-1.png", title: "BLACKJACK VIP", category: "Blackjack" },
   ];
-
   const isBrowsingCategory = activeCategory !== "Lobby" && activeCategory !== "all" && activeTab !== "all" && activeTab !== "recent" && activeTab !== "favorites" && activeTab !== "new";
-  const shouldShowGrid = searchQuery !== "" || isBrowsingCategory;
+  const isFavoritesView = activeTab === "favorites";
+  const shouldShowGrid = searchQuery !== "" || isBrowsingCategory || isFavoritesView;
 
-  const filteredGames = allGamesDatabase.filter((g) => {
-    const matchesSearch = g.title.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesCategory = isBrowsingCategory ? g.category === activeCategory : true;
-    return matchesSearch && matchesCategory;
-  });
+  const filteredGames = isFavoritesView 
+    ? favorites.filter((g: any) => g.title.toLowerCase().includes(searchQuery.toLowerCase()))
+    : allGamesDatabase.filter((g) => {
+        const matchesSearch = g.title.toLowerCase().includes(searchQuery.toLowerCase());
+        const matchesCategory = isBrowsingCategory ? g.category === activeCategory : true;
+        return matchesSearch && matchesCategory;
+      });
 
   const providers = [
     { name: "Belatra", games: 226, logo: "/games/providers/g1.png" },
@@ -375,7 +378,7 @@ export default function LobbyModal() {
               <div className="flex flex-col gap-4 lg:gap-[20px] w-full flex-1 min-h-0">
                 <div className="flex flex-row items-center h-[29px] flex-none">
                   <span className="font-jost font-extrabold text-[18px] lg:text-[20px] leading-[29px] tracking-[0.01em] uppercase text-white select-none">
-                    {searchQuery ? "SEARCH RESULTS" : activeCategory.toUpperCase()}
+                    {searchQuery ? "SEARCH RESULTS" : isFavoritesView ? "FAVORITE GAMES" : activeCategory.toUpperCase()}
                   </span>
                 </div>
                 <div className="flex-1 overflow-y-auto no-scrollbar min-h-0">

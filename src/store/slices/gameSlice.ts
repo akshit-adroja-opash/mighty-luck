@@ -5,6 +5,7 @@ interface GameState {
   balance: number;
   betAmount: number;
   status: 'idle' | 'playing' | 'paused' | 'finished';
+  favorites: any[]; // Store the full game object or just an ID
 }
 
 const initialState: GameState = {
@@ -12,6 +13,7 @@ const initialState: GameState = {
   balance: 0,
   betAmount: 0,
   status: 'idle',
+  favorites: [],
 };
 
 const gameSlice = createSlice({
@@ -33,8 +35,18 @@ const gameSlice = createSlice({
     setGameStatus: (state, action: PayloadAction<'idle' | 'playing' | 'paused' | 'finished'>) => {
       state.status = action.payload;
     },
+    toggleFavorite: (state, action: PayloadAction<any>) => {
+      // Expecting action.payload to be a game object e.g. { title: string, image: string }
+      const game = action.payload;
+      const index = state.favorites.findIndex(f => f.image === game.image);
+      if (index >= 0) {
+        state.favorites.splice(index, 1);
+      } else {
+        state.favorites.push(game);
+      }
+    },
   },
 });
 
-export const { setCurrentGame, setBalance, updateBalance, setBetAmount, setGameStatus } = gameSlice.actions;
+export const { setCurrentGame, setBalance, updateBalance, setBetAmount, setGameStatus, toggleFavorite } = gameSlice.actions;
 export default gameSlice.reducer;

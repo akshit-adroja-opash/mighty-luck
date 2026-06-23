@@ -5,6 +5,7 @@ import { Play, Heart } from "lucide-react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/store";
 import { openModal } from "@/store/slices/uiSlice";
+import { toggleFavorite } from "@/store/slices/gameSlice";
 
 interface GameCardProps {
   image: string;
@@ -20,7 +21,10 @@ export default function GameCard({
   fluid = false,
 }: GameCardProps) {
   const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
+  const favorites = useSelector((state: RootState) => state.game.favorites);
   const dispatch = useDispatch();
+
+  const isFavorite = favorites.some((f: any) => f.image === image);
 
   const handleClick = () => {
     if (!isAuthenticated) {
@@ -28,6 +32,15 @@ export default function GameCard({
     } else {
       if (onClick) onClick();
     }
+  };
+
+  const handleFavoriteClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!isAuthenticated) {
+      dispatch(openModal("auth"));
+      return;
+    }
+    dispatch(toggleFavorite({ title, image }));
   };
 
   return (
@@ -55,14 +68,11 @@ export default function GameCard({
 
         {/* Favorite */}
         <button 
-          onClick={(e) => {
-            e.stopPropagation();
-            // Optional: like game logic here
-          }}
-          className="absolute right-[11.2px] md:right-3 top-[9.6px] md:top-3 z-10 opacity-0 transition group-hover:opacity-100 hover:scale-110"
+          onClick={handleFavoriteClick}
+          className={`absolute right-[11.2px] md:right-3 top-[9.6px] md:top-3 z-20 transition hover:scale-110 ${isFavorite ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}
         >
           <Heart
-            className="text-white w-[19.2px] h-[19.2px] md:w-[24px] md:h-[24px]"
+            className={`w-[19.2px] h-[19.2px] md:w-[24px] md:h-[24px] ${isFavorite ? "fill-[#FF4949] text-[#FF4949]" : "text-white"}`}
             strokeWidth={2}
           />
         </button>
