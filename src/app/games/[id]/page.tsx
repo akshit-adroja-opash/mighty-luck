@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/store";
 import { openModal } from "@/store/slices/uiSlice";
 import React from "react";
+import GameCarousel from "@/components/ui/GameCarousel";
 
 /* ─────────────────────────────────────────────
    Mock game database (replace with real API)
@@ -198,54 +199,17 @@ export default function GamePage() {
             </div>
 
             {/* ── OTHER GAMES YOU MIGHT LIKE ── */}
-            <div className="flex h-auto lg:h-[250px] w-full flex-none flex-col items-start gap-[20px]">
-
-              {/* Header */}
-              <div className="flex w-full flex-row flex-wrap items-center justify-between gap-y-4 gap-x-2">
-                {/* Left: icon + title */}
-                <div className="flex w-auto flex-row items-center gap-[12px]">
-                  <div className="relative h-[24px] w-[24px] sm:h-[30px] sm:w-[30px] flex-none">
-                    <svg className="w-full h-full" viewBox="0 0 30 30" fill="none">
-                      <path d="M15 1L6 11V19C6 25.5 10.5 29 15 30C19.5 29 24 25.5 24 19V11L15 1Z" fill="#FFBF1F"/>
-                    </svg>
-                  </div>
-                  <h2 className="m-0 font-jost text-[16px] sm:text-[20px] font-extrabold leading-[1.2] sm:leading-[29px] tracking-[0.01em] uppercase text-white">
-                    OTHER GAMES YOU MIGHT LIKE
-                  </h2>
-                </div>
-
-                {/* Right: View all + arrows */}
-                <div className="flex w-auto h-[30px] flex-none flex-row items-center gap-[12px]">
-                  <span className="whitespace-nowrap cursor-pointer font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#D2DCF7] transition-colors hover:text-white">
-                    View all
-                  </span>
-                  <div className="flex w-auto h-[30px] flex-row items-center gap-[8px]">
-                    <button
-                      onClick={scrollLeft}
-                      className="flex h-[30px] w-[30px] flex-none cursor-pointer items-center justify-center rounded-[4px] hover:opacity-100 transition-opacity bg-[#112F82] opacity-40"
-                      aria-label="Previous"
-                    >
-                      <ChevronLeft size={12} color="white" />
-                    </button>
-                    <button
-                      onClick={scrollRight}
-                      className="flex h-[30px] w-[30px] flex-none cursor-pointer items-center justify-center rounded-[4px] hover:opacity-80 transition-opacity bg-[#112F82]"
-                      aria-label="Next"
-                    >
-                      <ChevronRight size={12} color="white" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {/* Cards row — 1136 × 200px, gap 12px */}
-              <div
-                ref={scrollRef}
-                className="flex w-full h-[160px] sm:h-[185px] lg:h-[200px] flex-none flex-row items-center overflow-x-auto snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
-                style={{ gap: "12px" }}
+            <div className="w-full">
+              <GameCarousel
+                title="OTHER GAMES YOU MIGHT LIKE"
+                icon={
+                  <svg className="w-[18px] h-[18px] sm:w-[24px] sm:h-[24px]" viewBox="0 0 30 30" fill="none">
+                    <path d="M15 1L6 11V19C6 25.5 10.5 29 15 30C19.5 29 24 25.5 24 19V11L15 1Z" fill="#FFBF1F"/>
+                  </svg>
+                }
               >
                 {otherGames.map((g) => (
-                  <div key={g.id} className="h-[160px] sm:h-[185px] lg:h-[200px] w-[120px] sm:w-[140px] lg:w-[152px] flex-none">
+                  <div key={g.id} className="flex-none snap-start">
                     <GameCard
                       image={g.image}
                       title={g.title}
@@ -253,7 +217,7 @@ export default function GamePage() {
                     />
                   </div>
                 ))}
-              </div>
+              </GameCarousel>
             </div>
           </div>
         </div>
