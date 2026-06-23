@@ -54,16 +54,38 @@ export default function AuthModal() {
           <div className="absolute inset-0 bg-black/30" />
           <div className="absolute rounded-full bg-[#0051F1]" style={{ width: "281px", height: "281px", left: "calc(50% - 281px/2 + 0.5px)", top: "calc(50% - 281px/2 + 6.5px)", filter: "blur(62.3947px)", opacity: 0.8 }} />
           
-          <div className="absolute flex flex-col items-center gap-[12px] w-[220.13px] h-[119px] left-[calc(50%-110.06px)] top-[calc(50%-59.5px)] z-10">
-            <div className="font-jost font-extrabold text-[44px] leading-[64px] text-center tracking-[0.01em] text-white h-[31px] flex items-center justify-center">
-              350%
+          <div className="absolute flex flex-col items-center gap-[12px] w-[220.13px] h-[131px] left-[calc(50%-110.06px)] top-[calc(50%-65.5px)] z-10">
+            {/* Top Frame: 350% + Pill */}
+            <div className="relative flex flex-col items-center justify-center w-[180px] h-[87px] isolate flex-none">
+              {/* 350% */}
+              <div className="flex flex-row justify-center items-center gap-[7.5px] w-[180px] h-[87px] z-0 flex-none">
+                <span className="font-jost font-extrabold text-[60px] leading-[87px] text-center tracking-[0.01em] text-white">
+                  350%
+                </span>
+              </div>
+
+              {/* WELCOME PACKAGE PILL */}
+              <div 
+                className="absolute flex flex-row justify-center items-center p-[10px] z-10"
+                style={{
+                  width: "115px",
+                  height: "33px",
+                  left: "30.94px",
+                  top: "51px",
+                  background: "linear-gradient(92.06deg, #F5B607 2.1%, #F2D474 52.48%, #F5B607 64.97%, #FF672C 96.58%)",
+                  boxShadow: "0px -2.52616px 12.6308px rgba(61, 44, 0, 0.25)",
+                  borderRadius: "75px",
+                  transform: "rotate(-6.38deg)"
+                }}
+              >
+                <span className="font-jost font-extrabold text-[9px] leading-[13px] text-center text-[#140F02]">
+                  WELCOME PACKAGE
+                </span>
+              </div>
             </div>
-            <div className="flex flex-row justify-center items-center px-[17px] py-[8.6px] bg-[#2BEA51] rounded-[86px] h-[32px] w-fit whitespace-nowrap">
-              <span className="font-jost font-extrabold text-[10px] leading-[14px] text-center text-[#051D09]">
-                WELCOME PACKAGE
-              </span>
-            </div>
-            <div className="font-manrope font-bold text-[12px] leading-[16px] text-center tracking-[0.01em] text-white w-[200px]">
+
+            {/* Bottom Text */}
+            <div className="font-manrope font-bold text-[12px] leading-[16px] text-center tracking-[0.01em] text-white w-[200px] h-[32px] flex items-center justify-center flex-none">
               Boost your deposits with 350% in Bonus and 200 Free Spins
             </div>
           </div>
@@ -110,22 +132,42 @@ export default function AuthModal() {
             style={{ width: "173px", height: "173px", left: "calc(50% - 173px/2 - 0.5px)", bottom: "-129px", filter: "blur(40px)" }}
           />
           <div
-            className="absolute flex flex-col items-center gap-5"
-            style={{ width: "300px", height: "160px", left: "calc(50% - 300px/2)", top: "359px" }}
+            className="absolute flex flex-col items-center gap-[12px]"
+            style={{ width: "220.13px", height: "131px", left: "calc(50% - 220.13px/2)", top: "370px" }}
           >
-            <div className="flex flex-col items-center w-[167px] h-[112px]">
-              <div className="font-jost font-extrabold text-white text-center" style={{ fontSize: "52px", lineHeight: "75px", letterSpacing: "0.01em" }}>
-                350%
+            {/* Top Frame: 350% + Pill */}
+            <div className="relative flex flex-col items-center justify-center w-[180px] h-[87px] isolate flex-none">
+              {/* 350% */}
+              <div className="flex flex-row justify-center items-center gap-[7.5px] w-[180px] h-[87px] z-0 flex-none">
+                <span className="font-jost font-extrabold text-[60px] leading-[87px] text-center tracking-[0.01em] text-white">
+                  350%
+                </span>
               </div>
-              <div className="flex items-center justify-center bg-[#2BEA51] rounded-[100px]" style={{ width: "167px", height: "37px", padding: "10px 20px" }}>
-                <span className="font-jost font-extrabold text-[#051D09] text-center" style={{ fontSize: "12px", lineHeight: "17px" }}>
+
+              {/* WELCOME PACKAGE PILL */}
+              <div 
+                className="absolute flex flex-row justify-center items-center p-[10px] z-10"
+                style={{
+                  width: "115px",
+                  height: "33px",
+                  left: "30.94px",
+                  top: "51px",
+                  background: "linear-gradient(92.06deg, #F5B607 2.1%, #F2D474 52.48%, #F5B607 64.97%, #FF672C 96.58%)",
+                  boxShadow: "0px -2.52616px 12.6308px rgba(61, 44, 0, 0.25)",
+                  borderRadius: "75px",
+                  transform: "rotate(-6.38deg)"
+                }}
+              >
+                <span className="font-jost font-extrabold text-[9px] leading-[13px] text-center text-[#140F02]">
                   WELCOME PACKAGE
                 </span>
               </div>
             </div>
-            <p className="font-manrope font-bold text-white text-center w-[200px]" style={{ fontSize: "10px", lineHeight: "14px", letterSpacing: "0.01em" }}>
+
+            {/* Bottom Text */}
+            <div className="font-manrope font-bold text-[12px] leading-[16px] text-center tracking-[0.01em] text-white w-[200px] h-[32px] flex items-center justify-center flex-none">
               Boost your deposits with 350% in Bonus and 200 Free Spins
-            </p>
+            </div>
           </div>
         </div>
 
