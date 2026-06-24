@@ -346,7 +346,7 @@ export default function LobbyModal() {
 
             {/* Expandable category list */}
             {showMobileCategories && (
-              <div className="flex flex-row flex-wrap gap-2">
+              <div className="grid grid-cols-2 min-[400px]:grid-cols-3 gap-y-[12px] gap-x-[8px] w-full pt-[8px] pb-[4px]">
                 {categoryItems.map((c) => (
                   <button
                     key={c.key}
@@ -354,16 +354,16 @@ export default function LobbyModal() {
                       handleCategoryClick(c.category || c.key);
                       setShowMobileCategories(false);
                     }}
-                    className={`flex items-center gap-1.5 px-3 py-[6px] rounded-[8px] transition-all cursor-pointer ${
+                    className={`flex items-center justify-start gap-[8px] px-[12px] py-[10px] rounded-[8px] transition-all cursor-pointer group ${
                       activeCategory === (c.category || c.key)
                         ? "bg-[#1463FF] text-white"
-                        : "bg-[#0C1F56] text-[#A5B8EF] hover:bg-[#112F82]"
+                        : "bg-[#112F82] text-[#A5B8EF] hover:text-white hover:bg-[#112F82]/80"
                     }`}
                   >
-                    <div className="flex w-[14px] h-[14px] justify-center items-center">
+                    <div className="flex w-[16px] h-[16px] justify-center items-center flex-none">
                       {catIcons[c.category || c.key]}
                     </div>
-                    <span className="font-manrope text-[11px] font-semibold tracking-[0.02em] whitespace-nowrap">
+                    <span className="font-manrope text-[11px] sm:text-[12px] font-semibold tracking-[0.02em] whitespace-nowrap text-left truncate">
                       {c.label}
                     </span>
                   </button>
