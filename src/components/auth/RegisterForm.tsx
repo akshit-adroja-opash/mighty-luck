@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -30,22 +30,44 @@ export default function RegisterForm({ setView }: RegisterFormProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showCountryCodeDropdown, setShowCountryCodeDropdown] = useState(false);
-  const [selectedCountryCode, setSelectedCountryCode] = useState({ code: "+1", iso: "us" });
+  const [selectedCountryCode, setSelectedCountryCode] = useState({ code: "+1", iso: "us", name: "United States" });
+  const [countrySearch, setCountrySearch] = useState("");
+
+  useEffect(() => {
+    if (!showCountryCodeDropdown) {
+      setCountrySearch("");
+      return;
+    }
+    
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
+      if (e.key === "Backspace") {
+        setCountrySearch(prev => prev.slice(0, -1));
+        e.preventDefault();
+      } else if (e.key.length === 1 && /[a-zA-Z\s0-9+]/.test(e.key)) {
+        setCountrySearch(prev => prev + e.key);
+        e.preventDefault();
+      }
+    };
+    
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [showCountryCodeDropdown]);
 
   const countryCodes = [
-    { code: "+1", iso: "us" },
-    { code: "+1", iso: "ca" },
-    { code: "+44", iso: "gb" },
-    { code: "+380", iso: "ua" },
-    { code: "+91", iso: "in" },
-    { code: "+61", iso: "au" },
-    { code: "+49", iso: "de" },
-    { code: "+33", iso: "fr" },
-    { code: "+55", iso: "br" },
-    { code: "+81", iso: "jp" },
-    { code: "+82", iso: "kr" },
-    { code: "+34", iso: "es" },
-    { code: "+39", iso: "it" },
+    { code: "+1", iso: "us", name: "United States" },
+    { code: "+1", iso: "ca", name: "Canada" },
+    { code: "+44", iso: "gb", name: "United Kingdom" },
+    { code: "+380", iso: "ua", name: "Ukraine" },
+    { code: "+91", iso: "in", name: "India" },
+    { code: "+61", iso: "au", name: "Australia" },
+    { code: "+49", iso: "de", name: "Germany" },
+    { code: "+33", iso: "fr", name: "France" },
+    { code: "+55", iso: "br", name: "Brazil" },
+    { code: "+81", iso: "jp", name: "Japan" },
+    { code: "+82", iso: "kr", name: "South Korea" },
+    { code: "+34", iso: "es", name: "Spain" },
+    { code: "+39", iso: "it", name: "Italy" },
   ];
 
   const { register, handleSubmit } = useForm<RegisterFormData>({
@@ -176,13 +198,14 @@ export default function RegisterForm({ setView }: RegisterFormProps) {
 
             {showCountryCodeDropdown && (
               <div className="absolute left-0 top-[48px] z-50 flex w-[121px] flex-col rounded-[8px] bg-[#112F82] border border-[#173EAD] overflow-y-auto shadow-2xl max-h-[130px] [&::-webkit-scrollbar]:w-[4px] [&::-webkit-scrollbar-thumb]:bg-[#1463FF] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent">
-                {countryCodes.map((country, idx) => (
+                {countryCodes.filter(c => c.name.toLowerCase().includes(countrySearch.toLowerCase()) || c.code.includes(countrySearch)).map((country, idx) => (
                   <button
                     key={idx}
                     type="button"
                     onClick={() => {
                       setSelectedCountryCode(country);
                       setShowCountryCodeDropdown(false);
+                      setCountrySearch("");
                     }}
                     className="flex items-center gap-[10px] px-[16px] py-[10px] hover:bg-[#173EAD] transition-colors text-left w-full cursor-pointer text-white font-manrope text-[14px]"
                   >

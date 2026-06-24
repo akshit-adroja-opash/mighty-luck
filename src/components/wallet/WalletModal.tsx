@@ -105,6 +105,28 @@ export default function WalletModal() {
   const [stateName, setStateName] = useState("");
   const [selectedCountry, setSelectedCountry] = useState("United States");
   const [showCountryDropdown, setShowCountryDropdown] = useState(false);
+  const [countrySearch, setCountrySearch] = useState("");
+
+  useEffect(() => {
+    if (!showCountryDropdown) {
+      setCountrySearch("");
+      return;
+    }
+    
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
+      if (e.key === "Backspace") {
+        setCountrySearch(prev => prev.slice(0, -1));
+        e.preventDefault();
+      } else if (e.key.length === 1 && /[a-zA-Z\s]/.test(e.key)) {
+        setCountrySearch(prev => prev + e.key);
+        e.preventDefault();
+      }
+    };
+    
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [showCountryDropdown]);
 
   // Credit Card Payment details states
   const [selectedAmountOption, setSelectedAmountOption] = useState<"20" | "30" | "100" | "custom">("30");
@@ -924,22 +946,28 @@ export default function WalletModal() {
                               </div>
 
                               {showCountryDropdown && (
-                                <div className="static sm:absolute sm:right-0 sm:top-[48px] z-50 flex w-full sm:w-[210px] flex-col rounded-[8px] bg-[#112F82] border border-[#173EAD] overflow-y-auto max-h-[130px] shadow-2xl [&::-webkit-scrollbar]:w-[4px] [&::-webkit-scrollbar-thumb]:bg-[#1463FF] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent mt-[4px] sm:mt-0">
-                                  {countryList.map((country) => (
-                                    <button
-                                      key={country.name}
-                                      onClick={() => {
-                                        setSelectedCountry(country.name);
-                                        setShowCountryDropdown(false);
-                                      }}
-                                      className="flex items-center gap-[8px] px-[16px] py-[10px] hover:bg-[#173EAD] transition-colors text-left w-full cursor-pointer text-white font-manrope text-[14px]"
-                                    >
-                                      <span 
-                                        className={`fi fi-${country.iso} fis !rounded-full !w-[20px] !h-[20px] overflow-hidden flex-none bg-cover bg-center`}
-                                      ></span>
-                                      <span>{country.name}</span>
-                                    </button>
-                                  ))}
+                                <div className="static sm:absolute sm:right-0 sm:top-[48px] z-50 flex w-full sm:w-[210px] flex-col rounded-[8px] bg-[#112F82] border border-[#173EAD] shadow-2xl mt-[4px] sm:mt-0 overflow-hidden">
+                                  <div className="overflow-y-auto max-h-[130px] py-[4px] [&::-webkit-scrollbar]:w-[4px] [&::-webkit-scrollbar-thumb]:bg-[#1463FF] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent">
+                                    {countryList.filter(c => c.name.toLowerCase().includes(countrySearch.toLowerCase())).map((country) => (
+                                      <button
+                                        key={country.name}
+                                        onClick={() => {
+                                          setSelectedCountry(country.name);
+                                          setShowCountryDropdown(false);
+                                          setCountrySearch("");
+                                        }}
+                                        className="flex items-center gap-[8px] px-[16px] py-[10px] hover:bg-[#173EAD] transition-colors text-left w-full cursor-pointer text-white font-manrope text-[14px]"
+                                      >
+                                        <span 
+                                          className={`fi fi-${country.iso} fis !rounded-full !w-[20px] !h-[20px] overflow-hidden flex-none bg-cover bg-center`}
+                                        ></span>
+                                        <span>{country.name}</span>
+                                      </button>
+                                    ))}
+                                    {countryList.filter(c => c.name.toLowerCase().includes(countrySearch.toLowerCase())).length === 0 && (
+                                      <div className="px-[16px] py-[10px] text-[#A5B8EF] text-[12px] font-manrope text-center">No countries found</div>
+                                    )}
+                                  </div>
                                 </div>
                               )}
                             </div>
