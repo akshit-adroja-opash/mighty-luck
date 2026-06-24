@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { closeModal, setActiveCategory, setSelectedGame } from "@/store/slices/uiSlice";
 import GameCard from "@/components/ui/GameCard";
-import { toast } from "sonner";
+import { toast } from "react-toastify";
 import { Heart, Star, LayoutGrid, User, CircleDot, Square } from "lucide-react";
 
 /* ── Icon helpers ── */

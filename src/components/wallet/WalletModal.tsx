@@ -5,7 +5,7 @@ import { Copy, QrCode, ArrowLeft, Bell, Gift, Wallet as WalletIcon } from "lucid
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { closeModal } from "@/store/slices/uiSlice";
-import { toast } from "sonner";
+import { toast } from "react-toastify";
 import Logo from "@/components/ui/Logo";
 
 // Custom SVG Icons for pixel-perfect match

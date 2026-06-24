@@ -7,7 +7,7 @@ import * as z from "zod";
 import { useDispatch } from "react-redux";
 import { login as authLogin } from "@/store/slices/authSlice";
 import { closeModal, setAuthModalView } from "@/store/slices/uiSlice";
-import { toast } from "sonner";
+import { toast } from "react-toastify";
 import Logo from "@/components/ui/Logo";
 
 const registerSchema = z.object({

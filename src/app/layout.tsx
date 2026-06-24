@@ -13,7 +13,8 @@ import AuthModal from "@/components/auth/AuthModal";
 import WalletModal from "@/components/wallet/WalletModal";
 import LobbyModal from "@/components/lobby/LobbyModal";
 import GamePlayModal from "@/components/game/GamePlayModal";
-import { Toaster } from "sonner";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const jostFont = Jost({
   subsets: ["latin"],
@@ -71,13 +72,7 @@ export default function RootLayout({
           <WalletModal />
           <LobbyModal />
           <GamePlayModal />
-          <Toaster
-            richColors
-            position="top-right"
-            toastOptions={{
-              style: { width: 'auto', minWidth: 'fit-content', paddingRight: '20px' }
-            }}
-          />
+          <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="light" />
         </StoreProvider>
       </body>
     </html>

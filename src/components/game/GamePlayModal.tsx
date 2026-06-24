@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { closeModal, setSelectedGame } from "@/store/slices/uiSlice";
 import { Play, RotateCcw, Volume2, VolumeX, Shield, Info, HelpCircle } from "lucide-react";
-import { toast } from "sonner";
+import { toast } from "react-toastify";
 
 export default function GamePlayModal() {
   const dispatch = useDispatch();
