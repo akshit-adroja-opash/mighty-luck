@@ -33,16 +33,16 @@ export default function AuthModal() {
               <path d="M19 8H1M1 8L8 15M1 8L8 1" stroke="#D2DCF7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </button>
-          <div className="flex flex-row items-center gap-[8px] flex-1 h-[50px]">
+          <div className="flex flex-row items-center gap-0 flex-1 h-[50px]">
             <button
               onClick={() => { dispatch(setAuthModalView("register")); setView("register"); }}
-              className={`flex justify-center items-center px-[10px] sm:px-[30px] py-[10px] gap-[10px] flex-1 h-[50px] rounded-[8px] ${view === 'register' ? 'bg-[#FFC83D] text-[#000000]' : 'bg-[#1463FF] text-[#FFFFFF]'} font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] whitespace-nowrap cursor-pointer transition-colors`}
+              className={`flex justify-center items-center px-[10px] sm:px-[30px] py-[10px] gap-[10px] flex-1 h-[50px] rounded-l-[8px] ${view === 'register' ? 'bg-[#1463FF]' : 'bg-[#112F82]'} text-[#FFFFFF] font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] whitespace-nowrap cursor-pointer transition-colors`}
             >
               Join Now
             </button>
             <button
               onClick={() => { dispatch(setAuthModalView("login")); setView("login"); }}
-              className={`flex justify-center items-center px-[10px] sm:px-[30px] py-[10px] gap-[10px] flex-1 h-[50px] rounded-[8px] ${view === 'login' ? 'bg-[#FFC83D] text-[#000000]' : 'bg-[#1463FF] text-[#FFFFFF]'} font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] whitespace-nowrap cursor-pointer transition-colors`}
+              className={`flex justify-center items-center px-[10px] sm:px-[30px] py-[10px] gap-[10px] flex-1 h-[50px] rounded-r-[8px] ${view === 'login' ? 'bg-[#1463FF]' : 'bg-[#112F82]'} text-[#FFFFFF] font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] whitespace-nowrap cursor-pointer transition-colors`}
             >
               Log In
             </button>
@@ -103,10 +103,10 @@ export default function AuthModal() {
 
       {/* Desktop Modal Container Wrapper */}
       <div className="hidden md:flex relative w-full md:w-[95%] max-w-none md:max-w-[730px] h-[100dvh] md:h-[546px] shrink-0 md:my-auto">
-        {/* Close Button (Outside) */}
+        {/* Close Button (Outside for Desktop) */}
         <button
           onClick={() => dispatch(closeModal("auth"))}
-          className="absolute -right-[40px] top-0 z-50 flex h-[24px] w-[24px] items-center justify-center cursor-pointer transition-opacity hover:opacity-80"
+          className="absolute -right-[40px] top-0 z-50 hidden lg:flex h-[24px] w-[24px] items-center justify-center cursor-pointer transition-opacity hover:opacity-80"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M6 6L18 18M18 6L6 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -115,6 +115,14 @@ export default function AuthModal() {
 
         {/* Inner Modal Content */}
         <div className="flex relative w-full h-full rounded-none md:rounded-[16px] shadow-none md:shadow-2xl overflow-hidden">
+          {/* Close Button (Inside for Tablet) */}
+          <button
+            onClick={() => dispatch(closeModal("auth"))}
+            className="absolute right-4 top-4 z-50 flex lg:hidden h-[32px] w-[32px] items-center justify-center rounded-full bg-[#112F82] md:bg-[#112F82]/80 text-white md:text-white/80 transition-all hover:bg-red-500 hover:text-white shadow-lg cursor-pointer"
+          >
+            <X size={16} />
+          </button>
+
           {/* Left Column - Promo (hidden on mobile) */}
           <div className="hidden md:flex relative h-[546px] w-[340px] flex-col items-center overflow-hidden rounded-l-[16px] bg-[#000C24] flex-none">
           <div

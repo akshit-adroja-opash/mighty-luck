@@ -17,6 +17,7 @@ export default function Header() {
   const dispatch = useDispatch();
   const { isAuthenticated, user } = useSelector((state: RootState) => state.auth);
   const sidebarOpen = useSelector((state: RootState) => state.ui.sidebarOpen);
+  const isAuthOpen = useSelector((state: RootState) => state.ui.modals?.auth);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -44,7 +45,7 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-[140] sm:z-[120] flex w-full justify-center bg-[#0C1F56]">
+    <header className={`sticky top-0 z-[140] sm:z-[120] w-full justify-center bg-[#0C1F56] ${isAuthOpen ? 'hidden md:flex' : 'flex'}`}>
       <div className="relative flex flex-row items-center justify-between w-full max-w-[1440px] mx-auto h-[50px] lg:h-[60px] px-5 lg:px-6">
 
         {/* Blue Glow */}
