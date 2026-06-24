@@ -242,9 +242,9 @@ export default function LobbyModal() {
           <div className="flex flex-row items-start px-[16px] pb-[16px] pt-0 lg:p-[16px] gap-[10px] w-[180px] bg-[#0C1F56] rounded-[12px] flex-none">
             <div className="flex flex-col items-start gap-[8px] w-[148px] h-[168px] flex-grow">
               <SidebarBtn icon={navIcons.all} label="All Games" isActive={activeTab === "all"} onClick={() => { setActiveTab("all"); dispatch(setActiveCategory("Lobby")); }} />
-              <SidebarBtn icon={navIcons.recent} label="Recently Played" isActive={activeTab === "recent"} onClick={() => { setActiveTab("recent"); toast.info("Showing recently played games."); }} />
-              <SidebarBtn icon={navIcons.favorites} label="Favorites" isActive={activeTab === "favorites"} onClick={() => { setActiveTab("favorites"); toast.info("Showing favorite games."); }} />
-              <SidebarBtn icon={navIcons.new} label="New Releases" isActive={activeTab === "new"} onClick={() => { setActiveTab("new"); toast.info("Showing new releases."); }} />
+              <SidebarBtn icon={navIcons.recent} label="Recently Played" isActive={activeTab === "recent"} onClick={() => { setActiveTab("recent"); }} />
+              <SidebarBtn icon={navIcons.favorites} label="Favorites" isActive={activeTab === "favorites"} onClick={() => { setActiveTab("favorites"); }} />
+              <SidebarBtn icon={navIcons.new} label="New Releases" isActive={activeTab === "new"} onClick={() => { setActiveTab("new"); }} />
             </div>
           </div>
 
@@ -319,7 +319,6 @@ export default function LobbyModal() {
                   onClick={() => {
                     setActiveTab(item.key as any);
                     if (item.key === "all") dispatch(setActiveCategory("Lobby"));
-                    else toast.info(`Showing ${item.label.toLowerCase()}.`);
                   }}
                   className={`flex-none flex items-center gap-[8px] px-[10px] py-[10px] h-[40px] rounded-[8px] transition-all cursor-pointer whitespace-nowrap ${
                     activeTab === item.key ? "bg-[#1463FF] text-white" : "bg-[#112F82] text-[#A5B8EF]"
@@ -504,7 +503,6 @@ export default function LobbyModal() {
                         onClick={() => {
                           dispatch(setActiveCategory("Providers"));
                           dispatch(closeModal("lobby"));
-                          toast.success(`Selected provider ${p.name}`);
                         }}
                         className="group flex flex-col justify-center items-center p-[8px] px-[12px] lg:p-[12px] lg:px-[24px] gap-[6px] lg:gap-[8px] w-[116px] lg:w-[152px] h-[72px] lg:h-[100px] bg-[#112F82] lg:bg-[#0C1F56] hover:bg-[#112f82]/50 rounded-[8px] lg:rounded-[12px] flex-none cursor-pointer transition-all snap-start"
                       >
