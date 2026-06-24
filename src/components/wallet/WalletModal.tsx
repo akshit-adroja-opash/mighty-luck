@@ -269,7 +269,7 @@ export default function WalletModal() {
 
   const handleCopyAddress = () => {
     navigator.clipboard.writeText("bc1q7ndh47hf93rdhuhef873hheufhe447...");
-    toast.success("Deposit address copied to clipboard!");
+    toast.success("Address copied!");
   };
 
   const handleActionClick = () => {
@@ -284,7 +284,7 @@ export default function WalletModal() {
       if (ccStep === "address") {
         // Validation for Step 1 Address
         if (!street || !city || !postalCode || !stateName) {
-          toast.error("Please fill in all address details before continuing.");
+          toast.error("Address details required.");
           return;
         }
         setCcStep("payment");
@@ -292,14 +292,14 @@ export default function WalletModal() {
         // Validation for Step 2 Payment
         const currentAmount = selectedAmountOption === "custom" ? customAmount : selectedAmountOption;
         if (!currentAmount || isNaN(parseFloat(currentAmount))) {
-          toast.error("Please enter or select a valid amount.");
+          toast.error("Invalid amount.");
           return;
         }
         if (!cardNumber || !cardExpiry || !cardCVC) {
-          toast.error("Please enter your complete payment details.");
+          toast.error("Payment details required.");
           return;
         }
-        toast.success(`Deposit of $${currentAmount} submitted! Processing transaction securely...`);
+        toast.success(`$${currentAmount} deposit processing...`);
         // Reset state after success
         setCcStep("address");
         setStreet("");
@@ -315,7 +315,7 @@ export default function WalletModal() {
       // BTC deposit
       setLoadingStep(0);
       setIsBtcSubmitted(true);
-      toast.success("Deposit transaction submitted! Awaiting block confirmation.");
+      toast.success("Deposit submitted!");
     }
   };
 
@@ -576,7 +576,7 @@ export default function WalletModal() {
                           <span className="w-full text-center">1 confirmation is required for deposits to be credited.</span>
                           <span className="w-full text-center">
                             Want to know how many confirmations this transaction has? Please{" "}
-                            <span className="text-[#FFC83D] font-bold cursor-pointer hover:underline inline ml-1" onClick={() => toast.info("Checking transaction confirmations on blockchain explorer...")}>
+                            <span className="text-[#FFC83D] font-bold cursor-pointer hover:underline inline ml-1" onClick={() => toast.info("Checking blockchain...")}>
                               click here
                             </span>
                             .
@@ -1143,7 +1143,7 @@ export default function WalletModal() {
                               </button>
                               <button 
                                 type="button"
-                                onClick={() => toast.info("Displaying QR Code...")} 
+                                onClick={() => toast.info("Showing QR Code.")} 
                                 className="text-[#BBCAF3] hover:text-white transition-colors cursor-pointer"
                               >
                                 <QrCode size={16} />
@@ -1196,13 +1196,13 @@ export default function WalletModal() {
                           if (isPromoApplied) {
                             setIsPromoApplied(false);
                             setPromoCode("");
-                            toast.info("Promo code removed.");
+                            toast.info("Code removed.");
                           } else {
                             if (promoCode.trim()) {
                               setIsPromoApplied(true);
-                              toast.success(`Promo code "${promoCode}" applied!`);
+                              toast.success(`Code "${promoCode}" applied!`);
                             } else {
-                              toast.error("Please enter a promo code first.");
+                              toast.error("Enter a code first.");
                             }
                           }
                         }}
@@ -1374,7 +1374,7 @@ export default function WalletModal() {
                     </svg>
                   </div>
                   <span className="font-manrope text-[12px] sm:text-[10px] font-medium leading-[16px] sm:leading-[14px] tracking-[0.02em] text-[#7795E8]">
-                    Having problems? <span className="text-[#FFC83D] cursor-pointer hover:underline inline ml-1" onClick={() => toast.info("Connecting to live support...")}>Contact support</span>
+                    Having problems? <span className="text-[#FFC83D] cursor-pointer hover:underline inline ml-1" onClick={() => toast.info("Connecting to support...")}>Contact support</span>
                   </span>
                 </div>
               )}
