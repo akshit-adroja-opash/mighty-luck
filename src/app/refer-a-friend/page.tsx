@@ -95,47 +95,39 @@ export default function ReferAFriendPage() {
                         </span>
                       </div>
                       <div className="flex flex-col justify-center items-start w-full h-[40px] gap-[2px] isolation-isolate flex-none relative">
-                        <input 
-                          type="range" 
-                          min="1" 
-                          max="50" 
-                          value={sliderValue}
-                          onChange={(e) => setSliderValue(Number(e.target.value))}
-                          className="w-full h-[6px] rounded-[100px] appearance-none outline-none z-0 relative cursor-pointer bg-[#112F82] flex-none"
-                          style={{
-                            background: `linear-gradient(to right, #1463FF ${((sliderValue - 1) / 49) * 100}%, transparent ${((sliderValue - 1) / 49) * 100}%)`,
-                            backgroundColor: "#112F82"
-                          }}
+                        {/* Background Track */}
+                        <div className="absolute w-full h-[6px] left-0 top-[17px] bg-[#112F82] rounded-[100px] pointer-events-none z-0" />
+                        
+                        {/* Active Track */}
+                        <div 
+                          className="absolute h-[6px] left-0 top-[17px] bg-[#1463FF] rounded-[100px] pointer-events-none z-0"
+                          style={{ width: `calc(${((sliderValue - 1) / 49) * 100}% - ${((sliderValue - 1) / 49) * 54}px + 27px)` }}
                         />
+                        
+                        {/* Custom Thumb Handle */}
                         <div 
                           className="absolute top-[5px] flex flex-row items-center justify-center p-[4px_12px] gap-[4px] w-[54px] h-[30px] bg-[#1463FF] rounded-[100px] pointer-events-none z-10"
-                          style={{ left: `calc(${((sliderValue - 1) / 49) * 100}% - 27px)` }}
+                          style={{ left: `calc(${((sliderValue - 1) / 49) * 100}% - ${((sliderValue - 1) / 49) * 54}px)` }}
                         >
                           <div className="flex-none w-[16px] h-[16px] flex items-center justify-center">
                             <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <path d="M11.3333 9.33333C11.3333 10.0406 10.7607 10.6133 10.0533 10.6133H1.94667C1.23933 10.6133 0.666667 10.0406 0.666667 9.33333C0.666667 7.86067 1.86067 6.66667 3.33333 6.66667H8.66667C10.1393 6.66667 11.3333 7.86067 11.3333 9.33333ZM8.66667 3.33333C8.66667 4.806 7.47267 6 6 6C4.52733 6 3.33333 4.806 3.33333 3.33333C3.33333 1.86067 4.52733 0.666667 6 0.666667C7.47267 0.666667 8.66667 1.86067 8.66667 3.33333ZM15.3333 9.33333C15.3333 10.0406 14.7607 10.6133 14.0533 10.6133H12.2133C12.482 10.222 12.6667 9.754 12.6667 9.33333C12.6667 7.49267 11.174 6 9.33333 6C9.102 6 8.878 6.03667 8.66667 6.082C9.48 6.55133 10 7.424 10 8.4V9.33333H14.0533C14.7607 9.33333 15.3333 9.906 15.3333 10.6133V9.33333ZM12.6667 3.33333C12.6667 4.806 11.4727 6 10 6C9.84533 6 9.69667 5.98667 9.552 5.952C10.0467 5.25933 10.2707 4.39867 10.082 3.522C9.91933 2.766 9.40067 2.128 8.66667 1.80267C8.98667 1.54133 9.38067 1.39067 9.80533 1.35333C11.3067 1.22133 12.6667 2.45067 12.6667 3.96V3.33333Z" fill="white"/>
                             </svg>
                           </div>
-                          <span className="font-manrope font-bold text-[16px] leading-[22px] tracking-[0.02em] text-white w-[10px] h-[22px] flex-none">
+                          <span className="font-manrope font-bold text-[16px] leading-[22px] tracking-[0.02em] text-white flex-none">
                             {sliderValue}
                           </span>
                         </div>
-                        <style dangerouslySetInnerHTML={{__html: `
-                          input[type=range]::-webkit-slider-thumb {
-                            appearance: none;
-                            width: 54px;
-                            height: 30px;
-                            background: transparent;
-                            cursor: pointer;
-                          }
-                          input[type=range]::-moz-range-thumb {
-                            width: 54px;
-                            height: 30px;
-                            background: transparent;
-                            border: none;
-                            cursor: pointer;
-                          }
-                        `}} />
+                        
+                        {/* Invisible Input for Interaction */}
+                        <input 
+                          type="range" 
+                          min="1" 
+                          max="50" 
+                          value={sliderValue}
+                          onChange={(e) => setSliderValue(Number(e.target.value))}
+                          className="absolute w-full h-full left-0 top-0 opacity-0 cursor-pointer z-20 m-0 p-0"
+                        />
                       </div>
                     </div>
 

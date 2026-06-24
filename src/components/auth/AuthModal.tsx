@@ -101,18 +101,22 @@ export default function AuthModal() {
         </div>
       </div>
 
-      {/* Desktop Modal Container */}
-      <div className="hidden md:flex relative w-full md:w-[95%] max-w-none md:max-w-[730px] h-[100dvh] md:h-[546px] rounded-none md:rounded-[16px] shadow-none md:shadow-2xl shrink-0 overflow-hidden md:my-auto">
-        {/* Close Button */}
+      {/* Desktop Modal Container Wrapper */}
+      <div className="hidden md:flex relative w-full md:w-[95%] max-w-none md:max-w-[730px] h-[100dvh] md:h-[546px] shrink-0 md:my-auto">
+        {/* Close Button (Outside) */}
         <button
           onClick={() => dispatch(closeModal("auth"))}
-          className="absolute right-4 top-4 z-50 flex h-[32px] w-[32px] items-center justify-center rounded-full bg-[#112F82] md:bg-[#112F82]/80 text-white md:text-white/80 transition-all hover:bg-red-500 hover:text-white shadow-lg cursor-pointer"
+          className="absolute -right-[40px] top-0 z-50 flex h-[24px] w-[24px] items-center justify-center cursor-pointer transition-opacity hover:opacity-80"
         >
-          <X size={16} />
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 6L18 18M18 6L6 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
         </button>
 
-        {/* Left Column - Promo (hidden on mobile) */}
-        <div className="hidden md:flex relative h-[546px] w-[340px] flex-col items-center overflow-hidden rounded-l-[16px] bg-[#000C24] flex-none">
+        {/* Inner Modal Content */}
+        <div className="flex relative w-full h-full rounded-none md:rounded-[16px] shadow-none md:shadow-2xl overflow-hidden">
+          {/* Left Column - Promo (hidden on mobile) */}
+          <div className="hidden md:flex relative h-[546px] w-[340px] flex-col items-center overflow-hidden rounded-l-[16px] bg-[#000C24] flex-none">
           <div
             className="absolute bg-cover bg-center"
             style={{
@@ -182,6 +186,7 @@ export default function AuthModal() {
           ) : (
             <RegisterForm setView={setView} />
           )}
+        </div>
         </div>
       </div>
     </div>

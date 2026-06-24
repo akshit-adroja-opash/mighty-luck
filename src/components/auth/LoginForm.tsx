@@ -74,18 +74,18 @@ export default function LoginForm({ setView }: LoginFormProps) {
         </div>
 
         {/* Tab Switcher (Desktop Only) */}
-        <div className="hidden md:flex w-full h-[40px] items-center gap-2">
+        <div className="hidden md:flex w-full h-[40px] items-center p-0">
           <button
             type="button"
             onClick={() => { dispatch(setAuthModalView("register")); setView("register"); }}
-            className="flex flex-1 h-full items-center justify-center rounded-[8px] font-manrope text-[14px] font-bold tracking-[0.02em] bg-[#1463FF] text-white hover:bg-blue-600 transition-all cursor-pointer"
+            className="flex flex-1 h-full items-center justify-center rounded-l-[8px] rounded-r-none font-manrope text-[14px] font-bold tracking-[0.02em] bg-[#112F82] text-white hover:bg-[#173EAD] transition-all cursor-pointer"
           >
             Join Now
           </button>
           <button
             type="button"
             onClick={() => { dispatch(setAuthModalView("login")); setView("login"); }}
-            className="flex flex-1 h-full items-center justify-center rounded-[8px] font-manrope text-[14px] font-bold tracking-[0.02em] bg-[#FFC83D] text-black cursor-pointer"
+            className="flex flex-1 h-full items-center justify-center rounded-r-[8px] rounded-l-none font-manrope text-[14px] font-bold tracking-[0.02em] bg-[#1463FF] text-white cursor-pointer"
           >
             Log In
           </button>
