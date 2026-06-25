@@ -47,7 +47,7 @@ export default function Header() {
 
   return (
     <header className={`sticky top-0 z-[140] sm:z-[120] w-full justify-center bg-[#0C1F56] ${isAuthOpen ? 'hidden md:flex' : 'flex'}`}>
-      <div className="relative flex flex-row items-center justify-between w-full max-w-[1440px] mx-auto h-[50px] lg:h-[60px] px-5 lg:px-6">
+      <div className="relative flex flex-row items-center justify-between w-full h-[50px] lg:h-[60px] px-5 lg:px-6">
 
         {/* Blue Glow */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
