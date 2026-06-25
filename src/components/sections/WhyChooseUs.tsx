@@ -17,7 +17,7 @@ const features = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="flex flex-col items-start gap-[14.81px] md:gap-[28px] w-full overflow-hidden">
+    <section className="flex flex-col items-start gap-[14.81px] md:gap-[28px] w-full max-w-[1440px] overflow-hidden">
       {/* Header */}
       <div className="flex flex-row items-center justify-between w-full h-[23px] md:h-[30px]">
         <div className="flex flex-row items-center gap-[7.2px] md:gap-[12px]">

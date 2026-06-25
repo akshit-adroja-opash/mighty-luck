@@ -311,7 +311,7 @@ export default function ReferAFriendPage() {
             </section>
 
             {/* HOW REFERRAL PROGRAM WORKS */}
-            <section className="flex flex-col gap-[12px] lg:gap-[32px] w-full">
+            <section className="flex flex-col gap-[12px] lg:gap-[32px] w-full max-w-[1440px]">
               <div className="flex flex-row items-center gap-[7px] lg:gap-[12px]">
                 <div className="w-[18px] h-[18px] lg:w-[30px] lg:h-[30px] relative flex-none">
                   <Image src="/images/referral/how-referral.svg" alt="How Referral Works" fill className="object-contain" />
