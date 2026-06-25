@@ -311,21 +311,21 @@ export default function ReferAFriendPage() {
             </section>
 
             {/* HOW REFERRAL PROGRAM WORKS */}
-            <section className="flex flex-col gap-[12px] lg:gap-[32px] w-full max-w-[1440px]">
+            <section className="flex flex-col gap-[12px] lg:gap-[32px] w-full">
               <div className="flex flex-row items-center gap-[7px] lg:gap-[12px]">
                 <div className="w-[18px] h-[18px] lg:w-[30px] lg:h-[30px] relative flex-none">
                   <Image src="/images/referral/how-referral.svg" alt="How Referral Works" fill className="object-contain" />
                 </div>
                 <h3 className="font-jost text-[16px] leading-[23px] lg:text-[20px] lg:leading-[29px] font-extrabold text-white uppercase tracking-[0.01em]">HOW REFERRAL PROGRAM WORKS</h3>
               </div>
-              <div className="flex flex-col lg:flex-row gap-[12px] w-full">
-                <div className="relative flex-none w-full lg:flex-1 rounded-[16px] overflow-hidden aspect-[374/220] lg:aspect-[370/220]">
+              <div className="flex flex-col md:flex-row gap-[12px] w-full">
+                <div className="relative w-full md:flex-1 max-w-[400px] md:max-w-[600px] mx-auto md:mx-0 rounded-[16px] overflow-hidden aspect-[374/220] lg:aspect-[370/220]">
                   <Image src="/games/refrels/r1.png" alt="Step 1" fill className="object-cover" />
                 </div>
-                <div className="relative flex-none w-full lg:flex-1 rounded-[16px] overflow-hidden aspect-[374/220] lg:aspect-[370/220]">
+                <div className="relative w-full md:flex-1 max-w-[400px] md:max-w-[600px] mx-auto md:mx-0 rounded-[16px] overflow-hidden aspect-[374/220] lg:aspect-[370/220]">
                   <Image src="/games/refrels/r2.png" alt="Step 2" fill className="object-cover" />
                 </div>
-                <div className="relative flex-none w-full lg:flex-1 rounded-[16px] overflow-hidden aspect-[374/220] lg:aspect-[370/220]">
+                <div className="relative w-full md:flex-1 max-w-[400px] md:max-w-[600px] mx-auto md:mx-0 rounded-[16px] overflow-hidden aspect-[374/220] lg:aspect-[370/220]">
                   <Image src="/games/refrels/r3.png" alt="Step 3" fill className="object-cover" />
                 </div>
               </div>

@@ -17,7 +17,7 @@ const features = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="flex flex-col items-start gap-[14.81px] md:gap-[28px] w-full max-w-[1440px] overflow-hidden">
+    <section className="flex flex-col items-start gap-[14.81px] md:gap-[28px] w-full overflow-hidden">
       {/* Header */}
       <div className="flex flex-row items-center justify-between w-full h-[23px] md:h-[30px]">
         <div className="flex flex-row items-center gap-[7.2px] md:gap-[12px]">
@@ -30,11 +30,11 @@ export default function WhyChooseUs() {
         </div>
       </div>
 
-      <div className="flex md:grid flex-row md:grid-cols-3 gap-[8.63px] md:gap-[12px] w-full overflow-x-auto md:overflow-visible no-scrollbar snap-x snap-mandatory">
+      <div className="flex flex-row gap-[8.63px] md:gap-[12px] w-full overflow-x-auto md:overflow-visible no-scrollbar snap-x snap-mandatory">
         {features.map((item, index) => (
           <div
             key={index}
-            className="relative w-[266px] md:w-full h-[158px] md:h-auto md:aspect-[370/220] shrink-0 rounded-[11.5px] md:rounded-[16px] overflow-hidden group snap-start"
+            className="relative w-[266px] md:w-full md:flex-1 md:max-w-[600px] h-[158px] md:h-auto md:aspect-[370/220] shrink-0 rounded-[11.5px] md:rounded-[16px] overflow-hidden group snap-start"
           >
             <Image
               src={item.image}
