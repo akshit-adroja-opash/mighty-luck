@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import { Plus } from "lucide-react";
 import { RootState } from "@/store";
 import { openModal, closeModal, setActiveCategory } from "@/store/slices/uiSlice";
 
@@ -58,23 +59,15 @@ export default function MobileBottomNav({ isMobileMenuOpen, setIsMobileMenuOpen 
         <span className={`font-manrope font-bold text-[11px] leading-[15px] tracking-[0.02em] ${isLobbyOpen ? "text-[#FFBF1F]" : "text-[#D2DCF7]"}`}>Search</span>
       </button>
 
-      <button onClick={() => { if (isLobbyOpen) dispatch(closeModal("lobby")); if (isMobileMenuOpen) setIsMobileMenuOpen(false); }} className="flex flex-col justify-center items-center gap-[2px] w-[43px] h-[44px] transition-colors hover:opacity-80">
-        <div className="flex justify-center items-center w-[24px] h-[24px]">
-           <div 
-            className="w-[18px] h-[18px] bg-[#D2DCF7] flex-none"
-            style={{
-              maskImage: `url(/games/side-icon/pro.svg)`,
-              WebkitMaskImage: `url(/games/side-icon/pro.svg)`,
-              maskSize: 'contain',
-              WebkitMaskSize: 'contain',
-              maskRepeat: 'no-repeat',
-              WebkitMaskRepeat: 'no-repeat',
-              maskPosition: 'center',
-              WebkitMaskPosition: 'center'
-            }}
-          />
-        </div>
-        <span className="font-manrope font-bold text-[11px] leading-[15px] tracking-[0.02em] text-[#D2DCF7]">Offers</span>
+      <button 
+        onClick={() => { 
+          if (isLobbyOpen) dispatch(closeModal("lobby")); 
+          if (isMobileMenuOpen) setIsMobileMenuOpen(false); 
+          dispatch(openModal("wallet")); 
+        }} 
+        className="relative flex justify-center items-center w-[56px] h-[56px] mt-[-28px] rounded-full bg-[#FFC83D] transition-transform hover:scale-105 shadow-lg border-[4px] border-[#0C1F56] z-10 flex-none"
+      >
+        <Plus size={28} className="text-[#1A1404]" strokeWidth={3} />
       </button>
 
       <button onClick={() => { if (isLobbyOpen) dispatch(closeModal("lobby")); if (isMobileMenuOpen) setIsMobileMenuOpen(false); }} className="flex flex-col justify-center items-center gap-[2px] w-[30px] h-[44px] transition-colors hover:opacity-80">
