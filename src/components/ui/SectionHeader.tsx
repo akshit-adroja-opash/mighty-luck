@@ -1,4 +1,9 @@
+"use client";
+
 import Link from "next/link";
+import { useDispatch } from "react-redux";
+import { openModal, closeModal, setActiveCategory } from "@/store/slices/uiSlice";
+
 
 interface SectionHeaderProps {
   title: string;
@@ -25,6 +30,27 @@ export default function SectionHeader({
   canScrollLeft = false,
   canScrollRight = true,
 }: SectionHeaderProps & { canScrollLeft?: boolean; canScrollRight?: boolean }) {
+  const dispatch = useDispatch();
+
+  const handleViewAll = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const cleanTitle = title.split('(')[0].trim().toLowerCase().replace(' games', '');
+    
+    let cat = "";
+    if (cleanTitle === "slots") cat = "Slots";
+    if (cleanTitle === "originals") cat = "Originals";
+    if (cleanTitle === "crash") cat = "Crash Games";
+    if (cleanTitle === "table") cat = "Table Games";
+    if (cleanTitle === "bonus buys") cat = "Bonus Buys";
+    if (cleanTitle === "providers" || cleanTitle === "game providers") cat = "Providers";
+    if (cleanTitle === "collection" || cleanTitle === "collections") cat = "Collection";
+    
+    if (cat) {
+      dispatch(setActiveCategory(cat));
+      dispatch(closeModal("lobby"));
+    }
+  };
+
   return (
     /* w-[1136px] h-[30px] flex-row justify-between gap-[702px] */
     <div className="flex min-h-[23px] md:min-h-[30px] w-full flex-none flex-row items-center justify-between gap-2 overflow-hidden">
@@ -52,7 +78,8 @@ export default function SectionHeader({
         {showViewAll && (
           <Link
             href={viewAllLink}
-            className="flex-none whitespace-nowrap font-manrope text-[12px] font-bold leading-[16px] tracking-[0.02em] text-[#FFBF1F] md:text-[#D2DCF7] hover:text-white transition-colors"
+            onClick={handleViewAll}
+            className="flex-none whitespace-nowrap font-manrope text-[12px] font-bold leading-[16px] tracking-[0.02em] text-[#FFBF1F] md:text-[#D2DCF7] hover:text-white transition-colors cursor-pointer"
           >
             View all
           </Link>
