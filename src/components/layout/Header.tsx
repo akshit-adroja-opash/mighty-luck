@@ -212,6 +212,14 @@ export default function Header() {
             className="fixed left-0 right-0 top-[50px] bottom-[64px] bg-[#0C1F56] z-30 md:hidden flex flex-col items-center overflow-y-auto px-5 py-5"
           >
             <div className="flex w-full max-w-[374px] flex-col gap-[16px] pb-[40px]">
+              <div className="flex w-full justify-end mb-[-8px]">
+                <button
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="flex h-[32px] w-[32px] items-center justify-center rounded-full bg-[#112F82] text-white hover:bg-[#173EAD] transition-colors cursor-pointer"
+                >
+                  <X size={20} />
+                </button>
+              </div>
               <div className="flex w-full justify-center">
                 <TopPromoCards />
               </div>
@@ -225,6 +233,14 @@ export default function Header() {
       {isMobileMenuOpen && (
         <div className="fixed left-0 right-0 top-[50px] bottom-[64px] bg-[#0C1F56] z-30 hidden md:flex lg:hidden flex-col items-center overflow-y-auto px-5 py-5">
           <div className="flex w-full max-w-[640px] flex-col gap-[16px] pb-[40px]">
+            <div className="flex w-full justify-end mb-[-8px]">
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="flex h-[32px] w-[32px] items-center justify-center rounded-full bg-[#112F82] text-white hover:bg-[#173EAD] transition-colors cursor-pointer"
+              >
+                <X size={20} />
+              </button>
+            </div>
             <div className="flex w-full justify-center">
               <TopPromoCards />
             </div>
