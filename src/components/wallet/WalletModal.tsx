@@ -98,6 +98,13 @@ export default function WalletModal() {
     }
   }, [isBtcSubmitted]);
 
+  // Entrance animation state
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => setIsMounted(true), 10);
+    return () => clearTimeout(timer);
+  }, []);
+
   // Address Form states
   const [street, setStreet] = useState("");
   const [city, setCity] = useState("");
@@ -404,9 +411,21 @@ export default function WalletModal() {
     },
   ];
 
+  // Calculate dynamic backdrop opacity based on drag distance
+  // Fades out completely by the time it's dragged down 300px. Also fades in smoothly on mount.
+  const backdropOpacity = isMounted ? Math.max(0, 1 - (modalDragY / 300)) : 0;
+
   return (
-    <div className="fixed top-[50px] sm:top-0 inset-x-0 bottom-0 z-[130] flex flex-col items-center justify-start sm:justify-center bg-transparent sm:bg-[#0C1733]/70 backdrop-blur-[4px] sm:backdrop-blur-[8px] sm:p-4 overflow-y-auto">
+    <div className="fixed top-[50px] sm:top-0 inset-x-0 bottom-0 z-[150] flex flex-col items-center justify-start sm:justify-center sm:p-4 overflow-y-auto">
       
+      {/* Animated Backdrop */}
+      <div 
+        className="absolute inset-0 bg-transparent sm:bg-[#0C1733]/70 backdrop-blur-[4px] sm:backdrop-blur-[8px] pointer-events-none -z-10"
+        style={{
+          opacity: backdropOpacity,
+          transition: isDraggingModal ? 'none' : 'opacity 0.3s ease-out'
+        }}
+      />
       {/* Outer absolute position alignment box (dynamic height to avoid jumps) */}
       <div 
         className={`relative transition-all duration-300 w-full sm:w-[500px] overflow-y-auto sm:overflow-visible rounded-none sm:rounded-[16px] flex flex-col mt-auto sm:mt-0 pb-0 sm:pb-0 h-auto sm:h-[var(--modal-height)]`}
@@ -429,7 +448,7 @@ export default function WalletModal() {
 
         {/* Outer Modal Container */}
         <div 
-          className={`relative flex flex-col items-center bg-[#091741] rounded-[30px_30px_0px_0px] sm:rounded-[16px] w-full shadow-none sm:shadow-2xl isolation-isolate transition-all duration-300 pt-[16px] px-[20px] ${activeTab === 'deposit' ? 'pb-0' : 'pb-[40px]'} sm:p-[24px_20px_32px] gap-[16px] sm:gap-[24px]`}
+          className={`relative flex flex-col items-center bg-[#091741] rounded-[30px_30px_0px_0px] sm:rounded-[16px] w-full shadow-none sm:shadow-2xl isolation-isolate sm:transition-all sm:duration-300 pt-[16px] px-[20px] ${activeTab === 'deposit' ? 'pb-0' : 'pb-[40px]'} sm:p-[24px_20px_32px] gap-[16px] sm:gap-[24px]`}
         >
           
           {/* Accent Glow Container (clips the glow to the card boundaries) */}
@@ -461,7 +480,7 @@ export default function WalletModal() {
 
           {/* Inner Content Box */}
           <div 
-            className={`relative z-20 flex flex-col items-start w-full sm:w-[460px] gap-[24px] transition-all duration-300 h-auto sm:h-[var(--inner-height)]`}
+            className={`relative z-20 flex flex-col items-start w-full sm:w-[460px] gap-[24px] sm:transition-all sm:duration-300 h-auto sm:h-[var(--inner-height)]`}
             style={{ '--inner-height': innerHeight } as React.CSSProperties}
           >
             
@@ -504,7 +523,7 @@ export default function WalletModal() {
 
             {/* Tab container / Form content area */}
             <div 
-              className={`flex flex-col items-start w-full sm:w-[460px] gap-[16px] transition-all duration-300 h-auto sm:h-[var(--tabs-content-height)]`}
+              className={`flex flex-col items-start w-full sm:w-[460px] gap-[16px] sm:transition-all sm:duration-300 h-auto sm:h-[var(--tabs-content-height)]`}
               style={{ '--tabs-content-height': tabsContentHeight } as React.CSSProperties}
             >
               
@@ -536,7 +555,7 @@ export default function WalletModal() {
 
               {/* Tab View Container */}
               <div 
-                className={`flex flex-col items-start gap-[16px] w-full sm:w-[460px] bg-[#0C1F56] rounded-[16px] overflow-visible transition-all duration-300 h-auto sm:h-[var(--tab-view-height)] ${
+                className={`flex flex-col items-start gap-[16px] w-full sm:w-[460px] bg-[#0C1F56] rounded-[16px] overflow-visible sm:transition-all sm:duration-300 h-auto sm:h-[var(--tab-view-height)] ${
                   showSubmittedState ? "p-[20px_16px]" : "p-[16px]"
                 }`}
                 style={{ '--tab-view-height': tabViewHeight } as React.CSSProperties}

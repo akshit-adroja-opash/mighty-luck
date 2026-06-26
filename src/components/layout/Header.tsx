@@ -46,8 +46,9 @@ export default function Header() {
   };
 
   return (
-    <header className={`sticky top-0 z-[140] sm:z-[120] w-full justify-center bg-[#0C1F56] ${isAuthOpen ? 'hidden md:flex' : 'flex'}`}>
-      <div className="relative flex flex-row items-center justify-between w-full h-[50px] lg:h-[60px] px-5 lg:px-6">
+    <>
+      <header className={`sticky top-0 z-[140] sm:z-[140] w-full justify-center bg-[#0C1F56] ${isAuthOpen ? 'hidden md:flex' : 'flex'}`}>
+        <div className="relative flex flex-row items-center justify-between w-full h-[50px] lg:h-[60px] px-5 lg:px-6">
 
         {/* Blue Glow */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
@@ -198,8 +199,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Bottom Navigation */}
-      <MobileBottomNav isMobileMenuOpen={isMobileMenuOpen} setIsMobileMenuOpen={setIsMobileMenuOpen} />
+
 
       {/* Mobile Full Screen Menu Overlay (< 768px) with animation */}
       <AnimatePresence>
@@ -248,6 +248,10 @@ export default function Header() {
           </div>
         </div>
       )}
-    </header>
+      </header>
+
+      {/* Mobile Bottom Navigation */}
+      <MobileBottomNav isMobileMenuOpen={isMobileMenuOpen} setIsMobileMenuOpen={setIsMobileMenuOpen} />
+    </>
   );
 }
