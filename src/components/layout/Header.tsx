@@ -116,7 +116,7 @@ export default function Header() {
                     setIsMobileMenuOpen(false);
                     dispatch(openModal("wallet"));
                   }}
-                  className="flex h-[30px] w-[30px] lg:h-[40px] lg:w-[110px] flex-none flex-row items-center justify-center rounded-[6px] lg:rounded-[8px] bg-[#FFC83D] transition-colors hover:opacity-90 cursor-pointer p-[8px] lg:px-[16px] lg:py-[0px] gap-2"
+                  className="hidden lg:flex h-[30px] w-[30px] lg:h-[40px] lg:w-[110px] flex-none flex-row items-center justify-center rounded-[6px] lg:rounded-[8px] bg-[#FFC83D] transition-colors hover:opacity-90 cursor-pointer p-[8px] lg:px-[16px] lg:py-[0px] gap-2"
                 >
                   <Wallet className="w-[12px] h-[12px] lg:w-[15px] lg:h-[15px] text-[#1A1404] flex-none" fill="#1A1404" />
                   <span className="hidden lg:inline font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-[#1A1404]">Deposit</span>
