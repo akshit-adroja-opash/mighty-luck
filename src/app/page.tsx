@@ -3,7 +3,7 @@ import React from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/store";
-import { setSelectedGame, openModal } from "@/store/slices/uiSlice";
+import { setSelectedGame, openModal, setActiveCategory } from "@/store/slices/uiSlice";
 
 import HeroBanner from "@/components/sections/HeroBanner";
 import DepositBanner from "@/components/sections/DepositBanner";
@@ -80,11 +80,18 @@ export default function HomePage() {
     // If no games found in DB, just generate some placeholders for the UI
     const displayGames = categoryGames.length > 0 
       ? categoryGames 
-      : Array.from({ length: 12 }, (_, i) => ({ 
-          image: `/games/slots/slot-${(i % 7) + 1}.png`, 
-          title: `${activeCategory} Game ${i + 1}`, 
-          category: activeCategory 
-        }));
+      : Array.from({ length: 28 }, (_, i) => {
+          let imgPath = `/games/slots/slot-${(i % 7) + 1}.png`;
+          if (activeCategory === 'Originals') imgPath = `/games/original/original-${(i % 8) + 1}.png`;
+          if (activeCategory === 'Crash Games') imgPath = `/games/crash/crash-${(i % 2) + 1}.png`;
+          if (activeCategory === 'Table Games') imgPath = `/games/table/table-${(i % 2) + 1}.png`;
+          
+          return {
+            image: imgPath,
+            title: `${activeCategory} Game ${i + 1}`,
+            category: activeCategory
+          };
+        });
 
     return (
       <main className="flex w-full flex-none flex-col gap-[30px] md:gap-6 lg:gap-10">
@@ -96,34 +103,85 @@ export default function HomePage() {
         <div className="flex flex-col gap-5 w-full">
           {(() => {
             const SectionComponent = sections.find(s => s.name === activeCategory)?.Component;
-            if (SectionComponent) {
-              let customTitle = `${activeCategory.toUpperCase()} GAMES`;
-              if (activeCategory === "Providers") customTitle = "GAME PROVIDERS";
-              if (activeCategory === "Collection") customTitle = "COLLECTIONS";
-              if (activeCategory === "Crash Games") customTitle = "CRASH GAMES";
-              if (activeCategory === "Table Games") customTitle = "TABLE GAMES";
-
+            
+            // Only use the custom Carousel components for special non-game grids
+            if (SectionComponent && (activeCategory === "Providers" || activeCategory === "Collection")) {
+              let customTitle = activeCategory === "Providers" ? "GAME PROVIDERS" : "COLLECTIONS";
               return <SectionComponent title={customTitle} />;
             }
 
             return (
-              <GameCarousel
-                title={`${activeCategory.toUpperCase()} GAMES`}
-                icon={<img src={getCategoryIcon(activeCategory)} alt={activeCategory} className="w-[18px] h-[18px] md:w-[30px] md:h-[30px]" />}
-              >
-                {displayGames.map((game, index) => (
-                  <div key={index} className="flex-none snap-start">
-                    <GameCard 
-                      image={game.image} 
-                      title={game.title} 
-                      onClick={() => {
-                        dispatch(setSelectedGame(game));
-                        dispatch(openModal("gamePlay"));
-                      }}
-                    />
+              <section className="flex w-full flex-col items-start gap-[12px] md:gap-5">
+                <div className="flex w-full flex-row items-center justify-between mb-4">
+                  {/* Left Side: Back Arrow, Title, Count */}
+                  <div className="flex flex-row items-center gap-[12px]">
+                    <button 
+                      onClick={() => dispatch(setActiveCategory("Lobby"))}
+                      className="flex items-center justify-center w-[24px] h-[24px] md:w-[32px] md:h-[32px] rounded-[6px] hover:bg-[#112F82] transition-colors text-[#A5B8EF] hover:text-white cursor-pointer"
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[16px] h-[16px] md:w-[20px] md:h-[20px]">
+                        <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </button>
+                    <h2 className="font-jost text-[18px] md:text-[24px] font-bold text-white capitalize">
+                      {activeCategory === "Collection" ? "Collections" : activeCategory}
+                    </h2>
+                    <div className="flex items-center justify-center px-[8px] py-[2px] bg-[#00D06C] rounded-[12px] text-[12px] font-bold text-white">
+                      91
+                    </div>
                   </div>
-                ))}
-              </GameCarousel>
+
+                  {/* Right Side: Toggle and Provider Dropdown */}
+                  <div className="flex flex-row items-center gap-[16px]">
+                    <div className="hidden sm:flex items-center gap-[8px]">
+                      <span className="text-white text-[12px] font-manrope font-semibold">Show Blocked</span>
+                      <button className="relative w-[32px] h-[18px] rounded-full bg-[#00D06C] transition-colors cursor-pointer">
+                        <div className="absolute right-[2px] top-[2px] w-[14px] h-[14px] rounded-full bg-white" />
+                      </button>
+                    </div>
+                    <button className="flex items-center gap-[8px] px-[12px] py-[6px] bg-[#112F82] rounded-[6px] hover:bg-[#173EAD] transition-colors cursor-pointer">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 3H3V10H10V3Z" stroke="#A5B8EF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M21 3H14V10H21V3Z" stroke="#A5B8EF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M21 14H14V21H21V14Z" stroke="#A5B8EF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M10 14H3V21H10V14Z" stroke="#A5B8EF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                      <span className="text-[#A5B8EF] text-[12px] font-manrope font-semibold whitespace-nowrap">Provider: All</span>
+                    </button>
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-9 gap-[8px] md:gap-[12px] w-full">
+                  {displayGames.map((game, index) => (
+                    <div key={index} className="w-full">
+                      <GameCard 
+                        image={game.image} 
+                        title={game.title}
+                        fluid={true}
+                        onClick={() => {
+                          dispatch(setSelectedGame(game));
+                          dispatch(openModal("gamePlay"));
+                        }}
+                      />
+                    </div>
+                  ))}
+                </div>
+
+                {/* Bottom Area: Progress Bar and Load More */}
+                <div className="flex flex-col items-center w-full mt-[20px] md:mt-[40px] mb-[20px] gap-[16px]">
+                  <div className="flex flex-col items-center w-full max-w-[300px] gap-[8px]">
+                    <div className="w-full h-[4px] bg-[#112F82] rounded-full overflow-hidden">
+                      <div className="h-full bg-[#00D06C] rounded-full" style={{ width: '30%' }}></div>
+                    </div>
+                    <span className="text-[#A5B8EF] text-[12px] font-manrope font-medium tracking-[0.02em]">
+                      You viewed 28 out of 91 games
+                    </span>
+                  </div>
+                  <button className="px-[24px] py-[10px] bg-transparent border border-[#1463FF] text-[#1463FF] rounded-[8px] font-manrope font-bold text-[14px] hover:bg-[#1463FF] hover:text-white transition-colors cursor-pointer">
+                    Load More
+                  </button>
+                </div>
+              </section>
             );
           })()}
         </div>
