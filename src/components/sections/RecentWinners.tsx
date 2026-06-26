@@ -40,18 +40,6 @@ export default function RecentWinners() {
         showPagination={false}
       />
 
-      {/* Custom Mobile Scrollbar (Group 21) */}
-      <div className="md:hidden relative w-full h-[12px] flex items-center -mt-[8px]">
-        <div className="absolute w-full h-[10.29px] bg-[#D2DCF7] rounded-full" />
-        <div 
-          className="absolute h-[12px] bg-[#1463FF] rounded-full transition-all duration-100 ease-out" 
-          style={{ 
-            width: "50%", // roughly matching the thumb proportion
-            left: `${scrollProgress * 50}%` 
-          }} 
-        />
-      </div>
-
       <div 
         ref={scrollRef}
         onScroll={handleScroll}
@@ -103,6 +91,18 @@ export default function RecentWinners() {
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Custom Mobile Scrollbar (Group 21) */}
+      <div className="md:hidden relative w-full h-[12px] flex items-center mt-[4px]">
+        <div className="absolute w-full h-[10.29px] bg-[#D2DCF7] rounded-full" />
+        <div 
+          className="absolute h-[12px] bg-[#1463FF] rounded-full transition-all duration-100 ease-out" 
+          style={{ 
+            width: "50%", // roughly matching the thumb proportion
+            left: `${scrollProgress * 50}%` 
+          }} 
+        />
       </div>
     </section>
   );
