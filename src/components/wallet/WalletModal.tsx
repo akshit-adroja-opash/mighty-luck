@@ -522,7 +522,7 @@ export default function WalletModal() {
                           : "bg-[#112F82]"
                       }`}
                     >
-                      <span className={`font-manrope text-[11px] sm:text-[12px] leading-[16px] tracking-[0.02em] text-center whitespace-nowrap flex items-center justify-center ${
+                      <span className={`font-manrope text-[13px] sm:text-[12px] leading-[16px] tracking-[0.02em] text-center whitespace-nowrap flex items-center justify-center ${
                         isActive 
                           ? "text-white font-bold" 
                           : "text-[#A5B8EF] font-semibold"
