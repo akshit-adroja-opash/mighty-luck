@@ -65,7 +65,7 @@ export default function MobileBottomNav({ isMobileMenuOpen, setIsMobileMenuOpen 
           if (isMobileMenuOpen) setIsMobileMenuOpen(false); 
           dispatch(openModal("wallet")); 
         }} 
-        className="relative flex justify-center items-center w-[56px] h-[56px] mt-[-28px] rounded-full bg-[#FFC83D] transition-transform hover:scale-105 shadow-lg border-[4px] border-[#0C1F56] z-10 flex-none"
+        className="relative flex justify-center items-center w-[56px] h-[56px] mt-[-28px] rounded-full bg-[#FFC83D] transition-transform hover:scale-105 shadow-[0_0_20px_rgba(255,200,61,0.5)] border-[4px] border-[#0C1F56] z-10 flex-none"
       >
         <Plus size={28} className="text-[#1A1404]" strokeWidth={3} />
       </button>
