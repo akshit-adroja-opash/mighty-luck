@@ -1,4 +1,11 @@
+"use client";
+
+import { useSelector } from "react-redux";
+import { RootState } from "@/store";
+
 export default function HeroBanner() {
+  const { isAuthenticated } = useSelector((state: RootState) => state.auth);
+
   return (
     <div className="flex flex-col items-center gap-[8px] md:gap-[20px] w-full">
       {/* Main Banner */}
@@ -63,13 +70,15 @@ export default function HeroBanner() {
       </div>
 
       {/* Pagination Dots */}
-      <div className="flex flex-col items-center w-full h-[6px]">
-        <div className="flex flex-row justify-center items-center gap-[8px] w-[40px] h-[6px]">
-          <div className="w-[12px] h-[6px] bg-[#D2DCF7] rounded-[150px]"></div>
-          <div className="w-[6px] h-[6px] bg-[#D2DCF7] rounded-[150px]"></div>
-          <div className="w-[6px] h-[6px] bg-[#D2DCF7] rounded-[150px]"></div>
+      {isAuthenticated && (
+        <div className="flex flex-col items-center w-full h-[6px]">
+          <div className="flex flex-row justify-center items-center gap-[8px] w-[40px] h-[6px]">
+            <div className="w-[12px] h-[6px] bg-[#D2DCF7] rounded-[150px]"></div>
+            <div className="w-[6px] h-[6px] bg-[#D2DCF7] rounded-[150px]"></div>
+            <div className="w-[6px] h-[6px] bg-[#D2DCF7] rounded-[150px]"></div>
+          </div>
         </div>
-      </div>
+      )}
 
     </div>
   );

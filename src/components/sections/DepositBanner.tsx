@@ -109,7 +109,7 @@ const SvgIconWrapper = (src: string) => {
       </h2>
 
       {/* Crypto Logos */}
-      <div className="z-[2] flex flex-row flex-wrap items-center justify-between md:justify-center gap-[12px] md:gap-[12px] lg:gap-[20px] xl:gap-[28px] text-white w-[334px] md:w-auto pb-0 flex-none md:flex-1 h-[19px] md:h-auto">
+      <div className="z-[2] flex flex-row flex-wrap items-center justify-between md:justify-center gap-[8px] md:gap-[8px] lg:gap-[8px] xl:gap-[20px] 2xl:gap-[28px] text-white w-full max-w-[334px] md:w-auto md:max-w-none pb-0 flex-none md:flex-1 min-w-0 h-[19px] md:h-auto">
         <img src="/games/deposite-icon/d1.svg" alt="deposit icon" className="w-[13.38px] h-[18.39px] lg:w-auto lg:h-auto shrink" />
         <img src="/games/deposite-icon/d2.svg" alt="deposit icon" className="w-[11.3px] h-[18.09px] lg:w-auto lg:h-auto shrink" />
         <img src="/games/deposite-icon/d3.svg" alt="deposit icon" className="w-[19.09px] h-[17.73px] lg:w-auto lg:h-auto shrink" />
