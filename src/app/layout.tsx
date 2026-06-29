@@ -50,19 +50,21 @@ export default function RootLayout({
               <div className="hidden lg:block flex-none">
                 <Sidebar />
               </div>
-              <div className="flex flex-1 min-w-0 flex-col px-0 lg:pl-[24px] lg:pr-0 pb-[75px] lg:pb-0 gap-[60px] lg:gap-[40px] overflow-hidden">
-                {children}
+              <div className="flex flex-1 min-w-0 flex-col px-0 lg:pl-[24px] lg:pr-0 pb-[75px] lg:pb-0 overflow-hidden">
+                <div className="flex w-full max-w-[1800px] mx-auto flex-col gap-[60px] lg:gap-[40px]">
+                  {children}
 
-                <div className="w-full">
-                  <SeoContent />
-                </div>
+                  <div className="w-full">
+                    <SeoContent />
+                  </div>
 
-                <div className="w-full">
-                  <CryptoBanner />
-                </div>
+                  <div className="w-full">
+                    <CryptoBanner />
+                  </div>
 
-                <div className="w-full">
-                  <Footer />
+                  <div className="w-full">
+                    <Footer />
+                  </div>
                 </div>
               </div>
             </div>
