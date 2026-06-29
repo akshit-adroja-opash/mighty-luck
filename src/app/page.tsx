@@ -66,6 +66,7 @@ export default function HomePage() {
 
   const [visibleCount, setVisibleCount] = React.useState(18);
   const [isExpanded, setIsExpanded] = React.useState(false);
+  const [showBlocked, setShowBlocked] = React.useState(true);
 
   React.useEffect(() => {
     setIsExpanded(false);
@@ -154,8 +155,11 @@ export default function HomePage() {
                   <div className="flex flex-row items-center gap-[16px]">
                     <div className="hidden sm:flex items-center gap-[8px]">
                       <span className="text-white text-[12px] font-manrope font-semibold">Show Blocked</span>
-                      <button className="relative w-[32px] h-[18px] rounded-full bg-[#FFC700] transition-colors cursor-pointer">
-                        <div className="absolute right-[2px] top-[2px] w-[14px] h-[14px] rounded-full bg-white" />
+                      <button 
+                        onClick={() => setShowBlocked(!showBlocked)}
+                        className={`relative w-[32px] h-[18px] rounded-full transition-colors cursor-pointer ${showBlocked ? 'bg-[#FFC700]' : 'bg-[#112F82]'}`}
+                      >
+                        <div className={`absolute top-[2px] w-[14px] h-[14px] rounded-full bg-white transition-all duration-200 ${showBlocked ? 'right-[2px]' : 'left-[2px] right-auto'}`} />
                       </button>
                     </div>
                     <button className="flex items-center gap-[8px] px-[12px] py-[6px] bg-[#112F82] rounded-[6px] hover:bg-[#173EAD] transition-colors cursor-pointer">

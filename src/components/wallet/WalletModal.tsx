@@ -428,7 +428,7 @@ export default function WalletModal() {
       />
       {/* Outer absolute position alignment box (dynamic height to avoid jumps) */}
       <div 
-        className={`relative transition-all duration-300 w-full sm:w-[500px] overflow-y-auto sm:overflow-visible rounded-none sm:rounded-[16px] flex flex-col mt-auto sm:mt-0 pb-0 sm:pb-0 h-auto sm:h-[var(--modal-height)]`}
+        className={`relative transition-all duration-300 w-full sm:w-[500px] overflow-visible rounded-none sm:rounded-[16px] flex flex-col mt-auto sm:mt-0 pb-0 sm:pb-0 h-auto sm:h-[var(--modal-height)]`}
         style={{ 
           '--modal-height': modalHeight,
           transform: `translateY(${modalDragY}px)`,
@@ -448,7 +448,7 @@ export default function WalletModal() {
 
         {/* Outer Modal Container */}
         <div 
-          className={`relative flex flex-col items-center bg-[#091741] rounded-[30px_30px_0px_0px] sm:rounded-[16px] w-full shadow-none sm:shadow-2xl isolation-isolate sm:transition-all sm:duration-300 pt-[16px] px-[20px] ${activeTab === 'deposit' ? 'pb-0' : 'pb-[40px]'} sm:p-[24px_20px_32px] gap-[16px] sm:gap-[24px]`}
+          className={`relative flex flex-col items-center bg-[#091741] rounded-[30px_30px_0px_0px] sm:rounded-[16px] w-full shadow-none sm:shadow-2xl isolation-isolate sm:transition-all sm:duration-300 pt-[16px] px-[20px] ${activeTab === 'deposit' ? 'pb-[20px]' : 'pb-[40px]'} sm:p-[24px_20px_32px] gap-[16px] sm:gap-[24px]`}
         >
           
           {/* Accent Glow Container (clips the glow to the card boundaries) */}
@@ -1392,13 +1392,13 @@ export default function WalletModal() {
           {/* Bottom Complete Button & Help Container */}
           {activeTab === "deposit" && (
             <div 
-              className="sticky sm:static bottom-0 flex flex-col items-center gap-[12px] w-[calc(100%+40px)] sm:w-[460px] flex-none z-[100] sm:z-10 bg-[#091741] sm:bg-transparent pb-[16px] sm:pb-0 pt-[16px] sm:pt-0 sm:mb-0 -mx-[20px] sm:mx-0 px-[20px] sm:px-0 border-t border-[#112F82] sm:border-transparent shadow-[0_-10px_30px_rgba(9,23,65,0.8)] sm:shadow-none"
+              className="sticky sm:static bottom-[20px] sm:bottom-auto flex flex-col items-center gap-[12px] w-full sm:w-[460px] flex-none z-[100] sm:z-10 bg-transparent pb-0 sm:pb-0 pt-0 sm:pt-0 sm:mb-0 mx-auto sm:mx-0 px-0 sm:px-0 border-none shadow-none pointer-events-none"
               style={{ height: isBtcSubmitted ? (typeof window !== "undefined" && window.innerWidth < 640 ? "auto" : "66px") : (typeof window !== "undefined" && window.innerWidth < 640 ? "auto" : "50px") }}
             >
               <button
                 onClick={handleActionClick}
                 disabled={isBtcSubmitted && loadingStep < 3}
-                className={`flex flex-row items-center justify-center px-[30px] py-[10px] gap-[10px] rounded-[8px] bg-[#FFC83D] font-manrope font-bold tracking-[0.02em] text-[#1A1404] transition-all ${
+                className={`pointer-events-auto shadow-[0_4px_20px_rgba(0,0,0,0.5)] sm:shadow-none flex flex-row items-center justify-center px-[30px] py-[10px] gap-[10px] rounded-[8px] bg-[#FFC83D] font-manrope font-bold tracking-[0.02em] text-[#1A1404] transition-all ${
                   isBtcSubmitted && loadingStep < 3 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#FFC83D]/90 cursor-pointer'
                 } ${
                   isBtcSubmitted 
@@ -1412,7 +1412,7 @@ export default function WalletModal() {
               </button>
 
               {isBtcSubmitted && (
-                <div className="flex flex-row justify-center items-center gap-[8px] w-full sm:w-[460px] h-[16px] sm:h-[14px]">
+                <div className="pointer-events-auto flex flex-row justify-center items-center gap-[8px] w-full sm:w-[460px] h-[16px] sm:h-[14px]">
                   <div className="w-[12px] h-[12px] flex items-center justify-center text-[#7795E8]">
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <circle cx="6" cy="6" r="5" stroke="#7795E8" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>

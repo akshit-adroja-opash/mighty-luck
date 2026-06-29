@@ -173,7 +173,7 @@ export default function ReferAFriendPage() {
               </div>
 
               {/* Stats Bar */}
-              <div className="relative z-10 flex flex-col xl:flex-row items-stretch xl:items-center justify-between p-[20px_24px] w-full xl:max-w-[1056px] h-auto xl:h-[104px] bg-[#0C1F56] xl:bg-[#091741] rounded-[16px] gap-[12px] xl:gap-[8px] mt-0 xl:mt-auto mx-auto md:col-span-1 xl:col-span-12 md:h-full">
+              <div className="relative z-10 flex flex-col xl:flex-row items-stretch xl:items-center justify-between p-[20px_24px] w-full h-auto xl:h-[104px] bg-[#0C1F56] xl:bg-[#091741] rounded-[16px] gap-[12px] xl:gap-[8px] mt-0 xl:mt-auto md:col-span-1 xl:col-span-12 md:h-full">
                 <div className="flex flex-col flex-none w-full xl:flex-1 gap-[8px]">
                   <span className="font-manrope text-[12px] font-semibold text-[#BBCAF3]">Total Referrals</span>
                   <div className="flex flex-row items-center p-[10px_16px] gap-[12px] bg-[#112F82] rounded-[8px] h-[50px] xl:h-[40px]">
