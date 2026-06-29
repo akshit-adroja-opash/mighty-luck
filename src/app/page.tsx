@@ -127,7 +127,7 @@ export default function HomePage() {
                       {activeCategory === "Collection" ? "Collections" : activeCategory}
                     </h2>
                     <div className="flex items-center justify-center px-[8px] py-[2px] bg-[#00D06C] rounded-[12px] text-[12px] font-bold text-white">
-                      91
+                      {displayGames.length}
                     </div>
                   </div>
 
@@ -171,10 +171,10 @@ export default function HomePage() {
                 <div className="flex flex-col items-center w-full mt-[20px] md:mt-[40px] mb-[20px] gap-[16px]">
                   <div className="flex flex-col items-center w-full max-w-[300px] gap-[8px]">
                     <div className="w-full h-[4px] bg-[#112F82] rounded-full overflow-hidden">
-                      <div className="h-full bg-[#00D06C] rounded-full" style={{ width: '30%' }}></div>
+                      <div className="h-full bg-[#00D06C] rounded-full" style={{ width: '100%' }}></div>
                     </div>
                     <span className="text-[#A5B8EF] text-[12px] font-manrope font-medium tracking-[0.02em]">
-                      You viewed 28 out of 91 games
+                      You viewed {displayGames.length} out of {displayGames.length} games
                     </span>
                   </div>
                   <button className="px-[24px] py-[10px] bg-transparent border border-[#1463FF] text-[#1463FF] rounded-[8px] font-manrope font-bold text-[14px] hover:bg-[#1463FF] hover:text-white transition-colors cursor-pointer">
