@@ -78,8 +78,8 @@ export default function WalletModal() {
   const [selectedBonus, setSelectedBonus] = useState("150% Reload Bonus + 30 Free Spins");
   const [showBonusDropdown, setShowBonusDropdown] = useState(false);
 
-  // CC wizard step: 'address' or 'payment'
-  const [ccStep, setCcStep] = useState<"address" | "payment">("address");
+  // CC wizard step: 'address' or 'payment' or 'success'
+  const [ccStep, setCcStep] = useState<"address" | "payment" | "success">("address");
   const [isBtcSubmitted, setIsBtcSubmitted] = useState(false);
   const [loadingStep, setLoadingStep] = useState(0);
 
@@ -317,7 +317,7 @@ export default function WalletModal() {
           return;
         }
         setCcStep("payment");
-      } else {
+      } else if (ccStep === "payment") {
         // Validation for Step 2 Payment
         const currentAmount = selectedAmountOption === "custom" ? customAmount : selectedAmountOption;
         if (!currentAmount || isNaN(parseFloat(currentAmount))) {
@@ -329,6 +329,9 @@ export default function WalletModal() {
           return;
         }
         toast.success(`$${currentAmount} deposit processing...`);
+        // Move to Success State
+        setCcStep("success");
+      } else if (ccStep === "success") {
         // Reset state after success
         setCcStep("address");
         setStreet("");
@@ -358,25 +361,25 @@ export default function WalletModal() {
     ? "532px" 
     : (isFixedSizeTab
         ? "518px"
-        : (paymentMethod === "btc" ? "604px" : (ccStep === "address" ? "633px" : "647px")));
+        : (paymentMethod === "btc" ? "604px" : (ccStep === "address" ? "633px" : (ccStep === "success" ? "655px" : "647px"))));
     
   const innerHeight = showSubmittedState 
     ? "386px" 
     : (isFixedSizeTab
         ? "462px"
-        : (paymentMethod === "btc" ? "474px" : (ccStep === "address" ? "503px" : "517px")));
+        : (paymentMethod === "btc" ? "474px" : (ccStep === "address" ? "503px" : (ccStep === "success" ? "525px" : "517px"))));
     
   const tabViewHeight = showSubmittedState 
     ? "287px" 
     : (isFixedSizeTab
         ? "363px"
-        : (paymentMethod === "btc" ? "376px" : (ccStep === "address" ? "404px" : "418px")));
+        : (paymentMethod === "btc" ? "376px" : (ccStep === "address" ? "404px" : (ccStep === "success" ? "426px" : "418px"))));
 
   const tabsContentHeight = showSubmittedState 
     ? "333px" 
     : (isFixedSizeTab
         ? "409px"
-        : (paymentMethod === "btc" ? "428px" : (ccStep === "address" ? "450px" : "464px")));
+        : (paymentMethod === "btc" ? "428px" : (ccStep === "address" ? "450px" : (ccStep === "success" ? "472px" : "464px"))));
 
   const activeAmount = selectedAmountOption === "custom" ? customAmount : selectedAmountOption;
   const bottomButtonLabel = isBtcSubmitted 
@@ -385,7 +388,9 @@ export default function WalletModal() {
         ? "I've completed my deposit" 
         : (ccStep === "address" 
             ? "Continue" 
-            : (activeAmount ? `Deposit $${activeAmount}` : "I've completed my deposit")));
+            : (ccStep === "success"
+                ? "Play Now"
+                : (activeAmount ? `Deposit $${activeAmount}` : "I've completed my deposit"))));
 
   const availableBonuses = [
     {
@@ -627,8 +632,10 @@ export default function WalletModal() {
                     </div>
                   ) : (
                     <>
-                    {/* Step 1: Select a Bonus */}
-                    <div className="relative flex flex-col gap-[8px] w-full sm:w-[428px] h-auto sm:h-[64px] flex-none">
+                    {ccStep !== "success" && (
+                      <>
+                        {/* Step 1: Select a Bonus */}
+                        <div className="relative flex flex-col gap-[8px] w-full sm:w-[428px] h-auto sm:h-[64px] flex-none">
                       <span className="font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#BBCAF3] w-auto h-[16px]">
                         Select a Bonus
                       </span>
@@ -872,8 +879,10 @@ export default function WalletModal() {
                         </div>
                       )}
                     </div>
+                  </>
+                )}
 
-                    {/* Conditional Form Body based on payment method */}
+                {/* Conditional Form Body based on payment method */}
                     {paymentMethod === "cc" ? (
                       ccStep === "address" ? (
                         /* CC Step 1: Address Form */
@@ -992,7 +1001,7 @@ export default function WalletModal() {
                             </div>
                           </div>
                         </div>
-                      ) : (
+                      ) : ccStep === "payment" ? (
                         /* CC Step 2: Payment Details Form */
                         <>
                           {/* Step 3: Select an amount */}
@@ -1104,6 +1113,65 @@ export default function WalletModal() {
                             </div>
                           </div>
                         </>
+                      ) : (
+                        /* CC Step 3: Success View */
+                        <div className="flex flex-col items-center gap-[16px] w-full sm:w-[428px] h-full flex-none pt-[8px]">
+                          {/* Success Icon Block */}
+                          <div className="flex flex-col items-center justify-center gap-[10px] w-full sm:w-[428px] h-[120px] relative">
+                            <div className="w-[120px] h-[120px] rounded-full border-[2px] border-[#1463FF] absolute opacity-50" />
+                            <div className="w-[70px] h-[70px] rounded-full bg-[#1463FF] flex items-center justify-center absolute z-10">
+                              <svg width="25" height="19" viewBox="0 0 25 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2.375 9.7L9.04167 16.1L22.375 2.5" stroke="white" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+                              </svg>
+                            </div>
+                          </div>
+                          
+                          {/* Text Info */}
+                          <div className="flex flex-col items-center gap-[8px] w-full sm:w-[428px] h-[67px]">
+                            <span className="font-manrope text-[20px] font-bold leading-[27px] text-center tracking-[0.02em] text-white">
+                              Deposit successful
+                            </span>
+                            <span className="font-manrope text-[12px] font-medium leading-[16px] text-center tracking-[0.02em] text-[#A5B8EF] px-[16px] sm:px-[0px]">
+                              Your credit card deposit was approved and your balance has been updated.
+                            </span>
+                          </div>
+
+                          {/* Summary Blocks */}
+                          <div className="flex flex-col items-start gap-[12px] w-full sm:w-[428px] h-[175px]">
+                            {/* Amount Summary */}
+                            <div className="flex flex-col justify-center items-start p-[10px_16px] gap-[8px] w-full bg-[#112F82] rounded-[8px]">
+                              <div className="flex flex-row justify-between items-center w-full h-[16px]">
+                                <span className="font-manrope text-[10px] font-semibold leading-[14px] tracking-[0.02em] text-[#A5B8EF]">Amount</span>
+                                <span className="font-manrope text-[12px] font-bold leading-[16px] tracking-[0.02em] text-white">${activeAmount || "50.00"}</span>
+                              </div>
+                              <div className="w-full border-b border-dashed border-[#193EA5]" />
+                              <div className="flex flex-row justify-between items-center w-full h-[16px]">
+                                <span className="font-manrope text-[10px] font-semibold leading-[14px] tracking-[0.02em] text-[#A5B8EF]">Payment Method</span>
+                                <span className="font-manrope text-[12px] font-bold leading-[16px] tracking-[0.02em] text-white">Credit Card</span>
+                              </div>
+                              <div className="w-full border-b border-dashed border-[#193EA5]" />
+                              <div className="flex flex-row justify-between items-center w-full h-[16px]">
+                                <span className="font-manrope text-[10px] font-semibold leading-[14px] tracking-[0.02em] text-[#A5B8EF]">Status</span>
+                                <span className="font-manrope text-[12px] font-bold leading-[16px] tracking-[0.02em] text-white">Completed</span>
+                              </div>
+                            </div>
+
+                            {/* Active Bonus Block */}
+                            {selectedBonus && selectedBonus !== "I will deposit without bonus" && (
+                              <div className="flex flex-col justify-center items-start p-[10px_16px] gap-[8px] w-full h-[63px] bg-[#112F82] rounded-[8px]">
+                                <span className="font-manrope text-[12px] font-medium leading-[16px] tracking-[0.02em] text-[#BBCAF3]">Active Bonus</span>
+                                <div className="flex flex-row items-center gap-[8px] w-full h-[19px]">
+                                  <div className="w-[16px] h-[16px] relative flex-none">
+                                    <div className="w-[16px] h-[16px] absolute bg-[#FFC727]" style={{ maskImage: 'url(/games/deposite-cashback/150.svg)', WebkitMaskImage: 'url(/games/deposite-cashback/150.svg)', maskSize: 'contain', WebkitMaskSize: 'contain', maskRepeat: 'no-repeat', WebkitMaskRepeat: 'no-repeat', maskPosition: 'center', WebkitMaskPosition: 'center' }} />
+                                  </div>
+                                  <span className="font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-white truncate">
+                                    {selectedBonus}
+                                  </span>
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        </div>
                       )
                     ) : (
                       /* Bitcoin Form View */
@@ -1401,9 +1469,11 @@ export default function WalletModal() {
                 className={`pointer-events-auto shadow-[0_4px_20px_rgba(0,0,0,0.5)] sm:shadow-none flex flex-row items-center justify-center px-[30px] py-[10px] gap-[10px] rounded-[8px] bg-[#FFC83D] font-manrope font-bold tracking-[0.02em] text-[#1A1404] transition-all ${
                   isBtcSubmitted && loadingStep < 3 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#FFC83D]/90 cursor-pointer'
                 } ${
-                  isBtcSubmitted 
-                    ? "w-full sm:w-[350px] h-[60px] sm:h-[40px] text-[16px] sm:text-[14px] leading-[22px] sm:leading-[19px]" 
-                    : "w-full sm:w-[300px] h-[60px] sm:h-[50px] text-[16px] sm:text-[14px] leading-[22px] sm:leading-[19px]"
+                  ccStep === "success"
+                    ? "w-full sm:w-[460px] h-[60px] sm:h-[50px] text-[16px] sm:text-[16px] leading-[22px] sm:leading-[22px]"
+                    : isBtcSubmitted 
+                      ? "w-full sm:w-[350px] h-[60px] sm:h-[40px] text-[16px] sm:text-[14px] leading-[22px] sm:leading-[19px]" 
+                      : "w-full sm:w-[300px] h-[60px] sm:h-[50px] text-[16px] sm:text-[14px] leading-[22px] sm:leading-[19px]"
                 }`}
               >
                 <span className="text-center truncate">
