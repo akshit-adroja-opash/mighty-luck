@@ -17,7 +17,7 @@ export default function Sidebar() {
       </div>
 
       {/* Menu Container */}
-      <div className={`flex flex-none flex-col rounded-[16px] bg-[#0C1F56] p-[16px] transition-all duration-300 ${sidebarOpen ? 'w-[232px]' : 'w-[72px]'}`}>
+      <div className={`flex flex-none flex-col rounded-[16px] bg-[#0C1F56] p-[12px] transition-all duration-300 ${sidebarOpen ? 'w-[232px]' : 'w-[72px]'}`}>
         <SidebarMenu isCollapsed={!sidebarOpen} />
       </div>
     </aside>
