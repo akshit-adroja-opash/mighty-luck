@@ -47,7 +47,6 @@ const SvgIconWrapper = (src: string) => {
       { name: "Providers", icon: SvgIconWrapper("/games/game-icons/game.svg") },
       { name: "Table Games", icon: SvgIconWrapper("/games/game-icons/table.svg") },
       { name: "Bonus Buys", icon: SvgIconWrapper("/games/game-icons/bonus.svg") },
-      { name: "Collection", icon: SvgIconWrapper("/games/game-icons/collections.svg") },
     ];
 
     return (
@@ -55,7 +54,7 @@ const SvgIconWrapper = (src: string) => {
         {categories.map((category) => {
           const Icon = category.icon;
           const isActive = category.name === activeCategory;
-          const isLongName = ["Providers", "Table Games", "Bonus Buys", "Collection"].includes(category.name);
+          const isLongName = ["Providers", "Table Games", "Bonus Buys"].includes(category.name);
           return (
             <button
               key={category.name}
@@ -110,7 +109,7 @@ const SvgIconWrapper = (src: string) => {
       </h2>
 
       {/* Crypto Logos */}
-      <div className="z-[2] flex flex-row flex-wrap items-center justify-between md:justify-center gap-[12px] md:gap-[12px] lg:gap-[20px] xl:gap-[28px] text-white w-[334px] md:w-auto pb-0 flex-none md:flex-1 h-[19px] md:h-auto">
+      <div className="z-[2] flex flex-row flex-wrap items-center justify-between md:justify-center gap-[8px] md:gap-[8px] lg:gap-[8px] xl:gap-[20px] 2xl:gap-[28px] text-white w-full max-w-[334px] md:w-auto md:max-w-none pb-0 flex-none md:flex-1 min-w-0 h-[19px] md:h-auto">
         <img src="/games/deposite-icon/d1.svg" alt="deposit icon" className="w-[13.38px] h-[18.39px] lg:w-auto lg:h-auto shrink" />
         <img src="/games/deposite-icon/d2.svg" alt="deposit icon" className="w-[11.3px] h-[18.09px] lg:w-auto lg:h-auto shrink" />
         <img src="/games/deposite-icon/d3.svg" alt="deposit icon" className="w-[19.09px] h-[17.73px] lg:w-auto lg:h-auto shrink" />
@@ -127,7 +126,7 @@ const SvgIconWrapper = (src: string) => {
       {/* Button */}
       <button className="z-[3] flex h-[40px] w-[148px] flex-none items-center justify-center rounded-[8px] bg-[#FFC83D] transition-colors hover:bg-yellow-400">
         <span className="font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-[#1A1404]">
-          <span className="md:hidden">Join</span>
+          <span className="md:hidden">Join </span>
           <span className="hidden md:inline">Deposit Now</span>
         </span>
       </button>

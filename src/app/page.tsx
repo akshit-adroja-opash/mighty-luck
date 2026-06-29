@@ -1,9 +1,10 @@
 "use client";
 import React from "react";
+import { useRouter } from "next/navigation";
 
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/store";
-import { setSelectedGame, openModal } from "@/store/slices/uiSlice";
+import { setSelectedGame, openModal, setActiveCategory } from "@/store/slices/uiSlice";
 
 import HeroBanner from "@/components/sections/HeroBanner";
 import DepositBanner from "@/components/sections/DepositBanner";
@@ -21,7 +22,7 @@ import GameCard from "@/components/ui/GameCard";
 import GameCarousel from "@/components/ui/GameCarousel";
 import { ProviderCard, providers } from "@/components/sections/ProvidersSection";
 
-const allGamesDatabase = [
+const baseGames = [
   { image: "/games/slots/slot-2.png", title: "SWEET BONANZA SUPER SCATTER", category: "Slots" },
   { image: "/games/slots/slot-3.png", title: "SWEET BONANZA", category: "Slots" },
   { image: "/games/slots/slot-4.png", title: "RETRO SWEETS", category: "Slots" },
@@ -44,6 +45,26 @@ const allGamesDatabase = [
   { image: "/games/table/table-1.png", title: "BLACKJACK VIP", category: "Blackjack" },
 ];
 
+const padCategories = ["Slots", "Originals", "Crash Games", "Table Games", "Bonus Buys", "Roulette", "Baccarat", "Blackjack"];
+const extraGames = padCategories.flatMap(category => {
+  return Array.from({ length: 30 }, (_, i) => {
+    let imgPath = `/games/slots/slot-${(i % 7) + 1}.png`;
+    if (category === 'Originals') imgPath = `/games/original/original-${(i % 8) + 1}.png`;
+    else if (category === 'Crash Games') imgPath = `/games/crash/crash-${(i % 8) + 1}.png`;
+    else if (['Table Games', 'Roulette', 'Baccarat', 'Blackjack'].includes(category)) {
+      imgPath = `/games/table/table-${(i % 8) + 1}.png`;
+    }
+    
+    return {
+      image: imgPath,
+      title: `${category.toUpperCase()} GAME ${i + 1}`,
+      category: category
+    };
+  });
+});
+
+const allGamesDatabase = [...baseGames, ...extraGames];
+
 const getCategoryIcon = (category: string) => {
   switch (category) {
     case "Slots": return "/games/game-icons/slot.svg";
@@ -63,6 +84,27 @@ export default function HomePage() {
   const activeCategory = useSelector((state: RootState) => state.ui.activeCategory);
   const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
   const dispatch = useDispatch();
+  const router = useRouter();
+
+  const [visibleCount, setVisibleCount] = React.useState(18);
+  const [isExpanded, setIsExpanded] = React.useState(false);
+  const [showBlocked, setShowBlocked] = React.useState(true);
+
+  React.useEffect(() => {
+    setIsExpanded(false);
+    if (typeof window !== 'undefined') {
+      const updateCount = () => {
+        if (window.innerWidth >= 1280) setVisibleCount(18);
+        else if (window.innerWidth >= 1024) setVisibleCount(14);
+        else if (window.innerWidth >= 768) setVisibleCount(10);
+        else if (window.innerWidth >= 640) setVisibleCount(8);
+        else setVisibleCount(9);
+      };
+      updateCount();
+      window.addEventListener('resize', updateCount);
+      return () => window.removeEventListener('resize', updateCount);
+    }
+  }, [activeCategory]);
 
   const sections = [
     { name: "Slots", Component: SlotsSection },
@@ -80,11 +122,18 @@ export default function HomePage() {
     // If no games found in DB, just generate some placeholders for the UI
     const displayGames = categoryGames.length > 0 
       ? categoryGames 
-      : Array.from({ length: 12 }, (_, i) => ({ 
-          image: `/games/slots/slot-${(i % 7) + 1}.png`, 
-          title: `${activeCategory} Game ${i + 1}`, 
-          category: activeCategory 
-        }));
+      : Array.from({ length: 28 }, (_, i) => {
+          let imgPath = `/games/slots/slot-${(i % 7) + 1}.png`;
+          if (activeCategory === 'Originals') imgPath = `/games/original/original-${(i % 8) + 1}.png`;
+          if (activeCategory === 'Crash Games') imgPath = `/games/crash/crash-${(i % 8) + 1}.png`;
+          if (activeCategory === 'Table Games') imgPath = `/games/table/table-${(i % 8) + 1}.png`;
+          
+          return {
+            image: imgPath,
+            title: `${activeCategory} Game ${i + 1}`,
+            category: activeCategory
+          };
+        });
 
     return (
       <main className="flex w-full flex-none flex-col gap-[30px] md:gap-6 lg:gap-10">
@@ -96,34 +145,113 @@ export default function HomePage() {
         <div className="flex flex-col gap-5 w-full">
           {(() => {
             const SectionComponent = sections.find(s => s.name === activeCategory)?.Component;
-            if (SectionComponent) {
-              let customTitle = `${activeCategory.toUpperCase()} GAMES`;
-              if (activeCategory === "Providers") customTitle = "GAME PROVIDERS";
-              if (activeCategory === "Collection") customTitle = "COLLECTIONS";
-              if (activeCategory === "Crash Games") customTitle = "CRASH GAMES";
-              if (activeCategory === "Table Games") customTitle = "TABLE GAMES";
-
-              return <SectionComponent title={customTitle} />;
+            
+            // Only use the custom Carousel components for special non-game grids
+            if (SectionComponent && activeCategory === "Collection") {
+              return <SectionComponent title="COLLECTIONS" />;
             }
+            
+            const isProvidersTab = activeCategory === "Providers";
+            const paddedProviders = isProvidersTab 
+              ? Array.from({ length: 34 }, (_, i) => providers[i % providers.length]) 
+              : [];
+            const totalItems = isProvidersTab ? paddedProviders.length : displayGames.length;
+            const currentVisible = Math.min(isExpanded ? totalItems : visibleCount, totalItems);
 
             return (
-              <GameCarousel
-                title={`${activeCategory.toUpperCase()} GAMES`}
-                icon={<img src={getCategoryIcon(activeCategory)} alt={activeCategory} className="w-[18px] h-[18px] md:w-[30px] md:h-[30px]" />}
-              >
-                {displayGames.map((game, index) => (
-                  <div key={index} className="flex-none snap-start">
-                    <GameCard 
-                      image={game.image} 
-                      title={game.title} 
-                      onClick={() => {
-                        dispatch(setSelectedGame(game));
-                        dispatch(openModal("gamePlay"));
-                      }}
-                    />
+              <section className="flex w-full flex-col items-start gap-[12px] md:gap-5">
+                <div className="flex w-full flex-row items-center justify-between mb-4">
+                  {/* Left Side: Back Arrow, Title, Count */}
+                  <div className="flex flex-row items-center gap-[12px]">
+                    <button 
+                      onClick={() => dispatch(setActiveCategory("Lobby"))}
+                      className="flex items-center justify-center w-[24px] h-[24px] md:w-[32px] md:h-[32px] rounded-[6px] hover:bg-[#112F82] transition-colors text-[#A5B8EF] hover:text-white cursor-pointer"
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[16px] h-[16px] md:w-[20px] md:h-[20px]">
+                        <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </button>
+                    <h2 className="font-jost text-[18px] md:text-[24px] font-bold text-white capitalize">
+                      {activeCategory === "Collection" ? "Collections" : (isProvidersTab ? "Game Providers" : activeCategory)}
+                    </h2>
+                    <div className="flex items-center justify-center px-[8px] py-[2px] bg-[#FFC700] rounded-[12px] text-[12px] font-bold text-black">
+                      {totalItems}
+                    </div>
                   </div>
-                ))}
-              </GameCarousel>
+
+                  {/* Right Side: Toggle and Provider Dropdown */}
+                  <div className="flex flex-row items-center gap-[16px]">
+                    <div className="hidden sm:flex items-center gap-[8px]">
+                      <span className="text-white text-[12px] font-manrope font-semibold">Show Blocked</span>
+                      <button 
+                        onClick={() => setShowBlocked(!showBlocked)}
+                        className={`relative w-[32px] h-[18px] rounded-full transition-colors cursor-pointer ${showBlocked ? 'bg-[#FFC700]' : 'bg-[#112F82]'}`}
+                      >
+                        <div className={`absolute top-[2px] w-[14px] h-[14px] rounded-full bg-white transition-all duration-200 ${showBlocked ? 'right-[2px]' : 'left-[2px] right-auto'}`} />
+                      </button>
+                    </div>
+                    <button className="flex items-center gap-[8px] px-[12px] py-[6px] bg-[#112F82] rounded-[6px] hover:bg-[#173EAD] transition-colors cursor-pointer">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 3H3V10H10V3Z" stroke="#A5B8EF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M21 3H14V10H21V3Z" stroke="#A5B8EF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M21 14H14V21H21V14Z" stroke="#A5B8EF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M10 14H3V21H10V14Z" stroke="#A5B8EF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                      <span className="text-[#A5B8EF] text-[12px] font-manrope font-semibold whitespace-nowrap">Provider: All</span>
+                    </button>
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-9 gap-[8px] md:gap-[12px] w-full">
+                  {isProvidersTab ? (
+                    paddedProviders.slice(0, currentVisible).map((provider, index) => (
+                      <div key={index} className="w-full">
+                        <ProviderCard 
+                          name={provider.name}
+                          games={provider.games}
+                          logo={provider.logo}
+                          fluid={true}
+                        />
+                      </div>
+                    ))
+                  ) : (
+                    displayGames.slice(0, currentVisible).map((game, index) => (
+                      <div key={index} className="w-full">
+                        <GameCard 
+                          image={game.image} 
+                          title={game.title}
+                          fluid={true}
+                          onClick={() => {
+                            dispatch(setSelectedGame(game));
+                            const gameId = game.image.split("/").pop()?.replace(".png", "") || "slot-1";
+                            router.push(`/games/${gameId}`);
+                          }}
+                        />
+                      </div>
+                    ))
+                  )}
+                </div>
+
+                {/* Bottom Area: Progress Bar and Load More */}
+                <div className="flex flex-col items-center w-full mt-[20px] md:mt-[40px] mb-[20px] gap-[16px]">
+                  <div className="flex flex-col items-center w-full max-w-[300px] gap-[8px]">
+                    <div className="w-full h-[4px] bg-[#112F82] rounded-full overflow-hidden">
+                      <div className="h-full bg-[#FFC700] rounded-full" style={{ width: `${(currentVisible / totalItems) * 100}%` }}></div>
+                    </div>
+                    <span className="text-[#A5B8EF] text-[12px] font-manrope font-medium tracking-[0.02em]">
+                      You viewed {currentVisible} out of {totalItems} {isProvidersTab ? 'providers' : 'games'}
+                    </span>
+                  </div>
+                  {!isExpanded && visibleCount < totalItems && (
+                    <button 
+                      onClick={() => setIsExpanded(true)}
+                      className="px-[24px] py-[10px] bg-transparent border border-[#1463FF] text-[#1463FF] rounded-[8px] font-manrope font-bold text-[14px] hover:bg-[#1463FF] hover:text-white transition-colors cursor-pointer"
+                    >
+                      Load More
+                    </button>
+                  )}
+                </div>
+              </section>
             );
           })()}
         </div>

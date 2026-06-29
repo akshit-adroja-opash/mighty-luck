@@ -12,7 +12,6 @@ import StoreProvider from "@/store/StoreProvider";
 import AuthModal from "@/components/auth/AuthModal";
 import WalletModal from "@/components/wallet/WalletModal";
 import LobbyModal from "@/components/lobby/LobbyModal";
-import GamePlayModal from "@/components/game/GamePlayModal";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -51,19 +50,21 @@ export default function RootLayout({
               <div className="hidden lg:block flex-none">
                 <Sidebar />
               </div>
-              <div className="flex flex-1 min-w-0 flex-col px-0 lg:pl-[24px] lg:pr-0 pb-[75px] lg:pb-0 gap-[60px] lg:gap-[40px] overflow-hidden">
-                {children}
+              <div className="flex flex-1 min-w-0 flex-col px-0 lg:pl-[24px] lg:pr-0 pb-[75px] lg:pb-0 overflow-hidden">
+                <div className="flex w-full max-w-[1800px] mx-auto flex-col gap-[60px] lg:gap-[40px]">
+                  {children}
 
-                <div className="w-full">
-                  <SeoContent />
-                </div>
+                  <div className="w-full">
+                    <SeoContent />
+                  </div>
 
-                <div className="w-full">
-                  <CryptoBanner />
-                </div>
+                  <div className="w-full">
+                    <CryptoBanner />
+                  </div>
 
-                <div className="w-full">
-                  <Footer />
+                  <div className="w-full">
+                    <Footer />
+                  </div>
                 </div>
               </div>
             </div>
@@ -71,7 +72,6 @@ export default function RootLayout({
           <AuthModal />
           <WalletModal />
           <LobbyModal />
-          <GamePlayModal />
           <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="light" />
         </StoreProvider>
       </body>

@@ -121,14 +121,13 @@ export default function GamePage() {
               {/* Game Window Placeholder
                   aspect-[1136/657] ensures height scales correctly with width
                */}
-              <div className="relative w-full aspect-[1136/657] flex-none overflow-hidden rounded-[16px]">
+              <div className="relative w-full max-w-[1600px] mx-auto aspect-[1136/657] flex-none overflow-hidden rounded-[16px]">
                 <Image
                   src="/game-1.png"
                   alt={game.title}
                   fill
                   className="object-cover"
                 />
-
               </div>
 
               {/* Info Bar (100px) */}

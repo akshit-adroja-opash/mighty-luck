@@ -78,8 +78,8 @@ export default function WalletModal() {
   const [selectedBonus, setSelectedBonus] = useState("150% Reload Bonus + 30 Free Spins");
   const [showBonusDropdown, setShowBonusDropdown] = useState(false);
 
-  // CC wizard step: 'address' or 'payment'
-  const [ccStep, setCcStep] = useState<"address" | "payment">("address");
+  // CC wizard step: 'address' or 'payment' or 'success'
+  const [ccStep, setCcStep] = useState<"address" | "payment" | "success">("address");
   const [isBtcSubmitted, setIsBtcSubmitted] = useState(false);
   const [loadingStep, setLoadingStep] = useState(0);
 
@@ -97,6 +97,13 @@ export default function WalletModal() {
       return () => clearInterval(interval);
     }
   }, [isBtcSubmitted]);
+
+  // Entrance animation state
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => setIsMounted(true), 10);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Address Form states
   const [street, setStreet] = useState("");
@@ -310,7 +317,7 @@ export default function WalletModal() {
           return;
         }
         setCcStep("payment");
-      } else {
+      } else if (ccStep === "payment") {
         // Validation for Step 2 Payment
         const currentAmount = selectedAmountOption === "custom" ? customAmount : selectedAmountOption;
         if (!currentAmount || isNaN(parseFloat(currentAmount))) {
@@ -322,6 +329,9 @@ export default function WalletModal() {
           return;
         }
         toast.success(`$${currentAmount} deposit processing...`);
+        // Move to Success State
+        setCcStep("success");
+      } else if (ccStep === "success") {
         // Reset state after success
         setCcStep("address");
         setStreet("");
@@ -351,25 +361,25 @@ export default function WalletModal() {
     ? "532px" 
     : (isFixedSizeTab
         ? "518px"
-        : (paymentMethod === "btc" ? "604px" : (ccStep === "address" ? "633px" : "647px")));
+        : (paymentMethod === "btc" ? "604px" : (ccStep === "address" ? "633px" : (ccStep === "success" ? "655px" : "647px"))));
     
   const innerHeight = showSubmittedState 
     ? "386px" 
     : (isFixedSizeTab
         ? "462px"
-        : (paymentMethod === "btc" ? "474px" : (ccStep === "address" ? "503px" : "517px")));
+        : (paymentMethod === "btc" ? "474px" : (ccStep === "address" ? "503px" : (ccStep === "success" ? "525px" : "517px"))));
     
   const tabViewHeight = showSubmittedState 
     ? "287px" 
     : (isFixedSizeTab
         ? "363px"
-        : (paymentMethod === "btc" ? "376px" : (ccStep === "address" ? "404px" : "418px")));
+        : (paymentMethod === "btc" ? "376px" : (ccStep === "address" ? "404px" : (ccStep === "success" ? "426px" : "418px"))));
 
   const tabsContentHeight = showSubmittedState 
     ? "333px" 
     : (isFixedSizeTab
         ? "409px"
-        : (paymentMethod === "btc" ? "428px" : (ccStep === "address" ? "450px" : "464px")));
+        : (paymentMethod === "btc" ? "428px" : (ccStep === "address" ? "450px" : (ccStep === "success" ? "472px" : "464px"))));
 
   const activeAmount = selectedAmountOption === "custom" ? customAmount : selectedAmountOption;
   const bottomButtonLabel = isBtcSubmitted 
@@ -378,7 +388,9 @@ export default function WalletModal() {
         ? "I've completed my deposit" 
         : (ccStep === "address" 
             ? "Continue" 
-            : (activeAmount ? `Deposit $${activeAmount}` : "I've completed my deposit")));
+            : (ccStep === "success"
+                ? "Play Now"
+                : (activeAmount ? `Deposit $${activeAmount}` : "I've completed my deposit"))));
 
   const availableBonuses = [
     {
@@ -404,12 +416,24 @@ export default function WalletModal() {
     },
   ];
 
+  // Calculate dynamic backdrop opacity based on drag distance
+  // Fades out completely by the time it's dragged down 300px. Also fades in smoothly on mount.
+  const backdropOpacity = isMounted ? Math.max(0, 1 - (modalDragY / 300)) : 0;
+
   return (
-    <div className="fixed top-[50px] sm:top-0 inset-x-0 bottom-0 z-[130] flex flex-col items-center justify-start sm:justify-center bg-[#0C1F56] sm:bg-[#0C1733]/70 sm:backdrop-blur-[8px] sm:p-4 overflow-y-auto">
+    <div className="fixed top-[50px] sm:top-0 inset-x-0 bottom-0 z-[150] flex flex-col items-center justify-start sm:justify-center sm:p-4 overflow-y-auto">
       
+      {/* Animated Backdrop */}
+      <div 
+        className="absolute inset-0 bg-transparent sm:bg-[#0C1733]/70 backdrop-blur-[4px] sm:backdrop-blur-[8px] pointer-events-none -z-10"
+        style={{
+          opacity: backdropOpacity,
+          transition: isDraggingModal ? 'none' : 'opacity 0.3s ease-out'
+        }}
+      />
       {/* Outer absolute position alignment box (dynamic height to avoid jumps) */}
       <div 
-        className={`relative transition-all duration-300 w-full sm:w-[500px] overflow-y-auto sm:overflow-visible rounded-none sm:rounded-[16px] flex flex-col mt-auto sm:mt-0 pb-0 sm:pb-0 h-auto sm:h-[var(--modal-height)]`}
+        className={`relative transition-all duration-300 w-full sm:w-[500px] overflow-visible rounded-none sm:rounded-[16px] flex flex-col mt-auto sm:mt-0 pb-0 sm:pb-0 h-auto sm:h-[var(--modal-height)]`}
         style={{ 
           '--modal-height': modalHeight,
           transform: `translateY(${modalDragY}px)`,
@@ -429,7 +453,7 @@ export default function WalletModal() {
 
         {/* Outer Modal Container */}
         <div 
-          className={`relative flex flex-col items-center bg-[#091741] rounded-[30px_30px_0px_0px] sm:rounded-[16px] w-full shadow-none sm:shadow-2xl isolation-isolate transition-all duration-300 pt-[16px] px-[20px] ${activeTab === 'deposit' ? 'pb-0' : 'pb-[40px]'} sm:p-[24px_20px_32px] gap-[16px] sm:gap-[24px]`}
+          className={`relative flex flex-col items-center bg-[#091741] rounded-[30px_30px_0px_0px] sm:rounded-[16px] w-full shadow-none sm:shadow-2xl isolation-isolate sm:transition-all sm:duration-300 pt-[16px] px-[20px] ${activeTab === 'deposit' ? 'pb-[20px]' : 'pb-[40px]'} sm:p-[24px_20px_32px] gap-[16px] sm:gap-[24px]`}
         >
           
           {/* Accent Glow Container (clips the glow to the card boundaries) */}
@@ -461,7 +485,7 @@ export default function WalletModal() {
 
           {/* Inner Content Box */}
           <div 
-            className={`relative z-20 flex flex-col items-start w-full sm:w-[460px] gap-[24px] transition-all duration-300 h-auto sm:h-[var(--inner-height)]`}
+            className={`relative z-20 flex flex-col items-start w-full sm:w-[460px] gap-[24px] sm:transition-all sm:duration-300 h-auto sm:h-[var(--inner-height)]`}
             style={{ '--inner-height': innerHeight } as React.CSSProperties}
           >
             
@@ -504,7 +528,7 @@ export default function WalletModal() {
 
             {/* Tab container / Form content area */}
             <div 
-              className={`flex flex-col items-start w-full sm:w-[460px] gap-[16px] transition-all duration-300 h-auto sm:h-[var(--tabs-content-height)]`}
+              className={`flex flex-col items-start w-full sm:w-[460px] gap-[16px] sm:transition-all sm:duration-300 h-auto sm:h-[var(--tabs-content-height)]`}
               style={{ '--tabs-content-height': tabsContentHeight } as React.CSSProperties}
             >
               
@@ -522,7 +546,7 @@ export default function WalletModal() {
                           : "bg-[#112F82]"
                       }`}
                     >
-                      <span className={`font-manrope text-[11px] sm:text-[12px] leading-[16px] tracking-[0.02em] text-center whitespace-nowrap flex items-center justify-center ${
+                      <span className={`font-manrope text-[13px] sm:text-[12px] leading-[16px] tracking-[0.02em] text-center whitespace-nowrap flex items-center justify-center ${
                         isActive 
                           ? "text-white font-bold" 
                           : "text-[#A5B8EF] font-semibold"
@@ -536,7 +560,7 @@ export default function WalletModal() {
 
               {/* Tab View Container */}
               <div 
-                className={`flex flex-col items-start gap-[16px] w-full sm:w-[460px] bg-[#0C1F56] rounded-[16px] overflow-visible transition-all duration-300 h-auto sm:h-[var(--tab-view-height)] ${
+                className={`flex flex-col items-start gap-[16px] w-full sm:w-[460px] bg-[#0C1F56] rounded-[16px] overflow-visible sm:transition-all sm:duration-300 h-auto sm:h-[var(--tab-view-height)] ${
                   showSubmittedState ? "p-[20px_16px]" : "p-[16px]"
                 }`}
                 style={{ '--tab-view-height': tabViewHeight } as React.CSSProperties}
@@ -608,8 +632,10 @@ export default function WalletModal() {
                     </div>
                   ) : (
                     <>
-                    {/* Step 1: Select a Bonus */}
-                    <div className="relative flex flex-col gap-[8px] w-full sm:w-[428px] h-auto sm:h-[64px] flex-none">
+                    {ccStep !== "success" && (
+                      <>
+                        {/* Step 1: Select a Bonus */}
+                        <div className="relative flex flex-col gap-[8px] w-full sm:w-[428px] h-auto sm:h-[64px] flex-none">
                       <span className="font-manrope text-[12px] font-semibold leading-[16px] tracking-[0.02em] text-[#BBCAF3] w-auto h-[16px]">
                         Select a Bonus
                       </span>
@@ -853,8 +879,10 @@ export default function WalletModal() {
                         </div>
                       )}
                     </div>
+                  </>
+                )}
 
-                    {/* Conditional Form Body based on payment method */}
+                {/* Conditional Form Body based on payment method */}
                     {paymentMethod === "cc" ? (
                       ccStep === "address" ? (
                         /* CC Step 1: Address Form */
@@ -973,7 +1001,7 @@ export default function WalletModal() {
                             </div>
                           </div>
                         </div>
-                      ) : (
+                      ) : ccStep === "payment" ? (
                         /* CC Step 2: Payment Details Form */
                         <>
                           {/* Step 3: Select an amount */}
@@ -1085,6 +1113,65 @@ export default function WalletModal() {
                             </div>
                           </div>
                         </>
+                      ) : (
+                        /* CC Step 3: Success View */
+                        <div className="flex flex-col items-center gap-[16px] w-full sm:w-[428px] h-full flex-none pt-[8px]">
+                          {/* Success Icon Block */}
+                          <div className="flex flex-col items-center justify-center gap-[10px] w-full sm:w-[428px] h-[120px] relative">
+                            <div className="w-[120px] h-[120px] rounded-full border-[2px] border-[#1463FF] absolute opacity-50" />
+                            <div className="w-[70px] h-[70px] rounded-full bg-[#1463FF] flex items-center justify-center absolute z-10">
+                              <svg width="25" height="19" viewBox="0 0 25 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2.375 9.7L9.04167 16.1L22.375 2.5" stroke="white" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+                              </svg>
+                            </div>
+                          </div>
+                          
+                          {/* Text Info */}
+                          <div className="flex flex-col items-center gap-[8px] w-full sm:w-[428px] h-[67px]">
+                            <span className="font-manrope text-[20px] font-bold leading-[27px] text-center tracking-[0.02em] text-white">
+                              Deposit successful
+                            </span>
+                            <span className="font-manrope text-[12px] font-medium leading-[16px] text-center tracking-[0.02em] text-[#A5B8EF] px-[16px] sm:px-[0px]">
+                              Your credit card deposit was approved and your balance has been updated.
+                            </span>
+                          </div>
+
+                          {/* Summary Blocks */}
+                          <div className="flex flex-col items-start gap-[12px] w-full sm:w-[428px] h-[175px]">
+                            {/* Amount Summary */}
+                            <div className="flex flex-col justify-center items-start p-[10px_16px] gap-[8px] w-full bg-[#112F82] rounded-[8px]">
+                              <div className="flex flex-row justify-between items-center w-full h-[16px]">
+                                <span className="font-manrope text-[10px] font-semibold leading-[14px] tracking-[0.02em] text-[#A5B8EF]">Amount</span>
+                                <span className="font-manrope text-[12px] font-bold leading-[16px] tracking-[0.02em] text-white">${activeAmount || "50.00"}</span>
+                              </div>
+                              <div className="w-full border-b border-dashed border-[#193EA5]" />
+                              <div className="flex flex-row justify-between items-center w-full h-[16px]">
+                                <span className="font-manrope text-[10px] font-semibold leading-[14px] tracking-[0.02em] text-[#A5B8EF]">Payment Method</span>
+                                <span className="font-manrope text-[12px] font-bold leading-[16px] tracking-[0.02em] text-white">Credit Card</span>
+                              </div>
+                              <div className="w-full border-b border-dashed border-[#193EA5]" />
+                              <div className="flex flex-row justify-between items-center w-full h-[16px]">
+                                <span className="font-manrope text-[10px] font-semibold leading-[14px] tracking-[0.02em] text-[#A5B8EF]">Status</span>
+                                <span className="font-manrope text-[12px] font-bold leading-[16px] tracking-[0.02em] text-white">Completed</span>
+                              </div>
+                            </div>
+
+                            {/* Active Bonus Block */}
+                            {selectedBonus && selectedBonus !== "I will deposit without bonus" && (
+                              <div className="flex flex-col justify-center items-start p-[10px_16px] gap-[8px] w-full h-[63px] bg-[#112F82] rounded-[8px]">
+                                <span className="font-manrope text-[12px] font-medium leading-[16px] tracking-[0.02em] text-[#BBCAF3]">Active Bonus</span>
+                                <div className="flex flex-row items-center gap-[8px] w-full h-[19px]">
+                                  <div className="w-[16px] h-[16px] relative flex-none">
+                                    <div className="w-[16px] h-[16px] absolute bg-[#FFC727]" style={{ maskImage: 'url(/games/deposite-cashback/150.svg)', WebkitMaskImage: 'url(/games/deposite-cashback/150.svg)', maskSize: 'contain', WebkitMaskSize: 'contain', maskRepeat: 'no-repeat', WebkitMaskRepeat: 'no-repeat', maskPosition: 'center', WebkitMaskPosition: 'center' }} />
+                                  </div>
+                                  <span className="font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-white truncate">
+                                    {selectedBonus}
+                                  </span>
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        </div>
                       )
                     ) : (
                       /* Bitcoin Form View */
@@ -1373,18 +1460,20 @@ export default function WalletModal() {
           {/* Bottom Complete Button & Help Container */}
           {activeTab === "deposit" && (
             <div 
-              className="sticky sm:static bottom-0 flex flex-col items-center gap-[12px] w-[calc(100%+40px)] sm:w-[460px] flex-none z-[100] sm:z-10 bg-[#091741] sm:bg-transparent pb-[16px] sm:pb-0 pt-[16px] sm:pt-0 sm:mb-0 -mx-[20px] sm:mx-0 px-[20px] sm:px-0 border-t border-[#112F82] sm:border-transparent shadow-[0_-10px_30px_rgba(9,23,65,0.8)] sm:shadow-none"
+              className="sticky sm:static bottom-[20px] sm:bottom-auto flex flex-col items-center gap-[12px] w-full sm:w-[460px] flex-none z-[100] sm:z-10 bg-transparent pb-0 sm:pb-0 pt-0 sm:pt-0 sm:mb-0 mx-auto sm:mx-0 px-0 sm:px-0 border-none shadow-none pointer-events-none"
               style={{ height: isBtcSubmitted ? (typeof window !== "undefined" && window.innerWidth < 640 ? "auto" : "66px") : (typeof window !== "undefined" && window.innerWidth < 640 ? "auto" : "50px") }}
             >
               <button
                 onClick={handleActionClick}
                 disabled={isBtcSubmitted && loadingStep < 3}
-                className={`flex flex-row items-center justify-center px-[30px] py-[10px] gap-[10px] rounded-[8px] bg-[#FFC83D] font-manrope font-bold tracking-[0.02em] text-[#1A1404] transition-all ${
+                className={`pointer-events-auto shadow-[0_4px_20px_rgba(0,0,0,0.5)] sm:shadow-none flex flex-row items-center justify-center px-[30px] py-[10px] gap-[10px] rounded-[8px] bg-[#FFC83D] font-manrope font-bold tracking-[0.02em] text-[#1A1404] transition-all ${
                   isBtcSubmitted && loadingStep < 3 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#FFC83D]/90 cursor-pointer'
                 } ${
-                  isBtcSubmitted 
-                    ? "w-full sm:w-[350px] h-[60px] sm:h-[40px] text-[16px] sm:text-[14px] leading-[22px] sm:leading-[19px]" 
-                    : "w-full sm:w-[300px] h-[60px] sm:h-[50px] text-[16px] sm:text-[14px] leading-[22px] sm:leading-[19px]"
+                  ccStep === "success"
+                    ? "w-full sm:w-[460px] h-[60px] sm:h-[50px] text-[16px] sm:text-[16px] leading-[22px] sm:leading-[22px]"
+                    : isBtcSubmitted 
+                      ? "w-full sm:w-[350px] h-[60px] sm:h-[40px] text-[16px] sm:text-[14px] leading-[22px] sm:leading-[19px]" 
+                      : "w-full sm:w-[300px] h-[60px] sm:h-[50px] text-[16px] sm:text-[14px] leading-[22px] sm:leading-[19px]"
                 }`}
               >
                 <span className="text-center truncate">
@@ -1393,7 +1482,7 @@ export default function WalletModal() {
               </button>
 
               {isBtcSubmitted && (
-                <div className="flex flex-row justify-center items-center gap-[8px] w-full sm:w-[460px] h-[16px] sm:h-[14px]">
+                <div className="pointer-events-auto flex flex-row justify-center items-center gap-[8px] w-full sm:w-[460px] h-[16px] sm:h-[14px]">
                   <div className="w-[12px] h-[12px] flex items-center justify-center text-[#7795E8]">
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <circle cx="6" cy="6" r="5" stroke="#7795E8" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>

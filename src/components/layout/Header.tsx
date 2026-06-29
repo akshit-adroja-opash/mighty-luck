@@ -46,8 +46,9 @@ export default function Header() {
   };
 
   return (
-    <header className={`sticky top-0 z-[140] sm:z-[120] w-full justify-center bg-[#0C1F56] ${isAuthOpen ? 'hidden md:flex' : 'flex'}`}>
-      <div className="relative flex flex-row items-center justify-between w-full max-w-[1440px] mx-auto h-[50px] lg:h-[60px] px-5 lg:px-6">
+    <>
+      <header className={`sticky top-0 z-[120] w-full justify-center bg-[#0C1F56] ${isAuthOpen ? 'hidden md:flex' : 'flex'}`}>
+        <div className="relative flex flex-row items-center justify-between w-full h-[50px] lg:h-[60px] px-5 lg:px-6">
 
         {/* Blue Glow */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
@@ -106,9 +107,9 @@ export default function Header() {
                     setIsMobileMenuOpen(false);
                     dispatch(openModal("wallet"));
                   }}
-                  className="flex h-[30px] w-[82px] lg:h-[40px] lg:w-[116px] flex-none flex-row items-center justify-center rounded-[6px] lg:rounded-[8px] bg-[#112F82] px-[20px] lg:px-[30px] py-[8px] lg:py-0 gap-[7.5px] lg:gap-[10px] cursor-pointer hover:bg-[#173EAD] transition-colors"
+                  className="flex h-[30px] w-auto lg:h-[40px] lg:w-[116px] flex-none flex-row items-center justify-center rounded-[6px] lg:rounded-[8px] bg-[#112F82] px-[12px] lg:px-[30px] py-[8px] lg:py-0 gap-[7.5px] lg:gap-[10px] cursor-pointer hover:bg-[#173EAD] transition-colors"
                 >
-                  <span className="flex-none font-manrope text-[10.5px] lg:text-[14px] font-bold leading-[14px] lg:leading-[19px] tracking-[0.02em] text-white select-none">$105,98</span>
+                  <span className="flex-none font-manrope text-[13px] lg:text-[14px] font-bold leading-[16px] lg:leading-[19px] tracking-[0.02em] text-white select-none">$105,98</span>
                 </div>
                 <button
                   onClick={() => {
@@ -116,7 +117,7 @@ export default function Header() {
                     setIsMobileMenuOpen(false);
                     dispatch(openModal("wallet"));
                   }}
-                  className="flex h-[30px] w-[30px] lg:h-[40px] lg:w-[110px] flex-none flex-row items-center justify-center rounded-[6px] lg:rounded-[8px] bg-[#FFC83D] transition-colors hover:opacity-90 cursor-pointer p-[8px] lg:px-[16px] lg:py-[0px] gap-2"
+                  className="hidden lg:flex h-[30px] w-[30px] lg:h-[40px] lg:w-[110px] flex-none flex-row items-center justify-center rounded-[6px] lg:rounded-[8px] bg-[#FFC83D] transition-colors hover:opacity-90 cursor-pointer p-[8px] lg:px-[16px] lg:py-[0px] gap-2"
                 >
                   <Wallet className="w-[12px] h-[12px] lg:w-[15px] lg:h-[15px] text-[#1A1404] flex-none" fill="#1A1404" />
                   <span className="hidden lg:inline font-manrope text-[14px] font-semibold leading-[19px] tracking-[0.02em] text-[#1A1404]">Deposit</span>
@@ -198,8 +199,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Bottom Navigation */}
-      <MobileBottomNav isMobileMenuOpen={isMobileMenuOpen} setIsMobileMenuOpen={setIsMobileMenuOpen} />
+
 
       {/* Mobile Full Screen Menu Overlay (< 768px) with animation */}
       <AnimatePresence>
@@ -212,6 +212,14 @@ export default function Header() {
             className="fixed left-0 right-0 top-[50px] bottom-[64px] bg-[#0C1F56] z-30 md:hidden flex flex-col items-center overflow-y-auto px-5 py-5"
           >
             <div className="flex w-full max-w-[374px] flex-col gap-[16px] pb-[40px]">
+              <div className="flex w-full justify-end mb-[-8px]">
+                <button
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="flex h-[32px] w-[32px] items-center justify-center rounded-full bg-[#112F82] text-white hover:bg-[#173EAD] transition-colors cursor-pointer"
+                >
+                  <X size={20} />
+                </button>
+              </div>
               <div className="flex w-full justify-center">
                 <TopPromoCards />
               </div>
@@ -225,6 +233,14 @@ export default function Header() {
       {isMobileMenuOpen && (
         <div className="fixed left-0 right-0 top-[50px] bottom-[64px] bg-[#0C1F56] z-30 hidden md:flex lg:hidden flex-col items-center overflow-y-auto px-5 py-5">
           <div className="flex w-full max-w-[640px] flex-col gap-[16px] pb-[40px]">
+            <div className="flex w-full justify-end mb-[-8px]">
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="flex h-[32px] w-[32px] items-center justify-center rounded-full bg-[#112F82] text-white hover:bg-[#173EAD] transition-colors cursor-pointer"
+              >
+                <X size={20} />
+              </button>
+            </div>
             <div className="flex w-full justify-center">
               <TopPromoCards />
             </div>
@@ -232,6 +248,10 @@ export default function Header() {
           </div>
         </div>
       )}
-    </header>
+      </header>
+
+      {/* Mobile Bottom Navigation */}
+      <MobileBottomNav isMobileMenuOpen={isMobileMenuOpen} setIsMobileMenuOpen={setIsMobileMenuOpen} />
+    </>
   );
 }

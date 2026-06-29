@@ -7,12 +7,15 @@ interface ProviderCardProps {
   name: string;
   games: number;
   logo?: string;
+  fluid?: boolean;
 }
 
-export function ProviderCard({ name, games, logo }: ProviderCardProps) {
+export function ProviderCard({ name, games, logo, fluid = false }: ProviderCardProps) {
   return (
     <div
-      className="group flex h-[60px] md:h-[100px] w-[88px] md:w-[152px] flex-none cursor-pointer flex-col items-center justify-center gap-[4.8px] md:gap-[8px] rounded-[8px] md:rounded-[12px] bg-[#0C1F56] px-[14.4px] md:px-[24px] py-[7.2px] md:py-[12px] transition-colors hover:bg-[#173EAD]"
+      className={`group flex h-[60px] md:h-[100px] flex-none cursor-pointer flex-col items-center justify-center gap-[4.8px] md:gap-[8px] rounded-[8px] md:rounded-[12px] bg-[#0C1F56] px-[14.4px] md:px-[24px] py-[7.2px] md:py-[12px] transition-colors hover:bg-[#173EAD] ${
+        fluid ? "w-full" : "w-[88px] md:w-[152px]"
+      }`}
     >
       {/* Logo area */}
       <div className="flex h-[24px] md:h-[40px] w-[48px] md:w-[80px] flex-none items-center justify-center">
@@ -53,22 +56,20 @@ const topProviders = Array.from({ length: 20 }, (_, i) => providers[i % provider
 
 export default function ProvidersSection({ title = "GAME PROVIDERS (34)" }: { title?: string }) {
   return (
-    <div className="flex flex-col gap-[12px] md:gap-5 w-full flex-none overflow-hidden">
-      <GameCarousel
-        title={title}
-        titleWidth="237px"
-        icon={<img src="/games/game-icons/game.svg" alt="Game Providers" className="w-[18px] h-[18px] md:w-[30px] md:h-[30px]" />}
-      >
-          {topProviders.map((provider, index) => (
-            <div key={index} className="flex-none snap-start">
-              <ProviderCard
-                name={provider.name}
-                games={provider.games}
-                logo={provider.logo}
-              />
-            </div>
-          ))}
-      </GameCarousel>
-    </div>
+    <GameCarousel
+      title={title}
+      icon={<img src="/games/game-icons/game.svg" alt="Game Providers" className="w-[18px] h-[18px] md:w-[30px] md:h-[30px]" />}
+      iconBg="bg-transparent"
+    >
+        {topProviders.map((provider, index) => (
+          <div key={index} className="flex-none snap-start">
+            <ProviderCard
+              name={provider.name}
+              games={provider.games}
+              logo={provider.logo}
+            />
+          </div>
+        ))}
+    </GameCarousel>
   );
 }

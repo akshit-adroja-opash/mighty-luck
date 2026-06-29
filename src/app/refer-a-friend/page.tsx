@@ -173,7 +173,7 @@ export default function ReferAFriendPage() {
               </div>
 
               {/* Stats Bar */}
-              <div className="relative z-10 flex flex-col xl:flex-row items-stretch xl:items-center justify-between p-[20px_24px] w-full xl:max-w-[1056px] h-auto xl:h-[104px] bg-[#0C1F56] xl:bg-[#091741] rounded-[16px] gap-[12px] xl:gap-[8px] mt-0 xl:mt-auto mx-auto md:col-span-1 xl:col-span-12 md:h-full">
+              <div className="relative z-10 flex flex-col xl:flex-row items-stretch xl:items-center justify-between p-[20px_24px] w-full h-auto xl:h-[104px] bg-[#0C1F56] xl:bg-[#091741] rounded-[16px] gap-[12px] xl:gap-[8px] mt-0 xl:mt-auto md:col-span-1 xl:col-span-12 md:h-full">
                 <div className="flex flex-col flex-none w-full xl:flex-1 gap-[8px]">
                   <span className="font-manrope text-[12px] font-semibold text-[#BBCAF3]">Total Referrals</span>
                   <div className="flex flex-row items-center p-[10px_16px] gap-[12px] bg-[#112F82] rounded-[8px] h-[50px] xl:h-[40px]">
@@ -318,14 +318,14 @@ export default function ReferAFriendPage() {
                 </div>
                 <h3 className="font-jost text-[16px] leading-[23px] lg:text-[20px] lg:leading-[29px] font-extrabold text-white uppercase tracking-[0.01em]">HOW REFERRAL PROGRAM WORKS</h3>
               </div>
-              <div className="flex flex-col lg:flex-row gap-[12px] w-full">
-                <div className="relative flex-none w-full lg:flex-1 rounded-[16px] overflow-hidden aspect-[374/220] lg:aspect-[370/220]">
+              <div className="flex flex-col md:flex-row gap-[12px] w-full">
+                <div className="relative w-full md:flex-1 max-w-[400px] md:max-w-[600px] mx-auto md:mx-0 rounded-[16px] overflow-hidden aspect-[374/220] lg:aspect-[370/220]">
                   <Image src="/games/refrels/r1.png" alt="Step 1" fill className="object-cover" />
                 </div>
-                <div className="relative flex-none w-full lg:flex-1 rounded-[16px] overflow-hidden aspect-[374/220] lg:aspect-[370/220]">
+                <div className="relative w-full md:flex-1 max-w-[400px] md:max-w-[600px] mx-auto md:mx-0 rounded-[16px] overflow-hidden aspect-[374/220] lg:aspect-[370/220]">
                   <Image src="/games/refrels/r2.png" alt="Step 2" fill className="object-cover" />
                 </div>
-                <div className="relative flex-none w-full lg:flex-1 rounded-[16px] overflow-hidden aspect-[374/220] lg:aspect-[370/220]">
+                <div className="relative w-full md:flex-1 max-w-[400px] md:max-w-[600px] mx-auto md:mx-0 rounded-[16px] overflow-hidden aspect-[374/220] lg:aspect-[370/220]">
                   <Image src="/games/refrels/r3.png" alt="Step 3" fill className="object-cover" />
                 </div>
               </div>
