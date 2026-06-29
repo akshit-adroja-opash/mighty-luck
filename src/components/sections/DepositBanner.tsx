@@ -126,7 +126,7 @@ const SvgIconWrapper = (src: string) => {
       {/* Button */}
       <button className="z-[3] flex h-[40px] w-[148px] flex-none items-center justify-center rounded-[8px] bg-[#FFC83D] transition-colors hover:bg-yellow-400">
         <span className="font-manrope text-[14px] font-bold leading-[19px] tracking-[0.02em] text-[#1A1404]">
-          <span className="md:hidden">Join</span>
+          <span className="md:hidden">Join </span>
           <span className="hidden md:inline">Deposit Now</span>
         </span>
       </button>
