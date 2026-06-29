@@ -64,6 +64,25 @@ export default function HomePage() {
   const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
   const dispatch = useDispatch();
 
+  const [visibleCount, setVisibleCount] = React.useState(18);
+  const [isExpanded, setIsExpanded] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsExpanded(false);
+    if (typeof window !== 'undefined') {
+      const updateCount = () => {
+        if (window.innerWidth >= 1280) setVisibleCount(18);
+        else if (window.innerWidth >= 1024) setVisibleCount(14);
+        else if (window.innerWidth >= 768) setVisibleCount(10);
+        else if (window.innerWidth >= 640) setVisibleCount(8);
+        else setVisibleCount(9);
+      };
+      updateCount();
+      window.addEventListener('resize', updateCount);
+      return () => window.removeEventListener('resize', updateCount);
+    }
+  }, [activeCategory]);
+
   const sections = [
     { name: "Slots", Component: SlotsSection },
     { name: "Originals", Component: OriginalsSection },
@@ -126,7 +145,7 @@ export default function HomePage() {
                     <h2 className="font-jost text-[18px] md:text-[24px] font-bold text-white capitalize">
                       {activeCategory === "Collection" ? "Collections" : activeCategory}
                     </h2>
-                    <div className="flex items-center justify-center px-[8px] py-[2px] bg-[#00D06C] rounded-[12px] text-[12px] font-bold text-white">
+                    <div className="flex items-center justify-center px-[8px] py-[2px] bg-[#FFC700] rounded-[12px] text-[12px] font-bold text-black">
                       {displayGames.length}
                     </div>
                   </div>
@@ -135,7 +154,7 @@ export default function HomePage() {
                   <div className="flex flex-row items-center gap-[16px]">
                     <div className="hidden sm:flex items-center gap-[8px]">
                       <span className="text-white text-[12px] font-manrope font-semibold">Show Blocked</span>
-                      <button className="relative w-[32px] h-[18px] rounded-full bg-[#00D06C] transition-colors cursor-pointer">
+                      <button className="relative w-[32px] h-[18px] rounded-full bg-[#FFC700] transition-colors cursor-pointer">
                         <div className="absolute right-[2px] top-[2px] w-[14px] h-[14px] rounded-full bg-white" />
                       </button>
                     </div>
@@ -152,7 +171,7 @@ export default function HomePage() {
                 </div>
                 
                 <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-9 gap-[8px] md:gap-[12px] w-full">
-                  {displayGames.map((game, index) => (
+                  {displayGames.slice(0, isExpanded ? displayGames.length : visibleCount).map((game, index) => (
                     <div key={index} className="w-full">
                       <GameCard 
                         image={game.image} 
@@ -171,15 +190,20 @@ export default function HomePage() {
                 <div className="flex flex-col items-center w-full mt-[20px] md:mt-[40px] mb-[20px] gap-[16px]">
                   <div className="flex flex-col items-center w-full max-w-[300px] gap-[8px]">
                     <div className="w-full h-[4px] bg-[#112F82] rounded-full overflow-hidden">
-                      <div className="h-full bg-[#00D06C] rounded-full" style={{ width: '100%' }}></div>
+                      <div className="h-full bg-[#FFC700] rounded-full" style={{ width: `${(Math.min(isExpanded ? displayGames.length : visibleCount, displayGames.length) / displayGames.length) * 100}%` }}></div>
                     </div>
                     <span className="text-[#A5B8EF] text-[12px] font-manrope font-medium tracking-[0.02em]">
-                      You viewed {displayGames.length} out of {displayGames.length} games
+                      You viewed {Math.min(isExpanded ? displayGames.length : visibleCount, displayGames.length)} out of {displayGames.length} games
                     </span>
                   </div>
-                  <button className="px-[24px] py-[10px] bg-transparent border border-[#1463FF] text-[#1463FF] rounded-[8px] font-manrope font-bold text-[14px] hover:bg-[#1463FF] hover:text-white transition-colors cursor-pointer">
-                    Load More
-                  </button>
+                  {!isExpanded && visibleCount < displayGames.length && (
+                    <button 
+                      onClick={() => setIsExpanded(true)}
+                      className="px-[24px] py-[10px] bg-transparent border border-[#1463FF] text-[#1463FF] rounded-[8px] font-manrope font-bold text-[14px] hover:bg-[#1463FF] hover:text-white transition-colors cursor-pointer"
+                    >
+                      Load More
+                    </button>
+                  )}
                 </div>
               </section>
             );
