@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { useRouter } from "next/navigation";
 
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/store";
@@ -63,6 +64,7 @@ export default function HomePage() {
   const activeCategory = useSelector((state: RootState) => state.ui.activeCategory);
   const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const [visibleCount, setVisibleCount] = React.useState(18);
   const [isExpanded, setIsExpanded] = React.useState(false);
@@ -183,7 +185,8 @@ export default function HomePage() {
                         fluid={true}
                         onClick={() => {
                           dispatch(setSelectedGame(game));
-                          dispatch(openModal("gamePlay"));
+                          const gameId = game.image.split("/").pop()?.replace(".png", "") || "slot-1";
+                          router.push(`/games/${gameId}`);
                         }}
                       />
                     </div>

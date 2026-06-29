@@ -47,7 +47,6 @@ const SvgIconWrapper = (src: string) => {
       { name: "Providers", icon: SvgIconWrapper("/games/game-icons/game.svg") },
       { name: "Table Games", icon: SvgIconWrapper("/games/game-icons/table.svg") },
       { name: "Bonus Buys", icon: SvgIconWrapper("/games/game-icons/bonus.svg") },
-      { name: "Collection", icon: SvgIconWrapper("/games/game-icons/collections.svg") },
     ];
 
     return (
@@ -55,7 +54,7 @@ const SvgIconWrapper = (src: string) => {
         {categories.map((category) => {
           const Icon = category.icon;
           const isActive = category.name === activeCategory;
-          const isLongName = ["Providers", "Table Games", "Bonus Buys", "Collection"].includes(category.name);
+          const isLongName = ["Providers", "Table Games", "Bonus Buys"].includes(category.name);
           return (
             <button
               key={category.name}

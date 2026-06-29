@@ -12,7 +12,6 @@ import StoreProvider from "@/store/StoreProvider";
 import AuthModal from "@/components/auth/AuthModal";
 import WalletModal from "@/components/wallet/WalletModal";
 import LobbyModal from "@/components/lobby/LobbyModal";
-import GamePlayModal from "@/components/game/GamePlayModal";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -71,7 +70,6 @@ export default function RootLayout({
           <AuthModal />
           <WalletModal />
           <LobbyModal />
-          <GamePlayModal />
           <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="light" />
         </StoreProvider>
       </body>
