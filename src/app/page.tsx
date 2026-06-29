@@ -22,7 +22,7 @@ import GameCard from "@/components/ui/GameCard";
 import GameCarousel from "@/components/ui/GameCarousel";
 import { ProviderCard, providers } from "@/components/sections/ProvidersSection";
 
-const allGamesDatabase = [
+const baseGames = [
   { image: "/games/slots/slot-2.png", title: "SWEET BONANZA SUPER SCATTER", category: "Slots" },
   { image: "/games/slots/slot-3.png", title: "SWEET BONANZA", category: "Slots" },
   { image: "/games/slots/slot-4.png", title: "RETRO SWEETS", category: "Slots" },
@@ -44,6 +44,26 @@ const allGamesDatabase = [
   { image: "/games/table/table-2.png", title: "LIVE BACCARAT", category: "Baccarat" },
   { image: "/games/table/table-1.png", title: "BLACKJACK VIP", category: "Blackjack" },
 ];
+
+const padCategories = ["Slots", "Originals", "Crash Games", "Table Games", "Bonus Buys", "Roulette", "Baccarat", "Blackjack"];
+const extraGames = padCategories.flatMap(category => {
+  return Array.from({ length: 30 }, (_, i) => {
+    let imgPath = `/games/slots/slot-${(i % 7) + 1}.png`;
+    if (category === 'Originals') imgPath = `/games/original/original-${(i % 8) + 1}.png`;
+    else if (category === 'Crash Games') imgPath = `/games/crash/crash-${(i % 8) + 1}.png`;
+    else if (['Table Games', 'Roulette', 'Baccarat', 'Blackjack'].includes(category)) {
+      imgPath = `/games/table/table-${(i % 8) + 1}.png`;
+    }
+    
+    return {
+      image: imgPath,
+      title: `${category.toUpperCase()} GAME ${i + 1}`,
+      category: category
+    };
+  });
+});
+
+const allGamesDatabase = [...baseGames, ...extraGames];
 
 const getCategoryIcon = (category: string) => {
   switch (category) {
@@ -105,8 +125,8 @@ export default function HomePage() {
       : Array.from({ length: 28 }, (_, i) => {
           let imgPath = `/games/slots/slot-${(i % 7) + 1}.png`;
           if (activeCategory === 'Originals') imgPath = `/games/original/original-${(i % 8) + 1}.png`;
-          if (activeCategory === 'Crash Games') imgPath = `/games/crash/crash-${(i % 2) + 1}.png`;
-          if (activeCategory === 'Table Games') imgPath = `/games/table/table-${(i % 2) + 1}.png`;
+          if (activeCategory === 'Crash Games') imgPath = `/games/crash/crash-${(i % 8) + 1}.png`;
+          if (activeCategory === 'Table Games') imgPath = `/games/table/table-${(i % 8) + 1}.png`;
           
           return {
             image: imgPath,
@@ -127,10 +147,16 @@ export default function HomePage() {
             const SectionComponent = sections.find(s => s.name === activeCategory)?.Component;
             
             // Only use the custom Carousel components for special non-game grids
-            if (SectionComponent && (activeCategory === "Providers" || activeCategory === "Collection")) {
-              let customTitle = activeCategory === "Providers" ? "GAME PROVIDERS" : "COLLECTIONS";
-              return <SectionComponent title={customTitle} />;
+            if (SectionComponent && activeCategory === "Collection") {
+              return <SectionComponent title="COLLECTIONS" />;
             }
+            
+            const isProvidersTab = activeCategory === "Providers";
+            const paddedProviders = isProvidersTab 
+              ? Array.from({ length: 34 }, (_, i) => providers[i % providers.length]) 
+              : [];
+            const totalItems = isProvidersTab ? paddedProviders.length : displayGames.length;
+            const currentVisible = Math.min(isExpanded ? totalItems : visibleCount, totalItems);
 
             return (
               <section className="flex w-full flex-col items-start gap-[12px] md:gap-5">
@@ -146,10 +172,10 @@ export default function HomePage() {
                       </svg>
                     </button>
                     <h2 className="font-jost text-[18px] md:text-[24px] font-bold text-white capitalize">
-                      {activeCategory === "Collection" ? "Collections" : activeCategory}
+                      {activeCategory === "Collection" ? "Collections" : (isProvidersTab ? "Game Providers" : activeCategory)}
                     </h2>
                     <div className="flex items-center justify-center px-[8px] py-[2px] bg-[#FFC700] rounded-[12px] text-[12px] font-bold text-black">
-                      {displayGames.length}
+                      {totalItems}
                     </div>
                   </div>
 
@@ -177,33 +203,46 @@ export default function HomePage() {
                 </div>
                 
                 <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-9 gap-[8px] md:gap-[12px] w-full">
-                  {displayGames.slice(0, isExpanded ? displayGames.length : visibleCount).map((game, index) => (
-                    <div key={index} className="w-full">
-                      <GameCard 
-                        image={game.image} 
-                        title={game.title}
-                        fluid={true}
-                        onClick={() => {
-                          dispatch(setSelectedGame(game));
-                          const gameId = game.image.split("/").pop()?.replace(".png", "") || "slot-1";
-                          router.push(`/games/${gameId}`);
-                        }}
-                      />
-                    </div>
-                  ))}
+                  {isProvidersTab ? (
+                    paddedProviders.slice(0, currentVisible).map((provider, index) => (
+                      <div key={index} className="w-full">
+                        <ProviderCard 
+                          name={provider.name}
+                          games={provider.games}
+                          logo={provider.logo}
+                          fluid={true}
+                        />
+                      </div>
+                    ))
+                  ) : (
+                    displayGames.slice(0, currentVisible).map((game, index) => (
+                      <div key={index} className="w-full">
+                        <GameCard 
+                          image={game.image} 
+                          title={game.title}
+                          fluid={true}
+                          onClick={() => {
+                            dispatch(setSelectedGame(game));
+                            const gameId = game.image.split("/").pop()?.replace(".png", "") || "slot-1";
+                            router.push(`/games/${gameId}`);
+                          }}
+                        />
+                      </div>
+                    ))
+                  )}
                 </div>
 
                 {/* Bottom Area: Progress Bar and Load More */}
                 <div className="flex flex-col items-center w-full mt-[20px] md:mt-[40px] mb-[20px] gap-[16px]">
                   <div className="flex flex-col items-center w-full max-w-[300px] gap-[8px]">
                     <div className="w-full h-[4px] bg-[#112F82] rounded-full overflow-hidden">
-                      <div className="h-full bg-[#FFC700] rounded-full" style={{ width: `${(Math.min(isExpanded ? displayGames.length : visibleCount, displayGames.length) / displayGames.length) * 100}%` }}></div>
+                      <div className="h-full bg-[#FFC700] rounded-full" style={{ width: `${(currentVisible / totalItems) * 100}%` }}></div>
                     </div>
                     <span className="text-[#A5B8EF] text-[12px] font-manrope font-medium tracking-[0.02em]">
-                      You viewed {Math.min(isExpanded ? displayGames.length : visibleCount, displayGames.length)} out of {displayGames.length} games
+                      You viewed {currentVisible} out of {totalItems} {isProvidersTab ? 'providers' : 'games'}
                     </span>
                   </div>
-                  {!isExpanded && visibleCount < displayGames.length && (
+                  {!isExpanded && visibleCount < totalItems && (
                     <button 
                       onClick={() => setIsExpanded(true)}
                       className="px-[24px] py-[10px] bg-transparent border border-[#1463FF] text-[#1463FF] rounded-[8px] font-manrope font-bold text-[14px] hover:bg-[#1463FF] hover:text-white transition-colors cursor-pointer"

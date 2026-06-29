@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import GameCarousel from "@/components/ui/GameCarousel";
 
 interface ProviderCardProps {
   name: string;
@@ -55,30 +56,20 @@ const topProviders = Array.from({ length: 20 }, (_, i) => providers[i % provider
 
 export default function ProvidersSection({ title = "GAME PROVIDERS (34)" }: { title?: string }) {
   return (
-    <div className="flex flex-col gap-[12px] md:gap-5 w-full flex-none overflow-hidden">
-      <div className="flex min-h-[23px] md:min-h-[30px] w-full flex-none flex-row items-center justify-between gap-2 overflow-hidden">
-        <div className="flex min-h-[23px] md:min-h-[30px] flex-1 min-w-0 flex-row items-center gap-[7.2px] md:gap-[12px]">
-          <div className="flex h-[18px] w-[18px] md:h-[30px] md:w-[30px] flex-none items-center justify-center rounded-[2px] bg-transparent [&>img]:w-[18px] [&>img]:h-[18px] md:[&>img]:w-[30px] md:[&>img]:h-[30px]">
-            <img src="/games/game-icons/game.svg" alt="Game Providers" className="w-[18px] h-[18px] md:w-[30px] md:h-[30px]" />
-          </div>
-          <h2 className="flex-1 min-w-0 truncate font-jost text-[16px] md:text-[20px] font-extrabold leading-[23px] md:leading-[29px] tracking-[0.01em] text-white">
-            {title}
-          </h2>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-9 gap-[8px] md:gap-[12px] w-full">
+    <GameCarousel
+      title={title}
+      icon={<img src="/games/game-icons/game.svg" alt="Game Providers" className="w-[18px] h-[18px] md:w-[30px] md:h-[30px]" />}
+      iconBg="bg-transparent"
+    >
         {topProviders.map((provider, index) => (
-          <div key={index} className="w-full">
+          <div key={index} className="flex-none snap-start">
             <ProviderCard
               name={provider.name}
               games={provider.games}
               logo={provider.logo}
-              fluid={true}
             />
           </div>
         ))}
-      </div>
-    </div>
+    </GameCarousel>
   );
 }
